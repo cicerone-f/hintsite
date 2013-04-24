@@ -24,8 +24,9 @@
 		         	<input type="text" id="login-username"/>
 		         	<input type="password" id="login-password"/>
 		         	<button id="Blogin" >loggati</button>
+		         	<div class="error"></div>
 		         </form>                 
-   		         <div class="error"></div>  
+   		           
 	        </script>
 	        <script id="signup_template" type="text/x-handlebars-template">
 		         <h1>Sign-Up</h1>
@@ -33,8 +34,14 @@
 		         	<input type="text" id="signup-username" />
 		         	<input type="password" id="signup-password"/>
 		         	<button id="Bsignup" >registrati</button>
+		         	<div class="error"></div>
 		         </form>
-		         <div class="error"></div>                 
+		                          
+	        </script>
+	        <script id="logout_template" type="text/x-handlebars-template">
+		         <form class="Slogout">
+		           	<button id="Blogout" >sloggati</button>
+		         </form>                
 	        </script>
 	</body>
 </html>

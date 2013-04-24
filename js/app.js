@@ -17,8 +17,26 @@ document.addEventListener("deviceready", onDeviceReady, false);
       this.render();
     },
  	render: function() {
-        this.$el.html("pippo");
+		var sourceLogout = $('#logout_template').html();
+        var templateLogout = Handlebars.compile(sourceLogout);
+        var html = templateLogout();
+        this.$el.html(html);
         return this;
+   },
+   
+   // Logs out the user and shows the login view
+   logout: function(e) {
+      var self = this;
+      Parse.User.logOut();
+      new AppView();
+      self.undelegateEvents();
+      delete self;
+	  this.$(".Slogout button").attr("disabled", "disabled");
+      return false;
+    },
+    
+    events: {       
+    			"submit form.Slogout": "logout"
     }
  });
  	
