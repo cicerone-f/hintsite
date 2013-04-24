@@ -42,7 +42,7 @@
     
     var self = this;	
 	var query = new Parse.Query(Hint);
-	query.get(this.queryper, {
+	query.find({
 	  success: function(results) {
 	    self.model = results;
    		self.render();
@@ -62,7 +62,7 @@
 			
 		});
 	
-	var cazzi = new hintsView({queryper: 'Ugw5UqicW7'});
+	var cazzi = new hintsView();
 		
 	}
 
