@@ -22,11 +22,10 @@ function onDeviceReady() {
   // Partita View
   var VPartitaPlayer = Parse.View.extend({
     el: $('#container'),
-
     initialize: function() {
-      var self = this;  
+      var self = this;
       var query = new Parse.Query(OPartita);
-      query.get(this.partitaId, {
+      query.get(self.model.id, {
         success: function(results) {
           self.model = results;
           self.render();
@@ -39,13 +38,22 @@ function onDeviceReady() {
     },
 
     render: function() {
-      var sourceLogout = $('#logout_template').html();
       var sourcePartitaPlayer = $('#partita_player_template').html();
-      var templateLogout = Handlebars.compile(sourceLogout);
       var templatePartitaPlayer = Handlebars.compile(sourcePartitaPlayer);
-      var html = templateLogout()+templatePartitaPlayer(this.model.toJSON());
+      var html = templatePartitaPlayer(this.model.toJSON());
       this.$el.html(html);
       return this;
+    },
+
+    indietro: function() {
+      var self = this;
+      new VListaPartite();
+      self.undelegateEvents();
+      delete self;
+      return false;
+    },
+    events: {       
+      "click #back": "indietro"
     }
   });
   // Lista partite View
@@ -98,7 +106,8 @@ function onDeviceReady() {
     zoomPartita: function(event) {
       var idFromEvent = event.currentTarget.attributes["data-idpartita"].nodeValue;
       var self = this;
-      new VPartitaPlayer({partitaId: idFromEvent});
+      var tempModel = new OPartita({objectId: idFromEvent});
+      new VPartitaPlayer({model: tempModel});
       self.undelegateEvents();
       delete self;
       return false;
