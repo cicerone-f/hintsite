@@ -24,13 +24,26 @@ function onDeviceReady() {
     el: $('#container'),
 
     initialize: function() {
-      this.model.bind('change', this.render);
+      var self = this;  
+      var query = new Parse.Query(OPartita);
+      query.get(this.partitaId, {
+        success: function(results) {
+          self.model = results;
+          self.render();
+        },
+  
+        error: function(error) {
+          // error is an instance of Parse.Error.
+        }
+      });
     },
 
     render: function() {
+      var sourceLogout = $('#logout_template').html();
       var sourcePartitaPlayer = $('#partita_player_template').html();
+      var templateLogout = Handlebars.compile(sourceLogout);
       var templatePartitaPlayer = Handlebars.compile(sourcePartitaPlayer);
-      var html = templatePartitaPlayer();
+      var html = templateLogout()+templatePartitaPlayer(this.model.toJSON());
       this.$el.html(html);
       return this;
     }
@@ -82,8 +95,17 @@ function onDeviceReady() {
       this.$(".Slogout button").attr("disabled", "disabled");
       return false;
     },
+    zoomPartita: function(event) {
+      var idFromEvent = event.currentTarget.attributes["data-idpartita"].nodeValue;
+      var self = this;
+      new VPartitaPlayer({partitaId: idFromEvent});
+      self.undelegateEvents();
+      delete self;
+      return false;
+    },
     events: {       
-      "submit form.Slogout": "logout"
+      "submit form.Slogout": "logout",
+      "click li.partita_in_list": "zoomPartita"
     }
   });
  	

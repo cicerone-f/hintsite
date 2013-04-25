@@ -46,9 +46,14 @@
 	        <script id="lista_partite_template" type="text/x-handlebars-template">
 		        <ul class="Slista_partite">
 		        	{{#each partite}}
-		        	<li data-idpartita="{{this.objectId}}">{{this.nome}}</li>
+		        	<li class="partita_in_list" data-idpartita="{{this.objectId}}">{{this.nome}}</li>
 		        	{{/each}}
 		        </ul>       
+	        </script>
+	        <script id="partita_player_template" type="text/x-handlebars-template">
+		         <h1>{{nome}}</h1>
+		         <p>Creata: {{createdAt}}</p>
+		         <p>Timer: {{timer}}</p>           
 	        </script>
 	</body>
 </html>
