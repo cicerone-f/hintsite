@@ -43,5 +43,12 @@
 		           	<button id="Blogout" >sloggati</button>
 		         </form>                
 	        </script>
+	        <script id="lista_partite_template" type="text/x-handlebars-template">
+		        <ul class="Slista_partite">
+		        	{{#each partite}}
+		        	<li data-idpartita="{{this.objectId}}">{{this.nome}}</li>
+		        	{{/each}}
+		        </ul>       
+	        </script>
 	</body>
 </html>
