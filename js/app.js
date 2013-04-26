@@ -12,10 +12,114 @@ function onDeviceReady() {
     }
   });
 
+  //Hint Object
+  var OHint = Parse.Object.extend("Hint", {
+    initialize: function() {
+
+    }
+  });
+
   //Partite Collection
   var CPartite = Parse.Collection.extend({
     model: OPartita,
     filter: function(){
+    }
+  });
+
+  // Crea Hint View
+  var VCreaHint = Parse.View.extend({
+    el: $('#container'),
+    model: OHint,
+    initialize: function() {
+      this.render();
+    },
+    render: function() {
+      var sourceCreaHint = $('#crea_hint_template').html();
+      var templateCreaHint = Handlebars.compile(sourceCreaHint);
+      var html = templateCreaHint(this.model.toJSON());
+      this.$el.html(html);
+      return this;
+    }
+  });
+
+  // Crea Partita View
+  var VCreaPartita = Parse.View.extend({
+    el: $('#container'),
+    model: new OPartita(),
+    initialize: function() {
+      var self = this;
+      this.model.save({user: Parse.User.current(), ACL: new Parse.ACL(Parse.User.current()), born: 0}, {
+        success: function(object) {
+          console.log(object);
+          self.model = object;
+          var allHint = [];
+          for (var i = 1; i < 5; i++ ){
+            var currentHint = new OHint({
+              idPartita: self.model.id,
+              hintNumber: i,
+              user: Parse.User.current(),
+              ACL: new Parse.ACL(Parse.User.current())
+            });
+            allHint.push(currentHint);
+          }  
+          OHint.saveAll(allHint, {
+              success: function(collectionHint) {
+                self.collection = [];
+                for(var i = 0; i < collectionHint.length; i++) {
+                  self.collection.push(collectionHint[i].toJSON());
+                }
+                self.render();
+              },
+              error: function(m, e) {
+                console.log(e);
+              }
+
+          });     
+        },
+        error: function(model, error) {
+        }
+      });
+    },
+    render: function() {
+      var sourceCreaPartita = $('#crea_partita_template').html();
+      var templateCreaPartita = Handlebars.compile(sourceCreaPartita);
+      var modelJSON = this.model.toJSON();
+      modelJSON.hints = this.collection;
+      console.log(modelJSON);
+      var html = templateCreaPartita(modelJSON);
+      this.$el.html(html);
+      return this;
+    },
+    hasHint: function() {
+
+    },
+    salvaNomePartita: function() {
+      var temp_nome = $('#nome_partita').val();
+      this.model.set({nome: temp_nome});
+      this.model.save(null, {
+        success: function(ob) {
+          console.log(ob);
+        },
+        error: function(g, e) {
+          console.log(e);
+        }
+      });
+    },
+    launchPartita: function() {
+      this.model.set({born: 1});
+      this.model.save(null, {
+        success: function(ob) {
+          console.log(ob);
+        },
+        error: function(g, e) {
+          console.log(e);
+        }
+      });
+    },
+    events: {
+      "click .lista_hint li": "hasHint",
+      "blur #nome_partita": "salvaNomePartita",
+      "click #launchPartita": "launchPartita"
     }
   });
 
@@ -109,8 +213,15 @@ function onDeviceReady() {
       delete self;
       return false;
     },
+    creaPartita: function() {
+      var self = this;
+      new VCreaPartita();
+      self.undelegateEvents();
+      return false;
+    },
     events: {
       "submit form.Slogout": "logout",
+      "click #Bcreapartita": "creaPartita",
       "click li.partita_in_list": "zoomPartita"
     }
   });

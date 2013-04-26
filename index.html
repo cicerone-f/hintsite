@@ -45,6 +45,7 @@
 		         </form>                
 	        </script>
 	        <script id="lista_partite_template" type="text/x-handlebars-template">
+	        	<span id="Bcreapartita">Crea Partita</span>
 		        <ul class="Slista_partite">
 		        	{{#each partite}}
 		        	<li class="partita_in_list" data-idpartita="{{this.objectId}}">{{this.nome}}</li>
@@ -56,6 +57,35 @@
 		        <h1>{{nome}}</h1>
 		        <p>Creata: {{createdAt}}</p>
 		        <p>Timer: {{timer}}</p>           
+	        </script>
+	        <script id="crea_partita_template" type="text/x-handlebars-template">
+	        	<p id="back">Indietro</p>
+		        <form class="Screapartita">
+		        	<label for="nome_partita"><input type="text" id="nome_partita" name="nome_partita" />
+		        </form>
+		        <span>Friends</span>
+		        <ul>
+		        	{{#each hints}}
+		        	<li data-idhint="{{this.objectId}}">Hint #{{this.hintNumber}}</li>
+		        	{{/each}}
+		        </ul>
+		        <span id="launchPartita">Launch</span>
+	        </script>
+	        <script id="crea_hint_template" type="text/x-handlebars-template">
+	        	<p id="back">Indietro</p>
+		        <h1>Hint #{{number}}</h1>
+		        {{#if photo}}
+		        	<img src="{{photo}}" />
+		        {{else}}
+		        	<p>Add Photo</p>
+		        {{/if}}
+		        {{#if geopoint}}
+		        	{{geopoint}}
+		        {{else}}
+		        	<p>Set Geopoint</p>
+		        {{/if}}
+		        <label for="hint_description">Description:</label>
+		        <textarea name="hint_description">{{description}}</textarea>           
 	        </script>
 	</body>
 </html>
