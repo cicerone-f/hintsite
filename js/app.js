@@ -30,7 +30,6 @@ function onDeviceReady() {
           self.model = results;
           self.render();
         },
-  
         error: function(error) {
           // error is an instance of Parse.Error.
         }
@@ -52,15 +51,14 @@ function onDeviceReady() {
       delete self;
       return false;
     },
-    events: {       
+    events: {
       "click #back": "indietro"
     }
   });
   // Lista partite View
-  var VListaPartite = Parse.View.extend({	
- 	  el: $("#container"),
-
- 	  initialize: function() {
+  var VListaPartite = Parse.View.extend({
+    el: $("#container"),
+    initialize: function() {
       var self = this;
       // Initialize Parse.Query on Object OPartita
       var query = new Parse.Query(OPartita);
@@ -80,9 +78,8 @@ function onDeviceReady() {
         }
       });
     },
-
- 	  render: function() {
-		  var sourceLogout = $('#logout_template').html();
+    render: function() {
+      var sourceLogout = $('#logout_template').html();
       var sourceListaPartite = $('#lista_partite_template').html();
       var templateLogout = Handlebars.compile(sourceLogout);
       var templateListaPartite = Handlebars.compile(sourceListaPartite);
@@ -92,7 +89,7 @@ function onDeviceReady() {
       this.$el.html(html);
       return this;
     },
-   
+
     // Logs out the user and shows the first App View 
     logout: function(e) {
       var self = this;
@@ -112,34 +109,33 @@ function onDeviceReady() {
       delete self;
       return false;
     },
-    events: {       
+    events: {
       "submit form.Slogout": "logout",
       "click li.partita_in_list": "zoomPartita"
     }
   });
- 	
- 	
+
   // The login view for the app
   var VLogSign = Parse.View.extend({
     el: $("#container"),
     initialize: function() {
       this.render();
     },
-    events: {       
-    	"submit form.Slogin": "login",
+    events: {
+      "submit form.Slogin": "login",
       "submit form.Ssignup": "signup"
     },
 
     render: function() {
-		  var sourceLogin = $('#login_template').html();
-		  var sourceSignup = $('#signup_template').html();
+      var sourceLogin = $('#login_template').html();
+      var sourceSignup = $('#signup_template').html();
       var templateLogin = Handlebars.compile(sourceLogin);
       var templateSignup = Handlebars.compile(sourceSignup);
       var html = templateLogin()+templateSignup();
       this.$el.html(html);
       return this;
     },
-    
+
     signup: function(){
       var self = this;
       var username = this.$("#signup-username").val();
@@ -157,13 +153,13 @@ function onDeviceReady() {
         }
       });
       this.$(".Ssignup button").attr("disabled", "disabled");
-      return false;	
+      return false;
     },
-    
+
     login: function(){
       var self = this;
       var username = this.$("#login-username").val();
-      var password = this.$("#login-password").val();  
+      var password = this.$("#login-password").val();
       Parse.User.logIn(username, password, {
         success: function(user) {
           new VListaPartite();
@@ -200,14 +196,11 @@ function onDeviceReady() {
     }
   });
 
-  var App = new AppView;
-	
-	
+  var App = new AppView();
 
 
-		
 /*		var Hint = Parse.Object.extend("Hint");
-   		var hint = new Hint();
+      var hint = new Hint();
       hint.save({titolo: "bls bls", description: "Il diavolo aquilano con la tazza in mano"}, {
       success: function(object) {
         $("#response").html('salvato');
@@ -216,16 +209,16 @@ function onDeviceReady() {
         $("#response").html(error);
       }
     });
-*/    
-	}
+*/
+}
 
 //What to do when paused
 function onPause() {
 	alert("paused!");
 }
-		
+
 //What to do when resumed
 function onResume()	{
 	alert("resume");
-}	
+}
 
