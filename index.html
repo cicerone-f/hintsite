@@ -25,7 +25,6 @@
 		         	<input type="text" id="login-username"/>
 		         	<input type="password" id="login-password"/>
 		         	<button id="Blogin" >loggati</button>
-		         	<div class="error"></div>
 		         </form>                 
    		           
 	        </script>
@@ -35,7 +34,6 @@
 		         	<input type="text" id="signup-username" />
 		         	<input type="password" id="signup-password"/>
 		         	<button id="Bsignup" >registrati</button>
-		         	<div class="error"></div>
 		         </form>
 		                          
 	        </script>
@@ -46,17 +44,32 @@
 	        </script>
 	        <script id="lista_partite_template" type="text/x-handlebars-template">
 	        	<span id="Bcreapartita">Crea Partita</span>
+	        	<p>Partite Master:</p>
 		        <ul class="Slista_partite">
-		        	{{#each partite}}
+		        	{{#each partiteMaster}}
 		        	<li class="partita_in_list" data-idpartita="{{this.objectId}}">{{this.nome}}</li>
 		        	{{/each}}
-		        </ul>       
+		        </ul>
+		        <p>Partite Player:</p>
+		        <ul class="Slista_partite">
+		        	{{#each partitePlayer}}
+		        	<li class="partita_in_list" data-idpartita="{{this.objectId}}">{{this.nome}}</li>
+		        	{{/each}}
+		        </ul>   
 	        </script>
 	        <script id="partita_player_template" type="text/x-handlebars-template">
 	        	<p id="back">Torna a lista partite</p>
 		        <h1>{{nome}}</h1>
 		        <p>Creata: {{createdAt}}</p>
-		        <p>Timer: {{timer}}</p>           
+		        <p>Timer: {{timer}}</p> 
+		        <ul>
+		        	{{#each hints}}
+		        	<li data-idhint="{{this.objectId}}">
+		        		<p>Hint #{{this.hintNumber}}</p>
+		        		<p>{{this.description}}</p>
+		        	</li>
+		        	{{/each}}
+		        </ul>          
 	        </script>
 	        <script id="crea_partita_template" type="text/x-handlebars-template">
 	        	<p id="back">Indietro</p>
@@ -86,6 +99,12 @@
 		        {{/if}}
 		        <label for="hint_description">Description:</label>
 		        <textarea name="hint_description">{{description}}</textarea>           
+	        </script>
+	        <script id="error_template" type="text/x-handlebars-template">
+	        	<span id="closeError">Chiudi</span>
+	        	<h1>Error</h1>
+	        	<p>Error code: {{code}}</p>
+	        	<p>{{message}}</p>
 	        </script>
 	</body>
 </html>

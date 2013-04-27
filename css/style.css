@@ -14,3 +14,12 @@ body {
 .partita_in_list, #back {
 	cursor: pointer;
 }
+
+.error {
+	margin: 15px;
+	background: white;
+	z-index: 999;
+	position: absolute;
+	padding: 15px;
+	width: 80%;
+}

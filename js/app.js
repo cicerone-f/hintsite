@@ -26,6 +26,31 @@ function onDeviceReady() {
     }
   });
 
+  //Error View 
+  //Use it in popup
+  var VError = Parse.View.extend({
+    tagName: "div",
+    className: "error",
+    model: Parse.Error,
+    initialize: function() {
+      this.render();
+    },
+    render: function() {
+      var sourceError = $('#error_template').html();
+      var templateError = Handlebars.compile(sourceError);
+      console.log(this.model);
+      var html = templateError(this.model);
+      $('body').append(this.$el.html(html));
+      return this;
+    },
+    close: function() {
+      this.remove();
+    },
+    events: {
+      "click #closeError": "close"
+    }
+  });
+
   // Crea Hint View
   var VCreaHint = Parse.View.extend({
     el: $('#container'),
@@ -76,7 +101,8 @@ function onDeviceReady() {
 
           });     
         },
-        error: function(model, error) {
+        error: function(error) {
+          new VError({model: error});
         }
       });
     },
@@ -100,8 +126,8 @@ function onDeviceReady() {
         success: function(ob) {
           console.log(ob);
         },
-        error: function(g, e) {
-          console.log(e);
+        error: function(error) {
+          new VError({model: error});
         }
       });
     },
@@ -111,8 +137,8 @@ function onDeviceReady() {
         success: function(ob) {
           console.log(ob);
         },
-        error: function(g, e) {
-          console.log(e);
+        error: function(error) {
+          new VError({model: error});
         }
       });
     },
@@ -132,10 +158,20 @@ function onDeviceReady() {
       query.get(self.model.id, {
         success: function(results) {
           self.model = results;
-          self.render();
+          var queryHint = new Parse.Query(OHint);
+          queryHint.equalTo("idPartita", self.model.id);
+          queryHint.find({
+            success: function(results){
+              self.collection = [];
+              for(var i = 0; i < results.length; i++) {
+                self.collection.push(results[i].toJSON());
+              }
+              self.render();
+            }
+          });
         },
         error: function(error) {
-          // error is an instance of Parse.Error.
+          new VError({model: error});
         }
       });
     },
@@ -143,7 +179,9 @@ function onDeviceReady() {
     render: function() {
       var sourcePartitaPlayer = $('#partita_player_template').html();
       var templatePartitaPlayer = Handlebars.compile(sourcePartitaPlayer);
-      var html = templatePartitaPlayer(this.model.toJSON());
+      var modelJSON = this.model.toJSON();
+      modelJSON.hints = this.collection;
+      var html = templatePartitaPlayer(modelJSON);
       this.$el.html(html);
       return this;
     },
@@ -166,19 +204,30 @@ function onDeviceReady() {
       var self = this;
       // Initialize Parse.Query on Object OPartita
       var query = new Parse.Query(OPartita);
+      // Order results by last update (descending)
+      query.descending('updatedAt');
       query.find({
         success: function(results) {
-          // Initialize empty array of results linked to current View
-          self.collection = [];
+          // Initialize empty arrays of results linked to current View
+          self.collectionMaster = [];
+          self.collectionPlayer = [];
           // On success Callback iterates through results and transforms every object to JSON (for Handlebars)
           for(var i = 0; i < results.length; i++) {
-            self.collection.push(results[i].toJSON());
+            results[i] = results[i].toJSON();
+            console.log(Parse.User.current());
+            //Splits results into "Master Match" and "Player Match"
+            //TODO: split results into "Storico", "In Sospeso", "Pubbliche", "In corso" using *born* value
+            if (results[i].user.objectId == Parse.User.current().id) {
+              self.collectionMaster.push(results[i]);
+            } else {
+              self.collectionPlayer.push(results[i]);
+            }
           }
           // Renders current View on Query success
           self.render();
         },
         error: function(error) {
-          // error is an instance of Parse.Error.
+          new VError({model: error});
         }
       });
     },
@@ -188,8 +237,8 @@ function onDeviceReady() {
       var templateLogout = Handlebars.compile(sourceLogout);
       var templateListaPartite = Handlebars.compile(sourceListaPartite);
       // Renders #logout_template and #lista_partite_template
-      // #lista_partite_template displays a list of match iterating through "partite"
-      var html = templateLogout()+templateListaPartite({partite: this.collection});
+      // #lista_partite_template displays two lists of match iterating through "partiteMaster" and "partitePlayer"
+      var html = templateLogout()+templateListaPartite({partiteMaster: this.collectionMaster, partitePlayer: this.collectionPlayer});
       this.$el.html(html);
       return this;
     },
@@ -259,7 +308,7 @@ function onDeviceReady() {
         },
 
         error: function(user, error) {
-          self.$(".Ssignup .error").html(error.message).show();
+          new VError({model: error});
           this.$(".Ssignup button").removeAttr("disabled");
         }
       });
@@ -278,7 +327,7 @@ function onDeviceReady() {
           delete self;
         },
         error: function(user, error) {
-          self.$(".Slogin .error").html("Invalid username or password. Please try again.").show();
+          new VError({model: error});
           this.$(".Slogin button").removeAttr("disabled");
         }
       });
