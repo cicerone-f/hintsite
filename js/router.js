@@ -12,7 +12,7 @@ define(["jquery", "underscore", "backbone", "collections/AdCollection", "models/
       initialize: function () {
         $('#back').on('touchend', function (event) {
           window.history.back();
-          return false;
+          return false;//evito evento default browser
         });
         var ad1 = new Ad({
           title: "Camera1",

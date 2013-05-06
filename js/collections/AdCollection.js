@@ -1,4 +1,4 @@
-define(["jquery", "underscore", "backbone", "models/ad"],
+define(["jquery", "underscore", "backbone", "models/Ad"],
     function ($, _, Backbone, Ad) {
 
     var AdCollection = Backbone.Collection.extend({
