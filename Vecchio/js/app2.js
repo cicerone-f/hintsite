@@ -26,30 +26,11 @@ function onDeviceReady() {
     }
   });
 
-  //Error View 
-  //Use it in popup
-  var VError = Parse.View.extend({
-    tagName: "div",
-    className: "error",
-    model: Parse.Error,
-    initialize: function() {
-      this.render();
-    },
-    render: function() {
-      var sourceError = $('#error_template').html();
-      var templateError = Handlebars.compile(sourceError);
-      console.log(this.model);
-      var html = templateError(this.model);
-      $('body').append(this.$el.html(html));
-      return this;
-    },
-    close: function() {
-      this.remove();
-    },
-    events: {
-      "click #closeError": "close"
-    }
-  });
+
+
+
+
+
 
   // Crea Hint View
   var VCreaHint = Parse.View.extend({
@@ -67,17 +48,31 @@ function onDeviceReady() {
     }
   });
 
+
+
+
+
+
+
+
+
+
+var collectionHint = Parse.Collection.extend({
+  model: OHint
+});
+
+
   // Crea Partita View
   var VCreaPartita = Parse.View.extend({
     el: $('#container'),
     model: new OPartita(),
     initialize: function() {
       var self = this;
+      this.collection = new collectionHint();
+      this.collection.bind('add' , this.appendHint);
       this.model.save({user: Parse.User.current(), ACL: new Parse.ACL(Parse.User.current()), born: 0}, {
         success: function(object) {
-          console.log(object);
-          self.model = object;
-          var allHint = [];
+
           for (var i = 1; i < 5; i++ ){
             var currentHint = new OHint({
               idPartita: self.model.id,
@@ -85,15 +80,10 @@ function onDeviceReady() {
               user: Parse.User.current(),
               ACL: new Parse.ACL(Parse.User.current())
             });
-            allHint.push(currentHint);
+            self.collection.add(currentHint);
           }  
-          OHint.saveAll(allHint, {
+          OHint.saveAll(self.collection.toJSON(), {
               success: function(collectionHint) {
-                self.collection = [];
-                for(var i = 0; i < collectionHint.length; i++) {
-                  self.collection.push(collectionHint[i].toJSON());
-                }
-                self.render();
               },
               error: function(m, e) {
                 console.log(e);
@@ -105,6 +95,10 @@ function onDeviceReady() {
           new VError({model: error});
         }
       });
+      this.render();
+    },
+    appendHint: function(h){
+               console.log("appeso");
     },
     render: function() {
       var sourceCreaPartita = $('#crea_partita_template').html();
@@ -148,6 +142,14 @@ function onDeviceReady() {
       "click #launchPartita": "launchPartita"
     }
   });
+
+
+
+
+
+
+
+
 
   // Partita View
   var VPartitaPlayer = Parse.View.extend({
@@ -197,6 +199,14 @@ function onDeviceReady() {
       "click #back": "indietro"
     }
   });
+
+
+
+
+
+
+
+
   // Lista partite View
   var VListaPartite = Parse.View.extend({
     el: $("#container"),
@@ -275,6 +285,13 @@ function onDeviceReady() {
     }
   });
 
+
+
+
+
+
+
+
   // The login view for the app
   var VLogSign = Parse.View.extend({
     el: $("#container"),
@@ -337,6 +354,14 @@ function onDeviceReady() {
   });
 
 
+
+
+
+
+
+
+
+
   // The main view for the app
   var AppView = Parse.View.extend({
     // Instead of generating a new element, bind to the existing skeleton of
@@ -381,4 +406,3 @@ function onPause() {
 function onResume()	{
 	alert("resume");
 }
-

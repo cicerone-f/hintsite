@@ -1,25 +1,59 @@
+@charset "UTF-8";
+/* STANDARD FOR MOBILE */
+
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+ /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
 body {
-	font-family: 'Verdana';
-	color: #ee7427;
-	background: -moz-linear-gradient(top,  rgba(238,116,39,0.5) 0%, rgba(238,117,39,0.5) 1%, rgba(242,174,47,0.4) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(238,116,39,0.5)), color-stop(1%,rgba(238,117,39,0.5)), color-stop(100%,rgba(242,174,47,0.4))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  rgba(238,116,39,0.5) 0%,rgba(238,117,39,0.5) 1%,rgba(242,174,47,0.4) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  rgba(238,116,39,0.5) 0%,rgba(238,117,39,0.5) 1%,rgba(242,174,47,0.4) 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  rgba(238,116,39,0.5) 0%,rgba(238,117,39,0.5) 1%,rgba(242,174,47,0.4) 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  rgba(238,116,39,0.5) 0%,rgba(238,117,39,0.5) 1%,rgba(242,174,47,0.4) 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80ee7427', endColorstr='#66f2ae2f',GradientType=0 ); /* IE6-9 */
-
+    -webkit-touch-callout: none;
+                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;
+             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;
+                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-attachment: fixed;
+    font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
 }
 
-.partita_in_list, #back {
-	cursor: pointer;
+/* END STANDARD MOBILE */
+
+#list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-.error {
-	margin: 15px;
-	background: white;
-	z-index: 999;
-	position: absolute;
-	padding: 15px;
-	width: 80%;
+ul li {
+    border-bottom: 1px solid #d9e2eb;
+    background: #fff;
+    display: block;
+    padding: 15px 0px;
+    padding-left: 10px;
+    width: 100%;
+    /* background-image: -webkit-linear-gradient(top, #ffffff, #ecf1f5); */
 }
+
+ul li a {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    font-size: 1.4em;
+    color: #787878;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+#back {
+    background-color: red;
+    padding: 1.5em;
+    color: white;
+    text-align: center;
+}
+
