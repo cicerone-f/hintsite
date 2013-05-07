@@ -1,7 +1,7 @@
-define(["jquery", "underscore", "backbone", "handlebars", "text!templates/hint-details.html"],
-    function ($, _, Backbone, Handlebars, template) {
+define(["jquery", "underscore", "backbone", "Parse", "handlebars", "text!templates/hint-details.html"],
+    function ($, _, Backbone, Parse, Handlebars, template) {
 
-    var HintView = Backbone.View.extend({
+    var HintView = Parse.View.extend({
 
         events: {
           "touchend #back": "goBack"

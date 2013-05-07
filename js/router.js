@@ -1,7 +1,7 @@
-define(["jquery", "underscore", "backbone", "collections/HintCollection", "models/Hint", "views/HintView", "views/HintListView"],
-    function ($, _, Backbone, HintCollection, Hint, HintView, HintListView) {
+define(["jquery", "underscore", "backbone", "Parse", "collections/HintCollection", "models/Hint", "views/HintView", "views/HintListView"],
+    function ($, _, Backbone, Parse, HintCollection, Hint, HintView, HintListView) {
 
-    var AppRouter = Backbone.Router.extend({
+    var AppRouter = Parse.Router.extend({
 
       routes: {
         "": "list",
@@ -14,29 +14,27 @@ define(["jquery", "underscore", "backbone", "collections/HintCollection", "model
           window.history.back();
           return false; //evito evento default browser
         });
-        var hint1 = new Hint({
-          number: "1",
-          description: "lorem ipsum"
-        });
-        var hint2 = new Hint({
-          number: "2",
-          description: "lorem ipsum dolor"
-        });
-        this.hints = new HintCollection([hint1, hint2]);
       },
 
       list: function () {
         var page = new HintListView({
-          model: this.hints
         });
         this.changePage(page);
       },
 
       hintDetails: function (id) {
-         var hint = this.hints.get(id);
-         this.changePage(new HintView({
-           model: hint
-         }));
+        var self = this;
+        var query = new Parse.Query(Hint);
+        var hint = query.get(id, {
+          success: function(result) {
+            self.changePage(new HintView({
+              model: result
+            }));
+          },
+          error: function(error) {
+              console.log(error);
+          }
+        });
       },
 
       changePage: function (page) {

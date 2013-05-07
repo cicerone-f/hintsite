@@ -1,7 +1,7 @@
-define(["jquery", "underscore", "backbone", "handlebars", "text!templates/hint-list-item.html"],
-    function ($, _, Backbone, Handlebars, template) {
+define(["jquery", "underscore", "backbone", "Parse", "handlebars", "text!templates/hint-list-item.html"],
+    function ($, _, Backbone, Parse, Handlebars, template) {
 
-    var HintListItemView = Backbone.View.extend({
+    var HintListItemView = Parse.View.extend({
 
         tagName: "li",
 
@@ -18,13 +18,13 @@ define(["jquery", "underscore", "backbone", "handlebars", "text!templates/hint-l
 
         render: function (eventName) {
           var hint = this.model.toJSON();
-          hint.cid = this.model.cid;
+          hint.cid = this.model.id;
           $(this.el).html(this.template(hint));
           return this;
         },
 
         goToDetails: function () {
-          Backbone.history.navigate("hints/" + this.model.cid, {trigger: true});
+          Parse.history.navigate("hints/" + this.model.id, {trigger: true});
         }
       });
 

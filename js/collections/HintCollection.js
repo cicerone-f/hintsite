@@ -1,7 +1,7 @@
-define(["jquery", "underscore", "backbone", "models/Hint"],
-    function ($, _, Backbone, Hint) {
+define(["jquery", "Parse", "models/Hint"],
+    function ($, Parse, Hint) {
 
-    var HintCollection = Backbone.Collection.extend({
+    var HintCollection = Parse.Collection.extend({
         model: Hint
       });
 
