@@ -1,7 +1,7 @@
-define(["jquery", "underscore", "backbone", "handlebars", "text!templates/ad-details.html"],
+define(["jquery", "underscore", "backbone", "handlebars", "text!templates/hint-details.html"],
     function ($, _, Backbone, Handlebars, template) {
 
-    var AdView = Backbone.View.extend({
+    var HintView = Backbone.View.extend({
 
         events: {
           "touchend #back": "goBack"
@@ -19,6 +19,6 @@ define(["jquery", "underscore", "backbone", "handlebars", "text!templates/ad-det
         }
       });
 
-    return AdView;
+    return HintView;
 
   });

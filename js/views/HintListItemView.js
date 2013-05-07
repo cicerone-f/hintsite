@@ -1,7 +1,7 @@
-define(["jquery", "underscore", "backbone", "handlebars", "text!templates/ad-list-item.html"],
+define(["jquery", "underscore", "backbone", "handlebars", "text!templates/hint-list-item.html"],
     function ($, _, Backbone, Handlebars, template) {
 
-    var AdListItemView = Backbone.View.extend({
+    var HintListItemView = Backbone.View.extend({
 
         tagName: "li",
 
@@ -17,17 +17,17 @@ define(["jquery", "underscore", "backbone", "handlebars", "text!templates/ad-lis
         },
 
         render: function (eventName) {
-          var ad = this.model.toJSON();
-          ad.cid = this.model.cid;
-          $(this.el).html(this.template(ad));
+          var hint = this.model.toJSON();
+          hint.cid = this.model.cid;
+          $(this.el).html(this.template(hint));
           return this;
         },
 
         goToDetails: function () {
-          Backbone.history.navigate("ads/" + this.model.cid, {trigger: true});
+          Backbone.history.navigate("hints/" + this.model.cid, {trigger: true});
         }
       });
 
-    return AdListItemView;
+    return HintListItemView;
 
   });

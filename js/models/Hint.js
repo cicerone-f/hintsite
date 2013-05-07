@@ -1,8 +1,8 @@
 define(["jquery", "underscore", "backbone"],
   function ($, _, Backbone) {
-    var Ad = Backbone.Model.extend({
+    var Hint = Backbone.Model.extend({
       });
 
-    return Ad;
+    return Hint;
 
   });
