@@ -27,7 +27,7 @@ define([
         render: function (eventName) {
           $(this.el).html(this.template(this.model.toJSON()));
           $(this.el).append(new HintListView({
-            
+            model: this.model
           }).render().el);
           return this;
         }

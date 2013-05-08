@@ -81,7 +81,6 @@ define([
       },
 
       matchDetails: function (id) {
-        console.log('asdads');
         var self = this;
         var query = new Parse.Query(Match);
         var match = query.get(id, {

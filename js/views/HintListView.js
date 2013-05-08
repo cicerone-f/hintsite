@@ -22,9 +22,10 @@ define([
         
         initialize: function () {
           var query = new Parse.Query(Hint);
-          // Questo comando dovrebbe impostare la query per cercare solo gli Hint di una determinata partita
-          // ma non funziona ed inoltre bisogna capire come passargli l'id
-          //query.equalTo("matchId", 'x7Y7nCgk1p');
+          query.equalTo("matchId", this.model.id);
+          // Questo comando imposta la query per cercare solo gli Hint di una determinata partita
+          // l'id viene passato quando viene instanziata HintListView in MatchView, passando come model il Match
+          // BISOGNA CAPIRE SE E' CORRETTO.
           var self = this;
           query.find({
 
