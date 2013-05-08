@@ -4,22 +4,24 @@ define(["jquery", "underscore", "backbone", "Parse", "handlebars", "views/HintLi
     var HintListView = Parse.View.extend({
 
         tagName: "ul",
+        
         id: "list", 
+        
         template: Handlebars.compile(template),
+        
         initialize: function () {
           var query = new Parse.Query(Hint);
           var self = this;
           query.find({
-          success: function(results) {
-              self.collection = results;
-              //self.model.bind("reset", self.render, this);
-              self.render();
-          },
-          error: function(error) {
-            console.log(error);
-          }
-        });
-
+          	success: function(results) {
+          		self.collection = results;
+          		//self.model.bind("reset", self.render, this);
+          		self.render();
+          	},
+          	error: function(error) {
+          		console.log(error);
+          	}
+        	});
         },
 
         render: function (eventName) {

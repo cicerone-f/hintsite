@@ -1,23 +1,32 @@
-define(["jquery", "underscore", "backbone", "Parse", "collections/HintCollection", "models/Hint", "views/HintView", "views/HintListView"],
-    function ($, _, Backbone, Parse, HintCollection, Hint, HintView, HintListView) {
+define(["jquery", "underscore", "backbone", "Parse", "collections/HintCollection", "models/Hint", "views/HintView", "views/HintListView","views/LogInView"],
+    function ($, _, Backbone, Parse, HintCollection, Hint, HintView, HintListView, LogInView) {
 
     var AppRouter = Parse.Router.extend({
 
       routes: {
-        "": "list",
+        "": "log",
         "list": "list",
         "hints/:id": "hintDetails"
       },
-
+			
+			// il div con id #back sta in HintView, perchè mettere qui il touch event?
+			// con initialize commentata come sotto funziona lo stesso 
+			// visto che l'evento lo gestisce anche HintView
       initialize: function () {
-        $('#back').on('touchend', function (event) {
-          window.history.back();
-          return false; //evito evento default browser
-        });
+        //$('#back').on('touchend', function (event) {
+        //  window.history.back();
+        //  return false; //evito evento default browser
+        //});
       },
 
       list: function () {
         var page = new HintListView({
+        });
+        this.changePage(page);
+      },
+      
+      log: function () {
+        var page = new LogInView({
         });
         this.changePage(page);
       },
