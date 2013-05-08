@@ -1,8 +1,20 @@
-define(["jquery", "underscore", "backbone", "Parse", "handlebars", "views/HintListItemView", "collections/HintCollection", "models/Hint", "text!templates/hint-list.html"],
+/*jslint undef: true*/
+/*global define*/
+
+define([
+  "jquery",
+  "underscore",
+  "backbone",
+  "Parse",
+  "handlebars",
+  "views/HintListItemView",
+  "collections/HintCollection",
+  "models/Hint",
+  "text!templates/hint-list.html"
+],
     function ($, _, Backbone, Parse, Handlebars, HintListItemView, HintCollection, Hint, template) {
 
     var HintListView = Parse.View.extend({
-
         tagName: "ul",
         
         id: "list", 
@@ -13,15 +25,17 @@ define(["jquery", "underscore", "backbone", "Parse", "handlebars", "views/HintLi
           var query = new Parse.Query(Hint);
           var self = this;
           query.find({
-          	success: function(results) {
-          		self.collection = results;
-          		//self.model.bind("reset", self.render, this);
-          		self.render();
-          	},
-          	error: function(error) {
-          		console.log(error);
-          	}
-        	});
+
+            success: function (results) {
+              self.collection = results;
+              //self.model.bind("reset", self.render, this);
+              self.render();
+            },
+            error: function (error) {
+              console.log(error);
+            }
+          });
+
         },
 
         render: function (eventName) {
