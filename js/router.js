@@ -1,4 +1,16 @@
-define(["jquery", "underscore", "backbone", "Parse", "collections/HintCollection", "models/Hint", "views/HintView", "views/HintListView"],
+/*jslint undef: true*/
+/*global define*/
+
+define([
+  "jquery",
+  "underscore",
+  "backbone",
+  "Parse",
+  "collections/HintCollection",
+  "models/Hint",
+  "views/HintView",
+  "views/HintListView"
+],
     function ($, _, Backbone, Parse, HintCollection, Hint, HintView, HintListView) {
 
     var AppRouter = Parse.Router.extend({
@@ -26,13 +38,13 @@ define(["jquery", "underscore", "backbone", "Parse", "collections/HintCollection
         var self = this;
         var query = new Parse.Query(Hint);
         var hint = query.get(id, {
-          success: function(result) {
+          success: function (result) {
             self.changePage(new HintView({
               model: result
             }));
           },
-          error: function(error) {
-              console.log(error);
+          error: function (error) {
+            console.log(error);
           }
         });
       },

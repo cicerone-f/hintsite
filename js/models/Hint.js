@@ -1,8 +1,13 @@
-define(["jquery", "Parse"],
+/*jslint undef: true*/
+/*global define*/
+
+define([
+  "jquery",
+  "Parse"
+],
   function ($, Parse) {
     var Hint = Parse.Object.extend("Hint", {
       });
 
     return Hint;
-
   });
