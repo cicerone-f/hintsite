@@ -1,3 +1,6 @@
+/*jslint undef: true*/
+/*global define*/
+
 require.config({
   paths: {
     domReady: '../lib/require/domReady',
@@ -28,7 +31,13 @@ require.config({
 });
 
 // We launch the App
-require(['domReady', 'underscore', 'backbone', 'Parse', 'router'],
+require([
+  'domReady',
+  'underscore',
+  'backbone',
+  'Parse',
+  'router'
+],
     function (domReady, _, Backbone, Parse, AppRouter) {
 
     domReady(function () {
@@ -36,8 +45,8 @@ require(['domReady', 'underscore', 'backbone', 'Parse', 'router'],
     });
 
     function run() {
-      Parse.initialize( 'LkaGTOk7RGUaPXM0r9HQImwPAnmqUuhjF1QttcNE' , 'uxXxR7sEt2unuSABRyjF8tnd52bNymwlDuchsIhh' );
-      new AppRouter();
+      Parse.initialize('LkaGTOk7RGUaPXM0r9HQImwPAnmqUuhjF1QttcNE', 'uxXxR7sEt2unuSABRyjF8tnd52bNymwlDuchsIhh');
+      new AppRouter();          // JSLint says "do not use 'new' for side effects"
       Parse.history.start();
     }
   });
