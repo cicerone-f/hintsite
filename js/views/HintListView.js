@@ -17,12 +17,14 @@ define([
     var HintListView = Parse.View.extend({
         tagName: "ul",
         
-        id: "list", 
-        
+        id: "list",
         template: Handlebars.compile(template),
         
         initialize: function () {
           var query = new Parse.Query(Hint);
+          // Questo comando dovrebbe impostare la query per cercare solo gli Hint di una determinata partita
+          // ma non funziona ed inoltre bisogna capire come passargli l'id
+          //query.equalTo("matchId", 'x7Y7nCgk1p');
           var self = this;
           query.find({
 

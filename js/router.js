@@ -8,18 +8,24 @@ define([
   "backbone",
   "Parse",
   "collections/HintCollection",
+  "collections/MatchCollection",
   "models/Hint",
+  "models/Match",
   "views/HintView",
+  "views/MatchView",
   "views/HintListView",
+  "views/MatchListView",
   "views/LogInView"
 ],
-    function ($, _, Backbone, Parse, HintCollection, Hint, HintView, HintListView, LogInView) {
+    function ($, _, Backbone, Parse, HintCollection, MatchCollection, Hint, Match, HintView, MatchView, HintListView, MatchListView, LogInView) {
 
     var AppRouter = Parse.Router.extend({
 
       routes: {
-        "": "log",
+        "": "userControl",
         "list": "list",
+        "matchList": "matchList",
+        "matches/:id": "matchDetails",
         "hints/:id": "hintDetails"
       },
 			
@@ -33,12 +39,26 @@ define([
         //});
       },
 
+      userControl: function(){
+             if (Parse.User.current()) {
+               this.matchList();
+             } else {
+               this.log();
+             }
+     },
+
       list: function () {
         var page = new HintListView({
         });
         this.changePage(page);
       },
       
+      matchList: function() {
+        var page = new MatchListView({
+        });
+        this.changePage(page);
+      },
+
       log: function () {
         var page = new LogInView({
         });
@@ -51,6 +71,22 @@ define([
         var hint = query.get(id, {
           success: function (result) {
             self.changePage(new HintView({
+              model: result
+            }));
+          },
+          error: function (error) {
+            console.log(error);
+          }
+        });
+      },
+
+      matchDetails: function (id) {
+        console.log('asdads');
+        var self = this;
+        var query = new Parse.Query(Match);
+        var match = query.get(id, {
+          success: function (result) {
+            self.changePage(new MatchView({
               model: result
             }));
           },
