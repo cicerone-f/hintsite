@@ -1,4 +1,4 @@
-define(["jquery", "underscore", "backbone", "Parse", "handlebars", "views/HintListItemView", "collections/HintCollection", "models/Hint", "text!../templates/hint-list.html"],
+define(["jquery", "underscore", "backbone", "Parse", "handlebars", "views/HintListItemView", "collections/HintCollection", "models/Hint", "text!templates/hint-list.html"],
     function ($, _, Backbone, Parse, Handlebars, HintListItemView, HintCollection, Hint, template) {
 
     var HintListView = Parse.View.extend({
