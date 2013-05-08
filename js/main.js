@@ -1,5 +1,4 @@
 require.config({
-  waitSeconds: 60,
   paths: {
     domReady: '../lib/require/domReady',
     jquery: '../lib/jquery/jquery-1.9.1.min',
