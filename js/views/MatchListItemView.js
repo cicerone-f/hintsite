@@ -1,4 +1,14 @@
-define(["jquery", "underscore", "backbone", "Parse", "handlebars", "text!templates/match-list-item.html"],
+/*jslint undef: true*/
+/*global define*/
+
+define([
+  "jquery",
+  "underscore",
+  "backbone",
+  "Parse",
+  "handlebars",
+  "text!templates/match-list-item.html"
+],
     function ($, _, Backbone, Parse, Handlebars, template) {
 
     var MatchListItemView = Parse.View.extend({

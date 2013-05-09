@@ -1,4 +1,14 @@
-define(["jquery", "underscore", "backbone", "Parse", "handlebars", "text!templates/log-in.html"],
+/*jslint undef: true*/
+/*global define*/
+
+define([
+  "jquery",
+  "underscore",
+  "backbone",
+  "Parse",
+  "handlebars",
+  "text!templates/log-in.html"
+],
     function ($, _, Backbone, Parse, Handlebars, template) {
 
     var LogInView = Parse.View.extend({
@@ -10,29 +20,28 @@ define(["jquery", "underscore", "backbone", "Parse", "handlebars", "text!templat
 
         logFB: function () {
           Parse.FacebookUtils.logIn(null, {
-            success: function(user) {
+            success: function (user) {
               if (!user.existed()) {
                 console.log("User signed up and logged in through Facebook!");
               } else {
                 console.log("User logged in through Facebook!");
               }
             },
-            error: function(user, error) {
+            error: function (user, error) {
               console.log("User cancelled the Facebook login or did not fully authorize.");
             }
           });
         },
-        
         log: function () {
           var self = this;
           var username = this.$("#username").val();
           var password = this.$("#password").val();
-          console.log(username +" "+password);
+          console.log(username + " " + password);
           Parse.User.logIn(username, password, {
-            success: function(user) {
-              Parse.history.navigate("matchList" , {trigger: true});
+            success: function (user) {
+              Parse.history.navigate("matchList", {trigger: true});
             },
-            error: function(user, error) {
+            error: function (user, error) {
               console.log(error);
             }
           });

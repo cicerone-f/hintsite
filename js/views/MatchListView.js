@@ -1,24 +1,46 @@
-define(["jquery", "underscore", "backbone", "Parse", "handlebars", "views/MatchListItemView", "collections/MatchCollection", "models/Match", "text!templates/match-list.html"],
-    function ($, _, Backbone, Parse, Handlebars, MatchListItemView, MatchCollection, Match, template) {
+/*jslint undef: true*/
+/*global define*/
+
+define([
+  "jquery",
+  "underscore",
+  "backbone",
+  "Parse",
+  "handlebars",
+  "views/MatchListItemView",
+  "collections/MatchCollection",
+  "models/Match",
+  "text!templates/match-list.html"
+],
+    function ($,
+      _,
+      Backbone,
+      Parse,
+      Handlebars,
+      MatchListItemView,
+      MatchCollection,
+      Match,
+      template
+    ) {
 
     var MatchListView = Parse.View.extend({
 
         tagName: "ul",
-        id: "list", 
+        id: "list",
         template: Handlebars.compile(template),
         initialize: function () {
           var query = new Parse.Query(Match);
           var self = this;
           query.find({
-          success: function(results) {
+            success: function (results) {
               self.collection = results;
               //self.model.bind("reset", self.render, this);
               self.render();
-          },
-          error: function(error) {
-            console.log(error);
-          }
-        });
+            },
+            error: function (error) {
+              console.log(error);
+            }
+          });
 
         },
 

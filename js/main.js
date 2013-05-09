@@ -58,7 +58,7 @@ require([
         cookie     : true, // enable cookies to allow Parse to access the session
         xfbml      : true  // parse XFBML
       });
-    
+
       new AppRouter();          // JSLint says "do not use 'new' for side effects"
       Parse.history.start();
 

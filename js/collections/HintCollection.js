@@ -6,7 +6,11 @@ define([
   "Parse",
   "models/Hint"
 ],
-  function ($, Parse, Hint) {
+  function (
+    $,
+    Parse,
+    Hint
+  ) {
 
     var HintCollection = Parse.Collection.extend({
         model: Hint

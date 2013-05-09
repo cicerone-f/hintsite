@@ -9,7 +9,14 @@ define([
   "handlebars",
   "text!templates/hint-list-item.html"
 ],
-    function ($, _, Backbone, Parse, Handlebars, template) {
+    function (
+    $,
+    _,
+    Backbone,
+    Parse,
+    Handlebars,
+    template
+  ) {
 
     var HintListItemView = Parse.View.extend({
 

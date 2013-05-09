@@ -12,14 +12,22 @@ define([
   "models/Hint",
   "text!templates/hint-list.html"
 ],
-    function ($, _, Backbone, Parse, Handlebars, HintListItemView, HintCollection, Hint, template) {
+    function (
+    $,
+    _,
+    Backbone,
+    Parse,
+    Handlebars,
+    HintListItemView,
+    HintCollection,
+    Hint,
+    template
+  ) {
 
     var HintListView = Parse.View.extend({
         tagName: "ul",
-        
         id: "list",
         template: Handlebars.compile(template),
-        
         initialize: function () {
           var query = new Parse.Query(Hint);
           query.equalTo("matchId", this.model.id);

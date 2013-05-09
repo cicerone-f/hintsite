@@ -17,7 +17,20 @@ define([
   "views/MatchListView",
   "views/LogInView"
 ],
-    function ($, _, Backbone, Parse, HintCollection, MatchCollection, Hint, Match, HintView, MatchView, HintListView, MatchListView, LogInView) {
+    function ($,
+      _,
+      Backbone,
+      Parse,
+      HintCollection,
+      MatchCollection,
+      Hint,
+      Match,
+      HintView,
+      MatchView,
+      HintListView,
+      MatchListView,
+      LogInView
+    ) {
 
     var AppRouter = Parse.Router.extend({
 
@@ -28,10 +41,10 @@ define([
         "matches/:id": "matchDetails",
         "hints/:id": "hintDetails"
       },
-			
-			// il div con id #back sta in HintView, perchè mettere qui il touch event?
-			// con initialize commentata come sotto funziona lo stesso 
-			// visto che l'evento lo gestisce anche HintView
+
+      // il div con id #back sta in HintView, perchè mettere qui il touch event?
+      // con initialize commentata come sotto funziona lo stesso 
+      // visto che l'evento lo gestisce anche HintView
       initialize: function () {
         //$('#back').on('touchend', function (event) {
         //  window.history.back();
@@ -39,21 +52,21 @@ define([
         //});
       },
 
-      userControl: function(){
-             if (Parse.User.current()) {
-               this.matchList();
-             } else {
-               this.log();
-             }
-     },
+      userControl: function () {
+        if (Parse.User.current()) {
+          this.matchList();
+        } else {
+          this.log();
+        }
+      },
 
       list: function () {
         var page = new HintListView({
         });
         this.changePage(page);
       },
-      
-      matchList: function() {
+
+      matchList: function () {
         var page = new MatchListView({
         });
         this.changePage(page);

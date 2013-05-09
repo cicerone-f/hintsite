@@ -1,10 +1,19 @@
-define(["jquery", "Parse", "models/Match"],
-    function ($, Parse, Match) {
+/*jslint undef: true*/
+/*global define*/
 
+define([
+  "jquery",
+  "Parse",
+  "models/Match"
+],
+  function (
+    $,
+    Parse,
+    Match
+  ) {
     var MatchCollection = Parse.Collection.extend({
-        model: Match
-      });
+      model: Match
+    });
 
     return MatchCollection;
-
   });

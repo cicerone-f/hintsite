@@ -10,7 +10,14 @@ define([
   "views/HintListView",
   "text!templates/match-details.html"
 ],
-    function ($, _, Backbone, Parse, Handlebars, HintListView, template) {
+    function ($,
+      _,
+      Backbone,
+      Parse,
+      Handlebars,
+      HintListView,
+      template
+    ) {
 
     var MatchView = Parse.View.extend({
 
