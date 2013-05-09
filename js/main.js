@@ -11,7 +11,8 @@ require.config({
     text: '../lib/require/text-1.0.6',
     async: '../lib/require/async',
     handlebars: '../lib/handlebars/handlebars',
-    templates: '../templates'
+    templates: '../templates',
+    facebook: '../lib/facebook/all'
   },
   shim: {
     'underscore': {
@@ -23,6 +24,9 @@ require.config({
     },
     'Parse': {
       exports: 'Parse'
+    },
+    'facebook' : {
+      exports: 'FB'
     },
     'handlebars': {
       exports: 'Handlebars'
@@ -36,9 +40,10 @@ require([
   'underscore',
   'backbone',
   'Parse',
+  'facebook',
   'router'
 ],
-    function (domReady, _, Backbone, Parse, AppRouter) {
+    function (domReady, _, Backbone, Parse, FB, AppRouter) {
 
     domReady(function () {
       document.addEventListener("deviceready", run, false);
@@ -46,7 +51,16 @@ require([
 
     function run() {
       Parse.initialize('LkaGTOk7RGUaPXM0r9HQImwPAnmqUuhjF1QttcNE', 'uxXxR7sEt2unuSABRyjF8tnd52bNymwlDuchsIhh');
+      Parse.FacebookUtils.init({
+        appId      : '639802702700436', // Facebook App ID
+        channelUrl : '//www.hintsiteapp.com/channel.html', // Channel File
+        status     : true, // check login status
+        cookie     : true, // enable cookies to allow Parse to access the session
+        xfbml      : true  // parse XFBML
+      });
+    
       new AppRouter();          // JSLint says "do not use 'new' for side effects"
       Parse.history.start();
+
     }
   });

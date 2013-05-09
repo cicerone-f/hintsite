@@ -27,6 +27,10 @@ body {
     list-style: none;
     margin: 0;
     padding: 0;
+    -webkit-animation: fade 1s 1; /* Safari 4+ */
+    -moz-animation:    fade 1s 1; /* Fx 5+ */
+    -o-animation:      fade 1s 1; /* Opera 12+ */
+    animation:         fade 1s 1; /* IE 10+ */
 }
 
 ul li {
@@ -57,7 +61,7 @@ ul li a {
 }
 
 #log-in {
-		cursor: pointer;
+	cursor: pointer;
     background-color: green;
     padding: 1.5em;
     color: white;
@@ -70,5 +74,22 @@ ul li a {
     padding: 1.5em;
     color: white;
     text-align: center;
+}
+
+@-webkit-keyframes fade {
+  0%   { margin-left: 100%; }
+  100% { margin-left: 0; }
+}
+@-moz-keyframes fade {
+  0%   { margin-left: 100%; }
+  100% { margin-left: 0; }
+}
+@-o-keyframes fade {
+  0%   { margin-left: 100%; }
+  100% { margin-left: 0; }
+}
+@keyframes fade {
+  0%   { margin-left: 100%; }
+  100% { margin-left: 0; }
 }
 
