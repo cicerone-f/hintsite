@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": ".",
+            "folder_exclude_patterns": [".metadata", ".git"]
+		}
+	],
+    "settings": {
+        "tab_size": 2,
+        "line_numbers": true,
+        "translate_tabs_to_spaces": true,
+        "auto_indent": true
+    }
+}
