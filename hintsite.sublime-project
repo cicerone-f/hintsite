@@ -2,7 +2,7 @@
 	"folders": [
 		{
 			"path": ".",
-            "folder_exclude_patterns": [".metadata", ".git"]
+            "folder_exclude_patterns": [".metadata", ".git", ".sass-cache"]
 		}
 	],
     "settings": {
