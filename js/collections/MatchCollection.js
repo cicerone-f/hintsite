@@ -12,7 +12,19 @@ define([
     Match
   ) {
     var MatchCollection = Parse.Collection.extend({
-      model: Match
+      model: Match,
+      getFromParse: function () {
+        var query = new Parse.Query(Match);
+        var self = this;
+        query.find({
+          success: function (results) {
+            self.add(results);
+          },
+          error: function (error) {
+            console.log(error);
+          }
+        });
+      }
     });
 
     return MatchCollection;
