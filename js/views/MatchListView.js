@@ -29,24 +29,14 @@ define([
         id: "list",
         template: Handlebars.compile(template),
         initialize: function () {
-          var query = new Parse.Query(Match);
-          var self = this;
-          query.find({
-            success: function (results) {
-              self.collection = results;
-              //self.model.bind("reset", self.render, this);
-              self.render();
-            },
-            error: function (error) {
-              console.log(error);
-            }
-          });
-
+          this.collection = new MatchCollection();
+          this.collection.bind("add", this.render, this);
+          this.collection.getFromParse();
         },
 
         render: function (eventName) {
           $(this.el).empty();
-          _.each(this.collection, function (match) {
+          _.each(this.collection.models, function (match) {
             $(this.el).append(new MatchListItemView({
               model: match
             }).render().el);
