@@ -13,6 +13,7 @@ define([
   "models/Match",
   "views/HintView",
   "views/MatchView",
+  "views/NewMatchView",
   "views/HintListView",
   "views/MatchListView",
   "views/LogInView"
@@ -27,6 +28,7 @@ define([
       Match,
       HintView,
       MatchView,
+      NewMatchView,
       HintListView,
       MatchListView,
       LogInView
@@ -39,7 +41,8 @@ define([
         "list": "list",
         "matchList": "matchList",
         "matches/:id": "matchDetails",
-        "hints/:id": "hintDetails"
+        "hints/:id": "hintDetails",
+        "newMatch": "newMatch"
       },
 
       // il div con id #back sta in HintView, perchè mettere qui il touch event?
@@ -106,6 +109,10 @@ define([
             console.log(error);
           }
         });
+      },
+
+      newMatch: function () {
+        this.changePage(new NewMatchView());
       },
 
       changePage: function (page) {

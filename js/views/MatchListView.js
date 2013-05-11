@@ -36,11 +36,12 @@ define([
 
         render: function (eventName) {
           $(this.el).empty();
-          _.each(this.collection.models, function (match) {
+          $(this.el).html(this.template());
+          /*_.each(this.collection.models, function (match) {
             $(this.el).append(new MatchListItemView({
               model: match
             }).render().el);
-          }, this);
+          }, this);*/
           return this;
         }
         
