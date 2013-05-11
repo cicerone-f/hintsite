@@ -19,7 +19,7 @@ body {
 
   background-attachment: fixed;
 
-  font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+  font-family: $body-font-family;
   font-size: $body-font-size;
 
   height: 100%;
@@ -32,10 +32,6 @@ body {
 ul#list {
   list-style: none;
   @include reset-around;
-  -webkit-animation: fade 1s 1; /* Safari 4+ */
-  -moz-animation:    fade 1s 1; /* Fx 5+ */
-  -o-animation:      fade 1s 1; /* Opera 12+ */
-  animation:         fade 1s 1; /* IE 10+ */
 
   li {
     border-bottom: 1px solid #d9e2eb;
@@ -81,20 +77,50 @@ ul#list {
   text-align: center;
 }
 
-@-webkit-keyframes fade {
-  0%   { margin-left: 100%; }
-  100% { margin-left: 0; }
+#NewMatchButton {
+  font-family: $body-font-family;
+  text-align: center;
+  background-color: #ee7427;
+  padding: 1.5em;
 }
-@-moz-keyframes fade {
-  0%   { margin-left: 100%; }
-  100% { margin-left: 0; }
+
+#container {
+  -webkit-animation: appear 1s 1; /* Safari 4+ */
+  -moz-animation:    appear 1s 1; /* Fx 5+ */
+  -o-animation:      appear 1s 1; /* Opera 12+ */
+  animation:         appear 1s 1; /* IE 10+ */
 }
-@-o-keyframes fade {
-  0%   { margin-left: 100%; }
-  100% { margin-left: 0; }
+
+@-webkit-keyframes appear {
+  from {
+    -webkit-transform: rotate3d(0,1,0,0deg);
+  }
+  to { 
+    -webkit-transform: rotate3d(0,1,0,360deg);
+  }
 }
-@keyframes fade {
-  0%   { margin-left: 100%; }
-  100% { margin-left: 0; }
+@-moz-keyframes appear {
+  from {
+    transform: rotate3d(0,1,0,0deg);
+  }
+  to { 
+    transform: rotate3d(0,1,0,360deg);
+  }
+}
+@-o-keyframes appear {
+  from {
+    transform: rotate3d(0,1,0,0deg);
+  }
+  to { 
+    transform: rotate3d(0,1,0,360deg);
+  }
+}
+@keyframes appear {
+  from {
+    transform: rotate3d(0,1,0,0deg);
+  }
+  to { 
+    transform: rotate3d(0,1,0,360deg);
+  }
 }
 

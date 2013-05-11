@@ -15,6 +15,7 @@ define([
   "views/MatchView",
   "views/NewMatchView",
   "views/HintListView",
+  "views/MainMatchListView",
   "views/MatchListView",
   "views/LogInView"
 ],
@@ -30,6 +31,7 @@ define([
       MatchView,
       NewMatchView,
       HintListView,
+      MainMatchListView,
       MatchListView,
       LogInView
     ) {
@@ -39,7 +41,7 @@ define([
       routes: {
         "": "userControl",
         "list": "list",
-        "matchList": "matchList",
+        "mainMatchList": "mainMatchList",
         "matches/:id": "matchDetails",
         "hints/:id": "hintDetails",
         "newMatch": "newMatch"
@@ -57,7 +59,7 @@ define([
 
       userControl: function () {
         if (Parse.User.current()) {
-          this.matchList();
+          this.mainMatchList();
         } else {
           this.log();
         }
@@ -69,8 +71,8 @@ define([
         this.changePage(page);
       },
 
-      matchList: function () {
-        var page = new MatchListView({
+      mainMatchList: function () {
+        var page = new MainMatchListView({
         });
         this.changePage(page);
       },

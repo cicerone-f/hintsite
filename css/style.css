@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* STANDARD FOR MOBILE */
 * {
   /* make transparent link selection, adjust last value opacity 0 to 1.0 */
@@ -11,7 +12,7 @@ body {
   /* prevent copy paste, to allow, change 'none' to 'text' */
   -webkit-user-select: none;
   background-attachment: fixed;
-  font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+  font-family: "HelveticaNeue-Light", "HelveticaNeue", Helvetica, Arial, sans-serif;
   font-size: 12px;
   height: 100%;
   width: 100%;
@@ -21,15 +22,7 @@ body {
 ul#list {
   list-style: none;
   margin: 0;
-  padding: 0;
-  -webkit-animation: fade 1s 1;
-  /* Safari 4+ */
-  -moz-animation: fade 1s 1;
-  /* Fx 5+ */
-  -o-animation: fade 1s 1;
-  /* Opera 12+ */
-  animation: fade 1s 1;
-  /* IE 10+ */ }
+  padding: 0; }
   ul#list li {
     border-bottom: 1px solid #d9e2eb;
     background: white;
@@ -65,30 +58,46 @@ ul#list {
   color: white;
   text-align: center; }
 
-@-webkit-keyframes fade {
-  0% {
-    margin-left: 100%; }
+#NewMatchButton {
+  font-family: "HelveticaNeue-Light", "HelveticaNeue", Helvetica, Arial, sans-serif;
+  text-align: center;
+  background-color: #ee7427;
+  padding: 1.5em; }
 
-  100% {
-    margin-left: 0; } }
+#container {
+  -webkit-animation: appear 1s 1;
+  /* Safari 4+ */
+  -moz-animation: appear 1s 1;
+  /* Fx 5+ */
+  -o-animation: appear 1s 1;
+  /* Opera 12+ */
+  animation: appear 1s 1;
+  /* IE 10+ */ }
 
-@-moz-keyframes fade {
-  0% {
-    margin-left: 100%; }
+@-webkit-keyframes appear {
+  from {
+    -webkit-transform: rotate3d(0, 1, 0, 0deg); }
 
-  100% {
-    margin-left: 0; } }
+  to {
+    -webkit-transform: rotate3d(0, 1, 0, 360deg); } }
 
-@-o-keyframes fade {
-  0% {
-    margin-left: 100%; }
+@-moz-keyframes appear {
+  from {
+    transform: rotate3d(0, 1, 0, 0deg); }
 
-  100% {
-    margin-left: 0; } }
+  to {
+    transform: rotate3d(0, 1, 0, 360deg); } }
 
-@keyframes fade {
-  0% {
-    margin-left: 100%; }
+@-o-keyframes appear {
+  from {
+    transform: rotate3d(0, 1, 0, 0deg); }
 
-  100% {
-    margin-left: 0; } }
+  to {
+    transform: rotate3d(0, 1, 0, 360deg); } }
+
+@keyframes appear {
+  from {
+    transform: rotate3d(0, 1, 0, 0deg); }
+
+  to {
+    transform: rotate3d(0, 1, 0, 360deg); } }

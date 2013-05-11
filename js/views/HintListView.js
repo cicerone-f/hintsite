@@ -31,7 +31,7 @@ define([
                 initialize: function () {
                     this.collection = new HintCollection();
                     this.collection.bind("add", this.render, this);
-                    this.collection.getFromParse();
+                    this.collection.getFromParse(this.model.id);
                 },
 
                 render: function (eventName) {

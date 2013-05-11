@@ -14,8 +14,9 @@ define([
 
     var HintCollection = Parse.Collection.extend({
       model: Hint,
-      getFromParse: function () {
+      getFromParse: function (matchId) {
         var query = new Parse.Query(Hint);
+        query.equalTo("matchId", matchId);
         var self = this;
         query.find({
           success: function (results) {
