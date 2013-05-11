@@ -46,10 +46,10 @@ define([
       // con initialize commentata come sotto funziona lo stesso 
       // visto che l'evento lo gestisce anche HintView
       initialize: function () {
-        //$('#back').on('touchend', function (event) {
-        //  window.history.back();
-        //  return false; //evito evento default browser
-        //});
+        $('#back').on('touchend', function (event) {
+          window.history.back();
+          return false; //evito evento default browser
+        });
       },
 
       userControl: function () {

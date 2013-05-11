@@ -26,7 +26,14 @@ define([
         },
 
         goBack: function () {
-          window.history.back();
+          if(this.routesHit > 1) {
+              //more than one route hit -> user did not land to current page directly
+              window.history.back();
+          } else {
+            //otherwise go to the home page. Use replaceState if available so
+            //the navigation doesn't create an extra history entry
+            this.navigate('', {trigger:true, replace:true});
+          }
         },
 
         template: Handlebars.compile(template),

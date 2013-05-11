@@ -43,6 +43,7 @@ define([
           }, this);
           return this;
         }
+        
       });
 
     return MatchListView;
