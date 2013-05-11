@@ -11,13 +11,13 @@ define([
   "collections/MatchCollection",
   "models/Hint",
   "models/Match",
-  "views/HintView",
-  "views/MatchView",
-  "views/NewMatchView",
-  "views/HintListView",
-  "views/MainMatchListView",
-  "views/MatchListView",
-  "views/LogInView"
+  "views/main/vmHintFull",
+  "views/main/vmPartitaPlayer",
+  "views/main/vmNuovaPartita",
+  "views/sub/list/vslHintPreview",
+  "views/main/vmElencoPartite",
+  "views/sub/list/vslMatch",
+  "views/main/vmLogIn"
 ],
     function ($,
       _,
@@ -27,29 +27,29 @@ define([
       MatchCollection,
       Hint,
       Match,
-      HintView,
-      MatchView,
-      NewMatchView,
-      HintListView,
-      MainMatchListView,
-      MatchListView,
-      LogInView
+      vmHintFull,
+      vmPartitaPlayer,
+      vmNuovaPartita,
+      vslHintPreview,
+      vmElencoPartite,
+      vslMatch,
+      vmLogIn
     ) {
 
     var AppRouter = Parse.Router.extend({
 
       routes: {
         "": "userControl",
-        "list": "list",
+        "list": "list",  //non la chiama mai nessuno!!
         "mainMatchList": "mainMatchList",
         "matches/:id": "matchDetails",
         "hints/:id": "hintDetails",
         "newMatch": "newMatch"
       },
 
-      // il div con id #back sta in HintView, perchè mettere qui il touch event?
+      // il div con id #back sta in vmHintFull, perchè mettere qui il touch event?
       // con initialize commentata come sotto funziona lo stesso 
-      // visto che l'evento lo gestisce anche HintView
+      // visto che l'evento lo gestisce anche vmHintFull
       initialize: function () {
         $('#back').on('touchend', function (event) {
           window.history.back();
@@ -66,13 +66,13 @@ define([
       },
 
       list: function () {
-        var page = new HintListView({
+        var page = new vslHintPreview({
         });
         this.changePage(page);
       },
 
       mainMatchList: function () {
-        var page = new MainMatchListView({
+        var page = new vmElencoPartite({
         });
         this.changePage(page);
       },
@@ -88,7 +88,7 @@ define([
         var query = new Parse.Query(Hint);
         var hint = query.get(id, {
           success: function (result) {
-            self.changePage(new HintView({
+            self.changePage(new vmHintFull({
               model: result
             }));
           },
@@ -103,7 +103,7 @@ define([
         var query = new Parse.Query(Match);
         var match = query.get(id, {
           success: function (result) {
-            self.changePage(new MatchView({
+            self.changePage(new vmPartitaPlayer({
               model: result
             }));
           },
@@ -114,7 +114,7 @@ define([
       },
 
       newMatch: function () {
-        this.changePage(new NewMatchView());
+        this.changePage(new vmNuovaPartita());
       },
 
       changePage: function (page) {
