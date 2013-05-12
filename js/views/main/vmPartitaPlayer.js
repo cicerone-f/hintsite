@@ -8,6 +8,7 @@ define([
   "Parse",
   "handlebars",
   "views/sub/list/vslHintPreview",
+  "views/sub/vsHeader",
   "text!templates/match-details.html"
 ],
     function ($,
@@ -16,30 +17,18 @@ define([
       Parse,
       Handlebars,
       vslHintPreview,
+      vsHeader,
       template
     ) {
 
     var vmPartitaPlayer = Parse.View.extend({
-
-        events: {
-          "touchend #back": "goBack"
-        },
-
-        goBack: function () {
-          if (Parse.history.routesHit > 1) {
-            //more than one route hit -> user did not land to current page directly
-            window.history.back();
-          } else {
-            //otherwise go to the home page. Use replaceState if available so
-            //the navigation doesn't create an extra history entry
-            Parse.history.navigate('', { trigger : true, replace : true });
-          }
-        },
-
+        tagName: "div",
+        id: "container",
         template: Handlebars.compile(template),
 
         render: function (eventName) {
-          $(this.el).html(this.template(this.model.toJSON()));
+          var viewContent = new vsHeader().render().el;
+          $(this.el).html(viewContent).append(this.template(this.model.toJSON()));
           $(this.el).append(new vslHintPreview({
             model: this.model
           }).render().el);

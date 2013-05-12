@@ -93,34 +93,34 @@ ul#list {
 
 @-webkit-keyframes appear {
   from {
-    -webkit-transform: rotate3d(0,1,0,0deg);
+    opacity:0;;
   }
   to { 
-    -webkit-transform: rotate3d(0,1,0,360deg);
+    opacity:1;
   }
 }
 @-moz-keyframes appear {
   from {
-    transform: rotate3d(0,1,0,0deg);
+    opacity:0;
   }
   to { 
-    transform: rotate3d(0,1,0,360deg);
+    opacity:1;
   }
 }
 @-o-keyframes appear {
   from {
-    transform: rotate3d(0,1,0,0deg);
+    opacity:0;
   }
   to { 
-    transform: rotate3d(0,1,0,360deg);
+    opacity:1;
   }
 }
 @keyframes appear {
   from {
-    transform: rotate3d(0,1,0,0deg);
+    opacity:0;
   }
   to { 
-    transform: rotate3d(0,1,0,360deg);
+    opacity:1;
   }
 }
 
