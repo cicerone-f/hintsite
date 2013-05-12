@@ -29,6 +29,21 @@ define([
       },
       saveToParse: function () {
         
+      },
+      createFourHints: function (matchId) {
+        console.log(matchId.id);
+        for (var i = 1; i < 5; i++) {
+          this.add(new Hint( { matchId:matchId , number:i , ACL:new Parse.ACL(Parse.User.current())} ));
+        };
+        this.model.saveAll(this.models,
+          {
+            success: function (){
+              //this.trigger('collectionCompleted', this);
+            },
+            error: function(){
+            }
+          }
+        );
       } 
     });
 

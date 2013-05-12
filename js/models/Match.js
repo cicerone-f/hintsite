@@ -16,7 +16,9 @@ define([
           state: self.states.DRAFT
         }, {
           success: function (result) {
-            self = result;
+            //self = result;
+            //return self;
+            this.trigger('creata', this);
           },
           error: function (e) {
 

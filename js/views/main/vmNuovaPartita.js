@@ -8,6 +8,7 @@ define([
     "Parse",
     "handlebars",
     "models/Match",
+    "collections/HintCollection",
     "text!templates/new-match.html"
 ],
     function (
@@ -17,15 +18,22 @@ define([
         Parse,
         Handlebars,
         Match,
+        HintCollection,
         template
     ) {
 
         var vmNuovaPartita = Parse.View.extend({
                 template: Handlebars.compile(template),
                 model: new Match(),
+                collection: new HintCollection(),
                 initialize: function () {
-                    this.bind("change", this.render());
-                    this.model.saveDraftToP();
+                    this.bind("creata", this.a() , this);
+                    //this.collection.bind("collectionCompleted", this.render(), this);
+                    //this.model = this.model.saveDraftToP();
+                },
+
+                a : function(){
+                    this.collection.createFourHints(this.model);
                 },
 
                 render: function (eventName) {
