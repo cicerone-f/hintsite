@@ -18,7 +18,7 @@ define([
           success: function (result) {
             //self = result;
             //return self;
-            this.trigger('creata', this);
+            self.trigger('creata');
           },
           error: function (e) {
 

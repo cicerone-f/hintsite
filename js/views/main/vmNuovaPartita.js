@@ -27,13 +27,14 @@ define([
                 model: new Match(),
                 collection: new HintCollection(),
                 initialize: function () {
-                    this.bind("creata", this.a() , this);
-                    //this.collection.bind("collectionCompleted", this.render(), this);
-                    //this.model = this.model.saveDraftToP();
+                    this.model.bind("creata", this.a, this);
+                    this.collection.bind("collectionCompleted", this.render, this);
+                    this.model.saveDraftToP();
                 },
 
                 a : function(){
-                    this.collection.createFourHints(this.model);
+                    //console.log(this.model.id);
+                    this.collection.createFourHints(this.model.id);
                 },
 
                 render: function (eventName) {

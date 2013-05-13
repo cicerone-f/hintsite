@@ -17,6 +17,7 @@ define([
       getFromParse: function (matchId) {
         var query = new Parse.Query(Hint);
         query.equalTo("matchId", matchId);
+        query.ascending("number");
         var self = this;
         query.find({
           success: function (results) {
@@ -31,14 +32,15 @@ define([
         
       },
       createFourHints: function (matchId) {
-        console.log(matchId.id);
+        console.log(matchId);
         for (var i = 1; i < 5; i++) {
           this.add(new Hint( { matchId:matchId , number:i , ACL:new Parse.ACL(Parse.User.current())} ));
         };
+        var self = this;
         this.model.saveAll(this.models,
           {
             success: function (){
-              //this.trigger('collectionCompleted', this);
+              self.trigger('collectionCompleted', this);
             },
             error: function(){
             }
