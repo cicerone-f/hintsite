@@ -17,7 +17,8 @@ define([
   "views/sub/list/vslHintPreview",
   "views/main/vmElencoPartite",
   "views/sub/list/vslMatch",
-  "views/main/vmLogIn"
+  "views/main/vmLogIn",
+  "views/main/vmSetLaunchTime"
 ],
     function ($,
       _,
@@ -33,7 +34,8 @@ define([
       vslHintPreview,
       vmElencoPartite,
       vslMatch,
-      vmLogIn
+      vmLogIn,
+      vmSetLaunchTime
     ) {
 
     var AppRouter = Parse.Router.extend({
@@ -44,7 +46,8 @@ define([
         "mainMatchList": "mainMatchList",
         "matches/:id": "matchDetails",
         "hints/:id": "hintDetails",
-        "newMatch": "newMatch"
+        "newMatch": "newMatch",
+        "setLaunchTime": "setLTime"
       },
 
       // il div con id #back sta in vmHintFull, perchè mettere qui il touch event?
@@ -115,6 +118,10 @@ define([
 
       newMatch: function () {
         this.changePage(new vmNuovaPartita());
+      },
+
+      setLTime: function () {
+         this.changePage(new vmSetLaunchTime());
       },
 
       changePage: function (page) {

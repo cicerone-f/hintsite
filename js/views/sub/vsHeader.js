@@ -27,7 +27,8 @@ define([
         titles: { 
           'vmElencoPartite': "Elenco Partite", 
           'vmPartitaPlayer': "Partita Player", 
-          'vmNuovaPartita':"Crea Nuova Partita"
+          'vmNuovaPartita':"Crea Nuova Partita",
+          'vmSetLaunchTime':"Set Launch Time"
         },
         goBack: function () {
           if (Parse.history.routesHit > 1) {

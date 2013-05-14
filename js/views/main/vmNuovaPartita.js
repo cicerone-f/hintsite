@@ -32,20 +32,26 @@ define([
                 collection: new HintCollection(),
                 initialize: function () {
                     this.model.bind("vmNuovaPartitaMATCHCREATED", this.cfh , this);
-                    this.model.bind("vmNuovaPartitaMATCHLAUNCHED", this.ntl , this);
+                    this.model.bind("vmNuovaPartitaMATCHLAUNCHED", this.navigateToElencoPartite , this);
                     this.collection.bind("vmNuovaPartitaCOLLECTIONCOMPLETED", this.render, this);
                     this.model.saveDraftToP();
                 },
                 events: {
                     "blur #matchname": "snp",
-                    "touchend #launch": "lm",
+                    "touchend #launch": "lp",
+                    "touchend #launchtime": "navigateToSetLaunchTime"
+                    
                 },
 
-                ntl : function() {
+                navigateToElencoPartite : function() {
                     Parse.history.navigate('', { trigger : true, replace : true });
                 },
 
-                lm : function() {
+                navigateToSetLaunchTime : function() {
+                    Parse.history.navigate('setLaunchTime', { trigger : true, replace : true });
+                },
+
+                lp : function() {
                     this.model.launchPartita();
                 },
 
