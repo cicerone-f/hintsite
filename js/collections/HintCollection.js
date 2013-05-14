@@ -39,7 +39,7 @@ define([
         this.model.saveAll(this.models,
           {
             success: function (){
-              self.trigger('vmNuovaPartitaCOLLECTIONCOMPLETED', this);
+              self.trigger('NuovaPartita_VM_COLLECTIONCOMPLETED', this);
             },
             error: function(){
             }

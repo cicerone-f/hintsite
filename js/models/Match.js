@@ -16,7 +16,7 @@ define([
           state: self.states.DRAFT
         }, {
           success: function (result) {
-            self.trigger('vmNuovaPartitaMATCHCREATED');
+            self.trigger('NuovaPartita_VM_MATCHCREATED');
           },
           error: function (e) {
 
@@ -40,7 +40,7 @@ define([
           state: self.states.RUNNING,
         }, {
           success: function (result) {
-            self.trigger('vmNuovaPartitaMATCHLAUNCHED');
+            self.trigger('NuovaPartita_VM_MATCHLAUNCHED');
           },
           error: function (e) {
 

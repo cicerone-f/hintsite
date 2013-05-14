@@ -11,14 +11,14 @@ define([
   "collections/MatchCollection",
   "models/Hint",
   "models/Match",
-  "views/main/vmHintFull",
-  "views/main/vmPartitaPlayer",
-  "views/main/vmNuovaPartita",
-  "views/sub/list/vslHintPreview",
-  "views/main/vmElencoPartite",
-  "views/sub/list/vslMatch",
-  "views/main/vmLogIn",
-  "views/main/vmSetLaunchTime"
+  "views/main/HintFull_VM",
+  "views/main/PartitaPlayer_VM",
+  "views/main/NuovaPartita_VM",
+  "views/sub/list/HintPreview_VSL",
+  "views/main/ElencoPartite_VM",
+  "views/sub/list/Match_VSL",
+  "views/main/LogIn_VM",
+  "views/main/SetLaunchTime_VM"
 ],
     function ($,
       _,
@@ -28,14 +28,14 @@ define([
       MatchCollection,
       Hint,
       Match,
-      vmHintFull,
-      vmPartitaPlayer,
-      vmNuovaPartita,
-      vslHintPreview,
-      vmElencoPartite,
-      vslMatch,
-      vmLogIn,
-      vmSetLaunchTime
+      HintFull_VM,
+      PartitaPlayer_VM,
+      NuovaPartita_VM,
+      HintPreview_VSL,
+      ElencoPartite_VM,
+      Match_VSL,
+      LogIn_VM,
+      SetLaunchTime_VM
     ) {
 
     var AppRouter = Parse.Router.extend({
@@ -50,9 +50,6 @@ define([
         "setLaunchTime": "setLTime"
       },
 
-      // il div con id #back sta in vmHintFull, perchè mettere qui il touch event?
-      // con initialize commentata come sotto funziona lo stesso 
-      // visto che l'evento lo gestisce anche vmHintFull
       initialize: function () {
         $('#back').on('touchend', function (event) {
           window.history.back();
@@ -75,13 +72,13 @@ define([
       },
 
       mainMatchList: function () {
-        var page = new vmElencoPartite({
+        var page = new ElencoPartite_VM({
         });
         this.changePage(page);
       },
 
       log: function () {
-        var page = new vmLogIn({
+        var page = new LogIn_VM({
         });
         this.changePage(page);
       },
@@ -91,7 +88,7 @@ define([
         var query = new Parse.Query(Hint);
         var hint = query.get(id, {
           success: function (result) {
-            self.changePage(new vmHintFull({
+            self.changePage(new HintFull_VM({
               model: result
             }));
           },
@@ -106,7 +103,7 @@ define([
         var query = new Parse.Query(Match);
         var match = query.get(id, {
           success: function (result) {
-            self.changePage(new vmPartitaPlayer({
+            self.changePage(new PartitaPlayer_VM({
               model: result
             }));
           },
@@ -117,11 +114,11 @@ define([
       },
 
       newMatch: function () {
-        this.changePage(new vmNuovaPartita());
+        this.changePage(new NuovaPartita_VM());
       },
 
       setLTime: function () {
-        this.changePage(new vmSetLaunchTime());
+        this.changePage(new SetLaunchTime_VM());
       },
 
       changePage: function (page) {
