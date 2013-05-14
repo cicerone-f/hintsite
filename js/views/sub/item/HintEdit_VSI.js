@@ -7,7 +7,7 @@ define([
   "backbone",
   "Parse",
   "handlebars",
-  "text!templates/hint-list-item-edit.html"
+  "text!templates/sub/item/hint-edit-TSI.html"
 ],
     function (
     $,

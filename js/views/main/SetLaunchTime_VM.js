@@ -7,7 +7,7 @@ define([
   "backbone",
   "Parse",
   "handlebars",
-  "text!templates/set-launch-time.html",
+  "text!templates/main/set-launch-time.html",
   "views/sub/Header_VS"
 ],
     function (

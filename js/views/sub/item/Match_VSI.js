@@ -7,7 +7,7 @@ define([
   "backbone",
   "Parse",
   "handlebars",
-  "text!templates/match-list-item.html"
+  "text!templates/sub/item/match-TSI.html"
 ],
     function ($, _, Backbone, Parse, Handlebars, template) {
 

@@ -7,7 +7,7 @@ define([
   "backbone",
   "Parse",
   "handlebars",
-  "text!templates/log-in.html"
+  "text!templates/main/log-in.html"
 ],
     function ($, _, Backbone, Parse, Handlebars, template) {
 

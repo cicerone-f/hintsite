@@ -9,7 +9,7 @@ define([
   "handlebars",
   "models/Match",
   "collections/HintCollection",
-  "text!templates/new-match.html",
+  "text!templates/main/new-match.html",
   "views/sub/Header_VS",
   "views/sub/LaunchFooter_VS",
   "views/sub/list/HintEdit_VSL"

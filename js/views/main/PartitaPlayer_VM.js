@@ -9,7 +9,7 @@ define([
   "handlebars",
   "views/sub/list/HintPreview_VSL",
   "views/sub/Header_VS",
-  "text!templates/match-details.html"
+  "text!templates/main/match-details.html"
 ],
     function ($,
       _,

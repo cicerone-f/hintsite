@@ -10,7 +10,7 @@ define([
   "views/sub/item/HintPreview_VSI",
   "collections/HintCollection",
   "models/Hint",
-  "text!templates/hint-list.html"
+  "text!templates/sub/list/hint-preview-TSL.html"
 ],
   function (
     $,

@@ -10,7 +10,7 @@ define([
   "views/sub/item/Match_VSI",
   "collections/MatchCollection",
   "models/Match",
-  "text!templates/match-list.html"
+  "text!templates/sub/list/match-TSL.html"
 ],
     function ($,
       _,

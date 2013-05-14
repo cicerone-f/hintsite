@@ -7,7 +7,7 @@ define([
   "backbone",
   "Parse",
   "handlebars",
-  "text!templates/subview-header.html"
+  "text!templates/sub/header-TS.html"
 ],
     function ($,
       _,
