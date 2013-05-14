@@ -78,7 +78,7 @@ define([
       },
 
       log: function () {
-        var page = new LogInView({
+        var page = new vmLogIn({
         });
         this.changePage(page);
       },
