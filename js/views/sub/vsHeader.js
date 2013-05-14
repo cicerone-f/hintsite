@@ -36,9 +36,10 @@ define([
         },
         initialize: function () {
         },
-        render: function (eventName) {
+        render: function (t) {
+          console.log(t);
           $(this.el).empty();
-          $(this.el).html(this.template());
+          $(this.el).html(this.template(t));
           return this;
         }
       });

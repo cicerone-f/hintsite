@@ -8,7 +8,8 @@ define([
   "Parse",
   "handlebars",
   "views/sub/list/vslMatch",
-  "views/sub/vsNewMatch"
+  "views/sub/vsNewMatch",
+  "views/sub/vsHeader"
 ],
     function ($,
       _,
@@ -16,7 +17,8 @@ define([
       Parse,
       Handlebars,
       vslMatch,
-      vsNewMatch
+      vsNewMatch,
+      vsHeader
     ) {
 
     var vmElencoPartite = Parse.View.extend({
@@ -27,7 +29,8 @@ define([
         render: function (eventName) {
           $(this.el).empty();
           var viewContent = new vsNewMatch().render().el;
-          $(this.el).html(viewContent).append(new vslMatch().render().el);
+          var v = new vsHeader().render({title:"Elenco Partite"}).el;
+          $(this.el).html(v).append(viewContent).append(new vslMatch().render().el);
           return this;
         }
       });

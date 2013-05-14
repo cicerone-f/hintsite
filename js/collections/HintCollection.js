@@ -40,7 +40,7 @@ define([
         this.model.saveAll(this.models,
           {
             success: function (){
-              self.trigger('collectionCompleted', this);
+              self.trigger('vmNuovaPartitaCOLLECTIONCOMPLETED', this);
             },
             error: function(){
             }

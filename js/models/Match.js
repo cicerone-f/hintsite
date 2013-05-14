@@ -16,9 +16,7 @@ define([
           state: self.states.DRAFT
         }, {
           success: function (result) {
-            //self = result;
-            //return self;
-            self.trigger('creata');
+            self.trigger('vmNuovaPartitaMATCHCREATED');
           },
           error: function (e) {
 

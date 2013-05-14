@@ -27,8 +27,8 @@ define([
                 model: new Match(),
                 collection: new HintCollection(),
                 initialize: function () {
-                    this.model.bind("creata", this.a, this);
-                    this.collection.bind("collectionCompleted", this.render, this);
+                    this.model.bind("vmNuovaPartitaMATCHCREATED", this.a, this);
+                    this.collection.bind("vmNuovaPartitaCOLLECTIONCOMPLETED", this.render, this);
                     this.model.saveDraftToP();
                 },
 

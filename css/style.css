@@ -38,10 +38,22 @@ ul#list {
       font-weight: bold;
       overflow: hidden; }
 
+#header {
+  height: 40px;
+  text-align: center; }
+
 #back {
+  height: 40px;
+  float:left;
+  width: 30%;
   background-color: red;
-  padding: 1.5em;
-  color: white;
+  text-align: center; }
+
+#title {
+  height: 40px;
+  float:left;
+  width: 70%;
+  background-color: orange;
   text-align: center; }
 
 #log-in {
