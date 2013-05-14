@@ -31,20 +31,30 @@ define([
                 model: new Match(),
                 collection: new HintCollection(),
                 initialize: function () {
-                    this.model.bind("vmNuovaPartitaMATCHCREATED", this.cfh, this);
+                    this.model.bind("vmNuovaPartitaMATCHCREATED", this.cfh , this);
+                    this.model.bind("vmNuovaPartitaMATCHLAUNCHED", this.ntl , this);
                     this.collection.bind("vmNuovaPartitaCOLLECTIONCOMPLETED", this.render, this);
                     this.model.saveDraftToP();
                 },
                 events: {
                     "blur #matchname": "snp",
+                    "touchend #launch": "lm",
                 },
 
-                cfh : function(){
+                ntl : function() {
+                    Parse.history.navigate('', { trigger : true, replace : true });
+                },
+
+                lm : function() {
+                    this.model.launchPartita();
+                },
+
+                cfh : function() {
                     //console.log(this.model.id);
                     this.collection.createFourHints(this.model.id);
                 },
 
-                snp : function(){
+                snp : function() {
                     this.model.salvaNomePartita( $("#matchname").val() );
                 },
 

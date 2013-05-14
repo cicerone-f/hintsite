@@ -24,18 +24,30 @@ define([
         });
       },
       salvaNomePartita: function (n) {
-        var self = this;
         this.save({
           name: n,
         }, {
           success: function (result) {
-            //self.trigger('vmNuovaPartitaMATCHCREATED');
+          },
+          error: function (e) {
+
+          }
+        });
+      },
+      launchPartita: function () {
+        var self = this;
+        this.save({
+          state: self.states.RUNNING,
+        }, {
+          success: function (result) {
+            self.trigger('vmNuovaPartitaMATCHLAUNCHED');
           },
           error: function (e) {
 
           }
         });
       }
+
     });
 
     return Match;

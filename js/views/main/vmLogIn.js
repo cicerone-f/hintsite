@@ -39,7 +39,7 @@ define([
           console.log(username + " " + password);
           Parse.User.logIn(username, password, {
             success: function (user) {
-              Parse.history.navigate("matchList", {trigger: true});
+              Parse.history.navigate("mainMatchList", {trigger: true});
             },
             error: function (user, error) {
               console.log(error);
