@@ -29,8 +29,8 @@ define([
         render: function (eventName) {
           $(this.el).empty();
           var viewContent = new vsNewMatch().render().el;
-          var v = new vsHeader().render({title:"Elenco Partite"}).el;
-          $(this.el).html(v).append(viewContent).append(new vslMatch().render().el);
+          var header = new vsHeader();
+          $(this.el).html( header.render({title:header.titles.vmElencoPartite}).el ).append(viewContent).append(new vslMatch().render().el);
           return this;
         }
       });

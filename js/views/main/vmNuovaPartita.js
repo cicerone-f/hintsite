@@ -9,7 +9,8 @@ define([
     "handlebars",
     "models/Match",
     "collections/HintCollection",
-    "text!templates/new-match.html"
+    "text!templates/new-match.html",
+    "views/sub/vsHeader"
 ],
     function (
         $,
@@ -19,7 +20,8 @@ define([
         Handlebars,
         Match,
         HintCollection,
-        template
+        template,
+        vsHeader
     ) {
 
         var vmNuovaPartita = Parse.View.extend({
@@ -38,8 +40,10 @@ define([
                 },
 
                 render: function (eventName) {
+
+                    var header = new vsHeader();
                     var match = this.model.toJSON();
-                    $(this.el).html(this.template(match));
+                    $(this.el).html( header.render({title:header.titles.vmNuovaPartita}).el ).append(this.template(match));
                     return this;
                 }
             });

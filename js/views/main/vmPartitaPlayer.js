@@ -27,8 +27,8 @@ define([
         template: Handlebars.compile(template),
 
         render: function (eventName) {
-          var viewContent = new vsHeader().render({title:"Partita Player"}).el;
-          $(this.el).html(viewContent).append(this.template(this.model.toJSON()));
+          var header = new vsHeader();
+          $(this.el).html( header.render({title:header.titles.vmPartitaPlayer}).el ).append(this.template(this.model.toJSON()));
           $(this.el).append(new vslHintPreview({
             model: this.model
           }).render().el);

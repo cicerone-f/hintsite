@@ -24,6 +24,11 @@ define([
         events: {
           "touchend #back": "goBack"
         },
+        titles: { 
+          'vmElencoPartite': "Elenco Partite", 
+          'vmPartitaPlayer': "Partita Player", 
+          'vmNuovaPartita':"Crea Nuova Partita"
+        },
         goBack: function () {
           if (Parse.history.routesHit > 1) {
             //more than one route hit -> user did not land to current page directly
@@ -37,7 +42,6 @@ define([
         initialize: function () {
         },
         render: function (t) {
-          console.log(t);
           $(this.el).empty();
           $(this.el).html(this.template(t));
           return this;
