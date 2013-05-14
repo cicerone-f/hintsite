@@ -22,6 +22,19 @@ define([
 
           }
         });
+      },
+      salvaNomePartita: function (n) {
+        var self = this;
+        this.save({
+          name: n,
+        }, {
+          success: function (result) {
+            //self.trigger('vmNuovaPartitaMATCHCREATED');
+          },
+          error: function (e) {
+
+          }
+        });
       }
     });
 

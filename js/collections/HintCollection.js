@@ -32,7 +32,6 @@ define([
         
       },
       createFourHints: function (matchId) {
-        console.log(matchId);
         for (var i = 1; i < 5; i++) {
           this.add(new Hint( { matchId:matchId , number:i , ACL:new Parse.ACL(Parse.User.current())} ));
         };

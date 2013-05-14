@@ -54,12 +54,52 @@ ul#list {
 }
 
 
+#header {
+  height: 40px;
+  text-align: center; }
+
+#launch-footer {
+  height: 40px;
+  text-align: center; 
+}  
+
 #back {
+  height: 40px;
+  float:left;
+  width: 30%;
   background-color: red;
-  padding: 1.5em;
-  color: $white;
+  text-align: center; 
+}
+
+#launchtime {
+  height: 40px;
+  float:left;
+  width: 30%;
+  background-color: red;
+  text-align: center; 
+}
+
+#addPlayers{
+  height: 40px;
+  background-color: green;
+  color: white;
   text-align: center;
 }
+
+
+#title {
+  height: 40px;
+  float:left;
+  width: 70%;
+  background-color: orange;
+  text-align: center; }
+
+#launch {
+  height: 40px;
+  float:left;
+  width: 70%;
+  background-color: orange;
+  text-align: center; }  
 
 #log-in {
   cursor: pointer;

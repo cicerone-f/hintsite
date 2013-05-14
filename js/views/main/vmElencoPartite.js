@@ -30,7 +30,10 @@ define([
           $(this.el).empty();
           var viewContent = new vsNewMatch().render().el;
           var header = new vsHeader();
-          $(this.el).html( header.render({title:header.titles.vmElencoPartite}).el ).append(viewContent).append(new vslMatch().render().el);
+          $(this.el).html( 
+            header.render(
+              {title:header.titles.vmElencoPartite}
+            ).el ).append(viewContent).append(new vslMatch().render().el);
           return this;
         }
       });

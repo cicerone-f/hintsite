@@ -10,7 +10,8 @@ define([
     "models/Match",
     "collections/HintCollection",
     "text!templates/new-match.html",
-    "views/sub/vsHeader"
+    "views/sub/vsHeader",
+    "views/sub/vsLaunchFooter"
 ],
     function (
         $,
@@ -21,7 +22,8 @@ define([
         Match,
         HintCollection,
         template,
-        vsHeader
+        vsHeader,
+        vsLaunchFooter
     ) {
 
         var vmNuovaPartita = Parse.View.extend({
@@ -29,23 +31,35 @@ define([
                 model: new Match(),
                 collection: new HintCollection(),
                 initialize: function () {
-                    this.model.bind("vmNuovaPartitaMATCHCREATED", this.a, this);
+                    this.model.bind("vmNuovaPartitaMATCHCREATED", this.cfh, this);
                     this.collection.bind("vmNuovaPartitaCOLLECTIONCOMPLETED", this.render, this);
                     this.model.saveDraftToP();
                 },
+                events: {
+                    "blur #matchname": "snp",
+                },
 
-                a : function(){
+                cfh : function(){
                     //console.log(this.model.id);
                     this.collection.createFourHints(this.model.id);
+                },
+
+                snp : function(){
+                    this.model.salvaNomePartita( $("#matchname").val() );
                 },
 
                 render: function (eventName) {
 
                     var header = new vsHeader();
+                    var launchfooter = new vsLaunchFooter();                    
                     var match = this.model.toJSON();
-                    $(this.el).html( header.render({title:header.titles.vmNuovaPartita}).el ).append(this.template(match));
+                    $(this.el).html( 
+                        header.render(
+                            {title:header.titles.vmNuovaPartita}
+                        ).el ).append(this.template(match)).append( launchfooter.render().el );
                     return this;
                 }
+
             });
 
         return vmNuovaPartita;

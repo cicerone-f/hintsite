@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* STANDARD FOR MOBILE */
 * {
   /* make transparent link selection, adjust last value opacity 0 to 1.0 */
@@ -42,16 +41,40 @@ ul#list {
   height: 40px;
   text-align: center; }
 
+#launch-footer {
+  height: 40px;
+  text-align: center; }
+
 #back {
   height: 40px;
-  float:left;
+  float: left;
   width: 30%;
   background-color: red;
   text-align: center; }
 
+#launchtime {
+  height: 40px;
+  float: left;
+  width: 30%;
+  background-color: red;
+  text-align: center; }
+
+#addPlayers {
+  height: 40px;
+  background-color: green;
+  color: white;
+  text-align: center; }
+
 #title {
   height: 40px;
-  float:left;
+  float: left;
+  width: 70%;
+  background-color: orange;
+  text-align: center; }
+
+#launch {
+  height: 40px;
+  float: left;
   width: 70%;
   background-color: orange;
   text-align: center; }
