@@ -11,7 +11,8 @@ define([
     "collections/HintCollection",
     "text!templates/new-match.html",
     "views/sub/vsHeader",
-    "views/sub/vsLaunchFooter"
+    "views/sub/vsLaunchFooter",
+    "views/sub/list/vslHintEdit"
 ],
     function (
         $,
@@ -23,7 +24,8 @@ define([
         HintCollection,
         template,
         vsHeader,
-        vsLaunchFooter
+        vsLaunchFooter,
+        vslHintEdit
     ) {
 
         var vmNuovaPartita = Parse.View.extend({
@@ -61,12 +63,13 @@ define([
                 render: function (eventName) {
 
                     var header = new vsHeader();
-                    var launchfooter = new vsLaunchFooter();                    
+                    var launchfooter = new vsLaunchFooter();   
+                    var hintlistedit = new vslHintEdit({collection: this.collection});              
                     var match = this.model.toJSON();
                     $(this.el).html( 
                         header.render(
                             {title:header.titles.vmNuovaPartita}
-                        ).el ).append(this.template(match)).append( launchfooter.render().el );
+                        ).el ).append(this.template(match)).append( hintlistedit.render().el ).append( launchfooter.render().el );
                     return this;
                 }
 
