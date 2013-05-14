@@ -121,7 +121,7 @@ define([
       },
 
       setLTime: function () {
-         this.changePage(new vmSetLaunchTime());
+        this.changePage(new vmSetLaunchTime());
       },
 
       changePage: function (page) {

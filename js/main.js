@@ -59,7 +59,7 @@ require([
         xfbml      : true  // parse XFBML
       });
 
-      new AppRouter();          // JSLint says "do not use 'new' for side effects"
+      new AppRouter();     // JSLint says "do not use 'new' for side effects"
       Parse.history.start();
 
     }

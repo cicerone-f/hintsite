@@ -21,7 +21,7 @@ define([
     var LoadingView = Parse.View.extend({
 
         template: Handlebars.compile(template),
-        initialize: function() {
+        initialize: function () {
           this.render();
         },
         render: function (eventName) {

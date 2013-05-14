@@ -7,8 +7,7 @@ define([
 ],
   function ($, Parse) {
     var Hint = Parse.Object.extend("Hint", {
-      
-      defaults: {          
+      defaults: {
         ACL: "",
         number: 0,
         description: "",

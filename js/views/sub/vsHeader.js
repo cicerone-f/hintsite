@@ -24,11 +24,11 @@ define([
         events: {
           "touchend #back": "goBack"
         },
-        titles: { 
-          'vmElencoPartite': "Elenco Partite", 
-          'vmPartitaPlayer': "Partita Player", 
-          'vmNuovaPartita':"Crea Nuova Partita",
-          'vmSetLaunchTime':"Set Launch Time"
+        titles: {
+          'vmElencoPartite': "Elenco Partite",
+          'vmPartitaPlayer': "Partita Player",
+          'vmNuovaPartita': "Crea Nuova Partita",
+          'vmSetLaunchTime': "Set Launch Time"
         },
         goBack: function () {
           if (Parse.history.routesHit > 1) {
@@ -37,7 +37,7 @@ define([
           } else {
             //otherwise go to the home page. Use replaceState if available so
             //the navigation doesn't create an extra history entry
-            Parse.history.navigate('', { trigger : true, replace : true });
+            Parse.history.navigate('', {trigger: true, replace: true });
           }
         },
         initialize: function () {

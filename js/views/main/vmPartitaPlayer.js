@@ -28,10 +28,14 @@ define([
 
         render: function (eventName) {
           var header = new vsHeader();
-          $(this.el).html( header.render({title:header.titles.vmPartitaPlayer}).el ).append(this.template(this.model.toJSON()));
+          $(this.el)
+            .html(header.render({title: header.titles.vmPartitaPlayer}).el)
+            .append(this.template(this.model.toJSON()));
+
           $(this.el).append(new vslHintPreview({
             model: this.model
           }).render().el);
+
           return this;
         }
       });
