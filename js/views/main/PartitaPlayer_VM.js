@@ -8,8 +8,7 @@ define([
   "Parse",
   "handlebars",
   "views/sub/list/HintPreview_VSL",
-  "views/sub/Header_VS",
-  "text!templates/main/match-details.html"
+  "views/sub/Header_VS"
 ],
     function ($,
       _,
@@ -17,24 +16,21 @@ define([
       Parse,
       Handlebars,
       HintPreview_VSL,
-      Header_VS,
-      template
+      Header_VS
     ) {
 
     var PartitaPlayer_VM = Parse.View.extend({
         tagName: "div",
         id: "container",
-        template: Handlebars.compile(template),
 
         render: function (eventName) {
+          console.log(this.model);
           var header = new Header_VS();
           $(this.el)
-            .html(header.render({title: header.titles.PartitaPlayer_VM}).el)
-            .append(this.template(this.model.toJSON()));
-
-          $(this.el).append(new HintPreview_VSL({
-            model: this.model
-          }).render().el);
+            .html(header.render({title: this.model.get('name')}).el)
+            .append(new HintPreview_VSL({
+              model: this.model
+            }).render().el);
 
           return this;
         }

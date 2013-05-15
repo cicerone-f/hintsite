@@ -48,7 +48,7 @@ define([
         },
 
         navigateToSetLaunchTime : function () {
-          Parse.history.navigate('setLaunchTime', { trigger : true, replace : true });
+          Parse.history.navigate('setLaunchTime', { trigger : true });
         },
 
         lp: function () {

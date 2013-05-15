@@ -20,8 +20,14 @@ define([
     var NewMatch_VS = Parse.View.extend({
         tagName: "div",
         id: "NewMatchButton",
+        events: {
+          "touchend": "goToCreaPartita"
+        },
         template: Handlebars.compile(template),
         initialize: function () {
+        },
+        goToCreaPartita: function () {
+          Parse.history.navigate("newMatch", {trigger: true});
         },
         render: function (eventName) {
           $(this.el).empty();

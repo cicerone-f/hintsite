@@ -37,7 +37,7 @@ define([
           } else {
             //otherwise go to the home page. Use replaceState if available so
             //the navigation doesn't create an extra history entry
-            Parse.history.navigate('', {trigger: true, replace: true });
+            Parse.history.navigate('', {trigger: true });
           }
         },
         initialize: function () {
