@@ -21,7 +21,11 @@ define([
         var self = this;
         query.find({
           success: function (results) {
+            if (self.length != 0){
+              self.reset();
+            }
             self.add(results);
+
           },
           error: function (error) {
             console.log(error);

@@ -11,9 +11,21 @@ define([
         ACL: "",
         number: 0,
         description: "",
-        image: 0
+        image: 0 
+      },
+
+      fetchFromP: function (){
+        self = this;
+        this.fetch({ 
+          success: function() {
+            self.trigger('HintForm_VM_HINTSYNC');
+          },
+          error: function () {
+          }
+        });
       }
     });
 
     return Hint;
   });
+

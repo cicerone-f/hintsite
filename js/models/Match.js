@@ -46,6 +46,16 @@ define([
 
           }
         });
+      },
+      fetchFromP: function (){
+        self = this;
+        this.fetch({ 
+          success: function() {
+            self.trigger('NuovaPartita_VM_MATCHSYNC');
+          },
+          error: function () {
+          }
+        });
       }
 
     });

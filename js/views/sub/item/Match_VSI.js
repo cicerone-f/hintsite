@@ -34,7 +34,12 @@ define([
         },
 
         goToDetails: function () {
-          Parse.history.navigate("matches/" + this.model.id, {trigger: true});
+          if (this.model.attributes.state == 0) {
+            Parse.history.navigate("editMatch/" + this.model.id, {trigger: true});
+          } else if (this.model.attributes.state == 1) {
+            Parse.history.navigate("matches/" + this.model.id, {trigger: true});
+          }
+          
         }
       });
 

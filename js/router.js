@@ -18,7 +18,8 @@ define([
   "views/main/ElencoPartite_VM",
   "views/sub/list/Match_VSL",
   "views/main/LogIn_VM",
-  "views/main/SetLaunchTime_VM"
+  "views/main/SetLaunchTime_VM",
+  "views/main/HintForm_VM"
 ],
     function ($,
       _,
@@ -35,7 +36,8 @@ define([
       ElencoPartite_VM,
       Match_VSL,
       LogIn_VM,
-      SetLaunchTime_VM
+      SetLaunchTime_VM,
+      HintForm_VM
     ) {
 
     var AppRouter = Parse.Router.extend({
@@ -47,7 +49,9 @@ define([
         "matches/:id": "matchDetails",
         "hints/:id": "hintDetails",
         "newMatch": "newMatch",
-        "setLaunchTime": "setLTime"
+        "editMatch/:id": "editMatchDraft",
+        "setLaunchTime": "setLTime",
+        "hints/edit/:id": "hintForm"
       },
 
       initialize: function () {
@@ -117,12 +121,30 @@ define([
         this.changePage(new NuovaPartita_VM());
       },
 
+      editMatchDraft: function (id) {
+        this.changePage(new NuovaPartita_VM(
+          {'matchIdToGet': id})
+        );
+      },
+
       setLTime: function () {
-        this.changePage(new SetLaunchTime_VM());
+        this.changePage(
+          new SetLaunchTime_VM()
+        );
+      },
+
+      hintForm: function (id) {
+        this.changePage(
+          new HintForm_VM({'hintIdToGet':id})
+        );
       },
 
       changePage: function (page) {
-        $('body').empty();
+        if(this.currentView) {
+           this.currentView.remove();
+         }
+
+        this.currentView = page;
         page.render();
         $('body').append($(page.el));
       }

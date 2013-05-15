@@ -24,7 +24,6 @@ define([
         id: "container",
 
         render: function (eventName) {
-          console.log(this.model);
           var header = new Header_VS();
           $(this.el)
             .html(header.render({title: this.model.get('name')}).el)
