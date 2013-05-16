@@ -8,7 +8,7 @@ define([
   "Parse",
   "handlebars",
   "views/sub/Header_VS",
-  "gmaps",
+  "leaflet",
   "text!templates/main/map.html"
 ],
   function (
@@ -18,37 +18,34 @@ define([
     Parse,
     Handlebars,
     Header_VS,
-    gmaps,
+    leaflet,
     template
   ) {
     var SetHintPosition_VM = Parse.View.extend({
-      
       template: Handlebars.compile(template),
       initialize: function () {
-            var map;
-        },
+
+        this.render();
+      },
 
       render: function (eventName) {
-          
         var header = new Header_VS();
         var title = "MAPPA";
         //$(this.el).html(header.render({'title': title}).el).append("string");
-        $(this.el).html(this.template());
-        
-        setTimeout(this.foo,5000);
+        $(this.el).html(header.render({'title': title}).el).append(this.template());
+        var options = {
+          center: [51.505, -0.09],
+          zoom: 10
+        };
+        var map = L.map(this.$('#map')[0], options);
+        L.tileLayer('http://{s}.tile.cloudmade.com/3baed80b0bcf4a42b46b25833591b090/997/256/{z}/{x}/{y}.png', {
+          attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+          maxZoom: 18
+        }).addTo(map);
 
         return this;
-      },
-      
-      foo: function (){
-        map = new google.maps.Map($('#map_canvas')[0], {
-          zoom: 12,
-          position: new google.maps.LatLng(0, 0),
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
-
       }
 
-      });
+    });
     return SetHintPosition_VM;
   });

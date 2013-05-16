@@ -13,7 +13,7 @@ require.config({
     handlebars: '../lib/handlebars/handlebars',
     templates: '../templates',
     facebook: '../lib/facebook/all',
-    gmaps: '../lib/gmaps/gmaps'
+    leaflet: '../lib/leaflet/leaflet'
   },
   shim: {
     'underscore': {
@@ -52,13 +52,13 @@ require([
 
     function run() {
       Parse.initialize('LkaGTOk7RGUaPXM0r9HQImwPAnmqUuhjF1QttcNE', 'uxXxR7sEt2unuSABRyjF8tnd52bNymwlDuchsIhh');
-      Parse.FacebookUtils.init({
+      /*Parse.FacebookUtils.init({
         appId      : '639802702700436', // Facebook App ID
         channelUrl : '//www.hintsiteapp.com/channel.html', // Channel File
         status     : true, // check login status
         cookie     : true, // enable cookies to allow Parse to access the session
         xfbml      : true  // parse XFBML
-      });
+      });*/
 
       new AppRouter();     // JSLint says "do not use 'new' for side effects"
       Parse.history.start();

@@ -77,7 +77,6 @@ define([
         },
 
         render: function (eventName) {
-          console.log(this.model);
           var header = new Header_VS();
           var launchfooter = new LaunchFooter_VS();
           var hintlistedit = new HintEdit_VSL({collection: this.collection});
