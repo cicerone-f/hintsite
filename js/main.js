@@ -12,7 +12,8 @@ require.config({
     async: '../lib/require/async',
     handlebars: '../lib/handlebars/handlebars',
     templates: '../templates',
-    facebook: '../lib/facebook/all'
+    facebook: '../lib/facebook/all',
+    gmaps: '../lib/gmaps/gmaps'
   },
   shim: {
     'underscore': {

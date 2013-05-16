@@ -19,7 +19,8 @@ define([
   "views/sub/list/Match_VSL",
   "views/main/LogIn_VM",
   "views/main/SetLaunchTime_VM",
-  "views/main/HintForm_VM"
+  "views/main/HintForm_VM",
+  "views/main/SetHintPosition_VM"
 ],
     function ($,
       _,
@@ -37,7 +38,8 @@ define([
       Match_VSL,
       LogIn_VM,
       SetLaunchTime_VM,
-      HintForm_VM
+      HintForm_VM,
+      SetHintPosition_VM
     ) {
 
     var AppRouter = Parse.Router.extend({
@@ -51,7 +53,8 @@ define([
         "newMatch": "newMatch",
         "editMatch/:id": "editMatchDraft",
         "setLaunchTime": "setLTime",
-        "hints/edit/:id": "hintForm"
+        "hints/edit/:id": "hintForm",
+        "sethintposition": "setHintP"
       },
 
       initialize: function () {
@@ -130,6 +133,12 @@ define([
       setLTime: function () {
         this.changePage(
           new SetLaunchTime_VM()
+        );
+      },
+      
+      setHintP: function () {
+        this.changePage(
+          new SetHintPosition_VM()
         );
       },
 

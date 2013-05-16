@@ -29,6 +29,12 @@ define([
           this.model.on('HintForm_VM_HINTSYNC', this.render, this);
           this.model.fetchFromP();
         },
+        events: {
+          "touchend #mappa": "navigateToSetHintPosition"
+        },
+        navigateToSetHintPosition : function () {
+          Parse.history.navigate('sethintposition', { trigger : true });
+        },
 
         render: function (eventName) {
           

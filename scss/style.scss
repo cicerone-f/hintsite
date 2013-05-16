@@ -71,6 +71,39 @@ ul#list {
   text-align: center; 
 }
 
+#photomappa {
+  height: 100px;
+  width: 100%;
+}
+#map_canvas{
+  height: 200px;
+  width: 100%;
+}
+#map{
+  height: 200px;
+  width: 100%;
+}
+#photo {
+  height: 100px;
+  width: 50%;
+    float:left;
+  background-color: pink;
+  text-align: center; 
+}
+#mappa {
+  height: 100px;
+  width: 50%;
+    float:left;
+  background-color: purple;
+  text-align: center; 
+}
+#description {
+  height: 100px;
+  width: 100%;
+  background-color: blue;
+  text-align: center; 
+}
+
 #launchtime {
   height: 40px;
   float:left;

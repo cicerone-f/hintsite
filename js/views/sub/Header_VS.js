@@ -19,7 +19,7 @@ define([
 
     var Header_VS = Parse.View.extend({
         tagName: "div",
-        id: "Header",
+        id: "header",
         template: Handlebars.compile(template),
         events: {
           "touchend #back": "goBack"
