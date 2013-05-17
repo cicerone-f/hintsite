@@ -33,7 +33,7 @@ define([
           "touchend #mappa": "navigateToSetHintPosition"
         },
         navigateToSetHintPosition : function () {
-          Parse.history.navigate('sethintposition', { trigger : true });
+          Parse.history.navigate('sethintposition/' + this.model.id, { trigger : true });
         },
 
         render: function (eventName) {

@@ -116,6 +116,13 @@ ul#list {
   background-color: orange;
   text-align: center; }
 
+#setPoint {
+  height: 40px;
+  float: left;
+  width: 100%;
+  background-color: orange;
+  text-align: center; }
+
 #log-in {
   cursor: pointer;
   background-color: green;

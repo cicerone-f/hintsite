@@ -54,7 +54,7 @@ define([
         "editMatch/:id": "editMatchDraft",
         "setLaunchTime": "setLTime",
         "hints/edit/:id": "hintForm",
-        "sethintposition": "setHintP"
+        "sethintposition/:id": "setHintP"
       },
 
       initialize: function () {
@@ -136,9 +136,9 @@ define([
         );
       },
       
-      setHintP: function () {
+      setHintP: function (id) {
         this.changePage(
-          new SetHintPosition_VM()
+          new SetHintPosition_VM({'hintIdToGet':id})
         );
       },
 
