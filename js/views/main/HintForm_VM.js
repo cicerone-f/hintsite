@@ -22,6 +22,7 @@ define([
     Header_VS
   ) {
     var HintForm_VM = Parse.View.extend({
+      id: 'container',
         template: Handlebars.compile(template),
         model: new Hint(),
         initialize: function () {
@@ -30,10 +31,15 @@ define([
           this.model.fetchFromP();
         },
         events: {
-          "touchend #mappa": "navigateToSetHintPosition"
+          "touchend #mappa": "navigateToSetHintPosition",
+          "blur #hint_description": "saveHintDescription",
         },
         navigateToSetHintPosition : function () {
           Parse.history.navigate('sethintposition/' + this.model.id, { trigger : true });
+        },
+
+        saveHintDescription: function () {
+          this.model.updateDescription($("#hint_description").val());
         },
 
         render: function (eventName) {

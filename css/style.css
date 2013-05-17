@@ -57,6 +57,14 @@ ul#list {
   background-color: red;
   text-align: center; }
 
+#hint_description {
+  margin: 0px auto;
+  width: 90%;
+  height: 100%;
+  font-family: "HelveticaNeue-Light", "HelveticaNeue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  border: 2px solid orange; }
+
 #photomappa {
   height: 100px;
   width: 100%; }
@@ -84,9 +92,9 @@ ul#list {
   text-align: center; }
 
 #description {
-  height: 100px;
+  float: left;
+  height: 250px;
   width: 100%;
-  background-color: blue;
   text-align: center; }
 
 #launchtime {
@@ -144,6 +152,23 @@ ul#list {
   padding: 1.5em; }
 
 #container {
+  -webkit-animation: appear 1s 1;
+  /* Safari 4+ */
+  -moz-animation: appear 1s 1;
+  /* Fx 5+ */
+  -o-animation: appear 1s 1;
+  /* Opera 12+ */
+  animation: appear 1s 1;
+  /* IE 10+ */ }
+
+.loading {
+  width: 90%;
+  height: 90%;
+  top: 5%;
+  left: 5%;
+  position: absolute;
+  z-index: 9999;
+  background: orange;
   -webkit-animation: appear 1s 1;
   /* Safari 4+ */
   -moz-animation: appear 1s 1;

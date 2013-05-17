@@ -76,6 +76,15 @@ ul#list {
   text-align: center; 
 }
 
+#hint_description {
+  margin: 0px auto;
+  width: 90%;
+  height: 100%;
+  font-family: $body-font-family;
+  font-size: $body-font-size;
+  border: 2px solid orange;
+}
+
 #photomappa {
   height: 100px;
   width: 100%;
@@ -91,21 +100,21 @@ ul#list {
 #photo {
   height: 100px;
   width: 50%;
-    float:left;
+  float:left;
   background-color: pink;
   text-align: center; 
 }
 #mappa {
   height: 100px;
   width: 50%;
-    float:left;
+  float:left;
   background-color: purple;
   text-align: center; 
 }
 #description {
-  height: 100px;
+  float: left;
+  height: 250px;
   width: 100%;
-  background-color: blue;
   text-align: center; 
 }
 
@@ -171,6 +180,20 @@ ul#list {
 }
 
 #container {
+  -webkit-animation: appear 1s 1; /* Safari 4+ */
+  -moz-animation:    appear 1s 1; /* Fx 5+ */
+  -o-animation:      appear 1s 1; /* Opera 12+ */
+  animation:         appear 1s 1; /* IE 10+ */
+}
+
+.loading {
+  width: 90%;
+  height: 90%;
+  top: 5%;
+  left: 5%;
+  position: absolute;
+  z-index: 9999;
+  background: orange;
   -webkit-animation: appear 1s 1; /* Safari 4+ */
   -moz-animation:    appear 1s 1; /* Fx 5+ */
   -o-animation:      appear 1s 1; /* Opera 12+ */

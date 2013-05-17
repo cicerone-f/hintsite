@@ -30,7 +30,19 @@ define([
           point: geoPoint,
         }, {
           success: function (result) {
-            this.trigger('SetHintPosition_VM_POINTUPDATED')
+            self.trigger('SetHintPosition_VM_POINTUPDATED')
+          },
+          error: function (e) {
+          }
+        });
+      },
+
+      updateDescription: function(description) {
+        this.save({
+          description: description,
+        }, {
+          success: function (result) {
+            self.trigger('HintForm_VM_DESCUPDATED')
           },
           error: function (e) {
           }

@@ -12,7 +12,8 @@ define([
   "text!templates/main/new-match.html",
   "views/sub/Header_VS",
   "views/sub/LaunchFooter_VS",
-  "views/sub/list/HintEdit_VSL"
+  "views/sub/list/HintEdit_VSL",
+  "views/LoadingView"
 ],
   function (
     $,
@@ -25,15 +26,18 @@ define([
     template,
     Header_VS,
     LaunchFooter_VS,
-    HintEdit_VSL
+    HintEdit_VSL,
+    LoadingView
   ) {
     var NuovaPartita_VM = Parse.View.extend({
         template: Handlebars.compile(template),
         model: new Match(),
         collection: new HintCollection(),
         initialize: function () {
+          this.loading = new LoadingView();
           this.model.on("NuovaPartita_VM_MATCHCREATED", this.cfh, this);
           this.model.on("NuovaPartita_VM_MATCHSYNC", this.sfh, this);
+          this.model.on("NuovaPartita_VM_MATCHNAMEUPDATED", this.removeLoading, this);
           this.model.on("NuovaPartita_VM_MATCHLAUNCHED", this.navigateToElencoPartite, this);
           this.collection.on("NuovaPartita_VM_COLLECTIONCOMPLETED", this.render, this);
           this.collection.on("add", this.render, this);
@@ -51,6 +55,7 @@ define([
         },
 
         navigateToElencoPartite : function () {
+          this.removeLoading();
           Parse.history.navigate('', { trigger : true, replace : true });
         },
 
@@ -59,6 +64,7 @@ define([
         },
 
         lp: function () {
+          this.loading.render();
           this.model.launchPartita();
         },
 
@@ -73,7 +79,12 @@ define([
         },
 
         snp: function () {
+          this.loading.render();
           this.model.salvaNomePartita($("#matchname").val());
+        },
+
+        removeLoading: function () {
+          this.loading.remove();
         },
 
         render: function (eventName) {

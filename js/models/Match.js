@@ -28,6 +28,7 @@ define([
           name: n,
         }, {
           success: function (result) {
+            self.trigger('NuovaPartita_VM_MATCHNAMEUPDATED');
           },
           error: function (e) {
 

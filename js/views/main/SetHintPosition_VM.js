@@ -9,6 +9,7 @@ define([
   "handlebars",
   "models/Hint",
   "views/sub/Header_VS",
+  "views/LoadingView",
   "leaflet",
   "text!templates/main/map.html"
 ],
@@ -20,6 +21,7 @@ define([
     Handlebars,
     Hint,
     Header_VS,
+    LoadingView,
     leaflet,
     template
   ) {
@@ -33,20 +35,21 @@ define([
 
       template: Handlebars.compile(template),
       initialize: function () {
+        this.loading = new LoadingView();
         this.flagEvent = false;
         this.model.id = this.options.hintIdToGet;
         this.model.on('HintForm_VM_HINTSYNC', this.setFlagEventListener, this);
         //Callback on Geopoint saved on Parse
-        //this.model.on('SetHintPosition_VM_POINTUPDATED', null, this);
+        this.model.on('SetHintPosition_VM_POINTUPDATED', this.setGeoPointCallback, this);
         this.model.fetchFromP();
       },
 
       render: function (eventName) {
         var header = new Header_VS();
-        var title = "MAPPA";
+        var title = "Select Point for #Hint "+this.model.attributes.number;
         //$(this.el).html(header.render({'title': title}).el).append("string");
         $(this.el).html(header.render({'title': title}).el).append(this.template());
-        if(this.flagEvent) {
+        if (this.flagEvent) {
           if (this.model.attributes.point) {
             this.renderMap();
           } else {
@@ -68,7 +71,7 @@ define([
         var self = this;
         var t = setTimeout(function () {
           var position = self.model.attributes.point;
-          self.map = L.map(self.$('#map')[0]).setView([position.latitude, position.longitude], 10);
+          self.map = L.map(self.$('#map')[0]).setView([position.latitude, position.longitude], 15);
           L.tileLayer('http://{s}.tile.cloudmade.com/3baed80b0bcf4a42b46b25833591b090/997/256/{z}/{x}/{y}.png', {
             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
             maxZoom: 18
@@ -77,6 +80,7 @@ define([
       },
 
       setGeoPoint: function () {
+        this.loading.render();
         var currentCenter = this.map.getCenter();
         var parseCurrentCenter = new Parse.GeoPoint(currentCenter.lat, currentCenter.lng);
         this.model.updateGeoPoint(parseCurrentCenter);
@@ -88,9 +92,13 @@ define([
         this.renderMap();
       },
 
-      setFlagEventListener: function() {
+      setFlagEventListener: function () {
         this.flagEvent = true;
         this.render();
+      },
+
+      setGeoPointCallback: function () {
+        this.loading.remove();
       }
 
     });
