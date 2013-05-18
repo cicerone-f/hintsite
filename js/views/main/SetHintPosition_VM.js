@@ -100,7 +100,7 @@ define([
             navigator.geolocation.getCurrentPosition(
               // success
               function (currPosition) {
-                self.map.setView([currPosition.latitude, currPosition.longitude], 15);
+                self.map.setView([currPosition.coords.latitude, currPosition.coords.longitude], 15);
                 self.createViewfinder();
               },
               // error
