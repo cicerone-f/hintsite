@@ -84,6 +84,9 @@ ul#list {
   background-color: pink;
   text-align: center; }
 
+#photo img {
+  max-width: 100%; }
+
 #mappa {
   height: 100px;
   width: 50%;

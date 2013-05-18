@@ -32,6 +32,7 @@ define([
         },
         events: {
           "touchend #mappa": "navigateToSetHintPosition",
+          "touchend #photo": "getPicture",
           "blur #hint_description": "saveHintDescription",
         },
         navigateToSetHintPosition : function () {
@@ -40,6 +41,54 @@ define([
 
         saveHintDescription: function () {
           this.model.updateDescription($("#hint_description").val());
+        },
+
+        getPicture: function () {
+          var options = {
+            quality: 50,
+            destinationType: Camera.DestinationType.FILE_URI,
+            sourceType: Camera.PictureSourceType.CAMERA,
+            mediaType: Camera.MediaType.PICTURE,
+            //cameraDirection: Camera.Direction.BACK,
+            allowEdit: false,
+            encodingType: Camera.EncodingType.JPEG,
+            targetWidth: 400,
+            targetHeight: 400,
+            saveToPhotoAlbum: false
+          };
+          var self = this;
+          var cameraSuccess = function (imageURI) {
+            self.model.set("image", imageURI);
+            self.uploadPicture(imageURI);
+            console.log(imageURI);
+          };
+          var cameraError = function (error) {
+            console.log(error);
+          };
+          navigator.camera.getPicture(cameraSuccess, cameraError, options);
+        },
+
+        uploadPicture: function (imageURI) {
+          var options = new FileUploadOptions();
+          options.fileKey = "file";
+          options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
+          options.mimeType = "image/jpeg";
+          options.headers = {
+            "X-Parse-Application-Id": "LkaGTOk7RGUaPXM0r9HQImwPAnmqUuhjF1QttcNE",
+            "X-Parse-REST-API-Key": "gQ54fz7nlzbrI1DQbHsmaL3vAsUA9rxoSQPQjmxi",
+            "Content-Type": "image/jpeg"
+          };
+
+          var win = function win(r) {
+            alert("Code = " + r.responseCode);
+          };
+
+          var fail = function fail(error) {
+            alert("An error has occurred: Code = " + error.code);
+          };
+
+          var ft = new FileTransfer();
+          ft.upload(imageURI, encodeURI("https://api.parse.com/1/files/"+imageURI), win, fail, options, true);
         },
 
         render: function (eventName) {
