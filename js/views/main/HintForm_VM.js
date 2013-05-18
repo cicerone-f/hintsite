@@ -32,6 +32,7 @@ define([
         },
         events: {
           "touchend #mappa": "navigateToSetHintPosition",
+          "touchend #photo": "getPicture",
           "blur #hint_description": "saveHintDescription",
         },
         navigateToSetHintPosition : function () {
@@ -40,6 +41,55 @@ define([
 
         saveHintDescription: function () {
           this.model.updateDescription($("#hint_description").val());
+        },
+
+        getPicture: function () {
+          var options = {
+            quality: 50,
+            destinationType: Camera.DestinationType.FILE_URI,
+            sourceType: Camera.PictureSourceType.CAMERA,
+            mediaType: Camera.MediaType.PICTURE,
+            //cameraDirection: Camera.Direction.BACK,
+            allowEdit: false,
+            encodingType: Camera.EncodingType.JPEG,
+            targetWidth: 400,
+            targetHeight: 400,
+            saveToPhotoAlbum: false
+          };
+          var self = this;
+          var cameraSuccess = function (imageURI) {
+            console.log(imageURI);
+            self.model.set("image", imageURI);
+            self.uploadPicture(imageURI);
+          };
+          var cameraError = function (error) {
+            console.log(error);
+          };
+          navigator.camera.getPicture(cameraSuccess, cameraError, options);
+        },
+
+        uploadPicture: function (imageURI) {
+          var serverUrl = 'https://api.parse.com/1/files/pic.jpg';
+          $.ajax({
+            type: "POST",
+            beforeSend: function(request) {
+              request.setRequestHeader("X-Parse-Application-Id", 'LkaGTOk7RGUaPXM0r9HQImwPAnmqUuhjF1QttcNE');
+              request.setRequestHeader("X-Parse-REST-API-Key", 'gQ54fz7nlzbrI1DQbHsmaL3vAsUA9rxoSQPQjmxi');
+              request.setRequestHeader("Content-Type", "image/jpeg");
+            },
+            url: serverUrl,
+            data: imageURI,
+            processData: false,
+            contentType: false,
+            async:  false,
+            success: function(data) {
+              alert("File available at: " + data.url);
+            },
+            error: function(data) {
+              var obj = jQuery.parseJSON(data);
+              console.log(obj.error);
+            }
+          });
         },
 
         render: function (eventName) {
