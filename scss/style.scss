@@ -104,6 +104,11 @@ ul#list {
   background-color: pink;
   text-align: center; 
 }
+
+#photo img {
+  max-width: 100%;
+}
+
 #mappa {
   height: 100px;
   width: 50%;
@@ -164,7 +169,7 @@ ul#list {
   text-align: center; 
 }  
 
-#setPoint {
+#set-point-btn {
   height: 40px;
   float:left;
   width: 100%;

@@ -1,5 +1,11 @@
 <div id="photomappa">
-  <span id="photo">photo</span>
+  <div id="photo">
+    {{#if image}}
+      <img src="{{image}}" />
+    {{else}}
+      set photo
+    {{/if}}
+  </div>
   <span id="mappa">mappa</span>
 </div>
 <div id="description">
