@@ -46,7 +46,7 @@ define([
         getPicture: function () {
           var options = {
             quality: 50,
-            destinationType: Camera.DestinationType.FILE_URI,
+            destinationType: Camera.DestinationType.FILE_URL,
             sourceType: Camera.PictureSourceType.CAMERA,
             mediaType: Camera.MediaType.PICTURE,
             //cameraDirection: Camera.Direction.BACK,
@@ -58,7 +58,6 @@ define([
           };
           var self = this;
           var cameraSuccess = function (imageURI) {
-            console.log(imageURI);
             self.model.set("image", imageURI);
             self.uploadPicture(imageURI);
           };
@@ -69,27 +68,26 @@ define([
         },
 
         uploadPicture: function (imageURI) {
-          var serverUrl = 'https://api.parse.com/1/files/pic.jpg';
-          $.ajax({
-            type: "POST",
-            beforeSend: function(request) {
-              request.setRequestHeader("X-Parse-Application-Id", 'LkaGTOk7RGUaPXM0r9HQImwPAnmqUuhjF1QttcNE');
-              request.setRequestHeader("X-Parse-REST-API-Key", 'gQ54fz7nlzbrI1DQbHsmaL3vAsUA9rxoSQPQjmxi');
-              request.setRequestHeader("Content-Type", "image/jpeg");
-            },
-            url: serverUrl,
-            data: imageURI,
-            processData: false,
-            contentType: false,
-            async:  false,
-            success: function(data) {
-              alert("File available at: " + data.url);
-            },
-            error: function(data) {
-              var obj = jQuery.parseJSON(data);
-              console.log(obj.error);
-            }
-          });
+          var options = new FileUploadOptions();
+          options.fileKey = "file";
+          options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
+          options.mimeType = "image/jpeg";
+          options.headers = {
+            "X-Parse-Application-Id": "LkaGTOk7RGUaPXM0r9HQImwPAnmqUuhjF1QttcNE",
+            "X-Parse-REST-API-Key": "gQ54fz7nlzbrI1DQbHsmaL3vAsUA9rxoSQPQjmxi",
+            "Content-Type": "image/jpeg"
+          };
+
+          var win = function win(r) {
+            alert("Code = " + r.responseCode);
+          };
+
+          var fail = function fail(error) {
+            alert("An error has occurred: Code = " + error.code);
+          };
+
+          var ft = new FileTransfer();
+          ft.upload(imageURI, encodeURI("https://api.parse.com/1/files/"+imageURI), win, fail, options, true);
         },
 
         render: function (eventName) {
