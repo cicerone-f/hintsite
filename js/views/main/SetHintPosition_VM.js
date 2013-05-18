@@ -25,6 +25,17 @@ define([
     leaflet,
     template
   ) {
+
+    // in this module, this.map refers to the current map
+
+    var ks = {
+      VIEWFINDER_EXT_RADIUS: 150,
+      VIEWFINDER_INT_RADIUS: 8,
+      PIN_WIDTH: 60,
+      PIN_HEIGHT: 47
+    };
+
+
     var SetHintPosition_VM = Parse.View.extend({
       tagName: 'div',
       id: '#container',
@@ -46,7 +57,7 @@ define([
 
       render: function (eventName) {
         var header = new Header_VS();
-        var title = "Select Point for #Hint "+this.model.attributes.number;
+        var title = "Select Point for Hint #" + this.model.attributes.number;
         //$(this.el).html(header.render({'title': title}).el).append("string");
         $(this.el).html(header.render({'title': title}).el).append(this.template());
         if (this.flagEvent) {
@@ -76,6 +87,32 @@ define([
             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
             maxZoom: 18
           }).addTo(self.map);
+
+          /* creates the center of the viewfinder and add it to the map */
+          self.viewfinderCenter = L.circle(self.map.getCenter(), ks.VIEWFINDER_INT_RADIUS, {
+            stroke: false,
+            fill: true,
+            fillColor: '#222',
+            fillOpacity: 1,
+            clickable: false
+          }).addTo(self.map);
+
+          /* creates the external circle of the viewfinder and add it to the map */
+          self.viewfinder = L.circle(self.map.getCenter(), ks.VIEWFINDER_EXT_RADIUS, {
+            color: '#555',      // color of the stroke
+            weight: 2,          // width of the stroke radius
+            fill: true,         // whether the circle is filled
+            fillColor: '#555',
+            fillOpacity: 0.2,
+            clickable: false
+          }).addTo(self.map);
+
+          /* relocates the viewfinder to the current center of the map */
+          self.map.on('drag', function (e) {
+            self.viewfinder.setLatLng(self.map.getCenter());
+            self.viewfinderCenter.setLatLng(self.map.getCenter());
+          });
+
         }, 1000);
       },
 
@@ -97,8 +134,49 @@ define([
         this.render();
       },
 
+      // the 'pin' variable in this function is a L.marker object
+      setMarkerFromPoint: function (point) {
+        // this.loading.remove();
+        if (this.pin) {
+          this.map.removeLayer(this.pin);
+        }
+
+        var pinIcon = new L.Icon({
+          iconUrl: '/res/img/pin-with-shadow.png',                      // absolute URL
+          iconSize: new L.Point(ks.PIN_WIDTH, ks.PIN_HEIGHT),   // in px
+          iconAnchor: new L.Point(20, 10),                              // in px, offset from the center of the icon
+        });
+
+        this.pin = L.marker([point.latitude, point.longitude], {
+          icon: pinIcon
+        });
+        this.pin.addTo(this.map);
+      },
+
       setGeoPointCallback: function () {
         this.loading.remove();
+        if (this.pin) {
+          this.map.removeLayer(this.pin);
+        }
+
+        var pinIcon = new L.Icon({
+          iconUrl: '/res/img/pin-with-shadow.png',                      // absolute URL
+          iconSize: new L.Point(ks.PIN_WIDTH, ks.PIN_HEIGHT),   // in px
+          iconAnchor: new L.Point(20, 10),                              // in px, offset from the center of the icon
+        });
+
+        var coords = [this.model.attributes.point.latitude, this.model.attributes.point.longitude];
+        this.pin = L.marker(coords, {
+          draggable: true,
+          icon: pinIcon
+        });
+        this.pin.addTo(this.map);
+
+        var self = this;
+        this.pin.on('dragend', function (e) {
+          var newLat = self.pin.getLatLng();
+          self.pin.setLatLng(newLat);
+        });
       }
 
     });
