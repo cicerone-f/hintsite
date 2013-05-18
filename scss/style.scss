@@ -118,11 +118,25 @@ ul#list {
   text-align: center; 
 }
 
-#launchtime {
+#setlaunchtime {
   height: 40px;
   float:left;
   width: 30%;
+  background-color: pink;
+  text-align: center; 
+}
+#launchtime {
+  height: 40px;
+  float:left;
+  width: 70%;
   background-color: red;
+  text-align: center; 
+}
+#setthistime {
+  height: 40px;
+  float:left;
+  width: 100%;
+  background-color: lavender;
   text-align: center; 
 }
 
@@ -139,14 +153,16 @@ ul#list {
   float:left;
   width: 70%;
   background-color: orange;
-  text-align: center; }
+  text-align: center; 
+}
 
 #launch {
   height: 40px;
   float:left;
-  width: 70%;
+  width: 100%;
   background-color: orange;
-  text-align: center; }  
+  text-align: center; 
+}  
 
 #setPoint {
   height: 40px;
@@ -199,6 +215,40 @@ ul#list {
   -o-animation:      appear 1s 1; /* Opera 12+ */
   animation:         appear 1s 1; /* IE 10+ */
 }
+
+.meno {
+  height: 70px;
+  float:left;
+  width: 30%;
+  background-color: PowderBlue ;
+  text-align: center; 
+}
+.piu {
+  height: 70px;
+  float:left;
+  width: 30%;
+  background-color: PowderBlue ;
+  text-align: center; 
+}
+.settedElement {
+  height: 70px;
+  float:left;
+  width: 40%;
+  background-color: yellow;
+  text-align: center; 
+}
+#day {
+  height: 70px;
+  float:left;
+  width: 40%;
+  background-color: yellow;
+  text-align: center; 
+}
+.setter {
+  border-bottom: 1px solid #222222;
+  height: 70px;
+}
+
 
 @-webkit-keyframes appear {
   from {

@@ -24,6 +24,7 @@ define([
         });
       },
       salvaNomePartita: function (n) {
+        var self = this;
         this.save({
           name: n,
         }, {
@@ -48,13 +49,25 @@ define([
           }
         });
       },
-      fetchFromP: function (){
+      fetchFromP: function (vm){
         self = this;
         this.fetch({ 
           success: function() {
-            self.trigger('NuovaPartita_VM_MATCHSYNC');
+            self.trigger(vm+'_MATCHSYNC');
           },
           error: function () {
+          }
+        });
+      },
+      salvaTimePartita: function (t,vm) {
+        this.save({
+          launchTime: t,
+        }, {
+          success: function (result) {
+            self.trigger(vm+'_MATCHTIMEUPDATED');
+          },
+          error: function (e) {
+
           }
         });
       }

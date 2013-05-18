@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* STANDARD FOR MOBILE */
 * {
   /* make transparent link selection, adjust last value opacity 0 to 1.0 */
@@ -97,11 +96,25 @@ ul#list {
   width: 100%;
   text-align: center; }
 
-#launchtime {
+#setlaunchtime {
   height: 40px;
   float: left;
   width: 30%;
+  background-color: pink;
+  text-align: center; }
+
+#launchtime {
+  height: 40px;
+  float: left;
+  width: 70%;
   background-color: red;
+  text-align: center; }
+
+#setthistime {
+  height: 40px;
+  float: left;
+  width: 100%;
+  background-color: lavender;
   text-align: center; }
 
 #addPlayers {
@@ -120,7 +133,7 @@ ul#list {
 #launch {
   height: 40px;
   float: left;
-  width: 70%;
+  width: 100%;
   background-color: orange;
   text-align: center; }
 
@@ -177,6 +190,38 @@ ul#list {
   /* Opera 12+ */
   animation: appear 1s 1;
   /* IE 10+ */ }
+
+.meno {
+  height: 70px;
+  float: left;
+  width: 30%;
+  background-color: powderblue;
+  text-align: center; }
+
+.piu {
+  height: 70px;
+  float: left;
+  width: 30%;
+  background-color: powderblue;
+  text-align: center; }
+
+.settedElement {
+  height: 70px;
+  float: left;
+  width: 40%;
+  background-color: yellow;
+  text-align: center; }
+
+#day {
+  height: 70px;
+  float: left;
+  width: 40%;
+  background-color: yellow;
+  text-align: center; }
+
+.setter {
+  border-bottom: 1px solid #222222;
+  height: 70px; }
 
 @-webkit-keyframes appear {
   from {

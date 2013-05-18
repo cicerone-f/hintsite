@@ -43,7 +43,7 @@ define([
           this.collection.on("add", this.render, this);
           if (this.options.matchIdToGet) {
             this.model.id = this.options.matchIdToGet;
-            this.model.fetchFromP();
+            this.model.fetchFromP("NuovaPartita_VM");
           } else {
             this.model.saveDraftToP();
           }
@@ -51,7 +51,7 @@ define([
         events: {
           "blur #matchname": "snp",
           "touchend #launch": "lp",
-          "touchend #launchtime": "navigateToSetLaunchTime"
+          "touchend #setlaunchtime": "navigateToSetLaunchTime"
         },
 
         navigateToElencoPartite : function () {
@@ -60,7 +60,7 @@ define([
         },
 
         navigateToSetLaunchTime : function () {
-          Parse.history.navigate('setLaunchTime', { trigger : true });
+          Parse.history.navigate('setLaunchTime/'+ this.model.id, { trigger : true });
         },
 
         lp: function () {

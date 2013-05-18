@@ -52,7 +52,7 @@ define([
         "hints/:id": "hintDetails",
         "newMatch": "newMatch",
         "editMatch/:id": "editMatchDraft",
-        "setLaunchTime": "setLTime",
+        "setLaunchTime/:id": "setLTime",
         "hints/edit/:id": "hintForm",
         "sethintposition/:id": "setHintP"
       },
@@ -130,9 +130,9 @@ define([
         );
       },
 
-      setLTime: function () {
+      setLTime: function (id) {
         this.changePage(
-          new SetLaunchTime_VM()
+          new SetLaunchTime_VM({'matchIdToGet':id})
         );
       },
       
