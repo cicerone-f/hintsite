@@ -46,7 +46,7 @@ define([
         getPicture: function () {
           var options = {
             quality: 50,
-            destinationType: Camera.DestinationType.FILE_URL,
+            destinationType: Camera.DestinationType.FILE_URI,
             sourceType: Camera.PictureSourceType.CAMERA,
             mediaType: Camera.MediaType.PICTURE,
             //cameraDirection: Camera.Direction.BACK,
@@ -60,6 +60,7 @@ define([
           var cameraSuccess = function (imageURI) {
             self.model.set("image", imageURI);
             self.uploadPicture(imageURI);
+            console.log(imageURI);
           };
           var cameraError = function (error) {
             console.log(error);
