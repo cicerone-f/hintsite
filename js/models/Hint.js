@@ -58,6 +58,7 @@ define([
           },
           error: function (e) {
           }
+        });
       }
     });
 
