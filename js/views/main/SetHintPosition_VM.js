@@ -105,6 +105,9 @@ define([
                 .addListener(controlDiv, 'click', L.DomEvent.stopPropagation)
                 .addListener(controlDiv, 'click', L.DomEvent.preventDefault)
                 .addListener(controlDiv, 'click', function () { self.panToCurrentPosition(); });
+              // we had to call self.panToCurrentPosition() inside an anonymous function because of context issued:
+              // when passed as a callback, the first line (var self = this) would refer to the object that called
+              // the function and not to the View
 
               var icon = L.DomUtil.create('img', 'locate-me-icon', controlDiv);
               icon.setAttribute('src', 'res/img/locate-me-icon.png');
