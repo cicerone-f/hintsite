@@ -26,11 +26,17 @@ define([
     template
   ) {
 
-    // in this module, this.map refers to the current map
+    // NOTES
+    //  - in this module, this.map refers to the current map
+    //  - you'll see position.lat/lng along with position.coords.longitude: the
+    //    first case is for when you use a **Leaflet** position object, the second
+    //    case is for when you use a **Parse** GeoPoint object. We tried to use the
+    //    Parse object as much as we could in order to stay consistent.
+
 
     var ks = {
-      VIEWFINDER_EXT_RADIUS: 150,
-      VIEWFINDER_INT_RADIUS: 8,
+      VIEWFINDER_EXT_RADIUS: 50,
+      VIEWFINDER_INT_RADIUS: 4,
       PIN_WIDTH: 60,
       PIN_HEIGHT: 47
     };
@@ -41,16 +47,19 @@ define([
       id: '#container',
       model: new Hint(),
       events: {
+        /* a click on the "Set Point" button */
         "touchend #set-point-btn": "setGeoPoint"
       },
 
       template: Handlebars.compile(template),
+
       initialize: function () {
         this.loading = new LoadingView();
         this.flagEvent = false;
         this.model.id = this.options.hintIdToGet;
         this.model.on('HintForm_VM_HINTSYNC', this.setFlagEventListener, this);
-        //Callback on Geopoint saved on Parse
+        
+        /* this event is triggerent when a GeoPoint is saved to Parse */
         this.model.on('SetHintPosition_VM_POINTUPDATED', this.setGeoPointCallback, this);
         this.model.fetchFromP();
       },
@@ -58,8 +67,8 @@ define([
       render: function (eventName) {
         var header = new Header_VS();
         var title = "Select Point for Hint #" + this.model.attributes.number;
-        //$(this.el).html(header.render({'title': title}).el).append("string");
         $(this.el).html(header.render({'title': title}).el).append(this.template());
+
         if (this.flagEvent) {
           this.renderMap();
         }
@@ -80,7 +89,29 @@ define([
             maxZoom: 18
           }).addTo(self.map);
 
-          /* checks if there's a point saved on the model:
+          /* extending Leaflet in order to create a "Locate me" control */
+          L.Control.LocateMe = L.Control.extend({
+            options: {
+              position: 'topright'
+            },
+            onAdd: function (map) {
+              var controlDiv = L.DomUtil.create('div', 'locate-me-btn');
+
+              L.DomEvent
+                .addListener(controlDiv, 'click', L.DomEvent.stopPropagation)
+                .addListener(controlDiv, 'click', L.DomEvent.preventDefault)
+                .addListener(controlDiv, 'click', function () { self.panToCurrentPosition(); });
+
+              var icon = L.DomUtil.create('img', 'locate-me-icon', controlDiv);
+              icon.setAttribute('src', '/res/img/locate-me-icon.jpg');
+
+              return controlDiv;
+            }
+          });
+          self.map.addControl(new L.Control.LocateMe({}));
+
+          /* 
+            checks if there's a point saved on the model:
             if there is one, centers the map on that point and adds the marker on that point;
             if there isn't, centers the map on the current location (taken from Cordova) and
             doesn't place any viewfinder;
@@ -88,7 +119,6 @@ define([
           var modelPoint = self.model.attributes.point;
           if (modelPoint) {
             // there is one: centers the map on the model's point and adds the marker on that point
-
             self.map.setView([modelPoint.latitude, modelPoint.longitude], 15);
             self.setMarkerFromPoint(modelPoint);
             self.createViewfinder();
@@ -96,7 +126,6 @@ define([
           } else {
             // no point on the model: centers the map on the current location (taken from Cordova) and
             // doesn't place any viewfinder
-
             navigator.geolocation.getCurrentPosition(
               // success
               function (currPosition) {
@@ -113,29 +142,46 @@ define([
         }, 1000);
       },
 
+      panToCurrentPosition: function () {
+        var self = this;
+        navigator.geolocation.getCurrentPosition(
+          // success
+          function (currPosition) {
+            self.map.panTo([currPosition.coords.latitude, currPosition.coords.longitude]);
+          },
+          // error
+          null,
+          // options
+          {enableHighAccuracy: true, timeout: 20000}
+        );
+      },
+
       createViewfinder: function () {
         /* creates the center of the viewfinder and adds it to the map */
-        this.viewfinderCenter = L.circle(this.map.getCenter(), ks.VIEWFINDER_INT_RADIUS, {
+        var viewfinderCenterRadius = 
+        this.viewfinderCenter = L.circleMarker(this.map.getCenter(), {
           stroke: false,
           fill: true,
           fillColor: '#222',
-          fillOpacity: 1,
-          clickable: false
+          fillOpacity: 0.9,
+          clickable: false,
+          radius: ks.VIEWFINDER_INT_RADIUS
         }).addTo(this.map);
 
         /* creates the external circle of the viewfinder and adds it to the map */
-        this.viewfinder = L.circle(this.map.getCenter(), ks.VIEWFINDER_EXT_RADIUS, {
+        this.viewfinder = L.circleMarker(this.map.getCenter(), {
           color: '#555',      // color of the stroke
           weight: 2,          // width of the stroke radius
           fill: true,         // whether the circle is filled
           fillColor: '#555',
           fillOpacity: 0.2,
-          clickable: false
+          clickable: false,
+          radius: ks.VIEWFINDER_EXT_RADIUS
         }).addTo(this.map);
 
-        /* relocates the viewfinder to the current center of the map */
+        /* relocates the viewfinder to the current center of the map when the map moves*/
         var self = this;
-        this.map.on('drag', function (e) {
+        this.map.on('move', function (e) {
           self.viewfinder.setLatLng(self.map.getCenter());
           self.viewfinderCenter.setLatLng(self.map.getCenter());
         });

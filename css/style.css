@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* STANDARD FOR MOBILE */
 * {
   /* make transparent link selection, adjust last value opacity 0 to 1.0 */
@@ -76,8 +77,16 @@ ul#list {
   height: 400px;
   width: 100%; }
 
+.locate-me-icon {
+  width: 30px;
+  height: 30px;
+  display: block;
+  padding: 3px; }
+  .locate-me-icon:hover {
+    background-color: rgba(0, 0, 0, 0.1); }
+
 #photo {
-  height: 100px;
+  height: 10px;
   width: 50%;
   float: left;
   background-color: pink;

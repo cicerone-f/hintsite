@@ -97,8 +97,19 @@ ul#list {
   height: 400px;
   width: 100%;
 }
+
+.locate-me-icon {
+    // background-image: url("http://www.designdownloader.com/item/pngl/circle_15/circle_15-20110903141800-00024.png");
+    width: $map-locate-me-icon-size;
+    height: $map-locate-me-icon-size;
+    display: block;
+    padding: 3px;
+
+    &:hover { background-color: rgba(0, 0, 0, 0.1); }
+}
+
 #photo {
-  height: 100px;
+  height: 10px;
   width: 50%;
   float:left;
   background-color: pink;
