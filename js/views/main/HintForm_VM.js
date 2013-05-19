@@ -70,18 +70,19 @@ define([
         },
 
         uploadPicture: function (imageURI) {
+          var image_name = this.model.attributes.matchId + new Date().getTime();
           var options = new FileUploadOptions();
           options.fileKey = "file";
           options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
           options.mimeType = "image/jpeg";
 
           var params = new Object();
-          params.image_name = this.model.attributes.matchId + new Date().getTime();
+          params.image_name = image_name;
           options.params = params;
           options.chunkedMode = false;
-
+          var self = this;
           var win = function win(r) {
-            this.model.updateImageUrl('http://www.hintsiteapp.com/public_images/'+params.image_name);
+            self.model.updateImageUrl('http://www.hintsiteapp.com/public_images/'+image_name);
           };
 
           var fail = function fail(error) {
