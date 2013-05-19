@@ -82,7 +82,7 @@ define([
           options.chunkedMode = false;
           var self = this;
           var win = function win() {
-            self.model.updateImageUrl('http://www.hintsiteapp.com/public_images/'+image_name);
+            self.model.updateImageUrl('http://www.hintsiteapp.com/public_images/'+image_name+'.jpg');
           };
 
           var fail = function fail(error) {
