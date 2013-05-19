@@ -35,6 +35,9 @@ define([
               {title: header.titles.ElencoPartite_VM}
             ).el).append(viewContent).append(new Match_VSL().render().el);
           return this;
+        },
+        removeElements: function() {
+          
         }
       });
 

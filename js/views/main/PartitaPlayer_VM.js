@@ -32,6 +32,9 @@ define([
             }).render().el);
 
           return this;
+        },
+        removeElements: function() {
+          
         }
       });
 

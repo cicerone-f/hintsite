@@ -54,14 +54,8 @@ define([
         "editMatch/:id": "editMatchDraft",
         "setLaunchTime/:id": "setLTime",
         "hints/edit/:id": "hintForm",
-        "sethintposition/:id": "setHintP"
-      },
-
-      initialize: function () {
-        $('#back').on('touchend', function (event) {
-          window.history.back();
-          return false; //evito evento default browser
-        });
+        "sethintposition/:id": "setHintP",
+        "back": "backToPrevious"
       },
 
       userControl: function () {
@@ -150,13 +144,24 @@ define([
 
       changePage: function (page) {
         if(this.currentView) {
+           this.currentView.removeElements();
            this.currentView.remove();
+           console.log("destroyed view ");
          }
-
         this.currentView = page;
         page.render();
         $('body').append($(page.el));
-      }
+      },
+
+      backToPrevious: function () {
+        if(this.currentView) {
+          this.currentView.removeElements();
+          this.currentView.remove();
+          console.log("destroyed view back");
+        }
+        window.history.back();
+        return false;  
+      } 
 
     });
 

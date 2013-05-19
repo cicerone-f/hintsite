@@ -31,14 +31,7 @@ define([
           'SetLaunchTime_VM': "Set Launch Time"
         },
         goBack: function () {
-          if (Parse.history.routesHit > 1) {
-            //more than one route hit -> user did not land to current page directly
-            window.history.back();
-          } else {
-            //otherwise go to the home page. Use replaceState if available so
-            //the navigation doesn't create an extra history entry
-            Parse.history.navigate('', {trigger: true });
-          }
+          Parse.history.navigate('back',{trigger:true,replace:true});
         },
         initialize: function () {
         },

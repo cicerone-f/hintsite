@@ -102,6 +102,9 @@ define([
             .html(header.render({'title': title}).el)
             .append(this.template(hint));
           return this;
+        },
+        removeElements: function() {
+          
         }
 
       });

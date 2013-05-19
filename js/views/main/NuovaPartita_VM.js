@@ -43,9 +43,11 @@ define([
           this.collection.on("NuovaPartita_VM_COLLECTIONCOMPLETED", this.render, this);
           this.collection.on("add", this.render, this);
           if (this.options.matchIdToGet) {
+            console.log(this.options.matchIdToGet);
             this.model.id = this.options.matchIdToGet;
             this.model.fetchFromP("NuovaPartita_VM");
           } else {
+            console.log("else");
             this.model.saveDraftToP();
           }
         },
@@ -99,6 +101,10 @@ define([
             .append(hintlistedit.render().el)
             .append(launchfooter.render().el);
           return this;
+        },
+        removeElements: function() {
+          //this.model.destroy();
+          this.collection.reset();
         }
 
       });

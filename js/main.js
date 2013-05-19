@@ -62,6 +62,8 @@ require([
 
       new AppRouter();     // JSLint says "do not use 'new' for side effects"
       Parse.history.start();
+      Parse.history.length = 0;
+      Parse.history.on('route', function () { ++this.length; });
 
     }
   });

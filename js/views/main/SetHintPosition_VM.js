@@ -74,6 +74,10 @@ define([
         }
         return this;
       },
+      
+      removeElements: function() {
+          
+      },
 
       renderMap: function () {
         var self = this;

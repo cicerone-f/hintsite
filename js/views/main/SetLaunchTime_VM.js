@@ -101,6 +101,9 @@ define([
         return this;
 
 
+      },
+      removeElements: function() {
+          
       }
     });
 
