@@ -26,6 +26,7 @@ define([
       },
 
       updateGeoPoint: function (geoPoint) {
+        self = this;
         this.save({
           point: geoPoint,
         }, {
@@ -38,6 +39,7 @@ define([
       },
 
       updateDescription: function(description) {
+        self = this;
         this.save({
           description: description,
         }, {
@@ -50,6 +52,7 @@ define([
       },
 
       updateImageUrl: function(fileURL) {
+        self = this;
         this.save({
           image: fileURL,
         }, {

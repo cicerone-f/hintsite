@@ -81,7 +81,7 @@ define([
           options.params = params;
           options.chunkedMode = false;
           var self = this;
-          var win = function win(r) {
+          var win = function win() {
             self.model.updateImageUrl('http://www.hintsiteapp.com/public_images/'+image_name);
           };
 
