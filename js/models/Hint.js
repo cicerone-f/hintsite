@@ -11,11 +11,11 @@ define([
         ACL: "",
         number: 0,
         description: "",
-        image: 0
+        image: ""
       },
 
       fetchFromP: function () {
-        self = this;
+        var self = this;
         this.fetch({
           success: function () {
             self.trigger('HintForm_VM_HINTSYNC');
@@ -26,7 +26,7 @@ define([
       },
 
       updateGeoPoint: function (geoPoint) {
-        self = this;
+        var self = this;
         this.save({
           point: geoPoint,
         }, {
@@ -39,7 +39,7 @@ define([
       },
 
       updateDescription: function(description) {
-        self = this;
+        var self = this;
         this.save({
           description: description,
         }, {
@@ -52,7 +52,7 @@ define([
       },
 
       updateImageUrl: function(fileURL) {
-        self = this;
+        var self = this;
         this.save({
           image: fileURL,
         }, {

@@ -45,7 +45,8 @@ define([
             success: function (){
               self.trigger('NuovaPartita_VM_COLLECTIONCOMPLETED', this);
             },
-            error: function(){
+            error: function(error){
+              console.log(error);
             }
           }
         );

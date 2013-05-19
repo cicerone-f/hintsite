@@ -50,7 +50,7 @@ define([
         });
       },
       fetchFromP: function (vm){
-        self = this;
+        var self = this;
         this.fetch({ 
           success: function() {
             self.trigger(vm+'_MATCHSYNC');
@@ -60,6 +60,7 @@ define([
         });
       },
       salvaTimePartita: function (t,vm) {
+        var self = this;
         this.save({
           launchTime: t,
         }, {
