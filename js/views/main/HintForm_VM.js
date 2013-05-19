@@ -73,14 +73,15 @@ define([
           options.fileKey = "file";
           options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
           options.mimeType = "image/jpeg";
-          options.headers = {
-            "X-Parse-Application-Id": "LkaGTOk7RGUaPXM0r9HQImwPAnmqUuhjF1QttcNE",
-            "X-Parse-REST-API-Key": "gQ54fz7nlzbrI1DQbHsmaL3vAsUA9rxoSQPQjmxi",
-            "Content-Type": "image/jpeg"
-          };
+
+          var params = new Object();
+          params.image_name = options.fileName;
+          options.params = params;
+          options.chunkedMode = false;
 
           var win = function win(r) {
             alert("Code = " + r.responseCode);
+            console.log(response);
           };
 
           var fail = function fail(error) {
@@ -88,7 +89,7 @@ define([
           };
 
           var ft = new FileTransfer();
-          ft.upload(imageURI, encodeURI("https://api.parse.com/1/files/"+imageURI), win, fail, options, true);
+          ft.upload(imageURI, encodeURI("http://www.hintsiteapp.com/s/s.php"), win, fail, options, true);
         },
 
         render: function (eventName) {
