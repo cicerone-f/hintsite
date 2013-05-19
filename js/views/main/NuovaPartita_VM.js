@@ -30,6 +30,7 @@ define([
     LoadingView
   ) {
     var NuovaPartita_VM = Parse.View.extend({
+        id: 'container',
         template: Handlebars.compile(template),
         model: new Match(),
         collection: new HintCollection(),
@@ -60,7 +61,7 @@ define([
         },
 
         navigateToSetLaunchTime : function () {
-          Parse.history.navigate('setLaunchTime/'+ this.model.id, { trigger : true });
+          Parse.history.navigate('setLaunchTime/' + this.model.id, { trigger : true });
         },
 
         lp: function () {

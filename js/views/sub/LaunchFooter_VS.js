@@ -19,7 +19,7 @@ define([
 
     var LaunchFooter_VS = Parse.View.extend({
         tagName: "div",
-        id: "launchfooter",
+        id: "launch-footer",
         template: Handlebars.compile(template),
         initialize: function () {
         },

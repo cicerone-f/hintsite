@@ -44,7 +44,7 @@ define([
 
     var SetHintPosition_VM = Parse.View.extend({
       tagName: 'div',
-      id: '#container',
+      id: 'container',
       model: new Hint(),
       events: {
         /* a click on the "Set Point" button */
@@ -58,7 +58,7 @@ define([
         this.flagEvent = false;
         this.model.id = this.options.hintIdToGet;
         this.model.on('HintForm_VM_HINTSYNC', this.setFlagEventListener, this);
-        
+
         /* this event is triggerent when a GeoPoint is saved to Parse */
         this.model.on('SetHintPosition_VM_POINTUPDATED', this.setGeoPointCallback, this);
         this.model.fetchFromP();
@@ -103,7 +103,7 @@ define([
                 .addListener(controlDiv, 'click', function () { self.panToCurrentPosition(); });
 
               var icon = L.DomUtil.create('img', 'locate-me-icon', controlDiv);
-              icon.setAttribute('src', '/res/img/locate-me-icon.png');
+              icon.setAttribute('src', 'res/img/locate-me-icon.png');
 
               return controlDiv;
             }
@@ -158,7 +158,7 @@ define([
 
       createViewfinder: function () {
         /* creates the center of the viewfinder and adds it to the map */
-        var viewfinderCenterRadius = 
+        var viewfinderCenterRadius;
         this.viewfinderCenter = L.circleMarker(this.map.getCenter(), {
           stroke: false,
           fill: true,
@@ -210,7 +210,7 @@ define([
         }
 
         var pinIcon = new L.Icon({
-          iconUrl: '/res/img/pin-with-shadow.png',            // absolute URL
+          iconUrl: 'res/img/pin-with-shadow.png',            // absolute URL
           iconSize: new L.Point(ks.PIN_WIDTH, ks.PIN_HEIGHT), // in px
           iconAnchor: new L.Point(20, 10),                    // in px, offset from the center of the icon
         });
