@@ -47,6 +47,17 @@ define([
           error: function (e) {
           }
         });
+      },
+
+      updateImageUrl: function(fileURL) {
+        this.save({
+          image: fileURL,
+        }, {
+          success: function (result) {
+            self.trigger('HintForm_VM_IMAGEUPDATED')
+          },
+          error: function (e) {
+          }
       }
     });
 

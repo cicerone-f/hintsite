@@ -28,6 +28,7 @@ define([
         initialize: function () {
           this.model.id = this.options.hintIdToGet;
           this.model.on('HintForm_VM_HINTSYNC', this.render, this);
+          this.model.on('HintForm_VM_IMAGEUPDATED', this.render, this);
           this.model.fetchFromP();
         },
         events: {
@@ -80,8 +81,7 @@ define([
           options.chunkedMode = false;
 
           var win = function win(r) {
-            alert("Code = " + r.responseCode);
-            console.log(response);
+            this.model.updateImageUrl(r.response);
           };
 
           var fail = function fail(error) {
