@@ -103,7 +103,7 @@ define([
                 .addListener(controlDiv, 'click', function () { self.panToCurrentPosition(); });
 
               var icon = L.DomUtil.create('img', 'locate-me-icon', controlDiv);
-              icon.setAttribute('src', '/res/img/locate-me-icon.jpg');
+              icon.setAttribute('src', '/res/img/locate-me-icon.png');
 
               return controlDiv;
             }
