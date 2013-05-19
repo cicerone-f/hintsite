@@ -59,7 +59,7 @@ define([
           };
           var self = this;
           var cameraSuccess = function (imageURI) {
-            self.model.set("image", imageURI);
+            //self.model.set("image", imageURI);
             self.uploadPicture(imageURI);
             console.log(imageURI);
           };
@@ -76,12 +76,12 @@ define([
           options.mimeType = "image/jpeg";
 
           var params = new Object();
-          params.image_name = options.fileName;
+          params.image_name = this.model.attributes.matchId + new Date().getTime();
           options.params = params;
           options.chunkedMode = false;
 
           var win = function win(r) {
-            this.model.updateImageUrl(r.response);
+            this.model.updateImageUrl('http://www.hintsiteapp.com/public_images/'+params.image_name);
           };
 
           var fail = function fail(error) {
