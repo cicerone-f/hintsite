@@ -24,8 +24,9 @@ define([
     var HintForm_VM = Parse.View.extend({
       id: 'container',
         template: Handlebars.compile(template),
-        model: new Hint(),
+        model: Hint,
         initialize: function () {
+          this.model = new Hint();
           this.model.id = this.options.hintIdToGet;
           this.model.on('HintForm_VM_HINTSYNC', this.render, this);
           this.model.on('HintForm_VM_IMAGEUPDATED', this.render, this);
@@ -95,16 +96,13 @@ define([
 
         render: function (eventName) {
           
-          var header = new Header_VS();
+          var header = new Header_VS({owner: "HintForm_VM", backViewModelId:this.model.attributes.matchId });
           var hint = this.model.toJSON();
-          var title = "Hint #"+ this.model.attributes.number;
+          //var title = "Hint #"+ this.model.attributes.number;
           $(this.el)
-            .html(header.render({'title': title}).el)
+            .html(header.render().el)
             .append(this.template(hint));
           return this;
-        },
-        removeElements: function() {
-          
         }
 
       });

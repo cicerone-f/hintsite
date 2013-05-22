@@ -45,7 +45,7 @@ define([
     var SetHintPosition_VM = Parse.View.extend({
       tagName: 'div',
       id: 'container',
-      model: new Hint(),
+      model: Hint,
       events: {
         /* a click on the "Set Point" button */
         "touchend #set-point-btn": "setGeoPoint"
@@ -54,6 +54,7 @@ define([
       template: Handlebars.compile(template),
 
       initialize: function () {
+        this.model = new Hint();
         this.loading = new LoadingView();
         this.flagEvent = false;
         this.model.id = this.options.hintIdToGet;
@@ -65,18 +66,14 @@ define([
       },
 
       render: function (eventName) {
-        var header = new Header_VS();
-        var title = "Select Point for Hint #" + this.model.attributes.number;
-        $(this.el).html(header.render({'title': title}).el).append(this.template());
+        var header = new Header_VS({owner: "SetHintPosition_VM" , backViewModelId:this.model.id  });
+        //var title = "Select Point for Hint #" + this.model.attributes.number;
+        $(this.el).html(header.render().el).append(this.template());
 
         if (this.flagEvent) {
           this.renderMap();
         }
         return this;
-      },
-      
-      removeElements: function() {
-          
       },
 
       renderMap: function () {

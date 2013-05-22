@@ -29,15 +29,10 @@ define([
         render: function (eventName) {
           $(this.el).empty();
           var viewContent = new NewMatch_VS().render().el;
-          var header = new Header_VS();
+          var header = new Header_VS({owner: "ElencoPartite_VM",backViewModelId:0});
           $(this.el).html(
-            header.render(
-              {title: header.titles.ElencoPartite_VM}
-            ).el).append(viewContent).append(new Match_VSL().render().el);
+            header.render().el).append(viewContent).append(new Match_VSL().render().el);
           return this;
-        },
-        removeElements: function() {
-          
         }
       });
 

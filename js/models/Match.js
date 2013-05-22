@@ -23,26 +23,26 @@ define([
           }
         });
       },
-      salvaNomePartita: function (n) {
+      salvaNomePartita: function (vm,n) {
         var self = this;
         this.save({
-          name: n,
+          name: n
         }, {
           success: function (result) {
-            self.trigger('NuovaPartita_VM_MATCHNAMEUPDATED');
+            self.trigger( vm+'_MATCHNAMEUPDATED');
           },
           error: function (e) {
 
           }
         });
       },
-      launchPartita: function () {
+      launchPartita: function (vm) {
         var self = this;
         this.save({
-          state: self.states.RUNNING,
+          state: self.states.RUNNING
         }, {
           success: function (result) {
-            self.trigger('NuovaPartita_VM_MATCHLAUNCHED');
+            self.trigger(vm+'_MATCHLAUNCHED');
           },
           error: function (e) {
 
@@ -62,7 +62,7 @@ define([
       salvaTimePartita: function (t,vm) {
         var self = this;
         this.save({
-          launchTime: t,
+          launchTime: t
         }, {
           success: function (result) {
             self.trigger(vm+'_MATCHTIMEUPDATED');

@@ -52,9 +52,6 @@ define([
         render: function (eventName) {
           $(this.el).html(this.template());
           return this;
-        },
-        removeElements: function() {
-          
         }
       });
 

@@ -14,6 +14,7 @@ define([
   "views/main/HintFull_VM",
   "views/main/PartitaPlayer_VM",
   "views/main/NuovaPartita_VM",
+  "views/main/EditPartita_VM",  
   "views/sub/list/HintPreview_VSL",
   "views/main/ElencoPartite_VM",
   "views/sub/list/Match_VSL",
@@ -33,6 +34,7 @@ define([
       HintFull_VM,
       PartitaPlayer_VM,
       NuovaPartita_VM,
+      EditPartita_VM,
       HintPreview_VSL,
       ElencoPartite_VM,
       Match_VSL,
@@ -53,9 +55,9 @@ define([
         "newMatch": "newMatch",
         "editMatch/:id": "editMatchDraft",
         "setLaunchTime/:id": "setLTime",
-        "hints/edit/:id": "hintForm",
+        "hintsedit/:id": "hintForm",
         "sethintposition/:id": "setHintP",
-        "back": "backToPrevious"
+        "back/:view/:param": "backToPrevious"
       },
 
       userControl: function () {
@@ -100,6 +102,7 @@ define([
       },
 
       matchDetails: function (id) {
+        console.log("matchDetails");
         var self = this;
         var query = new Parse.Query(Match);
         var match = query.get(id, {
@@ -119,7 +122,7 @@ define([
       },
 
       editMatchDraft: function (id) {
-        this.changePage(new NuovaPartita_VM(
+        this.changePage(new EditPartita_VM(
           {'matchIdToGet': id})
         );
       },
@@ -144,22 +147,34 @@ define([
 
       changePage: function (page) {
         if(this.currentView) {
-           this.currentView.removeElements();
            this.currentView.remove();
-           console.log("destroyed view ");
          }
         this.currentView = page;
         page.render();
         $('body').append($(page.el));
       },
 
-      backToPrevious: function () {
+      mappaBack: {
+        "SetLaunchTime_VM": "editMatch",     //  + /id
+        "ElencoPartite_VM": "",
+        "NuovaPartita_VM": "",
+        "EditPartita_VM": "",        
+        "PartitaPlayer_VM": "",
+        "HintForm_VM": "editMatch",          //  + /id
+        "SetHintPosition_VM": "hintsedit",  //  + /id
+        "HintFull_VM": "matches"             //  + /id
+      },
+
+      backToPrevious: function (view,param) {
+        console.log(this.mappaBack[view] +'/'+ param);
         if(this.currentView) {
-          this.currentView.removeElements();
           this.currentView.remove();
-          console.log("destroyed view back");
         }
-        window.history.back();
+        if(param==0){
+          Parse.history.navigate(this.mappaBack[view] , { trigger : true, replace : true });          
+        }else{
+          Parse.history.navigate(this.mappaBack[view] +'/'+ param , { trigger : true, replace : true });
+        }
         return false;  
       } 
 

@@ -24,17 +24,14 @@ define([
         id: "container",
 
         render: function (eventName) {
-          var header = new Header_VS();
+          var header = new Header_VS({owner: "PartitaPlayer_VM",backViewModelId:0});
           $(this.el)
-            .html(header.render({title: this.model.get('name')}).el)
+            .html(header.render().el)
             .append(new HintPreview_VSL({
               model: this.model
             }).render().el);
 
           return this;
-        },
-        removeElements: function() {
-          
         }
       });
 

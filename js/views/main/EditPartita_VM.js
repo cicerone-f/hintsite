@@ -29,7 +29,7 @@ define([
     HintEdit_VSL,
     LoadingView
   ) {
-    var NuovaPartita_VM = Parse.View.extend({
+    var EditPartita_VM = Parse.View.extend({
         id: 'container',
         template: Handlebars.compile(template),
         model: Match,
@@ -38,11 +38,13 @@ define([
           this.model = new Match();
           this.collection = new HintCollection();
           this.loading = new LoadingView();
-          this.model.on("NuovaPartita_VM_MATCHCREATED", this.cfh, this);
-          this.model.on("NuovaPartita_VM_MATCHNAMEUPDATED", this.removeLoading, this);
-          this.model.on("NuovaPartita_VM_MATCHLAUNCHED", this.navigateToElencoPartite, this);
-          this.collection.on("NuovaPartita_VM_COLLECTIONCOMPLETED", this.render, this);
-          this.model.saveDraftToP();
+          this.model.on("EditPartita_VM_MATCHSYNC", this.sfh, this);
+          this.collection.on("add", this.render, this);
+          this.model.on("EditPartita_VM_MATCHNAMEUPDATED", this.removeLoading, this);
+          this.model.on("EditPartita_VM_MATCHLAUNCHED", this.navigateToElencoPartite, this);
+          this.model.id = this.options.matchIdToGet;
+          this.model.fetchFromP("EditPartita_VM");
+          
         },
         events: {
           "blur #matchname": "snp",
@@ -61,22 +63,16 @@ define([
 
         lp: function () {
           this.loading.render();
-          this.model.launchPartita("NuovaPartita_VM");
-        },
-
-        cfh: function () {
-          //console.log(this.model.id);
-          this.collection.createFourHints(this.model.id);
+          this.model.launchPartita("EditPartita_VM");
         },
 
         sfh: function () {
-          //console.log(this.model.id);
           this.collection.getFromParse(this.model.id);
         },
 
         snp: function () {
           this.loading.render();
-          this.model.salvaNomePartita("NuovaPartita_VM",$("#matchname").val());
+          this.model.salvaNomePartita("EditPartita_VM",$("#matchname").val());
         },
 
         removeLoading: function () {
@@ -84,7 +80,7 @@ define([
         },
 
         render: function (eventName) {
-          var header = new Header_VS({owner: "NuovaPartita_VM",backViewModelId:0});
+          var header = new Header_VS({owner: "EditPartita_VM",backViewModelId:0});
           var launchfooter = new LaunchFooter_VS();
           var hintlistedit = new HintEdit_VSL({collection: this.collection});
           var match = this.model.toJSON();
@@ -97,5 +93,5 @@ define([
         }
 
       });
-    return NuovaPartita_VM;
+    return EditPartita_VM;
   });

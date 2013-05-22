@@ -7,7 +7,8 @@ define([
   "backbone",
   "Parse",
   "handlebars",
-  "text!templates/main/hint-details.html"
+  "text!templates/main/hint-details.html",
+  "views/sub/Header_VS"
 ],
     function (
     $,
@@ -15,27 +16,18 @@ define([
     Backbone,
     Parse,
     Handlebars,
-    template
+    template,
+    Header_VS
   ) {
 
     var HintFull_VM = Parse.View.extend({
 
-        events: {
-          "touchend #back": "goBack"
-        },
-
-        goBack: function () {
-          window.history.back();
-        },
-
         template: Handlebars.compile(template),
 
         render: function (eventName) {
-          $(this.el).html(this.template(this.model.toJSON()));
+          var header = new Header_VS({owner: "HintFull_VM",backViewModelId:this.model.attributes.matchId});
+          $(this.el).html(header.render().el).append(this.template(this.model.toJSON()));
           return this;
-        },
-        removeElements: function() {
-          
         }
       });
 

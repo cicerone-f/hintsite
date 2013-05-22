@@ -24,20 +24,21 @@ define([
         events: {
           "touchend #back": "goBack"
         },
-        titles: {
-          'ElencoPartite_VM': "Elenco Partite",
-          'PartitaPlayer_VM': "Partita Player",
-          'NuovaPartita_VM': "Crea Nuova Partita",
-          'SetLaunchTime_VM': "Set Launch Time"
-        },
         goBack: function () {
-          Parse.history.navigate('back',{trigger:true,replace:true});
+          Parse.history.navigate('back/'+this.options.owner+"/"+this.options.backViewModelId, { trigger : true, replace : true });
         },
         initialize: function () {
         },
-        render: function (t) {
+        render: function () {
           $(this.el).empty();
-          $(this.el).html(this.template(t));
+          $(this.el).html(
+            this.template({
+              title:this.options.owner
+              }
+            )
+          );
+          if (this.model)
+              console.log(this.model);
           return this;
         }
       });

@@ -36,13 +36,14 @@ define([
     var SetLaunchTime_VM = Parse.View.extend({
       id: 'container',
       template: Handlebars.compile(template),
-      model: new Match(),
+      model: Match,
       initialize: function () {
+        this.model = new Match();
         this.loading = new LoadingView();
         this.model.id = this.options.matchIdToGet;
         this.model.fetchFromP("SetLaunchTime_VM");
         this.model.on("SetLaunchTime_VM_MATCHSYNC", this.setFlag, this);
-        this.model.on("SetLaunchTime_VM_MATCHTIMEUPDATED", this.removeLoading, this);
+        this.model.on("SetLaunchTime_VM_MATCHTIMEUPDATED", this.backToPreviousView, this);
       },
       events: {
         "touchend #menoday": "menoday",
@@ -78,12 +79,13 @@ define([
         }
         this.render();
       },
-      removeLoading: function () {
+      backToPreviousView: function () {
         this.loading.remove();
+        Parse.history.navigate('back/SetLaunchTime_VM/'+this.model.id, { trigger : true, replace : true });
       },
 
       render: function (eventName) {
-        var header = new Header_VS();
+        var header = new Header_VS({owner: "SetLaunchTime_VM",backViewModelId:this.model.id});
         var launchDate = new Date(this.model.attributes.launchTime);
         var numGiorno = launchDate.getDate();
         var numMese = launchDate.getMonth();
@@ -94,16 +96,11 @@ define([
         var oramin = hour + ":" + min;
         var seconds = launchDate.getSeconds();
         $(this.el).html(
-          header.render(
-            {title: header.titles.SetLaunchTime_VM}
-          ).el
-        ).append(this.template({day: giornomeseanno, time: oramin}));
+          header.render().el
+          ).append(this.template({day: giornomeseanno, time: oramin}));
         return this;
 
 
-      },
-      removeElements: function() {
-          
       }
     });
 

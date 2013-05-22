@@ -41,7 +41,7 @@ define([
         },
 
         goToEdit: function () {
-          Parse.history.navigate("hints/edit/" + this.model.id, {trigger: true});
+          Parse.history.navigate("hintsedit/" + this.model.id, {trigger: true});
         }
       });
 
