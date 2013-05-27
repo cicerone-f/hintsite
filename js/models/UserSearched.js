@@ -20,6 +20,20 @@ define([
             console.log(error);
           }
         });
+      },
+      getFromParseId: function (UserId) {
+        console.log('results');
+        var query = new Parse.Query(Parse.User);
+        var self = this;
+        query.get(UserId, {
+          success: function (results) {
+            self.trigger("PmsEdit_VSI_USERFOUND");
+
+          },
+          error: function (error) {
+            console.log(error);
+          }
+        });
       }
     });
 
