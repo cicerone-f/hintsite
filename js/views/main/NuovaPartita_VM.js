@@ -8,6 +8,7 @@ define([
   "Parse",
   "handlebars",
   "models/Match",
+  "models/Pms",
   "collections/HintCollection",
   "text!templates/main/new-match.html",
   "views/sub/Header_VS",
@@ -22,6 +23,7 @@ define([
     Parse,
     Handlebars,
     Match,
+    Pms,
     HintCollection,
     template,
     Header_VS,
@@ -70,8 +72,8 @@ define([
         cfh: function () {
           this.collection.createFourHints(this.model.id);
         },
-        
-        saveMasterDopoCreaPartita: function(){
+
+        saveMasterDopoCreaPartita: function () {
           this.pms.saveMaster();
         },
 
@@ -82,7 +84,7 @@ define([
 
         snp: function () {
           this.loading.render();
-          this.model.salvaNomePartita("NuovaPartita_VM",$("#matchname").val());
+          this.model.salvaNomePartita("NuovaPartita_VM", $("#matchname").val());
         },
 
         removeLoading: function () {
@@ -90,7 +92,7 @@ define([
         },
 
         render: function (eventName) {
-          var header = new Header_VS({owner: "NuovaPartita_VM",backViewModelId:0});
+          var header = new Header_VS({owner: "NuovaPartita_VM", backViewModelId: 0});
           var launchfooter = new LaunchFooter_VS();
           var hintlistedit = new HintEdit_VSL({collection: this.collection});
           var match = this.model.toJSON();
