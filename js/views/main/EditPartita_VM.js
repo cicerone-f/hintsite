@@ -49,7 +49,8 @@ define([
         events: {
           "blur #matchname": "snp",
           "click #launch": "lp",
-          "click #setlaunchtime": "navigateToSetLaunchTime"
+          "click #setlaunchtime": "navigateToSetLaunchTime",
+          "click #addPlayers": "navigateToSelezioneGiocatori"
         },
 
         navigateToElencoPartite : function () {
@@ -59,6 +60,10 @@ define([
 
         navigateToSetLaunchTime : function () {
           Parse.history.navigate('setLaunchTime/' + this.model.id, { trigger : true });
+        },
+
+        navigateToSelezioneGiocatori : function () {
+          Parse.history.navigate('selezioneGiocatori/' + this.model.id, { trigger : true });
         },
 
         lp: function () {

@@ -272,6 +272,22 @@ ul#list {
   height: 70px;
 }
 
+#selezione-giocatori-footer {
+  width: 100%;
+  height: 10%;
+}
+
+#selezione-giocatori-footer span {
+  width: 30%;
+  margin: 0 1%;
+  height: 100%;
+  border: 1px solid orange;
+  float: left;
+  text-align: center;
+}
+
+
+
 
 @-webkit-keyframes appear {
   from {

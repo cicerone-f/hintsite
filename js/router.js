@@ -20,6 +20,7 @@ define([
   "views/sub/list/Match_VSL",
   "views/main/LogIn_VM",
   "views/main/SetLaunchTime_VM",
+  "views/main/SelezioneGiocatori_VM",
   "views/main/HintForm_VM",
   "views/main/SetHintPosition_VM"
 ],
@@ -40,6 +41,7 @@ define([
       Match_VSL,
       LogIn_VM,
       SetLaunchTime_VM,
+      SelezioneGiocatori_VM,
       HintForm_VM,
       SetHintPosition_VM
     ) {
@@ -55,6 +57,7 @@ define([
         "newMatch": "newMatch",
         "editMatch/:id": "editMatchDraft",
         "setLaunchTime/:id": "setLTime",
+        "selezioneGiocatori/:id": "selGiocatori",
         "hintsedit/:id": "hintForm",
         "sethintposition/:id": "setHintP",
         "back/:view/:param": "backToPrevious"
@@ -132,6 +135,12 @@ define([
           new SetLaunchTime_VM({'matchIdToGet':id})
         );
       },
+
+      selGiocatori: function (id) {
+        this.changePage(
+          new SelezioneGiocatori_VM({'matchIdToGet':id})
+        );
+      },
       
       setHintP: function (id) {
         this.changePage(
@@ -162,7 +171,8 @@ define([
         "PartitaPlayer_VM": "",
         "HintForm_VM": "editMatch",          //  + /id
         "SetHintPosition_VM": "hintsedit",  //  + /id
-        "HintFull_VM": "matches"             //  + /id
+        "HintFull_VM": "matches",            //  + /id
+        "SelezioneGiocatori_VM": "editMatch" //  + /id
       },
 
       backToPrevious: function (view,param) {
