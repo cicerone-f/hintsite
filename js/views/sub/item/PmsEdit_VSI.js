@@ -28,10 +28,11 @@ define([
 
         initialize: function () {
           this.PmsUser = new UserSearched();
+          this.PmsUser.id = this.model.attributes.userId;
           this.PmsUser.on("PmsEdit_VSI_USERFOUND", this.render, this);
           this.model.bind("change", this.getUserFromPms, this);
           this.model.bind("destroy", this.close, this);
-          this.PmsUser.getFromParseId(this.model.attributes.userId);
+          this.PmsUser.getFromParseId();
         },
 
         getUserFromPms: function () {
@@ -40,9 +41,7 @@ define([
         },
 
         render: function (eventName) {
-          console.log(this.PmsUser);
-          var pms = this.model.toJSON();
-          pms.cid = this.PmsUser.id;
+          var pms = this.PmsUser.toJSON();
           $(this.el).html(this.template(pms));
           return this;
         }

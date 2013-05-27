@@ -6,7 +6,7 @@ define([
   "Parse"
 ],
   function ($, Parse) {
-    var UserSearched = Parse.User.extend("UserSearched", {
+    var UserSearched = Parse.User.extend({
       getFromParse: function (nick) {
         var query = new Parse.Query(Parse.User);
         query.equalTo("username", nick);
@@ -21,11 +21,9 @@ define([
           }
         });
       },
-      getFromParseId: function (UserId) {
-        console.log('results');
-        var query = new Parse.Query(Parse.User);
+      getFromParseId: function () {
         var self = this;
-        query.get(UserId, {
+        this.fetch({
           success: function (results) {
             self.trigger("PmsEdit_VSI_USERFOUND");
 
