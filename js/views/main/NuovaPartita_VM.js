@@ -33,12 +33,15 @@ define([
         id: 'container',
         template: Handlebars.compile(template),
         model: Match,
+        pms: Pms,
         collection: HintCollection,
         initialize: function () {
           this.model = new Match();
+          this.pms = new Pms();
           this.collection = new HintCollection();
           this.loading = new LoadingView();
-          this.model.on("NuovaPartita_VM_MATCHCREATED", this.cfh, this);
+          this.pms.on("NuovaPartita_VM_PMSMASTERCREATED", this.cfh, this);
+          this.model.on("NuovaPartita_VM_MATCHCREATED", this.saveMasterDopoCreaPartita, this);
           this.model.on("NuovaPartita_VM_MATCHNAMEUPDATED", this.removeLoading, this);
           this.model.on("NuovaPartita_VM_MATCHLAUNCHED", this.navigateToElencoPartite, this);
           this.collection.on("NuovaPartita_VM_COLLECTIONCOMPLETED", this.render, this);
@@ -65,8 +68,11 @@ define([
         },
 
         cfh: function () {
-          //console.log(this.model.id);
           this.collection.createFourHints(this.model.id);
+        },
+        
+        saveMasterDopoCreaPartita: function(){
+          this.pms.saveMaster();
         },
 
         sfh: function () {
