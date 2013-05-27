@@ -24,6 +24,6 @@ define([
         });
       }
     });
-    return Invite;
+    return Pms;
 
   });
