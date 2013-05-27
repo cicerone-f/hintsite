@@ -74,7 +74,7 @@ define([
         },
 
         saveMasterDopoCreaPartita: function () {
-          this.pms.saveMaster();
+          this.pms.saveMaster(this.model.id);
         },
 
         sfh: function () {

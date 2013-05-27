@@ -13,10 +13,10 @@ define([
         this.save({
           userId: Parse.User.current().id,
           matchId: matchId,
-          state: self.states.MASTER
+          state: self.roles.MASTER
         }, {
           success: function (result) {
-            self.trigger('NUOVA_PARTITA_VM_PMSMASTERCREATED');
+            self.trigger('NuovaPartita_VM_PMSMASTERCREATED');
           },
           error: function (e) {
 
