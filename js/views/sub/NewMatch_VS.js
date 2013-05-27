@@ -21,7 +21,7 @@ define([
         tagName: "div",
         id: "NewMatchButton",
         events: {
-          "touchend": "goToCreaPartita"
+          "click": "goToCreaPartita"
         },
         template: Handlebars.compile(template),
         initialize: function () {

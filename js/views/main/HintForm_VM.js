@@ -33,8 +33,8 @@ define([
           this.model.fetchFromP();
         },
         events: {
-          "touchend #mappa": "navigateToSetHintPosition",
-          "touchend #photo": "getPicture",
+          "click #mappa": "navigateToSetHintPosition",
+          "click #photo": "getPicture",
           "blur #hint_description": "saveHintDescription",
         },
         navigateToSetHintPosition : function () {
@@ -60,7 +60,6 @@ define([
           };
           var self = this;
           var cameraSuccess = function (imageURI) {
-            //self.model.set("image", imageURI);
             self.uploadPicture(imageURI);
             console.log(imageURI);
           };

@@ -22,7 +22,7 @@ define([
         id: "header",
         template: Handlebars.compile(template),
         events: {
-          "touchend #back": "goBack"
+          "click #back": "goBack"
         },
         goBack: function () {
           Parse.history.navigate('back/'+this.options.owner+"/"+this.options.backViewModelId, { trigger : true, replace : true });

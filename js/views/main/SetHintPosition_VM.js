@@ -48,7 +48,7 @@ define([
       model: Hint,
       events: {
         /* a click on the "Set Point" button */
-        "touchend #set-point-btn": "setGeoPoint"
+        "click #set-point-btn": "setGeoPoint"
       },
 
       template: Handlebars.compile(template),

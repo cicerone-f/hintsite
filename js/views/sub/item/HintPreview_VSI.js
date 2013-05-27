@@ -23,7 +23,7 @@ define([
         tagName: "li",
 
         events: {
-          "touchend": "goToDetails"
+          "click": "goToDetails"
         },
 
         template: Handlebars.compile(template),

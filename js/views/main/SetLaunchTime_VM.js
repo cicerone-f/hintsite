@@ -46,11 +46,11 @@ define([
         this.model.on("SetLaunchTime_VM_MATCHTIMEUPDATED", this.backToPreviousView, this);
       },
       events: {
-        "touchend #menoday": "menoday",
-        "touchend #piuday": "piuday",
-        "touchend #menotime": "menotime",
-        "touchend #piutime": "piutime",
-        "touchend #setthistime": "setthistime"
+        "click #menoday": "menoday",
+        "click #piuday": "piuday",
+        "click #menotime": "menotime",
+        "click #piutime": "piutime",
+        "click #setthistime": "setthistime"
 
       },
       menoday: function () {

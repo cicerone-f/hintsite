@@ -14,8 +14,8 @@ define([
     var LogIn_VM = Parse.View.extend({
 
         events: {
-          "touchend #log-in-with-facebook": "logFB",
-          "touchend #log-in": "log"
+          "click #log-in-with-facebook": "logFB",
+          "click #log-in": "log"
         },
 
         logFB: function () {

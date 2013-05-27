@@ -46,8 +46,8 @@ define([
         },
         events: {
           "blur #matchname": "snp",
-          "touchend #launch": "lp",
-          "touchend #setlaunchtime": "navigateToSetLaunchTime"
+          "click #launch": "lp",
+          "click #setlaunchtime": "navigateToSetLaunchTime"
         },
 
         navigateToElencoPartite : function () {
