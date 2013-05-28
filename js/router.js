@@ -50,7 +50,6 @@ define([
 
       routes: {
         "": "userControl",
-        "list": "list",  //non la chiama mai nessuno!!
         "mainMatchList": "mainMatchList",
         "matches/:id": "matchDetails",
         "hints/:id": "hintDetails",
@@ -71,11 +70,6 @@ define([
         }
       },
 
-      list: function () {
-        var page = new vslHintPreview({
-        });
-        this.changePage(page);
-      },
 
       mainMatchList: function () {
         var page = new ElencoPartite_VM({

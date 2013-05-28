@@ -57,6 +57,21 @@ define([
             console.log(error);
           }
         });
+      },
+
+      getAllUsersPms: function (){
+        var query = new Parse.Query(Pms);
+        query.equalTo("userId", Parse.User.current().id);
+        query.notEqualTo("userState", 1 );
+        var self = this;
+        query.find({
+          success: function (results) {
+            self.add(results);
+          },
+          error: function (error) {
+            console.log(error);
+          }
+        });
       }
     });
 

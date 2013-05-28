@@ -27,11 +27,12 @@ define([
 
         tagName: "ul",
         id: "list",
+        collection: MatchCollection,
         template: Handlebars.compile(template),
         initialize: function () {
           this.collection = new MatchCollection();
           this.collection.bind("add", this.render, this);
-          this.collection.getFromParse();
+          //this.collection.getFromParse();
         },
 
         render: function (eventName) {
