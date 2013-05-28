@@ -26,18 +26,25 @@ define([
         PmsUser: UserSearched,
         template: Handlebars.compile(template),
 
+        events: {
+          "click .remove-pms": "removePms"
+        },
+
         initialize: function () {
           this.PmsUser = new UserSearched();
           this.PmsUser.id = this.model.attributes.userId;
           this.PmsUser.on("PmsEdit_VSI_USERFOUND", this.render, this);
-          this.model.bind("change", this.getUserFromPms, this);
-          this.model.bind("destroy", this.close, this);
+          this.model.on("change", this.getUserFromPms, this);
+          this.model.on("destroy", this.close, this);
           this.PmsUser.getFromParseId();
         },
 
         getUserFromPms: function () {
-          console.log('aaaa');
           this.PmsUser.getFromParseId(this.model.attributes.userId);
+        },
+
+        removePms: function () {
+          this.model.destroy({wait: true});
         },
 
         render: function (eventName) {

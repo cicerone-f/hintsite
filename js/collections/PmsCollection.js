@@ -16,6 +16,7 @@ define([
       getFromParse: function (matchId) {
         var query = new Parse.Query(Pms);
         query.equalTo("matchId", matchId);
+        query.equalTo("state", 1);
         var self = this;
         query.find({
           success: function (results) {

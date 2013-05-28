@@ -25,18 +25,33 @@ define([
       },
       savePms: function(userId,matchId) {
         var self = this;
-        this.save({
-          userId: userId,
-          matchId: matchId,
-          state: self.roles.LISTED
-        }, {
-          success: function (result) {
-            self.trigger('AddFromSearch_VM_PMSLISTED');
-          },
-          error: function (e) {
+        var query = new Parse.Query(Pms);
+        query.equalTo("matchId", matchId);
+        query.equalTo("userId", userId);
+        query.find({
+          success: function (results) {
+            if (results.length === 0) {
+              self.save({
+                userId: userId,
+                matchId: matchId,
+                state: self.roles.LISTED
+              }, {
+                success: function (result) {
+                  self.trigger('AddFromSearch_VM_PMSLISTED');
+                },
+                error: function (e) {
 
+                }
+              });
+            } else {
+              console.log('already added');
+            }
+          },
+          error: function (error) {
+            console.log(error);
           }
         });
+        
 
       }
 

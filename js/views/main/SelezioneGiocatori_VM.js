@@ -35,6 +35,7 @@ define([
       initialize: function () {
         this.collection = new PmsCollection();
         this.collection.on("add", this.render, this);
+        this.collection.on("remove", this.render, this);
         this.collection.getFromParse(this.options.matchIdToGet);
       },
 
@@ -44,7 +45,7 @@ define([
 
 
       renderAddFromSearch: function (eventName) {
-        var afs = new AddFromSearch_VM({collection:this.collection, matchId:this.options.matchIdToGet});
+        var afs = new AddFromSearch_VM({collection: this.collection, matchId: this.options.matchIdToGet});
         $(this.el).append(afs.render().el);
         return this;
       },
