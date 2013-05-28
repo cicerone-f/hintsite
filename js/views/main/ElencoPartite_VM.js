@@ -10,7 +10,8 @@ define([
   "views/sub/list/Match_VSL",
   "views/sub/NewMatch_VS",
   "views/sub/Header_VS",
-  "collections/PmsCollection"
+  "collections/PmsCollection",
+  "models/Pms"
 ],
     function ($,
       _,
@@ -20,7 +21,8 @@ define([
       Match_VSL,
       NewMatch_VS,
       Header_VS,
-      PmsCollection
+      PmsCollection,
+      Pms
     ) {
 
     var ElencoPartite_VM = Parse.View.extend({
@@ -28,13 +30,33 @@ define([
         id: "container",
         collection: PmsCollection,
         initialize: function () {
+          this.userStates = (new Pms()).userStates;
+          this.matchStates = (new Pms()).matchStates;
           this.collection = new PmsCollection();
           this.collection.getAllUsersPms();
-          this.collection.on("add", this.foo, this);
+          this.collection.on("add", this.smistaCollection, this);
         },
 
-        foo: function () {
-          console.log(this.collection);
+        smistaCollection: function () {
+          // console.log(this.collection);
+          this.inCorsoMaster = new PmsCollection();
+          this.inCorsoPlayer = new PmsCollection();
+          this.sospeseMaster = new PmsCollection();
+          this.sospesePlayer = new PmsCollection();   
+          
+          for (var i=0; i<this.collection.models.length; i++){
+            var a = this.collection.models[i].attributes;
+            if( a.matchState == this.matchStates.RUNNING && a.userState == this.userStates.MASTER){
+              this.inCorsoMaster.add(this.collection.models[i]);
+            } else if(a.matchState == this.matchStates.RUNNING && a.userState == this.userStates.INGAME){
+              this.inCorsoPlayer.add(this.collection.models[i]);
+            } else if(a.matchState == this.matchStates.DRAFT && a.userState == this.userStates.MASTER){
+              this.sospeseMaster.add(this.collection.models[i]);
+            } else if(a.matchState == this.matchStates.RUNNING && a.userState == this.userStates.INVITED){
+              this.sospesePlayer.add(this.collection.models[i]);
+            } 
+          }
+          this.render();
         },
 
         render: function (eventName) {
@@ -42,7 +64,11 @@ define([
           var viewContent = new NewMatch_VS().render().el;
           var header = new Header_VS({owner: "ElencoPartite_VM",backViewModelId:0});
           $(this.el).html(
-            header.render().el).append(viewContent).append(new Match_VSL().render().el);
+            header.render().el).append(viewContent)
+          .append(new Match_VSL({collection:this.inCorsoMaster}).render().el)
+          .append(new Match_VSL({collection:this.inCorsoPlayer}).render().el)
+          .append(new Match_VSL({collection:this.sospeseMaster}).render().el)
+          .append(new Match_VSL({collection:this.sospesePlayer}).render().el);
           return this;
         }
       });
@@ -50,3 +76,6 @@ define([
     return ElencoPartite_VM;
 
   });
+
+
+//append(new Match_VSL().render().el)

@@ -8,8 +8,8 @@ define([
   "Parse",
   "handlebars",
   "views/sub/item/Match_VSI",
-  "collections/MatchCollection",
-  "models/Match",
+  "collections/PmsCollection",
+  "models/Pms",
   "text!templates/sub/list/match-TSL.html"
 ],
     function ($,
@@ -18,8 +18,8 @@ define([
       Parse,
       Handlebars,
       Match_VSI,
-      MatchCollection,
-      Match,
+      PmsCollection,
+      Pms,
       template
     ) {
 
@@ -27,19 +27,17 @@ define([
 
         tagName: "ul",
         id: "list",
-        collection: MatchCollection,
+        collection: PmsCollection,
         template: Handlebars.compile(template),
         initialize: function () {
-          this.collection = new MatchCollection();
           this.collection.bind("add", this.render, this);
-          //this.collection.getFromParse();
         },
 
         render: function (eventName) {
           $(this.el).empty();
-          _.each(this.collection.models, function (match) {
+          _.each(this.collection.models, function (pms) {
             $(this.el).append(new Match_VSI({
-              model: match
+              model: pms
             }).render().el);
           }, this);
           return this;

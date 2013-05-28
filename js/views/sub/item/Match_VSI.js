@@ -7,9 +7,10 @@ define([
   "backbone",
   "Parse",
   "handlebars",
+  "models/Match",
   "text!templates/sub/item/match-TSI.html"
 ],
-    function ($, _, Backbone, Parse, Handlebars, template) {
+    function ($, _, Backbone, Parse, Handlebars, Match, template) {
 
     var Match_VSI = Parse.View.extend({
 
@@ -20,15 +21,24 @@ define([
         },
 
         template: Handlebars.compile(template),
+        match: Match,
 
         initialize: function () {
-          this.model.bind("change", this.render, this);
+          this.match = new Match();
+          this.match.id = this.model.attributes.matchId;
+          this.match.on("Match_VSI_MATCHSYNC", this.render, this);
+          this.model.bind("change", this.getMatchFromPms, this);
           this.model.bind("destroy", this.close, this);
+          this.match.fetchFromP("Match_VSI");
+        },
+
+        getMatchFromPms: function (){
+          this.match.fetchFromP("Match_VSI");
         },
 
         render: function (eventName) {
-          var match = this.model.toJSON();
-          match.id = this.model.id;
+          var match = this.match.toJSON();
+          match.id = this.match.id;
           $(this.el).html(this.template(match));
           return this;
         },
