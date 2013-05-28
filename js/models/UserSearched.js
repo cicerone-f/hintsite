@@ -13,8 +13,8 @@ define([
         var self = this;
         query.find({
           success: function (results) {
-            self.trigger("AddFromSearch_VM_USERFOUND");
-            console.log(results);
+            self.set(results[0].attributes);
+            self.set({id:results[0].id});
           },
           error: function (error) {
             console.log(error);

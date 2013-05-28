@@ -44,7 +44,7 @@ define([
 
 
       renderAddFromSearch: function (eventName) {
-        var afs = new AddFromSearch_VM();
+        var afs = new AddFromSearch_VM({collection:this.collection, matchId:this.options.matchIdToGet});
         $(this.el).append(afs.render().el);
         return this;
       },

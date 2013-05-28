@@ -196,6 +196,14 @@ ul#list {
   text-align: center;
 }
 
+#close-popup {
+  cursor: pointer;
+  background-color: green;
+  padding: 1.5em;
+  color: $white;
+  text-align: center;
+}
+
 #log-in-with-facebook {
   cursor: pointer;
   background-color: blue;
@@ -205,6 +213,13 @@ ul#list {
 }
 
 #NewMatchButton {
+  font-family: $body-font-family;
+  text-align: center;
+  background-color: #ee7427;
+  padding: 1.5em;
+}
+
+#user-to-add{
   font-family: $body-font-family;
   text-align: center;
   background-color: #ee7427;
@@ -286,7 +301,7 @@ ul#list {
   text-align: center;
 }
 
-#popup_container{
+#popup-container{
   background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
   top: 0;

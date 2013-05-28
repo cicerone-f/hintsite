@@ -22,7 +22,24 @@ define([
 
           }
         });
+      },
+      savePms: function(userId,matchId) {
+        var self = this;
+        this.save({
+          userId: userId,
+          matchId: matchId,
+          state: self.roles.LISTED
+        }, {
+          success: function (result) {
+            self.trigger('AddFromSearch_VM_PMSLISTED');
+          },
+          error: function (e) {
+
+          }
+        });
+
       }
+
     });
     return Pms;
 

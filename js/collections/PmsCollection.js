@@ -19,7 +19,6 @@ define([
         var self = this;
         query.find({
           success: function (results) {
-            console.log(results);
             self.add(results);
           },
           error: function (error) {

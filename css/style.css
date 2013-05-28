@@ -162,6 +162,13 @@ ul#list {
   color: white;
   text-align: center; }
 
+#close-popup {
+  cursor: pointer;
+  background-color: green;
+  padding: 1.5em;
+  color: white;
+  text-align: center; }
+
 #log-in-with-facebook {
   cursor: pointer;
   background-color: blue;
@@ -170,6 +177,12 @@ ul#list {
   text-align: center; }
 
 #NewMatchButton {
+  font-family: "HelveticaNeue-Light", "HelveticaNeue", Helvetica, Arial, sans-serif;
+  text-align: center;
+  background-color: #ee7427;
+  padding: 1.5em; }
+
+#user-to-add {
   font-family: "HelveticaNeue-Light", "HelveticaNeue", Helvetica, Arial, sans-serif;
   text-align: center;
   background-color: #ee7427;
@@ -260,7 +273,7 @@ ul#list {
   float: left;
   text-align: center; }
 
-#popup_container {
+#popup-container {
   background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
   top: 0;

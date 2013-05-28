@@ -170,7 +170,7 @@ define([
         "EditPartita_VM": "",        
         "PartitaPlayer_VM": "",
         "HintForm_VM": "editMatch",          //  + /id
-        "SetHintPosition_VM": "hintsedit",  //  + /id
+        "SetHintPosition_VM": "hintsedit",   //  + /id
         "HintFull_VM": "matches",            //  + /id
         "SelezioneGiocatori_VM": "editMatch" //  + /id
       },

@@ -8,6 +8,8 @@ define([
   "Parse",
   "handlebars",
   "models/UserSearched",
+  "collections/PmsCollection",
+  "models/Pms",
   "text!templates/main/search-add-from-search.html"
 ],
   function (
@@ -17,18 +19,27 @@ define([
     Parse,
     Handlebars,
     UserSearched,
+    PmsCollection,
+    Pms,
     template
   ) {
     var AddFromSearch_VM = Parse.View.extend({
-        id: 'popup_container',
+        id: 'popup-container',
         template: Handlebars.compile(template),
         model: UserSearched,
+        pms: Pms,
+        collection: PmsCollection,
         initialize: function () {
+          this.pms = new Pms();
+          this.collection = this.options.collection;
           this.model = new UserSearched();
-          this.model.on("AddFromSearch_VM_USERFOUND", this.render, this);
+          this.model.on("change", this.appendFoundUser, this);
+          this.pms.on("AddFromSearch_VM_PMSLISTED", this.addToCollection, this);
         },
         events: {
           "blur #nick": "searchNick",
+          "click #close-popup": "unrenderAddFromSearch",
+          "click #user-to-add": "askToSavePms"
         },
 
         searchNick: function () {
@@ -37,12 +48,27 @@ define([
 
         render: function (eventName) {
           var match = this.model.toJSON();
-          $(this.el).html(this.template());
+          $(this.el).html(this.template(match));
           return this;
+        },
+
+        appendFoundUser: function (){
+          /*var foundUserViewItem = new PlayerToAdd_VSI({username:this.model.attributes.username});
+          $(this.el).append( foundUserViewItem.render().el );*/
+          this.render();
         },
 
         unrenderAddFromSearch: function (eventName){
           this.remove();
+        },
+
+        askToSavePms: function () {
+          this.pms.savePms(this.model.id,this.options.matchId);
+        },
+
+        addToCollection: function () {
+          this.remove();
+          this.collection.add(this.pms);
         }
 
       });
