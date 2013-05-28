@@ -65,10 +65,10 @@ define([
           var header = new Header_VS({owner: "ElencoPartite_VM",backViewModelId:0});
           $(this.el).html(
             header.render().el).append(viewContent)
-          .append(new Match_VSL({collection:this.inCorsoMaster}).render().el)
-          .append(new Match_VSL({collection:this.inCorsoPlayer}).render().el)
-          .append(new Match_VSL({collection:this.sospeseMaster}).render().el)
-          .append(new Match_VSL({collection:this.sospesePlayer}).render().el);
+          .append(new Match_VSL({collection:this.inCorsoMaster, matchType: 'inCorsoMaster' }).render().el)
+          .append(new Match_VSL({collection:this.inCorsoPlayer, matchType: 'inCorsoPlayer'}).render().el)
+          .append(new Match_VSL({collection:this.sospeseMaster, matchType: 'sospeseMaster'}).render().el)
+          .append(new Match_VSL({collection:this.sospesePlayer, matchType: 'sospesePlayer'}).render().el);
           return this;
         }
       });

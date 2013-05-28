@@ -44,10 +44,15 @@ define([
         },
 
         goToDetails: function () {
-          if (this.model.attributes.state == 0) {
-            Parse.history.navigate("editMatch/" + this.model.id, {trigger: true});
-          } else if (this.model.attributes.state == 1) {
-            Parse.history.navigate("matches/" + this.model.id, {trigger: true});
+          console.log(this.options.matchType);
+          if (this.options.matchType == 'inCorsoMaster') {
+            Parse.history.navigate("matches/" + this.model.attributes.matchId, {trigger: true});
+          } else if (this.options.matchType == 'sospeseMaster') {
+            Parse.history.navigate("editMatch/" + this.model.attributes.matchId, {trigger: true});
+          } else if (this.options.matchType == 'inCorsoPlayer') {
+            Parse.history.navigate("matches/" + this.model.attributes.matchId, {trigger: true});
+          } else if (this.options.matchType == 'sospesePlayer') {
+            Parse.history.navigate("matches/" + this.model.attributes.matchId, {trigger: true});
           }
           
         }

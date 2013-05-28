@@ -35,9 +35,12 @@ define([
 
         render: function (eventName) {
           $(this.el).empty();
+          var title = {title: this.options.matchType};
+          $(this.el).append(this.template(title));
           _.each(this.collection.models, function (pms) {
             $(this.el).append(new Match_VSI({
-              model: pms
+              model: pms,
+              matchType: this.options.matchType
             }).render().el);
           }, this);
           return this;
