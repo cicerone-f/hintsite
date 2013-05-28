@@ -3,23 +3,24 @@
 
 define([
   "jquery",
-  "Parse"
+  "Parse",
+  "models/UserSearched"
 ],
-  function ($, Parse) {
+  function ($, Parse, UserSearched) {
     var Match = Parse.Object.extend("Match", {
       states: {'DRAFT': 0, 'RUNNING': 1, 'ENDED': 2},
       saveDraftToP: function () {
         var self = this;
         this.save({
-          user: Parse.User.current(),
-          ACL: new Parse.ACL(Parse.User.current()),
+          user: UserSearched.current(),
+          ACL: new Parse.ACL(UserSearched.current()),
           state: self.states.DRAFT
         }, {
           success: function (result) {
             self.trigger('NuovaPartita_VM_MATCHCREATED');
           },
           error: function (e) {
-
+            console.log("Error in saving a match draft (probably because of UserSearched.current())");
           }
         });
       },
