@@ -9,6 +9,7 @@ define([
   "handlebars",
   "models/Match",
   "collections/HintCollection",
+  "collections/PmsCollection",
   "text!templates/main/new-match.html",
   "views/sub/Header_VS",
   "views/sub/LaunchFooter_VS",
@@ -23,6 +24,7 @@ define([
     Handlebars,
     Match,
     HintCollection,
+    PmsCollection,
     template,
     Header_VS,
     LaunchFooter_VS,
@@ -34,14 +36,16 @@ define([
         template: Handlebars.compile(template),
         model: Match,
         collection: HintCollection,
+        pmsCollection: PmsCollection,
         initialize: function () {
           this.model = new Match();
           this.collection = new HintCollection();
+          this.pmsCollection = new PmsCollection();
           this.loading = new LoadingView();
           this.model.on("EditPartita_VM_MATCHSYNC", this.sfh, this);
           this.collection.on("add", this.render, this);
           this.model.on("EditPartita_VM_MATCHNAMEUPDATED", this.removeLoading, this);
-          this.model.on("EditPartita_VM_MATCHLAUNCHED", this.navigateToElencoPartite, this);
+          this.pmsCollection.on("EditPartita_VM_MATCHLAUNCHED", this.navigateToElencoPartite, this);
           this.model.id = this.options.matchIdToGet;
           this.model.fetchFromP("EditPartita_VM");
           
@@ -68,7 +72,7 @@ define([
 
         lp: function () {
           this.loading.render();
-          this.model.launchPartita("EditPartita_VM");
+          this.pmsCollection.launchPartita("EditPartita_VM", this.model.id);
         },
 
         sfh: function () {

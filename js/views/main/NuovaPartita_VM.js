@@ -10,6 +10,7 @@ define([
   "models/Match",
   "models/Pms",
   "collections/HintCollection",
+  "collections/PmsCollection",
   "text!templates/main/new-match.html",
   "views/sub/Header_VS",
   "views/sub/LaunchFooter_VS",
@@ -25,6 +26,7 @@ define([
     Match,
     Pms,
     HintCollection,
+    PmsCollection,
     template,
     Header_VS,
     LaunchFooter_VS,
@@ -36,16 +38,18 @@ define([
         template: Handlebars.compile(template),
         model: Match,
         pms: Pms,
+        pmsCollection: PmsCollection,
         collection: HintCollection,
         initialize: function () {
           this.model = new Match();
           this.pms = new Pms();
+          this.pmsCollection = new PmsCollection();
           this.collection = new HintCollection();
           this.loading = new LoadingView();
           this.pms.on("NuovaPartita_VM_PMSMASTERCREATED", this.cfh, this);
           this.model.on("NuovaPartita_VM_MATCHCREATED", this.saveMasterDopoCreaPartita, this);
           this.model.on("NuovaPartita_VM_MATCHNAMEUPDATED", this.removeLoading, this);
-          this.model.on("NuovaPartita_VM_MATCHLAUNCHED", this.navigateToElencoPartite, this);
+          this.pmsCollection.on("NuovaPartita_VM_MATCHLAUNCHED", this.navigateToElencoPartite, this);
           this.collection.on("NuovaPartita_VM_COLLECTIONCOMPLETED", this.render, this);
           this.model.saveDraftToP();
         },
@@ -71,7 +75,7 @@ define([
 
         lp: function () {
           this.loading.render();
-          this.model.launchPartita("NuovaPartita_VM");
+          this.pmsCollection.launchPartita("NuovaPartita_VM", this.model.id);
         },
 
         cfh: function () {

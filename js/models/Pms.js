@@ -7,13 +7,15 @@ define([
 ],
   function ($, Parse) {
     var Pms = Parse.Object.extend("Pms", {
-      roles: {'MASTER': 0, 'LISTED': 1, 'INVITED': 2, 'INGAME': 3},
+      userStates: {'MASTER': 0, 'LISTED': 1, 'INVITED': 2, 'INGAME': 3},
+      matchStates: {'DRAFT': 0, 'RUNNING': 1, 'ENDED': 2},
       saveMaster: function (matchId) {
         var self = this;
         this.save({
           userId: Parse.User.current().id,
           matchId: matchId,
-          state: self.roles.MASTER
+          userState: self.userStates.MASTER,
+          matchState: self.matchStates.DRAFT
         }, {
           success: function (result) {
             self.trigger('NuovaPartita_VM_PMSMASTERCREATED');
@@ -23,7 +25,7 @@ define([
           }
         });
       },
-      savePms: function(userId,matchId) {
+      savePms: function (userId, matchId) {
         var self = this;
         var query = new Parse.Query(Pms);
         query.equalTo("matchId", matchId);
@@ -34,7 +36,8 @@ define([
               self.save({
                 userId: userId,
                 matchId: matchId,
-                state: self.roles.LISTED
+                userState: self.userStates.LISTED,
+                matchState: self.matchStates.DRAFT
               }, {
                 success: function (result) {
                   self.trigger('AddFromSearch_VM_PMSLISTED');
@@ -51,8 +54,6 @@ define([
             console.log(error);
           }
         });
-        
-
       }
 
     });
