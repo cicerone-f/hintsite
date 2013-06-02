@@ -12,7 +12,6 @@ require.config({
     async: '../lib/require/async',
     handlebars: '../lib/handlebars/handlebars',
     templates: '../templates',
-    facebook: '../lib/facebook/all',
     leaflet: '../lib/leaflet/leaflet'
   },
   shim: {
@@ -26,9 +25,6 @@ require.config({
     'Parse': {
       exports: 'Parse'
     },
-    'facebook' : {
-      exports: 'FB'
-    },
     'handlebars': {
       exports: 'Handlebars'
     }
@@ -41,10 +37,9 @@ require([
   'underscore',
   'backbone',
   'Parse',
-  'facebook',
   'router'
 ],
-    function (domReady, _, Backbone, Parse, FB, AppRouter) {
+    function (domReady, _, Backbone, Parse, AppRouter) {
 
     domReady(function () {
       document.addEventListener("deviceready", run, false);
