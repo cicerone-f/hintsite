@@ -12,7 +12,9 @@ require.config({
     async: '../lib/require/async',
     handlebars: '../lib/handlebars/handlebars',
     templates: '../templates',
-    leaflet: '../lib/leaflet/leaflet'
+    leaflet: '../lib/leaflet/leaflet',
+    CDV: '../lib/facebook/cdv-plugin-fb-connect',
+    FB: '../lib/facebook/facebook_js_sdk'
   },
   shim: {
     'underscore': {
@@ -27,6 +29,12 @@ require.config({
     },
     'handlebars': {
       exports: 'Handlebars'
+    },
+    'CDV': {
+      exports: 'CDV'
+    },
+    'FB': {
+      exports: 'FB'
     }
   }
 });
@@ -37,9 +45,11 @@ require([
   'underscore',
   'backbone',
   'Parse',
-  'router'
+  'router',
+  'CDV',
+  'FB'
 ],
-    function (domReady, _, Backbone, Parse, AppRouter) {
+    function (domReady, _, Backbone, Parse, AppRouter, CDV, FB) {
 
     domReady(function () {
       document.addEventListener("deviceready", run, false);
@@ -59,6 +69,14 @@ require([
       Parse.history.start();
       Parse.history.length = 0;
       Parse.history.on('route', function () { ++this.length; });
+
+      FB.init({
+        appId: '639802702700436',
+        nativeInterface: CDV.FB,
+        useCachedDialogs: false
+      });
+      
+      FB.getLoginStatus(function () { alert('OK'); });
 
     }
   });
