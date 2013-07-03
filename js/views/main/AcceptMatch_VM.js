@@ -22,28 +22,15 @@ define([
     var AddFromSearch_VM = Parse.View.extend({
         id: 'popup-container',
         template: Handlebars.compile(template),
-        initialize: function () {
-          this.on("addCliccability", this.enableClick, this);
-          this.Pms = new Pms();
-          var query = new Parse.Query(Pms);
-          query.equalTo("matchId", this.options.matchId);
-          query.equalTo("userId", Parse.User.current().id);
-          var self = this;
-          query.find({
-            success: function (results) {
-              self.Pms = results[0];
-              self.trigger("addCliccability");
-            },
-            error: function (error){
-              console.log(error);
-            }
-          })
 
+        events: {
+          "click #yes" : "unrenderAcceptMatch", 
+          "click #no" : "goBack"
         },
 
-        enableClick: function () {
-          this.events = {"click #yes" : "unrenderAcceptMatch" , "click #no" : "goBack"};
-          this.delegateEvents();
+        initialize: function () {
+          this.Pms = this.options.Pms;
+
         },
 
         render: function (eventName) {
