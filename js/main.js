@@ -70,13 +70,13 @@ require([
       Parse.history.length = 0;
       Parse.history.on('route', function () { ++this.length; });
 
-      FB.init({
+      /*FB.init({
         appId: '639802702700436',
         nativeInterface: CDV.FB,
         useCachedDialogs: false
       });
       
-      FB.getLoginStatus(function () { alert('OK'); });
+      FB.getLoginStatus(function () { alert('OK'); });*/
 
     }
   });

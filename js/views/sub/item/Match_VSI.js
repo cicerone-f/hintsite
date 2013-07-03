@@ -44,7 +44,6 @@ define([
         },
 
         goToDetails: function () {
-          console.log(this.options.matchType);
           if (this.options.matchType == 'inCorsoMaster') {
             Parse.history.navigate("matches/" + this.model.attributes.matchId, {trigger: true});
           } else if (this.options.matchType == 'sospeseMaster') {
@@ -52,7 +51,7 @@ define([
           } else if (this.options.matchType == 'inCorsoPlayer') {
             Parse.history.navigate("matches/" + this.model.attributes.matchId, {trigger: true});
           } else if (this.options.matchType == 'sospesePlayer') {
-            Parse.history.navigate("matches/" + this.model.attributes.matchId, {trigger: true});
+            Parse.history.navigate("matches/" + this.model.attributes.matchId + "/" + this.options.matchType, {trigger: true});
           }
           
         }

@@ -52,6 +52,7 @@ define([
         "": "userControl",
         "mainMatchList": "mainMatchList",
         "matches/:id": "matchDetails",
+        "matches/:id/:extra" : "matchDetailsAccept",
         "hints/:id": "hintDetails",
         "newMatch": "newMatch",
         "editMatch/:id": "editMatchDraft",
@@ -99,14 +100,31 @@ define([
       },
 
       matchDetails: function (id) {
-        console.log("matchDetails");
+        
         var self = this;
         var query = new Parse.Query(Match);
         var match = query.get(id, {
           success: function (result) {
             self.changePage(new PartitaPlayer_VM({
               model: result
-            }));
+            }));     
+          },
+          error: function (error) {
+            console.log(error);
+          }
+        });
+      },
+
+      matchDetailsAccept: function (id, extra) {
+        
+        var self = this;
+        var query = new Parse.Query(Match);
+        var match = query.get(id, {
+          success: function (result) {
+            self.changePage(new PartitaPlayer_VM({
+              model: result,
+              extra: extra
+            }));     
           },
           error: function (error) {
             console.log(error);

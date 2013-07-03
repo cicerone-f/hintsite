@@ -25,12 +25,15 @@ define([
 
         render: function (eventName) {
           var header = new Header_VS({owner: "PartitaPlayer_VM",backViewModelId:0});
+
           $(this.el)
             .html(header.render().el)
             .append(new HintPreview_VSL({
               model: this.model
             }).render().el);
+          if (this.options.extra) {
 
+          }
           return this;
         }
       });
