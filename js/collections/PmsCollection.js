@@ -34,7 +34,6 @@ define([
         var self = this;
         query.find({
           success: function (results) {
-            console.log(results);
             for (var i = 0; i < results.length; i++) {
               results[i].set('matchState', 1);
               if(results[i].attributes.userState == 1) {

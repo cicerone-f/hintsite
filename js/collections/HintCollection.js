@@ -14,10 +14,11 @@ define([
 
     var HintCollection = Parse.Collection.extend({
       model: Hint,
-      getFromParse: function (matchId) {
+      getFromParse: function (matchId, myHint) {
         var query = new Parse.Query(Hint);
         query.equalTo("matchId", matchId);
         query.ascending("number");
+        query.lessThanOrEqualTo("number", myHint);
         var self = this;
         query.find({
           success: function (results) {

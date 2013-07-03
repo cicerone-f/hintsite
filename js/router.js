@@ -188,7 +188,6 @@ define([
       },
 
       backToPrevious: function (view,param) {
-        console.log(this.mappaBack[view] +'/'+ param);
         if(this.currentView) {
           this.currentView.remove();
         }

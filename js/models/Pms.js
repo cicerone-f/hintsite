@@ -15,7 +15,8 @@ define([
           userId: Parse.User.current().id,
           matchId: matchId,
           userState: self.userStates.MASTER,
-          matchState: self.matchStates.DRAFT
+          matchState: self.matchStates.DRAFT,
+          myHint: 4
         }, {
           success: function (result) {
             self.trigger('NuovaPartita_VM_PMSMASTERCREATED');
@@ -37,7 +38,8 @@ define([
                 userId: userId,
                 matchId: matchId,
                 userState: self.userStates.LISTED,
-                matchState: self.matchStates.DRAFT
+                matchState: self.matchStates.DRAFT,
+                myHint: 1
               }, {
                 success: function (result) {
                   self.trigger('AddFromSearch_VM_PMSLISTED');
