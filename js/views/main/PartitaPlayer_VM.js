@@ -35,7 +35,7 @@ define([
             }).render().el);
           if (this.options.extra) {
             $(this.el)
-            .append(new AcceptMatch_VM({
+            .append(new AcceptMatch_VM({ matchId: this.model.id, owner: "PartitaPlayer_VM", backViewModelId:0
             }).render().el);
           }
           return this;
