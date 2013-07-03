@@ -76,7 +76,7 @@ define([
         },
 
         sfh: function () {
-          this.collection.getFromParse(this.model.id);
+          this.collection.getFromParse(this.model.id, 4);
         },
 
         snp: function () {

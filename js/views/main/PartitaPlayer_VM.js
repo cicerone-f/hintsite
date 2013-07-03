@@ -30,7 +30,7 @@ define([
         initialize: function () {
           this.Pms = new Pms();
           var query = new Parse.Query(Pms);
-          query.equalTo("matchId", this.options.matchId);
+          query.equalTo("matchId", this.model.id);
           query.equalTo("userId", Parse.User.current().id);
           var self = this;
           query.find({
@@ -49,11 +49,12 @@ define([
           $(this.el)
             .html(header.render().el)
             .append(new HintPreview_VSL({
+              Pms: this.Pms,
               model: this.model
             }).render().el);
           if (this.options.extra) {
             $(this.el)
-            .append(new AcceptMatch_VM({ Pms: this.Pms, matchId: this.model.id, owner: "PartitaPlayer_VM", backViewModelId:0
+            .append(new AcceptMatch_VM({ Pms: this.Pms, owner: "PartitaPlayer_VM", backViewModelId:0
             }).render().el);
           }
           return this;

@@ -29,9 +29,11 @@ define([
       id: "list",
       template: Handlebars.compile(template),
       initialize: function () {
+        this.Pms = this.options.Pms;
+        console.log(this.Pms);
         this.collection = new HintCollection();
         this.collection.bind("add", this.render, this);
-        this.collection.getFromParse(this.model.id);
+        this.collection.getFromParse(this.model.id, this.Pms.attributes.myHint);
       },
 
       render: function (eventName) {
