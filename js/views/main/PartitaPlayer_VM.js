@@ -8,7 +8,8 @@ define([
   "Parse",
   "handlebars",
   "views/sub/list/HintPreview_VSL",
-  "views/sub/Header_VS"
+  "views/sub/Header_VS",
+  "views/main/AcceptMatch_VM"
 ],
     function ($,
       _,
@@ -16,7 +17,8 @@ define([
       Parse,
       Handlebars,
       HintPreview_VSL,
-      Header_VS
+      Header_VS,
+      AcceptMatch_VM
     ) {
 
     var PartitaPlayer_VM = Parse.View.extend({
@@ -32,7 +34,9 @@ define([
               model: this.model
             }).render().el);
           if (this.options.extra) {
-
+            $(this.el)
+            .append(new AcceptMatch_VM({
+            }).render().el);
           }
           return this;
         }

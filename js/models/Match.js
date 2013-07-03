@@ -34,19 +34,7 @@ define([
           }
         });
       },
-      launchPartita: function (vm) {
-        var self = this;
-        this.save({
-          state: self.states.RUNNING
-        }, {
-          success: function (result) {
-            self.trigger(vm+'_MATCHLAUNCHED');
-          },
-          error: function (e) {
-
-          }
-        });
-      },
+     
       fetchFromP: function (vm){
         var self = this;
         this.fetch({ 
