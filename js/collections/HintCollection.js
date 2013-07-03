@@ -37,7 +37,7 @@ define([
       },
       createFourHints: function (matchId) {
         for (var i = 1; i < 5; i++) {
-          this.add(new Hint( { matchId:matchId , number:i , ACL:new Parse.ACL(Parse.User.current())} ));
+          this.add(new Hint( { matchId:matchId , number:i } ));
         };
         var self = this;
         this.model.saveAll(this.models,

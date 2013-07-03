@@ -12,7 +12,6 @@ define([
         var self = this;
         this.save({
           user: UserSearched.current(),
-          ACL: new Parse.ACL(UserSearched.current())
         }, {
           success: function (result) {
             self.trigger('NuovaPartita_VM_MATCHCREATED');
