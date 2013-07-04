@@ -10,7 +10,8 @@ define([
   "models/Pms",
   "views/sub/list/HintPreview_VSL",
   "views/sub/Header_VS",
-  "views/main/AcceptMatch_VM"
+  "views/main/AcceptMatch_VM",
+  "views/sub/HintMap_VS"
 ],
     function ($,
       _,
@@ -20,7 +21,8 @@ define([
       Pms,
       HintPreview_VSL,
       Header_VS,
-      AcceptMatch_VM
+      AcceptMatch_VM,
+      HintMap_VS
     ) {
 
     var PartitaPlayer_VM = Parse.View.extend({
@@ -48,10 +50,13 @@ define([
 
           $(this.el)
             .html(header.render().el)
-            .append(new HintPreview_VSL({
-              Pms: this.Pms,
-              model: this.model
-            }).render().el);
+            .append(
+              new HintPreview_VSL({
+                Pms: this.Pms,
+                model: this.model
+              }).render().el)
+            .append(new HintMap_VS({'matchId':this.model.id, 'pms':this.Pms}).render().el);
+
           if (this.options.extra) {
             $(this.el)
             .append(new AcceptMatch_VM({ Pms: this.Pms, owner: "PartitaPlayer_VM", backViewModelId:0

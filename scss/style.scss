@@ -105,7 +105,7 @@ ul#list {
   width: 100%;
 }
 #map{
-  height: 80%;
+  height: 70%;
   width: 100%;
 }
 
@@ -198,6 +198,14 @@ ul#list {
   background-color: orange;
   text-align: center; 
 }  
+
+#check-in-btn {
+  height: 10%;
+  float:left;
+  width: 100%;
+  background-color: orange;
+  text-align: center; 
+} 
 
 #log-in {
   cursor: pointer;

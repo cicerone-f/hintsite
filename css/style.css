@@ -83,7 +83,7 @@ ul#list {
   width: 100%; }
 
 #map {
-  height: 80%;
+  height: 70%;
   width: 100%; }
 
 .locate-me-icon {
@@ -159,6 +159,13 @@ ul#list {
   text-align: center; }
 
 #set-point-btn {
+  height: 10%;
+  float: left;
+  width: 100%;
+  background-color: orange;
+  text-align: center; }
+
+#check-in-btn {
   height: 10%;
   float: left;
   width: 100%;

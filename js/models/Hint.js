@@ -13,6 +13,7 @@ define([
         image: ""
       },
 
+
       fetchFromP: function () {
         var self = this;
         this.fetch({
