@@ -13,6 +13,23 @@ define([
         image: ""
       },
 
+      getWithPmsAndMatch: function (number, matchId) {
+        var self = this;
+        var query = new Parse.Query(Hint);
+        query.equalTo("matchId", matchId);
+        query.equalTo("number", number);
+        query.find({
+          success: function (results) {
+            console.log(results[0]);
+            self.id = results[0].id;
+            self.attributes = results[0].attributes;
+            self.trigger('HintMap_VS_HINTFORPLACE');
+          },
+          error: function (error) {
+            console.log(error);
+          }
+        });
+      },
 
       fetchFromP: function () {
         var self = this;
@@ -24,7 +41,7 @@ define([
           }
         });
       },
-
+      
       updateGeoPoint: function (geoPoint) {
         var self = this;
         this.save({
