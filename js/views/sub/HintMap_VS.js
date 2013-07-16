@@ -8,6 +8,7 @@ define([
   "Parse",
   "handlebars",
   "models/Hint",
+  "models/Pms",
   "views/sub/Header_VS",
   "views/LoadingView",
   "leaflet",
@@ -20,6 +21,7 @@ define([
     Parse,
     Handlebars,
     Hint,
+    Pms,
     Header_VS,
     LoadingView,
     leaflet,
@@ -39,6 +41,7 @@ define([
       tagName: 'div',
       id: 'container',
       model: Hint,
+      pms: Pms,
       events: {
         "click #check-in-btn": "checkIn"
       },
@@ -50,12 +53,18 @@ define([
         this.loading = new LoadingView();
         this.model.on('HintMap_VS_HINTFORPLACE', this.unrenderLoading, this);
         this.matchId = this.options.matchId;
-        this.pms = this.options.pms;
+        this.pms = new Pms();
+        this.pms.id = this.options.pms.id;
+        if(this.pms.id)
+          this.pms.fetchFromP();
+        this.pms.on("hintPlusplussed",this.notify,this);
         if (this.options.pms.attributes.myHint){
           this.model.getWithPmsAndMatch(this.options.pms.attributes.myHint, this.matchId);
           this.loading.render();
         }  
       },
+
+      //unrenderloading deve partire quando arrivano sia porcoiddio che HintMap_VS_HINTFORPLACE
 
       render: function (eventName) {
         $(this.el).html(this.template());
@@ -112,7 +121,7 @@ define([
           function (currPosition) {            
             var point = new Parse.GeoPoint(currPosition.coords.latitude, currPosition.coords.longitude);
             if (point.kilometersTo(self.model.attributes.point) <= 0.5){
-              navigator.notification.alert('Corretto! ' );
+              self.pms.plusPlusMyHint(Parse.User.current().id , this.matchId);
             }else{
               navigator.notification.alert('Errato! '+  point.kilometersTo(self.model.attributes.point) );
             }
@@ -125,12 +134,22 @@ define([
 
       },
 
+      notify: function () {
+        console.log("notify");
+        navigator.notification.alert(
+          'Hint completed!',  // message
+          this.alertDismissed,         // callback
+          'Well Done !!',            // title
+          'OK'                  // buttonName
+        );
+      },
 
-
+      alertDismissed: function () {
+        this.render();
+      },
 
       unrenderLoading: function () {
         this.loading.remove();
-        console.log(this.model);
       }
 
     });

@@ -26,6 +26,17 @@ define([
           }
         });
       },
+
+      fetchFromP: function (){
+        var self = this;
+        this.fetch({ 
+          success: function() {
+            console.log(self);
+          },
+          error: function () {
+          }
+        });
+      },
       savePms: function (userId, matchId) {
         var self = this;
         var query = new Parse.Query(Pms);
@@ -54,6 +65,30 @@ define([
           },
           error: function (error) {
             console.log(error);
+          }
+        });
+      },
+      plusPlusMyHint: function (userId, matchId) {
+        var self = this;
+        var query = new Parse.Query(Pms);
+        query.equalTo("matchId", matchId);
+        query.equalTo("userId", userId);
+        query.find({
+          success: function (results) {
+              results[0].increment("myHint");
+              results[0].save({
+                success: function (result) {
+                  self.trigger('hintPlusplussed');
+                },
+                error: function (e) {
+                  console.log("non salva")
+                }
+        }
+
+                );  
+          },
+          error: function (e) {
+            console.log("error");
           }
         });
       }

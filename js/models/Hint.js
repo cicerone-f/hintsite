@@ -20,7 +20,6 @@ define([
         query.equalTo("number", number);
         query.find({
           success: function (results) {
-            console.log(results[0]);
             self.id = results[0].id;
             self.attributes = results[0].attributes;
             self.trigger('HintMap_VS_HINTFORPLACE');
