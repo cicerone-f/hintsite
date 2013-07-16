@@ -95,7 +95,7 @@ ul#list {
     background-color: rgba(0, 0, 0, 0.1); }
 
 #photo {
-  height: 10px;
+  height: 100px;
   width: 50%;
   float: left;
   background-color: pink;
