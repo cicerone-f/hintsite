@@ -145,7 +145,9 @@ define([
       },
 
       alertDismissed: function () {
-        this.render();
+//        Parse.history.navigate("matches/" + this.matchId, {trigger: true});// non funziona non so perche
+        Parse.history.navigate("" , {trigger: true});
+
       },
 
       unrenderLoading: function () {
