@@ -112,9 +112,9 @@ define([
           function (currPosition) {            
             var point = new Parse.GeoPoint(currPosition.coords.latitude, currPosition.coords.longitude);
             if (point.kilometersTo(self.model.attributes.point) <= 0.5){
-              console.log("corretto");
+              navigator.notification.alert('Corretto! ' );
             }else{
-              console.log("errato");
+              navigator.notification.alert('Errato! '+  point.kilometersTo(self.model.attributes.point) );
             }
           },
           // error
@@ -124,6 +124,9 @@ define([
         );
 
       },
+
+
+
 
       unrenderLoading: function () {
         this.loading.remove();
