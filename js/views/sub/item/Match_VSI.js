@@ -39,13 +39,16 @@ define([
         render: function (eventName) {
           var match = this.match.toJSON();
           match.id = this.match.id;
+          if ($.trim(match.name) == "" ) {
+            match.name = "(untitled)";
+          }
           $(this.el).html(this.template(match));
           return this;
         },
 
         goToDetails: function () {
           if (this.options.matchType == 'inCorsoMaster') {
-            Parse.history.navigate("matches/" + this.model.attributes.matchId, {trigger: true});
+            Parse.history.navigate("matchesMaster/" + this.model.attributes.matchId, {trigger: true});
           } else if (this.options.matchType == 'sospeseMaster') {
             Parse.history.navigate("editMatch/" + this.model.attributes.matchId, {trigger: true});
           } else if (this.options.matchType == 'inCorsoPlayer') {

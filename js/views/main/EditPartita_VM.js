@@ -47,7 +47,8 @@ define([
           this.model.on("EditPartita_VM_MATCHSYNC", this.sfh, this);
           this.collection.on("OKHINTSITE", this.fetchPmsCollection, this);
           this.model.on("EditPartita_VM_MATCHNAMEUPDATED", this.removeLoading, this);
-          this.pmsCollection.on("EditPartita_VM_MATCHLAUNCHED", this.navigateToElencoPartite, this);
+          this.pmsCollection.on("EditPartita_VM_MATCHLAUNCHED", this.checkMatchDate, this);
+          this.model.on("EditPartita_VM_MATCHTIMENOW", this.navigateToElencoPartite, this);
           this.model.id = this.options.matchIdToGet;
           this.model.fetchFromP("EditPartita_VM");
           this.pmsCollection.on("PMSPLAYERSFETCHED",this.render,this);          
@@ -77,9 +78,16 @@ define([
           Parse.history.navigate('selezioneGiocatori/' + this.model.id, { trigger : true });
         },
 
+        checkMatchDate: function () {
+          if (this.model.attributes.launchTime) {
+            this.navigateToElencoPartite();
+          } else {
+            this.model.saveTimePartitaNow("EditPartita_VM");
+          }
+        },
+
         matchCanBeLaunched : function () {
           if ( $.trim(this.model.attributes.name) != "" ){
-                        console.log(this.pmsCollection);
             if (this.pmsCollection.length >1 ){
               if (this.collection.isLaunchable()) {
                 if (this.collection.isInRange()){
