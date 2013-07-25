@@ -11,7 +11,8 @@ define([
   "views/sub/Header_VS",
   "views/LoadingView",
   "leaflet",
-  "text!templates/main/map.html"
+  "text!templates/main/map.html",
+  "views/main/Error_VM"
 ],
   function (
     $,
@@ -23,7 +24,8 @@ define([
     Header_VS,
     LoadingView,
     leaflet,
-    template
+    template,
+    Error_VM
   ) {
 
     // NOTES
@@ -154,7 +156,10 @@ define([
             self.map.panTo([currPosition.coords.latitude, currPosition.coords.longitude]);
           },
           // error
-          null,
+          function(error) {
+            var ErrorView = new Error_VM({errorMsg: launchability});
+            ErrorView.render();
+          },
           // options
           {enableHighAccuracy: true, timeout: 20000}
         );
