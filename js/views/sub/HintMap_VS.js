@@ -121,7 +121,7 @@ define([
           function (currPosition) {            
             var point = new Parse.GeoPoint(currPosition.coords.latitude, currPosition.coords.longitude);
             if (point.kilometersTo(self.model.attributes.point) <= 0.5){
-              self.pms.plusPlusMyHint(Parse.User.current().id , this.matchId);
+              self.pms.plusPlusMyHint(Parse.User.current().id , this.matchId, Parse.User.current().attributes.username);
             }else{
               navigator.notification.alert('Errato! '+  point.kilometersTo(self.model.attributes.point) );
             }

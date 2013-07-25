@@ -7,23 +7,31 @@ define([
 ],
   function ($, Parse) {
     var WallMessage = Parse.Object.extend("WallMessage", {
+      
+      messageTypes: {'HINT_FOUND': 0, 'MATCH_ACCEPTED': 1},
+
       defaults: {
-        message: "",
+        messageType: 0,
         matchId: "",
-        userId: ""
+        userId: "",
+        username: "",
+        hintNumber: 0,
       },
 
-      saveToP: function (msg, match, user) {
-        // by default, use current user's ID
-        user = user || Parse.User.current().id;
+      saveToP: function (msgType, match, hintNo) {
+        // by default, use current user's ID        
+        id = Parse.User.current().id;
+        name = Parse.User.current().attributes.username;
 
         this.save({
-          message: msg,
+          messageType: msgType,
           matchId: match,
-          userId: user,
+          userId: id,
+          username: name,
+          hintNumber: hintNo
         }, {
           success: function (result) {
-            console.log('Wall message saved to Parse.');
+            console.log('Wall message saved to Parse. ');
           },
           error: function (error) {
             console.error('Error in saving wall message to Parse. Error is: ' + error);

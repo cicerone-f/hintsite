@@ -56,9 +56,7 @@ define([
           var query = new Parse.Query(Parse.User);
           query.get(self.Pms.attributes.userId, {
             success: function (user) {
-              var msg = "<span class=user>" + user.attributes.username + '</span> entered the game.';
-              // as of now, it saves a message with the id of the current user - this can be changed if needed
-              self.wallMsg.saveToP(msg, self.Pms.attributes.matchId);
+              self.wallMsg.saveToP(self.wallMsg.messageTypes.MATCH_ACCEPTED, self.Pms.attributes.matchId);
             },
             error: function (error) {
               console.error('Error while saving a WallMessage. Error is: ' + error);
