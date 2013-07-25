@@ -7,7 +7,6 @@ define([
   "backbone",
   "Parse",
   "handlebars",
-  "text!templates/main/hint-details.html",
   "views/sub/Header_VS",
   "views/sub/list/Wall_VSL"
 ],
@@ -17,22 +16,25 @@ define([
     Backbone,
     Parse,
     Handlebars,
-    template,
-    Header_VS
+    Header_VS,
+    Wall_VSL
   ) {
 
     var WallFull_VM = Parse.View.extend({
+      tagName: "div",
+      id: "container",
+      initialize: function () {
+        this.render();
+      },
 
-        template: Handlebars.compile(template),
+      render: function (eventName) {
+        var header = new Header_VS({owner: "PartitaPlayer_VM", backViewModelId: this.options.matchId});
+        $(this.el).html(header.render().el)
+        .append(new Wall_VSL({matchId: this.options.matchId}).render().el)
+        return this;
+      }
+    });
 
-        render: function (eventName) {
-          var header = new Header_VS();
-          $(this.el).html(header.render().el)
-          .append(new Wall_VSL().render().el)
-          return this;
-        }
-      });
-
-    return WallFull_VM;
+  return WallFull_VM;
 
   });

@@ -1,3 +1,7 @@
 <h4>
-    {{ name }}
+{{#if hintNumber }}
+	{{username}} ha trovato l'hint n. {{hintNumber}}.
+{{else}}
+  {{username}} si e' aggiunto alla partita.
+{{/if}}
 </h4>

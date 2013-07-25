@@ -18,7 +18,7 @@ define([
       Parse,
       Handlebars,
       Wall_VSI,
-      WallCollection,
+      WallMessageCollection,
       Wall,
       template
     ) {
@@ -27,16 +27,16 @@ define([
 
         tagName: "ul",
         id: "list",
-        collection: WallCollection,
+        collection: WallMessageCollection,
         template: Handlebars.compile(template),
         initialize: function () {
+          this.collection = new WallMessageCollection();
+          this.collection.getFromParse(this.options.matchId);
           this.collection.bind("add", this.render, this);
         },
 
         render: function (eventName) {
           $(this.el).empty();
-          var title = {title: 'Wall'};
-          $(this.el).append(this.template(title));
           _.each(this.collection.models, function (wallMsg) {
             $(this.el).append(new Wall_VSI({
               model: wallMsg
