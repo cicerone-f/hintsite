@@ -3,9 +3,10 @@
 
 define([
   "jquery",
-  "Parse"
+  "Parse",
+  "models/WallMessage"
 ],
-  function ($, Parse) {
+  function ($, Parse, WallMessage) {
     var Pms = Parse.Object.extend("Pms", {
       userStates: {'MASTER': 0, 'LISTED': 1, 'INVITED': 2, 'INGAME': 3},
       matchStates: {'DRAFT': 0, 'RUNNING': 1, 'ENDED': 2},
@@ -68,8 +69,9 @@ define([
           }
         });
       },
-      plusPlusMyHint: function (userId, matchId) {
+      plusPlusMyHint: function (userId, matchId, username) {
         var self = this;
+
         var query = new Parse.Query(Pms);
         query.equalTo("matchId", matchId);
         query.equalTo("userId", userId);
@@ -79,6 +81,10 @@ define([
               results[0].save({
                 success: function (result) {
                   self.trigger('hintPlusplussed');
+
+                  // post results on the Wall
+                  var wallMsg = new WallMessage();
+                  wallMsg.saveToP(wallMsg.messageTypes.HINT_FOUND, matchId, results[0].attributes.myHint - 1); 
                 },
                 error: function (e) {
                   console.log("non salva")
