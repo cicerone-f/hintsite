@@ -28,9 +28,25 @@ define([
         });
       },
 
+      getFromParseValidate: function (matchId) {
+        var query = new Parse.Query(Pms);
+        query.equalTo("matchId", matchId);
+        var self = this;
+        query.find({
+          success: function (results) {
+            self.add(results);
+            self.trigger("PMSPLAYERSFETCHED");
+          },
+          error: function (error) {
+            console.log(error);
+          }
+        });
+      },
+
       launchPartita: function (vm, matchId) {
         var query = new Parse.Query(Pms);
         query.equalTo("matchId", matchId);
+        this.reset();
         var self = this;
         query.find({
           success: function (results) {

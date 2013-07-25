@@ -50,9 +50,15 @@ define([
           this.model.on("NuovaPartita_VM_MATCHCREATED", this.saveMasterDopoCreaPartita, this);
           this.model.on("NuovaPartita_VM_MATCHNAMEUPDATED", this.removeLoading, this);
           this.pmsCollection.on("NuovaPartita_VM_MATCHLAUNCHED", this.navigateToElencoPartite, this);
-          this.collection.on("NuovaPartita_VM_COLLECTIONCOMPLETED", this.render, this);
+          this.collection.on("NuovaPartita_VM_COLLECTIONCOMPLETED", this.fetchPmsCollection, this);
+          this.pmsCollection.on("PMSPLAYERSFETCHED",this.render,this);
           this.model.saveDraftToP();
         },
+
+        fetchPmsCollection : function (){
+          this.pmsCollection.getFromParseValidate(this.model.id);
+        },
+
         events: {
           "blur #matchname": "snp",
           "click #launch": "lp",
@@ -73,9 +79,39 @@ define([
           Parse.history.navigate('selezioneGiocatori/' + this.model.id, { trigger : true });
         },
 
+        matchCanBeLaunched : function () {
+          if ( $.trim(this.model.attributes.name) != "" ){
+            if (this.pmsCollection.length >1 ){
+              if (this.collection.isLaunchable()) {
+                if (this.collection.isInRange()){
+                  console.log("lanciata");
+                  return "tuttoapposto";
+                }
+                else{
+                  console.log("norange");
+                  return "Non in range";
+                }
+              }else{
+                console.log("nodesc");
+                return "No description for each hint";
+              }
+            }else{
+              console.log("noplayers");
+              return "not enough Players";
+            }
+          }else{
+            return "no name for match";
+          }
+        },
+
         lp: function () {
-          this.loading.render();
-          this.pmsCollection.launchPartita("NuovaPartita_VM", this.model.id);
+          var launchability = this.matchCanBeLaunched();
+          if ( launchability == "tuttoapposto"){
+            this.loading.render();
+            this.pmsCollection.launchPartita("NuovaPartita_VM", this.model.id);
+          }
+          else{
+          }
         },
 
         cfh: function () {

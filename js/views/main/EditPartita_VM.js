@@ -43,18 +43,23 @@ define([
           this.pmsCollection = new PmsCollection();
           this.loading = new LoadingView();
           this.model.on("EditPartita_VM_MATCHSYNC", this.sfh, this);
-          this.collection.on("add", this.render, this);
+          this.collection.on("OKHINTSITE", this.fetchPmsCollection, this);
           this.model.on("EditPartita_VM_MATCHNAMEUPDATED", this.removeLoading, this);
           this.pmsCollection.on("EditPartita_VM_MATCHLAUNCHED", this.navigateToElencoPartite, this);
           this.model.id = this.options.matchIdToGet;
           this.model.fetchFromP("EditPartita_VM");
-          
+          this.pmsCollection.on("PMSPLAYERSFETCHED",this.render,this);          
         },
+
         events: {
           "blur #matchname": "snp",
           "click #launch": "lp",
           "click #setlaunchtime": "navigateToSetLaunchTime",
           "click #addPlayers": "navigateToSelezioneGiocatori"
+        },
+        
+        fetchPmsCollection : function (){
+          this.pmsCollection.getFromParseValidate(this.model.id);
         },
 
         navigateToElencoPartite : function () {
@@ -70,9 +75,42 @@ define([
           Parse.history.navigate('selezioneGiocatori/' + this.model.id, { trigger : true });
         },
 
+        matchCanBeLaunched : function () {
+          if ( $.trim(this.model.attributes.name) != "" ){
+                        console.log(this.pmsCollection);
+            if (this.pmsCollection.length >1 ){
+              if (this.collection.isLaunchable()) {
+                if (this.collection.isInRange()){
+                  console.log("lanciata");
+                  return "tuttoapposto";
+                }
+                else{
+                  console.log("norange");
+                  return "Non in range";
+                }
+              }else{
+                console.log("nodesc");
+                return "No description for each hint";
+              }
+            }else{
+              console.log("noplayers");
+              return "not enough Players";
+            }
+          }else{
+            console.log("noname");
+            return "no name for match";
+          }
+        },
+
         lp: function () {
-          this.loading.render();
-          this.pmsCollection.launchPartita("EditPartita_VM", this.model.id);
+          var launchability = this.matchCanBeLaunched();
+          if ( launchability == "tuttoapposto"){
+            this.loading.render();
+            this.pmsCollection.launchPartita("EditPartita_VM", this.model.id);
+          }
+          else{
+            console.log(launchability);
+          }
         },
 
         sfh: function () {
