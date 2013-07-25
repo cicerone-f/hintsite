@@ -8,6 +8,7 @@ define([
   "Parse",
   "handlebars",
   "models/Pms",
+  "models/WallMessage",
   "text!templates/main/accept-match.html"
 ],
   function (
@@ -17,6 +18,7 @@ define([
     Parse,
     Handlebars,
     Pms,
+    WallMessage,
     template
   ) {
     var AddFromSearch_VM = Parse.View.extend({
@@ -24,13 +26,13 @@ define([
         template: Handlebars.compile(template),
 
         events: {
-          "click #yes" : "unrenderAcceptMatch", 
+          "click #yes" : "matchAccepted", 
           "click #no" : "goBack"
         },
 
         initialize: function () {
           this.Pms = this.options.Pms;
-
+          this.wallMsg = new WallMessage();
         },
 
         render: function (eventName) {
@@ -39,14 +41,27 @@ define([
         },
 
 
-        unrenderAcceptMatch: function (eventName){
+        matchAccepted: function (eventName) {
           var self = this;
-          this.Pms.save({userState: this.Pms.userStates.INGAME},{
+
+          self.Pms.save({userState: self.Pms.userStates.INGAME}, {
             success: function () {
               self.remove();
             },
             error: function (error){
               console.log(error);
+            }
+          });
+
+          var query = new Parse.Query(Parse.User);
+          query.get(self.Pms.attributes.userId, {
+            success: function (user) {
+              var msg = "<span class=user>" + user.attributes.username + '</span> entered the game.';
+              // as of now, it saves a message with the id of the current user - this can be changed if needed
+              self.wallMsg.saveToP(msg, self.Pms.attributes.matchId);
+            },
+            error: function (error) {
+              console.error('Error while saving a WallMessage. Error is: ' + error);
             }
           });
         },
