@@ -51,7 +51,8 @@ define([
           this.pms.on("NuovaPartita_VM_PMSMASTERCREATED", this.cfh, this);
           this.model.on("NuovaPartita_VM_MATCHCREATED", this.saveMasterDopoCreaPartita, this);
           this.model.on("NuovaPartita_VM_MATCHNAMEUPDATED", this.removeLoading, this);
-          this.pmsCollection.on("NuovaPartita_VM_MATCHLAUNCHED", this.navigateToElencoPartite, this);
+          this.pmsCollection.on("NuovaPartita_VM_MATCHLAUNCHED", this.checkMatchDate, this);
+          this.model.on("EditPartita_VM_MATCHTIMENOW", this.navigateToElencoPartite, this);
           this.collection.on("NuovaPartita_VM_COLLECTIONCOMPLETED", this.fetchPmsCollection, this);
           this.pmsCollection.on("PMSPLAYERSFETCHED",this.render,this);
           this.model.saveDraftToP();
@@ -79,6 +80,14 @@ define([
 
         navigateToSelezioneGiocatori : function () {
           Parse.history.navigate('selezioneGiocatori/' + this.model.id, { trigger : true });
+        },
+
+        checkMatchDate: function () {
+          if (this.model.attributes.launchTime) {
+            this.navigateToElencoPartite();
+          } else {
+            this.model.saveTimePartitaNow("EditPartita_VM");
+          }
         },
 
         matchCanBeLaunched : function () {

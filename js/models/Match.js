@@ -57,6 +57,21 @@ define([
 
           }
         });
+      },
+
+      saveTimePartitaNow: function (vm) {
+        var self = this;
+        var timeNow = Date.now();
+        this.save({
+          launchTime: timeNow
+        }, {
+          success: function (result) {
+            self.trigger(vm+'_MATCHTIMENOW');
+          },
+          error: function (e) {
+
+          }
+        });
       }
 
     });
