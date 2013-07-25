@@ -12,7 +12,7 @@ define([
   "views/sub/Header_VS",
   "views/main/AcceptMatch_VM",
   "views/sub/HintMap_VS",
-  "text!templates/main/partita-player.html"
+  "text!templates/main/partita-master.html"
 ],
     function ($,
       _,
@@ -47,6 +47,19 @@ define([
             }
           });
         },
+        events: {
+          "click #listing-giocatori": "goToListing",
+          "click #hint-full": "goToHintFull"
+        },
+        
+        goToListing: function () {
+          console.log("goToListing");
+        },
+
+        goToHintFull: function () {
+          console.log("goToHintFull");
+        },
+
         render: function (eventName) {
           var header = new Header_VS({owner: "PartitaMaster_VM",backViewModelId:0});
           $(this.el).html(header.render().el).append(this.template());
