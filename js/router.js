@@ -23,7 +23,8 @@ define([
   "views/main/SetLaunchTime_VM",
   "views/main/SelezioneGiocatori_VM",
   "views/main/HintForm_VM",
-  "views/main/SetHintPosition_VM"
+  "views/main/SetHintPosition_VM",
+  "views/main/Opzioni_VM",
 ],
     function ($,
       _,
@@ -45,7 +46,8 @@ define([
       SetLaunchTime_VM,
       SelezioneGiocatori_VM,
       HintForm_VM,
-      SetHintPosition_VM
+      SetHintPosition_VM,
+      Opzioni_VM
     ) {
 
     var AppRouter = Parse.Router.extend({
@@ -63,7 +65,8 @@ define([
         "selezioneGiocatori/:id": "selGiocatori",
         "hintsedit/:id": "hintForm",
         "sethintposition/:id": "setHintP",
-        "back/:view/:param": "backToPrevious"
+        "back/:view/:param": "backToPrevious",
+        "opzioni": "opzioni"
       },
 
       userControl: function () {
@@ -74,6 +77,11 @@ define([
         }
       },
 
+      opzioni: function () {
+        var page = new Opzioni_VM({
+        });
+        this.changePage(page);      
+      },
 
       mainMatchList: function () {
         var page = new ElencoPartite_VM({
@@ -200,7 +208,8 @@ define([
         "NuovaPartita_VM": "",
         "EditPartita_VM": "",        
         "PartitaPlayer_VM": "",
-        "PartitaMaster_VM": "",        
+        "PartitaMaster_VM": "",
+        "Opzioni_VM": "",        
         "HintForm_VM": "editMatch",          //  + /id
         "SetHintPosition_VM": "hintsedit",   //  + /id
         "HintFull_VM": "matches",            //  + /id

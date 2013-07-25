@@ -9,7 +9,7 @@ define([
   "handlebars",
   "views/sub/list/Match_VSL",
   "views/sub/NewMatch_VS",
-  "views/sub/Header_VS",
+  "views/sub/HeaderProfilo_VS",
   "collections/PmsCollection",
   "models/Pms"
 ],
@@ -20,7 +20,7 @@ define([
       Handlebars,
       Match_VSL,
       NewMatch_VS,
-      Header_VS,
+      HeaderProfilo_VS,
       PmsCollection,
       Pms
     ) {
@@ -62,7 +62,7 @@ define([
         render: function (eventName) {
           $(this.el).empty();
           var viewContent = new NewMatch_VS().render().el;
-          var header = new Header_VS({owner: "ElencoPartite_VM",backViewModelId:0});
+          var header = new HeaderProfilo_VS();
           $(this.el).html(
             header.render().el).append(viewContent)
           .append(new Match_VSL({collection:this.inCorsoMaster, matchType: 'inCorsoMaster' }).render().el)
