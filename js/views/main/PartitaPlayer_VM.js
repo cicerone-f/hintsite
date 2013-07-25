@@ -11,7 +11,8 @@ define([
   "views/sub/list/HintPreview_VSL",
   "views/sub/Header_VS",
   "views/main/AcceptMatch_VM",
-  "views/sub/HintMap_VS"
+  "views/sub/HintMap_VS",
+  "views/main/Error_VM"
 ],
     function ($,
       _,
@@ -22,7 +23,8 @@ define([
       HintPreview_VSL,
       Header_VS,
       AcceptMatch_VM,
-      HintMap_VS
+      HintMap_VS,
+      Error_VM
     ) {
 
     var PartitaPlayer_VM = Parse.View.extend({
@@ -41,7 +43,8 @@ define([
               self.render();
             },
             error: function (error){
-              console.log(error);
+              var ErrorView = new Error_VM({errorMsg: error.message});
+              ErrorView.render();
             }
           });
         },

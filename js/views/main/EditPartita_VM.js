@@ -14,7 +14,8 @@ define([
   "views/sub/Header_VS",
   "views/sub/LaunchFooter_VS",
   "views/sub/list/HintEdit_VSL",
-  "views/LoadingView"
+  "views/LoadingView",
+  "views/main/Error_VM"
 ],
   function (
     $,
@@ -29,7 +30,8 @@ define([
     Header_VS,
     LaunchFooter_VS,
     HintEdit_VSL,
-    LoadingView
+    LoadingView,
+    Error_VM
   ) {
     var EditPartita_VM = Parse.View.extend({
         id: 'container',
@@ -81,23 +83,18 @@ define([
             if (this.pmsCollection.length >1 ){
               if (this.collection.isLaunchable()) {
                 if (this.collection.isInRange()){
-                  console.log("lanciata");
                   return "tuttoapposto";
                 }
                 else{
-                  console.log("norange");
                   return "Non in range";
                 }
               }else{
-                console.log("nodesc");
                 return "No description for each hint";
               }
             }else{
-              console.log("noplayers");
               return "not enough Players";
             }
           }else{
-            console.log("noname");
             return "no name for match";
           }
         },
@@ -109,7 +106,8 @@ define([
             this.pmsCollection.launchPartita("EditPartita_VM", this.model.id);
           }
           else{
-            console.log(launchability);
+            var ErrorView = new Error_VM({errorMsg: launchability});
+            ErrorView.render();
           }
         },
 

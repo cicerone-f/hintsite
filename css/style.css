@@ -95,7 +95,7 @@ ul#list {
     background-color: rgba(0, 0, 0, 0.1); }
 
 #photo {
-  height: 100px;
+  height: 10px;
   width: 50%;
   float: left;
   background-color: pink;
@@ -303,6 +303,10 @@ ul#list {
   height: 50px;
   background-color: blue;
   text-align: center; }
+
+.errorContainer {
+  text-align: center;
+  color: #fff; }
 
 @-webkit-keyframes appear {
   from {
