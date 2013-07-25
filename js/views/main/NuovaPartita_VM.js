@@ -43,6 +43,7 @@ define([
         pmsCollection: PmsCollection,
         collection: HintCollection,
         initialize: function () {
+          // git shots
           this.model = new Match();
           this.pms = new Pms();
           this.pmsCollection = new PmsCollection();
