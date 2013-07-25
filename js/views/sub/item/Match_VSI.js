@@ -48,7 +48,8 @@ define([
 
         goToDetails: function () {
           if (this.options.matchType == 'inCorsoMaster') {
-            Parse.history.navigate("matches/" + this.model.attributes.matchId, {trigger: true});
+            console.log("Match_VSI go to details "+this.model.attributes.matchId);
+            Parse.history.navigate("matchesMaster/" + this.model.attributes.matchId, {trigger: true});
           } else if (this.options.matchType == 'sospeseMaster') {
             Parse.history.navigate("editMatch/" + this.model.attributes.matchId, {trigger: true});
           } else if (this.options.matchType == 'inCorsoPlayer') {

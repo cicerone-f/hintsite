@@ -13,6 +13,7 @@ define([
   "models/Match",
   "views/main/HintFull_VM",
   "views/main/PartitaPlayer_VM",
+  "views/main/PartitaMaster_VM",
   "views/main/NuovaPartita_VM",
   "views/main/EditPartita_VM",  
   "views/sub/list/HintPreview_VSL",
@@ -34,6 +35,7 @@ define([
       Match,
       HintFull_VM,
       PartitaPlayer_VM,
+      PartitaMaster_VM,
       NuovaPartita_VM,
       EditPartita_VM,
       HintPreview_VSL,
@@ -52,6 +54,7 @@ define([
         "": "userControl",
         "mainMatchList": "mainMatchList",
         "matches/:id": "matchDetails",
+        "matchesMaster/:id": "matchDetailsMaster",
         "matches/:id/:extra" : "matchDetailsAccept",
         "hints/:id": "hintDetails",
         "newMatch": "newMatch",
@@ -108,6 +111,22 @@ define([
             self.changePage(new PartitaPlayer_VM({
               model: result
             }));     
+          },
+          error: function (error) {
+            console.log(error);
+          }
+        });
+      },
+
+      matchDetailsMaster: function (id) {
+        
+        var self = this;
+        var query = new Parse.Query(Match);
+        var match = query.get(id, {
+          success: function (result) {
+            self.changePage(new PartitaMaster_VM({
+              model: result
+            }));    
           },
           error: function (error) {
             console.log(error);
@@ -181,6 +200,7 @@ define([
         "NuovaPartita_VM": "",
         "EditPartita_VM": "",        
         "PartitaPlayer_VM": "",
+        "PartitaMaster_VM": "",        
         "HintForm_VM": "editMatch",          //  + /id
         "SetHintPosition_VM": "hintsedit",   //  + /id
         "HintFull_VM": "matches",            //  + /id
