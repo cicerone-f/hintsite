@@ -70,6 +70,7 @@ define([
       },
 
       userControl: function () {
+        console.log("usercontrol");
         if (Parse.User.current()) {
           this.mainMatchList();
         } else {
