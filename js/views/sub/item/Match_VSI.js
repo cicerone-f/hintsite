@@ -39,6 +39,9 @@ define([
         render: function (eventName) {
           var match = this.match.toJSON();
           match.id = this.match.id;
+          if ($.trim(match.name) == "" ) {
+            match.name = "(untitled)";
+          }
           $(this.el).html(this.template(match));
           return this;
         },
