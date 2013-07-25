@@ -26,7 +26,7 @@ define([
               self.reset();
             }
             self.add(results);
-
+            self.trigger("OKHINTSITE");
           },
           error: function (error) {
             console.log(error);
@@ -51,6 +51,27 @@ define([
             }
           }
         );
+      },
+      isLaunchable : function (){
+        var launchable = true;
+        _.each(this.models, function (myHint){
+          if (!(myHint.attributes.point && ($.trim(myHint.attributes.description) != ""))){
+            launchable = false;
+          }
+        } );
+        return launchable;
+      },
+      isInRange : function (){
+        var rangeOk = true;
+        var self = this
+        _.each(self.models, function (myHint1){
+          _.each(self.models, function (myHint2){
+            if (myHint1.attributes.point.kilometersTo(myHint2.attributes.point) > 5){
+              rangeOk = false;
+            }
+          });
+        } );
+        return rangeOk;
       } 
     });
 
