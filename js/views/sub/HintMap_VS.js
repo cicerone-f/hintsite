@@ -43,7 +43,8 @@ define([
       model: Hint,
       pms: Pms,
       events: {
-        "click #check-in-btn": "checkIn"
+        "click #check-in-btn": "checkIn",
+        "click #go-to-wall": "goToWall"
       },
 
       template: Handlebars.compile(template),
@@ -70,6 +71,10 @@ define([
         $(this.el).html(this.template());
         this.renderMap();
         return this;
+      },
+
+      goToWall: function () {
+        Parse.history.navigate("wallFull/"+this.matchId , {trigger: true});
       },
 
       renderMap: function () {

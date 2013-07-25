@@ -4,21 +4,20 @@
 define([
   "jquery",
   "Parse",
-  "models/Match"
+  "models/WallMessage"
 ],
   function (
     $,
     Parse,
-    Match
+    WallMessage
   ) {
     var WallMessageCollection = Parse.Collection.extend({
       model: WallMessage,
-      getFromParse: function (matchID) {
+      getFromParse: function (matchId) {
         var self = this;
-
         // retrieve match-related WallMessages
         var query = new Parse.Query(WallMessage);
-        query.equalTo('matchID', matchID)
+        query.equalTo('matchId', matchId)
         
         // perform query
         query.find({

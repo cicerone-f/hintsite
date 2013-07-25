@@ -25,6 +25,7 @@ define([
   "views/main/HintForm_VM",
   "views/main/SetHintPosition_VM",
   "views/main/Opzioni_VM",
+  "views/main/WallFull_VM"
 ],
     function ($,
       _,
@@ -47,7 +48,8 @@ define([
       SelezioneGiocatori_VM,
       HintForm_VM,
       SetHintPosition_VM,
-      Opzioni_VM
+      Opzioni_VM,
+      WallFull_VM
     ) {
 
     var AppRouter = Parse.Router.extend({
@@ -66,7 +68,8 @@ define([
         "hintsedit/:id": "hintForm",
         "sethintposition/:id": "setHintP",
         "back/:view/:param": "backToPrevious",
-        "opzioni": "opzioni"
+        "opzioni": "opzioni",
+        "wallFull/:id": "wallFull"
       },
 
       userControl: function () {
@@ -80,6 +83,13 @@ define([
 
       opzioni: function () {
         var page = new Opzioni_VM({
+        });
+        this.changePage(page);      
+      },
+
+      wallFull: function (matchId) {
+        var page = new WallFull_VM({
+          matchId: matchId
         });
         this.changePage(page);      
       },

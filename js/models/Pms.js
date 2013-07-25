@@ -73,6 +73,7 @@ define([
         var self = this;
 
         var query = new Parse.Query(Pms);
+        var matchId = matchId;
         query.equalTo("matchId", matchId);
         query.equalTo("userId", userId);
         query.find({
@@ -84,7 +85,9 @@ define([
 
                   // post results on the Wall
                   var wallMsg = new WallMessage();
-                  wallMsg.saveToP(wallMsg.messageTypes.HINT_FOUND, matchId, results[0].attributes.myHint - 1); 
+                  console.log(matchId);
+                  console.log(results[0].attributes.myHint - 1);
+                  wallMsg.saveToP(wallMsg.messageTypes.HINT_FOUND, results[0].attributes.matchId, (results[0].attributes.myHint - 1)); 
                 },
                 error: function (e) {
                   console.log("non salva")
