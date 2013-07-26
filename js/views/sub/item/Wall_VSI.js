@@ -43,7 +43,6 @@ define([
         },
 
         render: function (eventName) {
-          console.log(this.model.createdAt);
           var wallMsg = {time: this.model.createdAt, text: this.writeTheWallMessage(), username: this.model.attributes.username};
           $(this.el).html(this.template(wallMsg));
           return this;
