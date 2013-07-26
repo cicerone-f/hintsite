@@ -8,6 +8,7 @@ define([
   "Parse",
   "handlebars",
   "models/Match",
+  "models/WallMessage",
   "models/Pms",
   "collections/HintCollection",
   "collections/PmsCollection",
@@ -25,6 +26,7 @@ define([
     Parse,
     Handlebars,
     Match,
+    WallMessage,
     Pms,
     HintCollection,
     PmsCollection,
@@ -116,6 +118,8 @@ define([
           var launchability = this.matchCanBeLaunched();
           if ( launchability == "tuttoapposto"){
             this.loading.render();
+            var wallMsg = new WallMessage();
+            wallMsg.saveToP(wallMsg.messageTypes.MATCH_CREATED, this.model.id); 
             this.pmsCollection.launchPartita("NuovaPartita_VM", this.model.id);
           }
           else{

@@ -85,8 +85,6 @@ define([
 
                   // post results on the Wall
                   var wallMsg = new WallMessage();
-                  console.log(matchId);
-                  console.log(results[0].attributes.myHint - 1);
                   wallMsg.saveToP(wallMsg.messageTypes.HINT_FOUND, results[0].attributes.matchId, (results[0].attributes.myHint - 1)); 
                 },
                 error: function (e) {

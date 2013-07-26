@@ -308,6 +308,33 @@ ul#list {
   text-align: center;
   color: #fff; }
 
+.userName {
+  font-size: 110%;
+  color: red; }
+
+.containerPulsantiMaster {
+  float: left;
+  width: 100%; }
+
+#listing-giocatori {
+  height: 50px;
+  width: 50px;
+  float: left;
+  background-color: red; }
+
+#hint-full {
+  height: 50px;
+  width: 50px;
+  float: left;
+  background-color: purple; }
+
+#go-to-wall {
+  height: 10%;
+  float: left;
+  width: 100%;
+  background-color: yellow;
+  text-align: center; }
+
 @-webkit-keyframes appear {
   from {
     opacity: 0; }
