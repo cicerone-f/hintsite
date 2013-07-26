@@ -29,7 +29,6 @@ define([
         initialize: function () {
           this.collection = new PmsCollection();
           this.collection.bind("PMSDAPARSE", this.render, this);
-          console.log(this.options.matchId);
           this.collection.getFromParseForMaster(this.options.matchId);
         },
 
