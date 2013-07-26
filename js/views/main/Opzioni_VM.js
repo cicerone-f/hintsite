@@ -31,7 +31,8 @@ define([
         },
 
         logOut: function () {
-          console.log("qui sloggo");
+          Parse.User.logOut();
+          Parse.history.navigate("", {trigger: true});
         },
 
         render: function (eventName) {
