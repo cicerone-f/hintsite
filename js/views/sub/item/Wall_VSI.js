@@ -7,6 +7,7 @@ define([
   "backbone",
   "Parse",
   "handlebars",
+  "moment",
   "text!templates/sub/item/wall-TSI.html"
 ],
     function (
@@ -15,6 +16,7 @@ define([
     Backbone,
     Parse,
     Handlebars,
+    moment,
     template
   ) {
 
@@ -39,11 +41,16 @@ define([
             return " si e' aggiunto alla partita.";
           } else if (this.model.attributes.messageType == 2) {
             return " ha creato la partita.";
+          } else if (this.model.attributes.messageType == 3) {
+            return " dice: "+this.model.attributes.messageText;
+          } else if (this.model.attributes.messageType == 4) {
+            return "Ancora nessuno ha trovato l'hint.";
           }
         },
 
         render: function (eventName) {
-          var wallMsg = {time: this.model.createdAt, text: this.writeTheWallMessage(), username: this.model.attributes.username};
+          var timeFromNow = moment(this.model.createdAt).fromNow();
+          var wallMsg = {time: timeFromNow, text: this.writeTheWallMessage(), username: this.model.attributes.username};
           $(this.el).html(this.template(wallMsg));
           return this;
         }
