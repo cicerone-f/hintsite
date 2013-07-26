@@ -7,9 +7,7 @@ define([
   "backbone",
   "Parse",
   "handlebars",
-  "collections/UserCollection",
-  "views/sub/item/Player_VSI",
-  "text!templates/sub/list/players-TSL.html"
+  "views/sub/list/Player_VSL"
 ],
   function (
     $,
@@ -17,30 +15,19 @@ define([
     Backbone,
     Parse,
     Handlebars,
-    UserCollection,
-    Player_VSI,
-    template
+    Player_VSL
   ) {
     var ListingGiocatori_VM = Parse.View.extend({
-        tagName: "ul",
-        id: "list",
-        collection: UserCollection,
-        template: Handlebars.compile(template),
+        id: 'popup-container',
+
         initialize: function () {
-          this.collection = new UserCollection();
-          this.collection.bind("UTENTIDAPARSE", this.render, this);
-          this.collection.getFromParse();
         },
 
         render: function (eventName) {
-          $(this.el).append(this.template());
-          _.each(this.collection.models, function (user) {
-            $(this.el).append(new Player_VSI({
-              model: user}).render().el);
-          console.log(user);
-          }, this);
+          $(this.el).html(new Player_VSL().render().el);
           return this;
-        }
+        },
+
       });
     return ListingGiocatori_VM;
   });
