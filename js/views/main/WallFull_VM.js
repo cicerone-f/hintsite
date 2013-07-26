@@ -28,7 +28,7 @@ define([
       },
 
       render: function (eventName) {
-        var header = new Header_VS({owner: "PartitaPlayer_VM", backViewModelId: this.options.matchId});
+        var header = new Header_VS({owner: "WallFull_VM", backViewModelId: this.options.matchId});
         $(this.el).html(header.render().el)
         .append(new Wall_VSL({matchId: this.options.matchId}).render().el)
         return this;

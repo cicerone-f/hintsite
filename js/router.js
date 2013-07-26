@@ -25,7 +25,8 @@ define([
   "views/main/HintForm_VM",
   "views/main/SetHintPosition_VM",
   "views/main/Opzioni_VM",
-  "views/main/WallFull_VM"
+  "views/main/WallFull_VM",
+  "views/main/SignUp_VM"
 ],
     function ($,
       _,
@@ -49,7 +50,8 @@ define([
       HintForm_VM,
       SetHintPosition_VM,
       Opzioni_VM,
-      WallFull_VM
+      WallFull_VM,
+      SignUp_VM
     ) {
 
     var AppRouter = Parse.Router.extend({
@@ -69,11 +71,11 @@ define([
         "sethintposition/:id": "setHintP",
         "back/:view/:param": "backToPrevious",
         "opzioni": "opzioni",
-        "wallFull/:id": "wallFull"
+        "wallFull/:id": "wallFull",
+        "signup": "signup"
       },
 
       userControl: function () {
-        console.log("usercontrol");
         if (Parse.User.current()) {
           this.mainMatchList();
         } else {
@@ -83,6 +85,12 @@ define([
 
       opzioni: function () {
         var page = new Opzioni_VM({
+        });
+        this.changePage(page);      
+      },
+
+      signup: function () {
+        var page = new SignUp_VM({
         });
         this.changePage(page);      
       },
@@ -224,7 +232,8 @@ define([
         "HintForm_VM": "editMatch",          //  + /id
         "SetHintPosition_VM": "hintsedit",   //  + /id
         "HintFull_VM": "matches",            //  + /id
-        "SelezioneGiocatori_VM": "editMatch" //  + /id
+        "SelezioneGiocatori_VM": "editMatch", //  + /id
+        "WallFull_VM": "matches"        //  + /id
       },
 
       backToPrevious: function (view,param) {
@@ -235,6 +244,7 @@ define([
           Parse.history.navigate(this.mappaBack[view] , { trigger : true, replace : true });          
         }else{
           Parse.history.navigate(this.mappaBack[view] +'/'+ param , { trigger : true, replace : true });
+          console.log(this.mappaBack[view] +'/'+ param);
         }
         return false;  
       } 

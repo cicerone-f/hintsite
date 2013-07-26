@@ -11,7 +11,7 @@ define([
 ],
     function ($, _, Backbone, Parse, Handlebars, template) {
 
-    var LogIn_VM = Parse.View.extend({
+    var SignUp_VM = Parse.View.extend({
 
         events: {
           "click #sign": "signUp"
@@ -19,6 +19,8 @@ define([
 
         signUp : function () {
 
+              var username = this.$("#username").val();
+              var password = this.$("#password").val();
               var user = new Parse.User();
               user.set("username", username);
               user.set("password", password); 
@@ -35,7 +37,7 @@ define([
                   alert("Error: " + error.code + " " + error.message);
                 }
               });
-        }
+        },
 
         template: Handlebars.compile(template),
 
@@ -45,6 +47,6 @@ define([
         }
       });
 
-    return LogIn_VM;
+    return SignUp_VM;
 
   });
