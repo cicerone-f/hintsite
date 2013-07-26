@@ -57,8 +57,7 @@ define([
         },
 
         renderListing: function (eventName) {
-          console.log("renderlisting");
-          var lg = new ListingGiocatori_VM();
+          var lg = new ListingGiocatori_VM({matchId: this.model.id});
           $(this.el).append(lg.render().el);
           return this;
         },

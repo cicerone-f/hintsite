@@ -7,7 +7,7 @@ define([
   "backbone",
   "Parse",
   "handlebars",
-  "collections/UserCollection",
+  "collections/PmsCollection",
   "views/sub/item/Player_VSI",
   "text!templates/sub/list/players-TSL.html"
 ],
@@ -17,27 +17,27 @@ define([
     Backbone,
     Parse,
     Handlebars,
-    UserCollection,
+    PmsCollection,
     Player_VSI,
     template
   ) {
     var Player_VSL = Parse.View.extend({
         tagName: "ul",
         id: "list",
-        collection: UserCollection,
+        collection: PmsCollection,
         template: Handlebars.compile(template),
         initialize: function () {
-          this.collection = new UserCollection();
-          this.collection.bind("UTENTIDAPARSE", this.render, this);
-          this.collection.getFromParse();
+          this.collection = new PmsCollection();
+          this.collection.bind("PMSDAPARSE", this.render, this);
+          console.log(this.options.matchId);
+          this.collection.getFromParseForMaster(this.options.matchId);
         },
 
         render: function (eventName) {
           $(this.el).append(this.template());
-          _.each(this.collection.models, function (user) {
+          _.each(this.collection.models, function (pms) {
             $(this.el).append(new Player_VSI({
-              model: user}).render().el);
-          console.log(user);
+              model: pms}).render().el);
           }, this);
           return this;
         }

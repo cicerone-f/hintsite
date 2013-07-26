@@ -28,6 +28,22 @@ define([
         });
       },
 
+      getFromParseForMaster: function (matchId) {
+        var query = new Parse.Query(Pms);
+        query.equalTo("matchId", matchId);
+        query.greaterThan("userState", 1);
+        var self = this;
+        query.find({
+          success: function (results) {
+            self.add(results);
+            self.trigger("PMSDAPARSE");//???
+          },
+          error: function (error) {
+            console.log(error);
+          }
+        });
+      },
+
       getFromParseValidate: function (matchId) {
         var query = new Parse.Query(Pms);
         query.equalTo("matchId", matchId);

@@ -24,7 +24,7 @@ define([
         },
 
         render: function (eventName) {
-          $(this.el).html(new Player_VSL().render().el);
+          $(this.el).html(new Player_VSL({matchId: this.options.matchId}).render().el);
           return this;
         },
 
