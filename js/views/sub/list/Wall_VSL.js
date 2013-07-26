@@ -19,7 +19,7 @@ define([
       Handlebars,
       Wall_VSI,
       WallMessageCollection,
-      Wall,
+      WallMessage,
       template
     ) {
 
@@ -31,17 +31,30 @@ define([
         template: Handlebars.compile(template),
         initialize: function () {
           this.collection = new WallMessageCollection();
-          this.collection.getFromParse(this.options.matchId);
+          if (this.options.owner == 'HintFull_VM') {
+            this.collection.getFromParseHintRelated(this.options.matchId, this.options.hintNumber);
+          } else {
+            this.collection.getFromParse(this.options.matchId);
+          }
           this.collection.bind("add", this.render, this);
         },
 
         render: function (eventName) {
           $(this.el).empty();
-          _.each(this.collection.models, function (wallMsg) {
+          if (this.options.owner == 'HintFull_VM' && (this.collection.length == 0)) {
+            
+            var tempWallMsg = new WallMessage({messageType: 4});
             $(this.el).append(new Wall_VSI({
-              model: wallMsg
+              model: tempWallMsg
             }).render().el);
-          }, this);
+            
+          } else {
+            _.each(this.collection.models, function (wallMsg) {
+              $(this.el).append(new Wall_VSI({
+                model: wallMsg
+              }).render().el);
+            }, this);
+          }
           return this;
         }
       });

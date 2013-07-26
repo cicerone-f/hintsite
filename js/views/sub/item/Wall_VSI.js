@@ -39,6 +39,10 @@ define([
             return " si e' aggiunto alla partita.";
           } else if (this.model.attributes.messageType == 2) {
             return " ha creato la partita.";
+          } else if (this.model.attributes.messageType == 3) {
+            return " dice: "+this.model.attributes.messageText;
+          } else if (this.model.attributes.messageType == 4) {
+            return "Ancora nessuno ha trovato l'hint.";
           }
         },
 
