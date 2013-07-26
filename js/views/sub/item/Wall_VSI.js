@@ -7,6 +7,7 @@ define([
   "backbone",
   "Parse",
   "handlebars",
+  "moment",
   "text!templates/sub/item/wall-TSI.html"
 ],
     function (
@@ -15,6 +16,7 @@ define([
     Backbone,
     Parse,
     Handlebars,
+    moment,
     template
   ) {
 
@@ -43,7 +45,8 @@ define([
         },
 
         render: function (eventName) {
-          var wallMsg = {time: this.model.createdAt, text: this.writeTheWallMessage(), username: this.model.attributes.username};
+          var timeFromNow = moment(this.model.createdAt).fromNow();
+          var wallMsg = {time: timeFromNow, text: this.writeTheWallMessage(), username: this.model.attributes.username};
           $(this.el).html(this.template(wallMsg));
           return this;
         }
