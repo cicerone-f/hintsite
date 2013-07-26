@@ -32,7 +32,6 @@ define([
         var self = this;
         this.fetch({ 
           success: function() {
-            console.log(self);
           },
           error: function () {
           }

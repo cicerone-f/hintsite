@@ -11,6 +11,7 @@ define([
   "views/sub/list/HintPreview_VSL",
   "views/sub/Header_VS",
   "views/main/AcceptMatch_VM",
+  "views/main/ListingGiocatori_VM",
   "views/sub/HintMap_VS",
   "views/sub/list/Wall_VSL",
   "text!templates/main/partita-master.html"
@@ -24,6 +25,7 @@ define([
       HintPreview_VSL,
       Header_VS,
       AcceptMatch_VM,
+      ListingGiocatori_VM,
       HintMap_VS,
       Wall_VSL,
       template
@@ -50,12 +52,15 @@ define([
           });
         },
         events: {
-          "click #listing-giocatori": "goToListing",
+          "click #listing-giocatori": "renderListing",
           "click #hint-full": "goToHintFull"
         },
-        
-        goToListing: function () {
-          console.log("goToListing");
+
+        renderListing: function (eventName) {
+          console.log("renderlisting");
+          var lg = new ListingGiocatori_VM();
+          $(this.el).append(lg.render().el);
+          return this;
         },
 
         goToHintFull: function () {
