@@ -25,7 +25,6 @@ define([
           "click #back": "goBack"
         },
         goBack: function () {
-          console.log('back/'+this.options.owner+"/"+this.options.backViewModelId);
           Parse.history.navigate('back/'+this.options.owner+"/"+this.options.backViewModelId, { trigger : true, replace : true });
         },
         initialize: function () {

@@ -244,7 +244,6 @@ define([
           Parse.history.navigate(this.mappaBack[view] , { trigger : true, replace : true });          
         }else{
           Parse.history.navigate(this.mappaBack[view] +'/'+ param , { trigger : true, replace : true });
-          console.log(this.mappaBack[view] +'/'+ param);
         }
         return false;  
       } 
