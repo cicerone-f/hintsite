@@ -30,6 +30,7 @@ define([
     var PartitaPlayer_VM = Parse.View.extend({
         tagName: "div",
         id: "container",
+        className: "partita-player",
 
         initialize: function () {
           this.Pms = new Pms();
