@@ -62,7 +62,7 @@ define([
 
           if (this.options.extra) {
             $(this.el)
-            .append(new AcceptMatch_VM({ Pms: this.Pms, owner: "PartitaPlayer_VM", backViewModelId:0
+            .append(new AcceptMatch_VM({ model: this.model, Pms: this.Pms, owner: "PartitaPlayer_VM", backViewModelId:0
             }).render().el);
           }
           return this;
