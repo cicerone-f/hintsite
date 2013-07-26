@@ -58,6 +58,14 @@ ul#list {
   }
 }
 
+.partita-player ul {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
 
 #header {
   height: 10%;
@@ -105,7 +113,7 @@ ul#list {
   width: 100%;
 }
 #map{
-  height: 70%;
+  height: 100%;
   width: 100%;
 }
 
@@ -201,7 +209,10 @@ ul#list {
 
 #check-in-btn {
   height: 10%;
-  float:left;
+  // float:left;
+  position: absolute;
+  left: 0;
+  bottom: 0;
   width: 100%;
   background-color: orange;
   text-align: center; 
@@ -251,6 +262,7 @@ ul#list {
   -o-animation:      appear 1s 1; /* Opera 12+ */
   animation:         appear 1s 1; /* IE 10+ */
   height: 100%;
+  position: relative;
 }
 
 .loading {
@@ -367,10 +379,17 @@ ul#list {
 
 #go-to-wall {
   height: 10%;
-  float: left;
+  // float: left;
   width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 10%;
   background-color: yellow;
   text-align: center;
+}
+
+#map-container {
+  height: 90%;
 }
 
 

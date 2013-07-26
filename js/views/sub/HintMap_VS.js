@@ -39,7 +39,7 @@ define([
 
     var HintMap_VS = Parse.View.extend({
       tagName: 'div',
-      id: 'container',
+      id: "map-container",
       model: Hint,
       pms: Pms,
       events: {
