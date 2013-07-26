@@ -32,8 +32,19 @@ define([
           this.model.bind("destroy", this.close, this);
         },
 
+        writeTheWallMessage: function() {
+          if (this.model.attributes.messageType == 0) {
+            return " ha trovato l'hint N."+this.model.attributes.hintNumber;
+          } else if (this.model.attributes.messageType == 1) {
+            return " si e' aggiunto alla partita.";
+          } else if (this.model.attributes.messageType == 2) {
+            return " ha creato la partita.";
+          }
+        },
+
         render: function (eventName) {
-          var wallMsg = this.model.toJSON();
+          console.log(this.model.createdAt);
+          var wallMsg = {time: this.model.createdAt, text: this.writeTheWallMessage(), username: this.model.attributes.username};
           $(this.el).html(this.template(wallMsg));
           return this;
         }

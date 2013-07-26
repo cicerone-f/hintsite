@@ -8,7 +8,7 @@ define([
   function ($, Parse) {
     var WallMessage = Parse.Object.extend("WallMessage", {
       
-      messageTypes: {'HINT_FOUND': 0, 'MATCH_ACCEPTED': 1},
+      messageTypes: {'HINT_FOUND': 0, 'MATCH_ACCEPTED': 1, 'MATCH_CREATED': 2},
 
       defaults: {
         messageType: 0,

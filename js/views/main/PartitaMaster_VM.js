@@ -12,6 +12,7 @@ define([
   "views/sub/Header_VS",
   "views/main/AcceptMatch_VM",
   "views/sub/HintMap_VS",
+  "views/sub/list/Wall_VSL",
   "text!templates/main/partita-master.html"
 ],
     function ($,
@@ -24,6 +25,7 @@ define([
       Header_VS,
       AcceptMatch_VM,
       HintMap_VS,
+      Wall_VSL,
       template
     ) {
 
@@ -62,8 +64,8 @@ define([
 
         render: function (eventName) {
           var header = new Header_VS({owner: "PartitaMaster_VM",backViewModelId:0});
-          $(this.el).html(header.render().el).append(this.template());
-          //  .append( THE-WALL );
+          $(this.el).html(header.render().el).append(this.template())
+            .append( new Wall_VSL({matchId: this.model.id}).render().el );
           return this;
         }
       });
