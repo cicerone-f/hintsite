@@ -9,6 +9,7 @@ define([
   "handlebars",
   "models/Pms",
   "models/WallMessage",
+  "views/sub/list/HintPreview_VSL",
   "text!templates/main/accept-match.html"
 ],
   function (
@@ -19,9 +20,10 @@ define([
     Handlebars,
     Pms,
     WallMessage,
+    HintPreview_VSL,
     template
   ) {
-    var AddFromSearch_VM = Parse.View.extend({
+    var AcceptMatch_VM = Parse.View.extend({
         id: 'popup-container',
         template: Handlebars.compile(template),
 
@@ -36,7 +38,12 @@ define([
         },
 
         render: function (eventName) {
-          $(this.el).html(this.template());
+          $(this.el).html(new HintPreview_VSL({
+                Pms: this.Pms,
+                model: this.model
+              }).render().el
+            )
+          .append(this.template());
           return this;
         },
 
@@ -77,5 +84,5 @@ define([
         }
 
       });
-    return AddFromSearch_VM;
+    return AcceptMatch_VM;
   });
