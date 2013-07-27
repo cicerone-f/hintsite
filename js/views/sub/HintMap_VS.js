@@ -49,8 +49,8 @@ define([
       events: {
         "click #check-in-btn": "checkIn",
         "click #go-to-wall": "goToWall",
-        "click #distance": "getHintDistance",
-        "click #direction": "getHintDirection"
+        "click #distance": "checkGetHintDistance",
+        "click #direction": "checkGetHintDirection"
       },
 
       template: Handlebars.compile(template),
@@ -64,7 +64,9 @@ define([
         this.pms.id = this.options.pms.id;
         if(this.pms.id)
           this.pms.fetchFromP();
-        this.pms.on("hintPlusplussed",this.notify,this);
+        this.pms.on("hintPlusplussed", this.notify, this);
+        this.pms.on("HintMap_VS_UsedHelpDistance", this.getHintDistance, this);
+        this.pms.on("HintMap_VS_UsedHelpDirection", this.getHintDirection, this);
         if (this.options.pms.attributes.myHint){
           this.model.getWithPmsAndMatch(this.options.pms.attributes.myHint, this.matchId);
           this.loading.render();
@@ -125,16 +127,20 @@ define([
       },
 
       checkIn: function () {
-        // this.loading.render();
         var self = this;
         navigator.geolocation.getCurrentPosition(
           // success
           function (currPosition) {            
             var point = new Parse.GeoPoint(currPosition.coords.latitude, currPosition.coords.longitude);
             if (point.kilometersTo(self.model.attributes.point) <= 0.5){
-              self.pms.plusPlusMyHint(Parse.User.current().id , this.matchId, Parse.User.current().attributes.username);
+              self.pms.plusPlusMyHint(Parse.User.current().id, this.matchId);
             }else{
-              navigator.notification.alert('Errato! '+  point.kilometersTo(self.model.attributes.point) );
+              var message = "Wrong position for hint!";
+              $('body').append( 
+                new Popup_VM({
+                  notificationText: message
+                }).render().el
+              );
             }
           },
           // error
@@ -145,24 +151,50 @@ define([
 
       },
 
+      checkGetHintDistance: function () {
+        if (!(this.pms.attributes.UsedHelpDistance)) {
+          this.pms.saveUsedHelpDistance();
+        } else {
+          var message = "You've already use this Help in this Match!";
+          $('body').append( 
+            new Popup_VM({
+              notificationText: message
+            }).render().el
+          );
+        }
+      },
+
       getHintDistance: function () {
-        var self = this;
-        navigator.geolocation.getCurrentPosition(
-          // success
-          function (currPosition) {            
-            var point = new Parse.GeoPoint(currPosition.coords.latitude, currPosition.coords.longitude);
-            var distance = "You're " + point.kilometersTo(self.model.attributes.point).toFixed(3) + " Km far from Hint";
-            $('body').append( 
-              new Popup_VM({
-                notificationText: distance
-              }).render().el
-            );  
-          },
-          // error
-          null,
-          // options
-          {enableHighAccuracy: true, timeout: 20000}
-        );
+          var self = this;
+          navigator.geolocation.getCurrentPosition(
+            // success
+            function (currPosition) {            
+              var point = new Parse.GeoPoint(currPosition.coords.latitude, currPosition.coords.longitude);
+              var distance = "You're " + point.kilometersTo(self.model.attributes.point).toFixed(3) + " Km far from Hint";
+              $('body').append( 
+                new Popup_VM({
+                  notificationText: distance
+                }).render().el
+              );  
+            },
+            // error
+            null,
+            // options
+            {enableHighAccuracy: true, timeout: 20000}
+          );  
+      },
+
+      checkGetHintDirection: function () {
+        if (!(this.pms.attributes.UsedHelpDirection)) {
+          this.pms.saveUsedHelpDirection();
+        } else {
+          var message = "You've already use this Help in this Match!";
+          $('body').append( 
+            new Popup_VM({
+              notificationText: message
+            }).render().el
+          );
+        }
       },
 
       getHintDirection: function () {
@@ -187,19 +219,7 @@ define([
       },
 
       notify: function () {
-        console.log("notify");
-        navigator.notification.alert(
-          'Hint completed!',  // message
-          this.alertDismissed,         // callback
-          'Well Done !!',            // title
-          'OK'                  // buttonName
-        );
-      },
-
-      alertDismissed: function () {
-//        Parse.history.navigate("matches/" + this.matchId, {trigger: true});// non funziona non so perche
-        Parse.history.navigate("" , {trigger: true});
-
+        Parse.history.navigate("hintFound/" + this.matchId, {trigger: true});
       },
 
       unrenderLoading: function () {
