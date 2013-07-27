@@ -57,6 +57,19 @@ define([
             console.log(error);
           }
         });
+      },
+
+      updateImageUrl: function(fileURL) {
+        var self = this;
+        this.save({
+          image: fileURL,
+        }, {
+          success: function (result) {
+            self.trigger('Profilo_VM_IMAGEUPDATED')
+          },
+          error: function (e) {
+          }
+        });
       }
     });
 
