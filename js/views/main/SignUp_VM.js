@@ -23,7 +23,8 @@ define([
               var password = this.$("#password").val();
               var user = new Parse.User();
               user.set("username", username);
-              user.set("password", password); 
+              user.set("password", password);
+              user.set("points", 5000 ); 
 
               var userACL = new Parse.ACL(Parse.User.current());
               userACL.setPublicReadAccess(true);

@@ -21,7 +21,7 @@ define([
     template,
     Header_VS
   ) {
-    var HintForm_VM = Parse.View.extend({
+    var Opzioni_VM = Parse.View.extend({
       id: 'container',
         template: Handlebars.compile(template),
         initialize: function () {
@@ -35,8 +35,7 @@ define([
           Parse.history.navigate("", {trigger: true});
         },
 
-        render: function (eventName) {
-          
+        render: function (eventName) {         
           var header = new Header_VS({owner: "Opzioni_VM", backViewModelId:0 });
           $(this.el)
             .html(header.render().el)
@@ -45,5 +44,5 @@ define([
         }
 
       });
-    return HintForm_VM;
+    return Opzioni_VM;
   });

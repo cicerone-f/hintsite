@@ -27,7 +27,7 @@ define([
         },
 
         goToProfilo : function () {
-
+          Parse.history.navigate("profilo" , {trigger: true});
         },
 
         goToOpzioni : function () {
