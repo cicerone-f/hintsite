@@ -69,6 +69,22 @@ define([
         });
       },
 
+      getMyPmsForMatch : function (matchId) {
+        var self = this;
+        var query = new Parse.Query(Pms);
+        query.equalTo("matchId", matchId);
+        query.equalTo("userId", Parse.User.current().id);
+        query.find({
+          success: function (results) {
+            self.numeroHint = results[0].attributes.myHint;
+            self.trigger("gettedMyPmsForMatch");
+          },
+          error: function (error) {
+            console.log(error);
+          }
+        });
+      },
+
       saveUsedHelpDistance: function() {
         var self = this;
         this.save({
@@ -96,7 +112,7 @@ define([
           }
         });
       },
-      //Questo lo ha scritto quel maiale di Federico Cicerone
+      //Questo lo ha scritto quel genio di Federico Cicerone
       plusPlusMyHint: function (userId, matchId) {
         var self = this;
 

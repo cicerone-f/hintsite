@@ -59,11 +59,15 @@ ul#list {
 }
 
 .partita-player ul {
-  position: absolute;
-  top: 10%;
-  left: 0;
-  width: 100%;
+  width: 400%;
+  height: 100%;
   z-index: 100;
+}
+
+.partita-player ul li{
+  border: none !important;
+  width: 25% !important;
+  height: 100%;
 }
 
 
@@ -238,18 +242,33 @@ img {
 }  
 
 #check-in-btn {
-  $check-in-btn-radius: 80px;
+  $check-in-btn-radius: 100px;
   height: $check-in-btn-radius;
   width: $check-in-btn-radius;
   position: absolute;
   left: 50%;
-  bottom: 0;
-  background-color: #F47B33;
-  border: 1em solid rgba(255, 255, 255, 0.4);
-  text-align: center; 
-  
+  bottom: 2%;
+  margin-left: -62px;
+  border: 8px solid rgba(244, 123, 51, 0.4);
   -webkit-border-radius: 1000px;
+}
+
+#inside-check-in-btn {
+  margin: 2%;
+  background-color: #F47B33;
+  text-align: center; 
+  width: 96%;
+  height: 96%;
+  -webkit-border-radius: 1000px;
+  position: relative;
 } 
+
+#inside-check-in-btn img {
+  left: 30%;
+  top: 25%;
+  position: absolute;
+  width: 40%;
+}
 
 #log-in {
   cursor: pointer;
@@ -420,15 +439,61 @@ img {
 }
 
 #go-to-wall {
-  $height: 80px;
-  height: $height;
-  width: $height;
-  -webkit-border-radius: 1000px;
+  $check-in-btn-radius: 40px;
+  height: $check-in-btn-radius;
+  width: $check-in-btn-radius;
   position: absolute;
-  left: 20%;
-  bottom: 0;
-  background-color: yellow;
-  text-align: center;
+  left: 88%;
+  bottom: 4%;
+  margin-left: -28px;
+  border: 8px solid rgba(244, 123, 51, 0.4);
+  -webkit-border-radius: 1000px;
+}
+
+#inside-go-to-wall {
+  margin: 2%;
+  background-color: #F47B33;
+  text-align: center; 
+  width: 96%;
+  height: 96%;
+  -webkit-border-radius: 1000px;
+  position: relative;
+} 
+
+#inside-go-to-wall img {
+  left: 22%;
+  top: 25%;
+  position: absolute;
+  width: 60%;
+}
+
+#go-to-players {
+  $check-in-btn-radius: 40px;
+  height: $check-in-btn-radius;
+  width: $check-in-btn-radius;
+  position: absolute;
+  left: 12%;
+  bottom: 4%;
+  margin-left: -28px;
+  border: 8px solid rgba(244, 123, 51, 0.4);
+  -webkit-border-radius: 1000px;
+}
+
+#inside-go-to-players {
+  margin: 2%;
+  background-color: #F47B33;
+  text-align: center; 
+  width: 96%;
+  height: 96%;
+  -webkit-border-radius: 1000px;
+  position: relative;
+} 
+
+#inside-go-to-players img {
+  left: 22%;
+  top: 20%;
+  position: absolute;
+  width: 60%;
 }
 
 #map-container {
@@ -487,6 +552,17 @@ img {
   -moz-transition:    all 3s ease; /* Fx 5+ */
   -o-transition:      all 3s ease; /* Opera 12+ */
   transition:         all 3s ease; /* IE 10+ */
+}
+
+#container-hint-in-partita {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  z-index: 100;
+  left: 0;
+  top: 10%;
+  width: 100%;
+  height: 30%;
+  position: absolute;
 }
 
 
