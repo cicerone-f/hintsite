@@ -25,6 +25,7 @@ define([
   "views/main/HintForm_VM",
   "views/main/SetHintPosition_VM",
   "views/main/Opzioni_VM",
+  "views/main/Profilo_VM",
   "views/main/WallFull_VM",
   "views/main/SignUp_VM"
 ],
@@ -50,6 +51,7 @@ define([
       HintForm_VM,
       SetHintPosition_VM,
       Opzioni_VM,
+      Profilo_VM,
       WallFull_VM,
       SignUp_VM
     ) {
@@ -71,6 +73,7 @@ define([
         "sethintposition/:id": "setHintP",
         "back/:view/:param": "backToPrevious",
         "opzioni": "opzioni",
+        "profilo": "profilo",
         "wallFull/:id": "wallFull",
         "signup": "signup"
       },
@@ -85,6 +88,12 @@ define([
 
       opzioni: function () {
         var page = new Opzioni_VM({
+        });
+        this.changePage(page);      
+      },
+
+      profilo: function () {
+        var page = new Profilo_VM({
         });
         this.changePage(page);      
       },
@@ -228,7 +237,8 @@ define([
         "EditPartita_VM": "",        
         "PartitaPlayer_VM": "",
         "PartitaMaster_VM": "",
-        "Opzioni_VM": "",        
+        "Opzioni_VM": "",      
+        "Profilo_VM":"",  
         "HintForm_VM": "editMatch",          //  + /id
         "SetHintPosition_VM": "hintsedit",   //  + /id
         "HintFull_VM": "matches",            //  + /id
