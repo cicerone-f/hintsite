@@ -15,7 +15,7 @@ body {
   /* prevent copy paste, to allow, change 'none' to 'text' */
   -webkit-user-select: none;
   background-attachment: fixed;
-  font-family: "HelveticaNeue-Light", "HelveticaNeue", Helvetica, Arial, sans-serif;
+  font-family: "GothamLight";
   font-size: 12px;
   height: 100%;
   width: 100%;
@@ -49,25 +49,63 @@ ul#list {
   z-index: 100; }
 
 #header {
+  width: 100%;
+  display: table;
   height: 10%;
-  text-align: center; }
+  text-align: center;
+  font-family: 'RockwellStdRegular';
+  background: #f0ac3d;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f0ac3d 0%, #f47b33 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f0ac3d), color-stop(100%, #f47b33));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f0ac3d 0%, #f47b33 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f0ac3d 0%, #f47b33 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f0ac3d 0%, #f47b33 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f0ac3d 0%, #f47b33 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0ac3d', endColorstr='#f47b33',GradientType=0 );
+  /* IE6-9 */ }
+
+#header span {
+  display: table-cell;
+  vertical-align: middle;
+  float: none; }
 
 #launch-footer {
   height: 10%;
   text-align: center; }
 
 #back {
+  background-position: 40% 35%;
   height: 100%;
-  float: left;
   width: 30%;
-  background-color: red;
-  text-align: center; }
+  text-align: center;
+  background-image: url(../res/img/back.png);
+  background-repeat: no-repeat;
+  background-size: 60% auto;
+  color: #FAE8AC;
+  font-size: 1.5em; }
+
+#title {
+  width: 70%;
+  text-align: center;
+  font-size: 2em;
+  line-height: 2em;
+  color: #FAE8AC;
+  font-family: 'RockwellStdBold';
+  overflow: auto;
+  text-overflow: ellipsis; }
 
 #hint_description {
   margin: 0px auto;
   width: 100%;
   height: 100%;
-  font-family: "HelveticaNeue-Light", "HelveticaNeue", Helvetica, Arial, sans-serif;
+  font-family: "GothamLight";
   font-size: 12px;
   border: 2px solid orange; }
 
@@ -76,7 +114,7 @@ ul#list {
   width: 100%;
   height: 100%;
   background-color: red;
-  font-family: "HelveticaNeue-Light", "HelveticaNeue", Helvetica, Arial, sans-serif;
+  font-family: "GothamLight";
   font-size: 12px;
   border: 2px solid white;
   text-align: center; }
@@ -154,13 +192,6 @@ img {
   color: white;
   text-align: center; }
 
-#title {
-  height: 100%;
-  float: left;
-  width: 70%;
-  background-color: orange;
-  text-align: center; }
-
 #launch {
   height: 100%;
   float: left;
@@ -181,7 +212,8 @@ img {
   position: absolute;
   left: 50%;
   bottom: 0;
-  background-color: orange;
+  background-color: #F47B33;
+  border: 1em solid rgba(255, 255, 255, 0.4);
   text-align: center;
   -webkit-border-radius: 1000px; }
 
@@ -207,13 +239,13 @@ img {
   text-align: center; }
 
 #NewMatchButton {
-  font-family: "HelveticaNeue-Light", "HelveticaNeue", Helvetica, Arial, sans-serif;
+  font-family: "GothamLight";
   text-align: center;
   background-color: #ee7427;
   padding: 1.5em; }
 
 #user-to-add {
-  font-family: "HelveticaNeue-Light", "HelveticaNeue", Helvetica, Arial, sans-serif;
+  font-family: "GothamLight";
   text-align: center;
   background-color: #ee7427;
   padding: 1.5em; }

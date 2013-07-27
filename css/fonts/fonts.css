@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'GothamLight';
+    src: url('gotham-light.eot');
+    src: url('gotham-light.eot') format('embedded-opentype'),
+         url('gotham-light.woff') format('woff'),
+         url('gotham-light.ttf') format('truetype'),
+         url('gotham-light.svg#GothamLight') format('svg');
+}
+
+@font-face {
+    font-family: 'RockwellStdRegular';
+    src: url('rockwellstd.eot');
+    src: url('rockwellstd.eot') format('embedded-opentype'),
+         url('rockwellstd.woff') format('woff'),
+         url('rockwellstd.ttf') format('truetype'),
+         url('rockwellstd.svg#RockwellStdRegular') format('svg');
+}
+
+@font-face {
+    font-family: 'RockwellStdBold';
+    src: url('rockwellstd-bold.eot');
+    src: url('rockwellstd-bold.eot') format('embedded-opentype'),
+         url('rockwellstd-bold.woff') format('woff'),
+         url('rockwellstd-bold.ttf') format('truetype'),
+         url('rockwellstd-bold.svg#RockwellStdBold') format('svg');
+}
