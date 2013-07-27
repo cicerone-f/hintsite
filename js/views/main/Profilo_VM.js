@@ -44,7 +44,7 @@ define([
           var options = {
             quality: 50,
             destinationType: Camera.DestinationType.FILE_URI,
-            sourceType: Camera.PictureSourceType.CAMERA,
+            sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
             mediaType: Camera.MediaType.PICTURE,
             //cameraDirection: Camera.Direction.BACK,
             allowEdit: false,
