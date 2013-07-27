@@ -413,6 +413,55 @@ img {
   float: left;
 }
 
+#helpers {
+  background: #fff;
+  left: 25%;
+  top: 60%;
+  height: 10%;
+  position: absolute;
+  width: 50%;
+}
+
+#helpers span {
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  float: left;
+}
+
+#generic-popup-container {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 70%;
+  height: 70%;
+  background: #fff;
+  z-index: 1000;
+  border: 3px solid #000;
+}
+
+#arrow-popup-container {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  z-index: 1000;
+}
+
+#arrow {
+  margin: 0px auto;
+  width: 0; 
+  height: 0; 
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 150px solid black;
+  -webkit-transition: all 3s ease; /* Safari 4+ */
+  -moz-transition:    all 3s ease; /* Fx 5+ */
+  -o-transition:      all 3s ease; /* Opera 12+ */
+  transition:         all 3s ease; /* IE 10+ */
+}
+
 
 @-webkit-keyframes appear {
   from {

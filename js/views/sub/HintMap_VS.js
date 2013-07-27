@@ -11,6 +11,8 @@ define([
   "models/Pms",
   "views/sub/Header_VS",
   "views/LoadingView",
+  "views/main/Popup_VM",
+  "views/main/Arrow_VM",
   "leaflet",
   "text!templates/sub/hint-map-TS.html"
 ],
@@ -24,6 +26,8 @@ define([
     Pms,
     Header_VS,
     LoadingView,
+    Popup_VM,
+    Arrow_VM,
     leaflet,
     template
   ) {
@@ -44,7 +48,9 @@ define([
       pms: Pms,
       events: {
         "click #check-in-btn": "checkIn",
-        "click #go-to-wall": "goToWall"
+        "click #go-to-wall": "goToWall",
+        "click #distance": "getHintDistance",
+        "click #direction": "getHintDirection"
       },
 
       template: Handlebars.compile(template),
@@ -137,6 +143,47 @@ define([
           {enableHighAccuracy: true, timeout: 20000}
         );
 
+      },
+
+      getHintDistance: function () {
+        var self = this;
+        navigator.geolocation.getCurrentPosition(
+          // success
+          function (currPosition) {            
+            var point = new Parse.GeoPoint(currPosition.coords.latitude, currPosition.coords.longitude);
+            var distance = "You're " + point.kilometersTo(self.model.attributes.point).toFixed(3) + " Km far from Hint";
+            $('body').append( 
+              new Popup_VM({
+                notificationText: distance
+              }).render().el
+            );  
+          },
+          // error
+          null,
+          // options
+          {enableHighAccuracy: true, timeout: 20000}
+        );
+      },
+
+      getHintDirection: function () {
+        var self = this;
+        navigator.geolocation.getCurrentPosition(
+          // success
+          function (currPosition) {            
+            var point = new Parse.GeoPoint(currPosition.coords.latitude, currPosition.coords.longitude);
+            var angle = Math.atan( ( currPosition.coords.longitude - self.model.attributes.point.longitude ) / ( currPosition.coords.latitude - self.model.attributes.point.latitude )) * (180 / Math.PI);
+            var distance = angle.toFixed(0);
+            $('body').append( 
+              new Arrow_VM({
+                angle: distance
+              }).render().el
+            );  
+          },
+          // error
+          null,
+          // options
+          {enableHighAccuracy: true, timeout: 20000}
+        );
       },
 
       notify: function () {
