@@ -8,7 +8,7 @@ define([
   "Parse",
   "handlebars",
   "models/Pms",
-  "text!templates/main/hint-found.html"
+  "text!templates/main/match-end.html"
 ],
   function (
     $,
@@ -27,10 +27,11 @@ define([
         model: Pms,
 
         events: {
-          "click #next" : "backToMatch"        
+          "click #next" : "backToHome"        
         },
 
         initialize: function () {
+          console.log("a");
           this.model = new Pms();
           this.model.getMyPmsForMatch(this.options.matchId);
           this.model.on("gettedMyPmsForMatch",this.render,this);
@@ -38,18 +39,13 @@ define([
         },
 
         render: function (eventName) {
-          var messageFound = 'Hint '+(this.model.numeroHint - 1 )+' Completed! Well done!';
+          var messageFound = 'Match Completed! Well done! you are the XXX';
           $(this.el).html(this.template({message: messageFound}));
           return this;
         },
 
-        backToMatch: function () {
-          if (this.model.numeroHint<5){
-            Parse.history.navigate("matches/" + this.matchId, {trigger: true});
-          }else{
-            console.log("else");
-            Parse.history.navigate("matchEnd/" + this.matchId, {trigger: true});
-          }
+        backToHome: function () {
+          Parse.history.navigate("", {trigger: true});
         },
 
         unrender: function() {

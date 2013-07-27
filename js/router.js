@@ -28,7 +28,8 @@ define([
   "views/main/Profilo_VM",
   "views/main/WallFull_VM",
   "views/main/SignUp_VM",
-  "views/main/HintFound_VM"
+  "views/main/HintFound_VM",
+  "views/main/MatchEnd_VM"  
 ],
     function ($,
       _,
@@ -55,7 +56,8 @@ define([
       Profilo_VM,
       WallFull_VM,
       SignUp_VM,
-      HintFound_VM
+      HintFound_VM,
+      MatchEnd_VM
     ) {
 
     var AppRouter = Parse.Router.extend({
@@ -78,7 +80,8 @@ define([
         "profilo": "profilo",
         "wallFull/:id": "wallFull",
         "signup": "signup",
-        "hintFound/:id": "hintFound"
+        "hintFound/:id": "hintFound",
+        "matchEnd/:id": "matchend"
       },
 
       userControl: function () {
@@ -119,6 +122,13 @@ define([
           matchId: matchId
         });
         this.changePage(page);      
+      },
+
+      matchend: function (matchId) {
+        var page = new MatchEnd_VM({
+          matchId: matchId
+        });
+        this.changePage(page); 
       },
 
       mainMatchList: function () {
