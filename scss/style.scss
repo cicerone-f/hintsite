@@ -41,7 +41,7 @@ ul#list {
   li {
     border-bottom: 1px solid #d9e2eb;
     background: $white;
-    display: block;
+    display: inline-block;
     padding: 10px 0px 10px 10px;
     width: 100%;
     // background-image: -webkit-linear-gradient(top, #ffffff, #ecf1f5);
@@ -133,6 +133,10 @@ ul#list {
   float:left;
   background-color: pink;
   text-align: center; 
+}
+
+img {
+  max-width: 100%;
 }
 
 #photo img {
@@ -265,6 +269,7 @@ ul#list {
   animation:         appear 1s 1; /* IE 10+ */
   height: 100%;
   position: relative;
+  overflow-x: hidden;
 }
 
 .loading {
@@ -344,10 +349,18 @@ ul#list {
 }
 
 .yes-no{
-  width: 100%;
-  height: 50px;
-  background-color: blue;
+  width: 50%;
+  height: 10%;
   text-align: center; 
+  float: left;
+}
+
+.yes-no#yes {
+  background-color: green;
+}
+
+.yes-no#no {
+  background-color: red;
 }
 
 .errorContainer {
@@ -393,6 +406,11 @@ ul#list {
 
 #map-container {
   height: 90%;
+}
+
+.half-width {
+  width: 50%;
+  float: left;
 }
 
 

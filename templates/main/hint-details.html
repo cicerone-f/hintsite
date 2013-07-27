@@ -1,4 +1,15 @@
 <div id="hintDetails">
     <h1>Hint# {{ number }} </h1>
+    {{#if image}}
+    	<div class="half-width">
+    {{else}}
+    	<div class="full-width">
+    {{/if}}
     <p>{{ description }} </p>
+    </div>
+    {{#if image}}
+    <div class="half-width">
+    	<img src="{{ image }}" />
+    </div>
+    {{/if}}
 </div>

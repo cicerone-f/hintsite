@@ -29,7 +29,7 @@ ul#list {
   ul#list li {
     border-bottom: 1px solid #d9e2eb;
     background: white;
-    display: block;
+    display: inline-block;
     padding: 10px 0px 10px 10px;
     width: 100%; }
     ul#list li a {
@@ -107,6 +107,9 @@ ul#list {
   float: left;
   background-color: pink;
   text-align: center; }
+
+img {
+  max-width: 100%; }
 
 #photo img {
   max-width: 100%; }
@@ -225,7 +228,8 @@ ul#list {
   animation: appear 1s 1;
   /* IE 10+ */
   height: 100%;
-  position: relative; }
+  position: relative;
+  overflow-x: hidden; }
 
 .loading {
   width: 100%;
@@ -310,10 +314,16 @@ ul#list {
   width: 100%; }
 
 .yes-no {
-  width: 100%;
-  height: 50px;
-  background-color: blue;
-  text-align: center; }
+  width: 50%;
+  height: 10%;
+  text-align: center;
+  float: left; }
+
+.yes-no#yes {
+  background-color: green; }
+
+.yes-no#no {
+  background-color: red; }
 
 .errorContainer {
   text-align: center;
@@ -351,6 +361,10 @@ ul#list {
 
 #map-container {
   height: 90%; }
+
+.half-width {
+  width: 50%;
+  float: left; }
 
 @-webkit-keyframes appear {
   from {
