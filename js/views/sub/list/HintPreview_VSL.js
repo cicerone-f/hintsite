@@ -25,8 +25,8 @@ define([
   ) {
 
     var HintPreview_VSL = Parse.View.extend({
-      tagName: "ul",
-      id: "list",
+      tagName: "div",
+      id: "container-hint-in-partita",
       template: Handlebars.compile(template),
       initialize: function () {
         this.Pms = this.options.Pms;
@@ -36,9 +36,10 @@ define([
       },
 
       render: function (eventName) {
-        $(this.el).empty();
+        $(this.el).html(this.template());
+        var temp;
         _.each(this.collection.models, function (hint) {
-          $(this.el).append(new HintPreview_VSI({
+          $(this.el).find('#list').append(new HintPreview_VSI({
             model: hint
           }).render().el);
         }, this);
