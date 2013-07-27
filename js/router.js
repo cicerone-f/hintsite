@@ -27,7 +27,8 @@ define([
   "views/main/Opzioni_VM",
   "views/main/Profilo_VM",
   "views/main/WallFull_VM",
-  "views/main/SignUp_VM"
+  "views/main/SignUp_VM",
+  "views/main/HintFound_VM"
 ],
     function ($,
       _,
@@ -53,7 +54,8 @@ define([
       Opzioni_VM,
       Profilo_VM,
       WallFull_VM,
-      SignUp_VM
+      SignUp_VM,
+      HintFound_VM
     ) {
 
     var AppRouter = Parse.Router.extend({
@@ -75,7 +77,8 @@ define([
         "opzioni": "opzioni",
         "profilo": "profilo",
         "wallFull/:id": "wallFull",
-        "signup": "signup"
+        "signup": "signup",
+        "hintFound/:id": "hintFound"
       },
 
       userControl: function () {
@@ -106,6 +109,13 @@ define([
 
       wallFull: function (matchId) {
         var page = new WallFull_VM({
+          matchId: matchId
+        });
+        this.changePage(page);      
+      },
+
+      hintFound: function (matchId) {
+        var page = new HintFound_VM({
           matchId: matchId
         });
         this.changePage(page);      

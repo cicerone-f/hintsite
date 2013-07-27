@@ -68,7 +68,36 @@ define([
           }
         });
       },
-      plusPlusMyHint: function (userId, matchId, username) {
+
+      saveUsedHelpDistance: function() {
+        var self = this;
+        this.save({
+          UsedHelpDistance: 1
+        }, {
+          success: function (result) {
+            self.trigger('HintMap_VS_UsedHelpDistance');
+          },
+          error: function (e) {
+
+          }
+        });
+      },
+
+      saveUsedHelpDirection: function() {
+        var self = this;
+        this.save({
+          UsedHelpDirection: 1
+        }, {
+          success: function (result) {
+            self.trigger('HintMap_VS_UsedHelpDirection');
+          },
+          error: function (e) {
+
+          }
+        });
+      },
+      //Questo lo ha scritto quel maiale di Federico Cicerone
+      plusPlusMyHint: function (userId, matchId) {
         var self = this;
 
         var query = new Parse.Query(Pms);
@@ -80,11 +109,11 @@ define([
               results[0].increment("myHint");
               results[0].save({
                 success: function (result) {
-                  self.trigger('hintPlusplussed');
-
+                      
                   // post results on the Wall
                   var wallMsg = new WallMessage();
                   wallMsg.saveToP(wallMsg.messageTypes.HINT_FOUND, results[0].attributes.matchId, (results[0].attributes.myHint - 1)); 
+                  self.trigger('hintPlusplussed');
                 },
                 error: function (e) {
                   console.log("non salva")
