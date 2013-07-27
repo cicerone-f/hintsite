@@ -77,12 +77,14 @@ define([
               {
                 success: function (){
                   self.trigger(vm+'_MATCHLAUNCHED', this);
+                  self.trigger("pointscanbeadded",this);
                 },
                 error: function(error){
                   console.log(error);
                 }
               }
             );
+
           },
           error: function (error) {
             console.log(error);

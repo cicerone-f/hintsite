@@ -70,6 +70,29 @@ define([
           error: function (e) {
           }
         });
+      },
+
+      addPoints: function(morePoints){
+        var self = this;
+        self.id = Parse.User.current().id;
+        self.fetch({
+          success: function (results) {
+            self.increment("points",morePoints);
+            self.save(
+              {}, 
+              {
+                success: function (result) {
+                  console.log('POINTSAGGIUNTI');
+                },
+                error: function (e) {
+                }
+              }
+            );
+          },
+          error: function (error) {
+            console.log(error);
+          }
+        });
       }
     });
 

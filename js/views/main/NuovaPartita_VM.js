@@ -10,6 +10,7 @@ define([
   "models/Match",
   "models/WallMessage",
   "models/Pms",
+  "models/UserSearched",
   "collections/HintCollection",
   "collections/PmsCollection",
   "text!templates/main/new-match.html",
@@ -28,6 +29,7 @@ define([
     Match,
     WallMessage,
     Pms,
+    UserSearched,
     HintCollection,
     PmsCollection,
     template,
@@ -55,6 +57,7 @@ define([
           this.model.on("NuovaPartita_VM_MATCHCREATED", this.saveMasterDopoCreaPartita, this);
           this.model.on("NuovaPartita_VM_MATCHNAMEUPDATED", this.removeLoading, this);
           this.pmsCollection.on("NuovaPartita_VM_MATCHLAUNCHED", this.checkMatchDate, this);
+          this.pmsCollection.on("pointscanbeadded",this.addPointsToUser, this);
           this.model.on("EditPartita_VM_MATCHTIMENOW", this.navigateToElencoPartite, this);
           this.collection.on("NuovaPartita_VM_COLLECTIONCOMPLETED", this.fetchPmsCollection, this);
           this.pmsCollection.on("PMSPLAYERSFETCHED",this.render,this);
@@ -91,6 +94,11 @@ define([
           } else {
             this.model.saveTimePartitaNow("EditPartita_VM");
           }
+        },
+
+        addPointsToUser: function () {
+          var user = new UserSearched();
+          user.addPoints(1000);
         },
 
         matchCanBeLaunched : function () {

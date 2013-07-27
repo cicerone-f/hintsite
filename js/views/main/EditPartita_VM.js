@@ -9,6 +9,7 @@ define([
   "handlebars",
   "models/Match",
   "models/WallMessage",
+  "models/UserSearched",  
   "collections/HintCollection",
   "collections/PmsCollection",
   "text!templates/main/new-match.html",
@@ -26,6 +27,7 @@ define([
     Handlebars,
     Match,
     WallMessage,
+    UserSearched,    
     HintCollection,
     PmsCollection,
     template,
@@ -50,6 +52,7 @@ define([
           this.collection.on("OKHINTSITE", this.fetchPmsCollection, this);
           this.model.on("EditPartita_VM_MATCHNAMEUPDATED", this.removeLoading, this);
           this.pmsCollection.on("EditPartita_VM_MATCHLAUNCHED", this.checkMatchDate, this);
+          this.pmsCollection.on("pointscanbeadded",this.addPointsToUser, this);
           this.model.on("EditPartita_VM_MATCHTIMENOW", this.navigateToElencoPartite, this);
           this.model.id = this.options.matchIdToGet;
           this.model.fetchFromP("EditPartita_VM");
@@ -86,6 +89,11 @@ define([
           } else {
             this.model.saveTimePartitaNow("EditPartita_VM");
           }
+        },
+
+        addPointsToUser: function () {
+          var user = new UserSearched();
+          user.addPoints(1000);
         },
 
         matchCanBeLaunched : function () {

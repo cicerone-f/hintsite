@@ -9,6 +9,7 @@ define([
   "handlebars",
   "models/Hint",
   "models/Pms",
+  "models/UserSearched",
   "views/sub/Header_VS",
   "views/LoadingView",
   "views/main/Popup_VM",
@@ -24,6 +25,7 @@ define([
     Handlebars,
     Hint,
     Pms,
+    UserSearched,
     Header_VS,
     LoadingView,
     Popup_VM,
@@ -188,12 +190,18 @@ define([
 
       notify: function () {
         console.log("notify");
+        this.addPointsToUser(200);
         navigator.notification.alert(
           'Hint completed!',  // message
           this.alertDismissed,         // callback
           'Well Done !!',            // title
           'OK'                  // buttonName
         );
+      },
+
+      addPointsToUser: function (pt) {
+        var user = new UserSearched();
+        user.addPoints(pt);
       },
 
       alertDismissed: function () {
