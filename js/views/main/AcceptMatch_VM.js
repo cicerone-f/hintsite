@@ -9,6 +9,7 @@ define([
   "handlebars",
   "models/Pms",
   "models/WallMessage",
+  "models/UserSearched",
   "views/sub/list/HintPreview_VSL",
   "text!templates/main/accept-match.html"
 ],
@@ -20,6 +21,7 @@ define([
     Handlebars,
     Pms,
     WallMessage,
+    UserSearched,
     HintPreview_VSL,
     template
   ) {
@@ -53,6 +55,10 @@ define([
 
           self.Pms.save({userState: self.Pms.userStates.INGAME}, {
             success: function () {
+              //aggiungo i punti all'utente
+              var user = new UserSearched();
+              user.addPoints(100);
+              
               self.remove();
             },
             error: function (error){

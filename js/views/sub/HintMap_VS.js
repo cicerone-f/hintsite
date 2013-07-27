@@ -9,6 +9,7 @@ define([
   "handlebars",
   "models/Hint",
   "models/Pms",
+  "models/UserSearched",
   "views/sub/Header_VS",
   "views/LoadingView",
   "views/main/Popup_VM",
@@ -24,6 +25,7 @@ define([
     Handlebars,
     Hint,
     Pms,
+    UserSearched,
     Header_VS,
     LoadingView,
     Popup_VM,
@@ -219,7 +221,13 @@ define([
       },
 
       notify: function () {
+        this.addPointsToUser(200);
         Parse.history.navigate("hintFound/" + this.matchId, {trigger: true});
+      },
+
+      addPointsToUser: function (pt) {
+        var user = new UserSearched();
+        user.addPoints(pt);
       },
 
       unrenderLoading: function () {
