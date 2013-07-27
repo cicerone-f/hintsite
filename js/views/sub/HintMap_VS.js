@@ -221,29 +221,13 @@ define([
       },
 
       notify: function () {
-<<<<<<< HEAD
-        console.log("notify");
         this.addPointsToUser(200);
-        navigator.notification.alert(
-          'Hint completed!',  // message
-          this.alertDismissed,         // callback
-          'Well Done !!',            // title
-          'OK'                  // buttonName
-        );
+        Parse.history.navigate("hintFound/" + this.matchId, {trigger: true});
       },
 
       addPointsToUser: function (pt) {
         var user = new UserSearched();
         user.addPoints(pt);
-      },
-
-      alertDismissed: function () {
-//        Parse.history.navigate("matches/" + this.matchId, {trigger: true});// non funziona non so perche
-        Parse.history.navigate("" , {trigger: true});
-
-=======
-        Parse.history.navigate("hintFound/" + this.matchId, {trigger: true});
->>>>>>> c9ffc4f936a36db46651c4572e251d5cb6dad297
       },
 
       unrenderLoading: function () {
