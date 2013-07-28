@@ -8,6 +8,7 @@ define([
   "Parse",
   "handlebars",
   "models/Pms",
+  "models/UserSearched",
   "views/LoadingView",
   "text!templates/main/match-end.html"
 ],
@@ -18,6 +19,7 @@ define([
     Parse,
     Handlebars,
     Pms,
+    UserSearched,
     LoadingView,
     template
   ) {
@@ -50,10 +52,16 @@ define([
           this.model.editMatchStateEnded(this.model.id);
         },
 
+        addPointsForEndMatch: function () {
+          var user = new UserSearched();
+          user.addPoints(6000 / this.model.attributes.ordine);
+        },
+
         render: function () {
           if (this.model.attributes.ordine){
             var messageFound = 'Match Completed! Well done! you are the '+this.model.attributes.ordine;
             $(this.el).html(this.template({message: messageFound,next:'yes'}));
+            this.addPointsForEndMatch();
           }
           else{
             var messageFound = 'Match Completed! Well done!';

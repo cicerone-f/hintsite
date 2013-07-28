@@ -25,6 +25,8 @@ define([
               user.set("username", username);
               user.set("password", password);
               user.set("points", 500 );
+              user.set("playedWith",0);
+              user.set("nMaster",0);
               user.set("image","http://www.hintsiteapp.com/public_images/[object Object]1375021966693.jpg");
 
               var userACL = new Parse.ACL(Parse.User.current());
