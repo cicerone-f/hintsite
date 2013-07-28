@@ -164,9 +164,16 @@ define([
         var query = new Parse.Query(Match);
         var match = query.get(id, {
           success: function (result) {
-            self.changePage(new PartitaPlayer_VM({
-              model: result
-            }));     
+            if(result.attributes.user.id == Parse.User.current().id)
+            {     
+              self.changePage(new PartitaMaster_VM({
+                model: result
+              }));
+            }else{
+              self.changePage(new PartitaPlayer_VM({
+                model: result
+              }));
+            }     
           },
           error: function (error) {
             console.log(error);

@@ -72,7 +72,7 @@ define([
         this.pms.on("HintMap_VS_UsedHelpDistance", this.getHintDistance, this);
         this.pms.on("HintMap_VS_UsedHelpDirection", this.getHintDirection, this);
         if (this.options.pms.attributes.myHint){
-          this.model.getWithPmsAndMatch(this.options.pms.attributes.myHint, this.matchId);
+          this.model.getWithNumberAndMatch(this.options.pms.attributes.myHint, this.matchId);
           this.loading.render();
         }  
       },
