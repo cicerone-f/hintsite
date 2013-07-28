@@ -82,7 +82,6 @@ define([
               {}, 
               {
                 success: function (result) {
-                  console.log('POINTSAGGIUNTI');
                 },
                 error: function (e) {
                 }

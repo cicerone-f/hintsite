@@ -32,6 +32,8 @@ define([
         var self = this;
         this.fetch({ 
           success: function() {
+            self.trigger("gettedMyPmsForMatch");
+            self.trigger("gettedMyPms");
           },
           error: function () {
           }
@@ -76,8 +78,8 @@ define([
         query.equalTo("userId", Parse.User.current().id);
         query.find({
           success: function (results) {
-            self.numeroHint = results[0].attributes.myHint;
-            self.trigger("gettedMyPmsForMatch");
+            self.id = results[0].id;
+            self.fetchFromP();
           },
           error: function (error) {
             console.log(error);
@@ -112,12 +114,69 @@ define([
           }
         });
       },
+
+
+      editMatchStateEnded: function(idPms) {
+
+      var self = this;
+        self.id = idPms;
+        self.fetch({
+          success: function (results) {
+            self.increment("matchState",1);
+            self.save(
+              {}, 
+              {
+                success: function (result) {
+                  self.trigger("MATCHENDED");
+                },
+                error: function (e) {
+                }
+              }
+            );
+          },
+          error: function (error) {
+            console.log(error);
+          }
+        });
+
+
+
+      },
+
+      setOrdineArrivo: function (matchId) {
+        self=this;
+        var query = new Parse.Query(Pms);
+        query.exists("ordine");
+        query.equalTo("matchId", matchId);
+        query.equalTo("userState", 3);        
+        query.count({
+          success: function(count) {
+          // The count request succeeded. Show the count
+            self.save(
+              {
+                ordine: (count+1)
+              },
+              {
+                success: function (result) {
+                  self.trigger("ORDINESETTATO");
+                  console.log("trigger ORDINESETTATO");
+                },
+                error: function (e) {
+                }
+              }
+            );
+          },
+          error: function(error) {
+    // The request failed
+          }
+        });
+      },
+
       //Questo lo ha scritto quel genio di Federico Cicerone
       plusPlusMyHint: function (userId, matchId) {
         var self = this;
 
         var query = new Parse.Query(Pms);
-        var matchId = matchId;
         query.equalTo("matchId", matchId);
         query.equalTo("userId", userId);
         query.find({
@@ -125,7 +184,6 @@ define([
               results[0].increment("myHint");
               results[0].save({
                 success: function (result) {
-                      
                   // post results on the Wall
                   var wallMsg = new WallMessage();
                   wallMsg.saveToP(wallMsg.messageTypes.HINT_FOUND, results[0].attributes.matchId, (results[0].attributes.myHint - 1)); 
