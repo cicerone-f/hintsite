@@ -58,16 +58,37 @@ ul#list {
   }
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'RockwellStdRegular';
+}
+
+p {
+  margin-top: 0;
+}
+
 .partita-player ul {
   width: 400%;
   height: 100%;
   z-index: 100;
+  background: #DBDCDE;
+  -webkit-animation: margin-left 1s 1; /* Safari 4+ */
+  -moz-animation:    margin-left 1s 1; /* Fx 5+ */
+  -o-animation:      margin-left 1s 1; /* Opera 12+ */
+  animation:         margin-left 1s 1; /* IE 10+ */
 }
 
 .partita-player ul li{
+  overflow: hidden;
   border: none !important;
   width: 25% !important;
   height: 100%;
+  padding: 0!important;
+  background: none !important;
+}
+
+.partita-player ul li h2 {
+  color: #F47B33;
+  margin-bottom: 0;
 }
 
 
@@ -501,6 +522,7 @@ img {
 }
 
 .half-width {
+  height: 100%;
   width: 50%;
   float: left;
 }
@@ -508,8 +530,8 @@ img {
 #helpers {
   background: #fff;
   left: 25%;
-  top: 60%;
-  height: 10%;
+  top: 15%;
+  height: 5%;
   position: absolute;
   width: 50%;
 }
@@ -555,7 +577,7 @@ img {
 }
 
 #container-hint-in-partita {
-  overflow-x: scroll;
+  overflow-x: hidden;
   overflow-y: hidden;
   z-index: 100;
   left: 0;
@@ -563,6 +585,31 @@ img {
   width: 100%;
   height: 30%;
   position: absolute;
+  -webkit-transition: all 0.2s ease; /* Safari 4+ */
+  -moz-transition:    all 0.2s ease; /* Fx 5+ */
+  -o-transition:      all 0.2s ease; /* Opera 12+ */
+  transition:         all 0.2s ease; /* IE 10+ */
+}
+
+#controller-slide-hint {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 20px;
+  background: #F47B33;
+  text-align: center;
+}
+
+#controller-slide-hint img {
+  top: 15%;
+  position: relative;
+  height: 70%;
+  width: auto;
+}
+
+.padder {
+  padding: 10px 20px;
 }
 
 

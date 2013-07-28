@@ -1,13 +1,19 @@
-<h4>Hint# {{ number }} </h4>
+
     {{#if image}}
     	<div class="half-width">
+            <div class="padder">
+            <h2 id="titolone">Hint #{{ number }} </h2>
     {{else}}
     	<div class="full-width">
+            <div class="padder">
+            <h2 id="titolone">Hint #{{ number }} </h2>
     {{/if}}
-    <p>{{ description }} </p>
+        <p>{{ description }} </p>
+        </div>
     </div>
     {{#if image}}
     <div class="half-width">
     	<img src="{{ image }}" />
     </div>
     {{/if}}
+

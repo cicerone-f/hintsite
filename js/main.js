@@ -15,7 +15,8 @@ require.config({
     leaflet: '../lib/leaflet/leaflet',
     CDV: '../lib/facebook/cdv-plugin-fb-connect',
     FB: '../lib/facebook/facebook_js_sdk',
-    moment: '../lib/moment/moment.min'
+    moment: '../lib/moment/moment.min',
+    hammer: '../lib/hammer/jquery.hammer.min'
   },
   shim: {
     'underscore': {
