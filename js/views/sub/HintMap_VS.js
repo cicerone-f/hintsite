@@ -111,8 +111,8 @@ define([
           if (!self.map){
             self.map = L.map(self.$('#map')[0],{ zoomControl:false , dragging:false });
             L.tileLayer('http://{s}.tile.cloudmade.com/3baed80b0bcf4a42b46b25833591b090/997/256/{z}/{x}/{y}.png', {
-              minZoom: 14,
-              maxZoom: 14
+              minZoom: 15,
+              maxZoom: 15
             }).addTo(self.map);
           }
           var modelPoint = self.model.attributes.point;

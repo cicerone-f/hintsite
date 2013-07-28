@@ -27,12 +27,11 @@ define([
               user.set("points", 500 );
               user.set("playedWith",0);
               user.set("nMaster",0);
-              user.set("image","http://www.hintsiteapp.com/public_images/[object Object]1375021966693.jpg");
+              user.set("image","http://www.hintsiteapp.com/public_images/[object Object]1375033969540.jpg");
 
               var userACL = new Parse.ACL(Parse.User.current());
               userACL.setPublicReadAccess(true);
               user.setACL(userACL);
-
               user.signUp(null, {
                 success: function(user) {
                   Parse.history.navigate("mainMatchList", {trigger: true});

@@ -89,7 +89,8 @@ define([
           /* creates the actual map layer (still without a real map though) and adds it to the map */
           L.tileLayer('http://{s}.tile.cloudmade.com/3baed80b0bcf4a42b46b25833591b090/997/256/{z}/{x}/{y}.png', {
             //attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
-            maxZoom: 18
+            maxZoom: 16,
+            minZoom: 14
           }).addTo(self.map);
 
           /* extending Leaflet in order to create a "Locate me" control */
