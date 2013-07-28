@@ -14,6 +14,7 @@ define([
   "views/LoadingView",
   "views/main/Popup_VM",
   "views/main/Arrow_VM",
+  "views/main/ListingGiocatori_VM",  
   "leaflet",
   "text!templates/sub/hint-map-TS.html"
 ],
@@ -30,6 +31,7 @@ define([
     LoadingView,
     Popup_VM,
     Arrow_VM,
+    ListingGiocatori_VM,
     leaflet,
     template
   ) {
@@ -51,6 +53,7 @@ define([
       events: {
         "click #check-in-btn": "checkIn",
         "click #go-to-wall": "goToWall",
+        "click #go-to-players": "renderListing",        
         "click #distance": "checkGetHintDistance",
         "click #direction": "checkGetHintDirection"
       },
@@ -91,6 +94,12 @@ define([
       
       goToWall: function () {
         Parse.history.navigate("wallFull/"+this.matchId , {trigger: true});
+      },
+
+      renderListing: function (eventName) {
+        var lg = new ListingGiocatori_VM({matchId: this.matchId});
+        $(this.el).append(lg.render().el);
+        return this;
       },
 
       renderMap: function () {
