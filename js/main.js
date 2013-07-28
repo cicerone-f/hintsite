@@ -79,5 +79,7 @@ require([
       
       FB.getLoginStatus(function () { alert('OK'); });
 
+      ChannelSubscription.subscribeTo('bar');
+
     }
   });
