@@ -79,7 +79,14 @@ require([
       
       FB.getLoginStatus(function () { alert('OK'); });
 
-      ChannelSubscription.subscribeTo('bar');
+      ChannelSubscription.subscribeTo('bar', {
+        success: function () {
+          alert('yay');
+        },
+        error: function () {
+          alert('buuu');
+        }
+      });
 
     }
   });
