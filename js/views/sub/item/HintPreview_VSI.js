@@ -23,7 +23,7 @@ define([
         tagName: "li",
 
         events: {
-          "click": "goToDetails"
+          "click #titolone": "goToDetails"
         },
 
         template: Handlebars.compile(template),
