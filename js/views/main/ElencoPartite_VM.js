@@ -7,6 +7,7 @@ define([
   "backbone",
   "Parse",
   "handlebars",
+  "hammer",
   "views/sub/list/Match_VSL",
   "views/sub/NewMatch_VS",
   "views/sub/HeaderProfilo_VS",
@@ -19,6 +20,7 @@ define([
       Backbone,
       Parse,
       Handlebars,
+      Hammer,
       Match_VSL,
       NewMatch_VS,
       HeaderProfilo_VS,
@@ -36,6 +38,7 @@ define([
         template: Handlebars.compile(template),
 
         initialize: function () {
+          this.currentViewmatches = 0;
           this.userStates = (new Pms()).userStates;
           this.matchStates = (new Pms()).matchStates;
           this.collection = new PmsCollection();
@@ -71,6 +74,11 @@ define([
           this.render();
         },
 
+        moveViewMatches: function () {
+          var tempPerc = -(this.currentViewmatches*100);
+          $('#container-dei-container').css({'margin-left': tempPerc+'%'});
+        },
+
         render: function (eventName) {
           $(this.el).empty();
           var viewContent = new NewMatch_VS().render().el;
@@ -97,7 +105,21 @@ define([
           );
           $(this.el).find('#container-pubblico-match').html(
               new Match_VSL({collection:this.pubbliche, matchType: 'publicMatch'}).render().el);
-          
+          var self = this;
+          var swiperight = Hammer($('#container-del-container-dei-container')).on("swipeleft", function(event) {
+            event.preventDefault();
+            if(self.currentViewmatches < 3) {
+              self.currentViewmatches++;
+              self.moveViewMatches();
+            }
+          });
+          var swipeleft = Hammer($('#container-del-container-dei-container')).on("swiperight", function(event) {
+            event.preventDefault();
+            if(self.currentViewmatches > 0) {
+              self.currentViewmatches--;
+              self.moveViewMatches();
+            }
+          });
           return this;
         }
       });
