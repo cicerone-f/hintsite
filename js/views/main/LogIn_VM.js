@@ -40,10 +40,18 @@ define([
           console.log(username + " " + password);
           Parse.User.logIn(username, password, {
             success: function (user) {
+              ChannelSubscription.subscribeTo('logged-in', Parse.User.current().id, {
+                success: function () {
+                  console.log('Device subscribed to "logged-in" channel.');
+                },
+                error: function (error) {
+                  console.error('Error no. ' + error.code + ": " + error.message);
+                }
+              });
               Parse.history.navigate("mainMatchList", {trigger: true});
             },
             error: function (user, error) {
-              console.log(error);
+              console.error(error);
             }
           });
         },
@@ -57,7 +65,7 @@ define([
         render: function (eventName) {
           $(this.el).html(this.template());
           return this;
-        }
+        },
       });
 
     return LogIn_VM;

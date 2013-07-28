@@ -16,7 +16,8 @@ require.config({
     CDV: '../lib/facebook/cdv-plugin-fb-connect',
     FB: '../lib/facebook/facebook_js_sdk',
     moment: '../lib/moment/moment.min',
-    hammer: '../lib/hammer/jquery.hammer.min'
+    hammer: '../lib/hammer/jquery.hammer.min',
+    ChannelSubscription: '../channel-subscription/ChannelSubscription'
   },
   shim: {
     'underscore': {
@@ -80,14 +81,14 @@ require([
       
       FB.getLoginStatus(function () { alert('OK'); });
 
-      ChannelSubscription.subscribeTo('bar', {
-        success: function () {
-          alert('yay');
-        },
-        error: function () {
-          alert('buuu');
-        }
-      });
+      // ChannelSubscription.subscribeTo('bar', {
+      //   success: function () {
+      //     alert('yay');
+      //   },
+      //   error: function () {
+      //     alert('buuu');
+      //   }
+      // });
 
     }
   });
