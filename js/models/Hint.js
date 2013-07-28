@@ -13,7 +13,7 @@ define([
         image: ""
       },
 
-      getWithPmsAndMatch: function (number, matchId) {
+      getWithNumberAndMatch: function (number, matchId) {
         var self = this;
         var query = new Parse.Query(Hint);
         query.equalTo("matchId", matchId);

@@ -8,6 +8,7 @@ define([
   "Parse",
   "handlebars",
   "models/Pms",
+  "models/Hint",
   "views/sub/list/HintPreview_VSL",
   "views/sub/Header_VS",
   "views/main/AcceptMatch_VM",
@@ -22,6 +23,7 @@ define([
       Parse,
       Handlebars,
       Pms,
+      Hint,
       HintPreview_VSL,
       Header_VS,
       AcceptMatch_VM,
@@ -36,6 +38,8 @@ define([
         id: "container",
         template: Handlebars.compile(template),
         initialize: function () {
+          this.hint = new Hint();
+          this.hint.on("HintMap_VS_HINTFORPLACE",this.go,this)
           this.Pms = new Pms();
           var query = new Parse.Query(Pms);
           query.equalTo("matchId", this.model.id);
@@ -53,7 +57,10 @@ define([
         },
         events: {
           "click #listing-giocatori": "renderListing",
-          "click #hint-full": "goToHintFull"
+          "click #hint-full-1": "goToHintFull1",
+          "click #hint-full-2": "goToHintFull2",
+          "click #hint-full-3": "goToHintFull3",
+          "click #hint-full-4": "goToHintFull4"
         },
 
         renderListing: function (eventName) {
@@ -62,15 +69,30 @@ define([
           return this;
         },
 
-        goToHintFull: function () {
-          console.log("goToHintFull");
-        },
-
         render: function (eventName) {
           var header = new Header_VS({owner: "PartitaMaster_VM",backViewModelId:0});
           $(this.el).html(header.render().el).append(this.template())
             .append( new Wall_VSL({matchId: this.model.id}).render().el );
           return this;
+        },
+        go: function () {
+          Parse.history.navigate("hints/" + this.hint.id, {trigger: true});
+        },
+
+        goToHintFull1: function () {
+          this.hint.getWithNumberAndMatch(1,this.model.id); 
+        },
+
+        goToHintFull2: function () {
+          this.hint.getWithNumberAndMatch(2,this.model.id); 
+        },
+        
+        goToHintFull3: function () {
+          this.hint.getWithNumberAndMatch(3,this.model.id); 
+        },
+        
+        goToHintFull4: function () {
+          this.hint.getWithNumberAndMatch(4,this.model.id); 
         }
       });
 
