@@ -35,6 +35,7 @@ define([
         initialize: function () {
           this.Pms = new Pms();
           var query = new Parse.Query(Pms);
+          console.log("matchId "+this.model.id);
           query.equalTo("matchId", this.model.id);
           query.equalTo("userId", Parse.User.current().id);
           var self = this;

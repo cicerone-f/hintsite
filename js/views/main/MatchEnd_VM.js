@@ -8,6 +8,7 @@ define([
   "Parse",
   "handlebars",
   "models/Pms",
+  "views/LoadingView",
   "text!templates/main/match-end.html"
 ],
   function (
@@ -17,6 +18,7 @@ define([
     Parse,
     Handlebars,
     Pms,
+    LoadingView,
     template
   ) {
     var HintFound_VM = Parse.View.extend({
@@ -31,16 +33,32 @@ define([
         },
 
         initialize: function () {
-          console.log("a");
+          var matchId = this.options.matchId;
           this.model = new Pms();
           this.model.getMyPmsForMatch(this.options.matchId);
-          this.model.on("gettedMyPmsForMatch",this.render,this);
+          this.model.on("gettedMyPmsForMatch",this.foo,this);
+          this.model.on("MATCHENDED",this.setOrdine,this);
+          this.model.on("ORDINESETTATO",this.render,this);
           this.matchId = this.options.matchId;
         },
 
-        render: function (eventName) {
-          var messageFound = 'Match Completed! Well done! you are the XXX';
-          $(this.el).html(this.template({message: messageFound}));
+        setOrdine : function () {
+          this.model.setOrdineArrivo(this.options.matchId);
+        },
+
+        foo: function () {
+          this.model.editMatchStateEnded(this.model.id);
+        },
+
+        render: function () {
+          if (this.model.attributes.ordine){
+            var messageFound = 'Match Completed! Well done! you are the '+this.model.attributes.ordine;
+            $(this.el).html(this.template({message: messageFound,next:'yes'}));
+          }
+          else{
+            var messageFound = 'Match Completed! Well done!';
+            $(this.el).html(this.template({message: messageFound}));
+          }
           return this;
         },
 

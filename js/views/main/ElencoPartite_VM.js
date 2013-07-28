@@ -42,7 +42,10 @@ define([
           this.inCorsoMaster = new PmsCollection();
           this.inCorsoPlayer = new PmsCollection();
           this.sospeseMaster = new PmsCollection();
-          this.sospesePlayer = new PmsCollection();   
+          this.sospesePlayer = new PmsCollection();
+          this.storicoMaster = new PmsCollection();
+          this.storicoPlayer = new PmsCollection();
+          this.pubbliche = new PmsCollection();      
           
           for (var i=0; i<this.collection.models.length; i++){
             var a = this.collection.models[i].attributes;
@@ -54,7 +57,10 @@ define([
               this.sospeseMaster.add(this.collection.models[i]);
             } else if(a.matchState == this.matchStates.RUNNING && a.userState == this.userStates.INVITED){
               this.sospesePlayer.add(this.collection.models[i]);
-            } 
+            } else if( a.matchState == this.matchStates.ENDED && a.userState == this.userStates.INGAME )
+              this.storicoPlayer.add(this.collection.models[i]);
+              else if (a.matchState == this.matchStates.ENDED && a.userState == this.userStates.MASTER)
+              this.storicoMaster.add(this.collection.models[i]);
           }
           this.render();
         },
@@ -68,7 +74,10 @@ define([
           .append(new Match_VSL({collection:this.inCorsoMaster, matchType: 'inCorsoMaster' }).render().el)
           .append(new Match_VSL({collection:this.inCorsoPlayer, matchType: 'inCorsoPlayer'}).render().el)
           .append(new Match_VSL({collection:this.sospeseMaster, matchType: 'sospeseMaster'}).render().el)
-          .append(new Match_VSL({collection:this.sospesePlayer, matchType: 'sospesePlayer'}).render().el);
+          .append(new Match_VSL({collection:this.sospesePlayer, matchType: 'sospesePlayer'}).render().el)
+          .append(new Match_VSL({collection:this.storicoMaster, matchType: 'storicoMaster'}).render().el)
+          .append(new Match_VSL({collection:this.storicoPlayer, matchType: 'storicoPlayer'}).render().el)
+          .append(new Match_VSL({collection:this.pubbliche, matchType: 'publicMatch'}).render().el)
           return this;
         }
       });

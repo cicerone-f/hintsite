@@ -58,6 +58,7 @@ define([
       template: Handlebars.compile(template),
 
       initialize: function () {
+        this.loadingCount = 0;
         this.model = new Hint();
         this.loading = new LoadingView();
         this.model.on('HintMap_VS_HINTFORPLACE', this.unrenderLoading, this);
@@ -67,6 +68,7 @@ define([
         if(this.pms.id)
           this.pms.fetchFromP();
         this.pms.on("hintPlusplussed", this.notify, this);
+        this.pms.on("gettedMyPms", this.unrenderLoading,this);
         this.pms.on("HintMap_VS_UsedHelpDistance", this.getHintDistance, this);
         this.pms.on("HintMap_VS_UsedHelpDirection", this.getHintDirection, this);
         if (this.options.pms.attributes.myHint){
@@ -82,7 +84,11 @@ define([
         this.renderMap();
         return this;
       },
-
+      
+      foo : function () {
+        console.log(this.pms.attributes.matchId);
+      },
+      
       goToWall: function () {
         Parse.history.navigate("wallFull/"+this.matchId , {trigger: true});
       },
@@ -135,7 +141,7 @@ define([
           function (currPosition) {            
             var point = new Parse.GeoPoint(currPosition.coords.latitude, currPosition.coords.longitude);
             if (point.kilometersTo(self.model.attributes.point) <= 0.5){
-              self.pms.plusPlusMyHint(Parse.User.current().id, this.matchId);
+              self.pms.plusPlusMyHint(Parse.User.current().id, self.pms.attributes.matchId);
             }else{
               var message = "Wrong position for hint!";
               $('body').append( 
@@ -231,7 +237,9 @@ define([
       },
 
       unrenderLoading: function () {
-        this.loading.remove();
+        this.loadingCount++;
+        if (this.loadingCount==2)
+          this.loading.remove();
       }
 
     });

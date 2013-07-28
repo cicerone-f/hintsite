@@ -38,16 +38,15 @@ define([
         },
 
         render: function (eventName) {
-          var messageFound = 'Hint '+(this.model.numeroHint - 1 )+' Completed! Well done!';
+          var messageFound = 'Hint Completed! Well done!';
           $(this.el).html(this.template({message: messageFound}));
           return this;
         },
 
         backToMatch: function () {
-          if (this.model.numeroHint<5){
+          if (this.model.attributes.myHint<5){
             Parse.history.navigate("matches/" + this.matchId, {trigger: true});
           }else{
-            console.log("else");
             Parse.history.navigate("matchEnd/" + this.matchId, {trigger: true});
           }
         },
