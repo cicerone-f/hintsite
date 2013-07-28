@@ -25,7 +25,9 @@ body {
 ul#list {
   list-style: none;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  float: left;
+  width: 100%; }
   ul#list li {
     border-bottom: 1px solid #d9e2eb;
     background: white;
@@ -48,7 +50,7 @@ p {
   margin-top: 0; }
 
 .partita-player ul {
-  width: 400%;
+  width: 400% !important;
   height: 100%;
   z-index: 100;
   background: #DBDCDE;
@@ -105,6 +107,22 @@ p {
   vertical-align: middle;
   float: none; }
 
+.header-profilo span {
+  width: 33.3%; }
+
+.header-profilo span img {
+  height: 25%; }
+
+.header-profilo span#profilo img {
+  left: 10%;
+  position: relative;
+  float: left; }
+
+.header-profilo span#opzioni img {
+  right: 10%;
+  position: relative;
+  float: right; }
+
 #launch-footer {
   height: 10%;
   text-align: center; }
@@ -130,6 +148,15 @@ p {
   overflow: auto;
   text-overflow: ellipsis; }
 
+#hintsite {
+  text-align: center;
+  font-size: 2em;
+  line-height: 2em;
+  color: #FAE8AC;
+  font-family: 'RockwellStdRegular';
+  overflow: auto;
+  text-overflow: ellipsis; }
+
 #hint_description {
   margin: 0px auto;
   width: 100%;
@@ -142,11 +169,19 @@ p {
   margin: 0px auto;
   width: 100%;
   height: 100%;
-  background-color: red;
+  background-color: #939597;
+  text-transform: uppercase;
+  color: #fff;
   font-family: "GothamLight";
   font-size: 12px;
-  border: 2px solid white;
-  text-align: center; }
+  text-align: left;
+  font-weight: bold; }
+
+#nome-lista p {
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  padding-left: 1em;
+  margin: 0; }
 
 #photomappa {
   height: 100px;
@@ -284,8 +319,22 @@ img {
 #NewMatchButton {
   font-family: "GothamLight";
   text-align: center;
-  background-color: #ee7427;
-  padding: 1.5em; }
+  height: 80px;
+  width: 100%;
+  float: left;
+  background-color: #F47B33;
+  padding: 0; }
+
+#NewMatchButton img {
+  height: 60%;
+  top: 20%;
+  position: relative;
+  display: inline-block;
+  margin-right: 25px; }
+
+#NewMatchButton h1 {
+  display: inline-block;
+  color: #FAE8AC; }
 
 #user-to-add {
   font-family: "GothamLight";
@@ -565,6 +614,46 @@ img {
 
 .padder {
   padding: 10px 20px; }
+
+.match-containers {
+  width: 25%;
+  float: left; }
+
+.match-containers li {
+  padding: 10px 0 !important; }
+
+#container-dei-container {
+  width: 400%;
+  float: left; }
+
+#container-del-container-dei-container {
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden; }
+
+.match-row {
+  width: 100%; }
+
+.match-icon {
+  width: 10%;
+  float: left; }
+
+.match-name {
+  font-family: 'RockwellStdRegular';
+  font-size: 2em;
+  color: #939597;
+  width: 70%;
+  float: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+.match-time {
+  width: 20%;
+  float: left;
+  color: #939597;
+  overflow: hidden;
+  text-overflow: ellipsis; }
 
 @-webkit-keyframes appear {
   from {

@@ -11,7 +11,8 @@ define([
   "views/sub/NewMatch_VS",
   "views/sub/HeaderProfilo_VS",
   "collections/PmsCollection",
-  "models/Pms"
+  "models/Pms",
+  "text!templates/main/elenco-partite.html"
 ],
     function ($,
       _,
@@ -22,13 +23,18 @@ define([
       NewMatch_VS,
       HeaderProfilo_VS,
       PmsCollection,
-      Pms
+      Pms,
+      template
     ) {
 
     var ElencoPartite_VM = Parse.View.extend({
         tagName: "div",
         id: "container",
+        className: "elenco-partite",
         collection: PmsCollection,
+
+        template: Handlebars.compile(template),
+
         initialize: function () {
           this.userStates = (new Pms()).userStates;
           this.matchStates = (new Pms()).matchStates;
@@ -70,14 +76,28 @@ define([
           var viewContent = new NewMatch_VS().render().el;
           var header = new HeaderProfilo_VS();
           $(this.el).html(
-            header.render().el).append(viewContent)
-          .append(new Match_VSL({collection:this.inCorsoMaster, matchType: 'inCorsoMaster' }).render().el)
-          .append(new Match_VSL({collection:this.inCorsoPlayer, matchType: 'inCorsoPlayer'}).render().el)
-          .append(new Match_VSL({collection:this.sospeseMaster, matchType: 'sospeseMaster'}).render().el)
-          .append(new Match_VSL({collection:this.sospesePlayer, matchType: 'sospesePlayer'}).render().el)
-          .append(new Match_VSL({collection:this.storicoMaster, matchType: 'storicoMaster'}).render().el)
-          .append(new Match_VSL({collection:this.storicoPlayer, matchType: 'storicoPlayer'}).render().el)
-          .append(new Match_VSL({collection:this.pubbliche, matchType: 'publicMatch'}).render().el)
+            header.render().el)
+          .append(this.template());
+
+          $(this.el).find('#container-incorso-match').html(
+            $(viewContent).append(
+            new Match_VSL({collection:this.inCorsoMaster, matchType: 'inCorsoMaster' }).render().el)
+            .append(
+              new Match_VSL({collection:this.inCorsoPlayer, matchType: 'inCorsoPlayer'}).render().el)
+          );
+          $(this.el).find('#container-sospese-match').html($(
+            new Match_VSL({collection:this.sospeseMaster, matchType: 'sospeseMaster' }).render().el)
+            .append(
+              new Match_VSL({collection:this.sospesePlayer, matchType: 'sospesePlayer'}).render().el)
+          );
+          $(this.el).find('#container-storico-match').html($(
+            new Match_VSL({collection:this.storicoMaster, matchType: 'storicoMaster' }).render().el)
+            .append(
+              new Match_VSL({collection:this.storicoPlayer, matchType: 'storicoPlayer'}).render().el)
+          );
+          $(this.el).find('#container-pubblico-match').html(
+              new Match_VSL({collection:this.pubbliche, matchType: 'publicMatch'}).render().el);
+          
           return this;
         }
       });

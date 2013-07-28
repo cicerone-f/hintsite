@@ -7,10 +7,11 @@ define([
   "backbone",
   "Parse",
   "handlebars",
+  "moment",
   "models/Match",
   "text!templates/sub/item/match-TSI.html"
 ],
-    function ($, _, Backbone, Parse, Handlebars, Match, template) {
+    function ($, _, Backbone, Parse, Handlebars, moment, Match, template) {
 
     var Match_VSI = Parse.View.extend({
 
@@ -37,12 +38,13 @@ define([
         },
 
         render: function (eventName) {
+          var timeFromNow = moment(this.model.createdAt).fromNow();
           var match = this.match.toJSON();
           match.id = this.match.id;
           if ($.trim(match.name) == "" ) {
             match.name = "(untitled)";
           }
-          $(this.el).html(this.template(match));
+          $(this.el).html(this.template({name: match.name, time: timeFromNow}));
           return this;
         },
 

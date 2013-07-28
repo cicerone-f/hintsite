@@ -20,6 +20,7 @@ define([
     var HeaderProfilo_VS = Parse.View.extend({
         tagName: "div",
         id: "header",
+        className: 'header-profilo',
         template: Handlebars.compile(template),
         events: {
           "click #profilo": "goToProfilo",
