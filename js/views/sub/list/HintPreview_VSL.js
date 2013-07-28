@@ -89,9 +89,9 @@ define([
         }, this);
         this.countHints = $(this.el).find('#list li').length;
         this.moveHints();
-        $('#controller-slide-hint').on('touchstart',$.proxy(this.startDrag,this));
-        $(document).on('touchend',$.proxy(this.endDrag,this));
-        $(document).on('touchmove',$.proxy(this.duringDrag,this));
+        //$('#controller-slide-hint').on('touchstart',$.proxy(this.startDrag,this));
+        //$(document).on('touchend',$.proxy(this.endDrag,this));
+        //$(document).on('touchmove',$.proxy(this.duringDrag,this));
         //$('#controller-slide-hint').on('touchstart', this.startDrag, this);
         var self = this;
         var swiperight = Hammer($(this.el)).on("swiperight", function(event) {
