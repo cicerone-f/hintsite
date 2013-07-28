@@ -69,6 +69,10 @@ p {
   padding: 0 !important;
   background: none !important; }
 
+.partita-player ul li .half-width img {
+  width: 100% !important;
+  max-width: none !important; }
+
 .partita-player ul li h2 {
   color: #F47B33;
   margin-bottom: 0; }
@@ -535,13 +539,13 @@ img {
   width: 100%;
   height: 30%;
   position: absolute;
-  -webkit-transition: all 0.2s ease;
+  -webkit-transition: all 1s ease;
   /* Safari 4+ */
-  -moz-transition: all 0.2s ease;
+  -moz-transition: all 1s ease;
   /* Fx 5+ */
-  -o-transition: all 0.2s ease;
+  -o-transition: all 1s ease;
   /* Opera 12+ */
-  transition: all 0.2s ease;
+  transition: all 1s ease;
   /* IE 10+ */ }
 
 #controller-slide-hint {
@@ -549,14 +553,14 @@ img {
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 20px;
+  height: 40px;
   background: #F47B33;
   text-align: center; }
 
 #controller-slide-hint img {
-  top: 15%;
+  top: 30%;
   position: relative;
-  height: 70%;
+  height: 35%;
   width: auto; }
 
 .padder {

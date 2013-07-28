@@ -62,7 +62,7 @@ define([
       },
 
       closeDrag: function () {
-        $(this.el).css({'height': '20px'});
+        $(this.el).css({'height': '40px'});
         this.opened = 0;
       },
 
@@ -81,16 +81,18 @@ define([
         }, this);
         this.countHints = $(this.el).find('#list li').length;
         this.moveHints();
+        var swiperight = Hammer($(this.el).find('#list')).off("swiperight");
+        var swipeleft = Hammer($(this.el).find('#list')).off("swipeleft");
         var self = this;
-        var swiperight = Hammer($(this.el)).on("swiperight", function(event) {
-          console.log(self.currentViewHint);
-          console.log(self.countHints);
+        var swiperight = Hammer($(this.el).find('#list')).on("swipeleft", function(event) {
+          event.preventDefault();
           if(self.currentViewHint < self.countHints - 1) {
             self.currentViewHint++;
             self.moveHints();
           }
         });
-        var swipeleft = Hammer($(this.el)).on("click", function(event) {
+        var swipeleft = Hammer($(this.el).find('#list')).on("swiperight", function(event) {
+          event.preventDefault();
           if(self.currentViewHint > 0) {
             self.currentViewHint--;
             self.moveHints();
