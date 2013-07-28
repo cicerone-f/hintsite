@@ -52,13 +52,13 @@ p {
   height: 100%;
   z-index: 100;
   background: #DBDCDE;
-  -webkit-animation: margin-left 1s 1;
+  -webkit-transition: margin-left 1s ease;
   /* Safari 4+ */
-  -moz-animation: margin-left 1s 1;
+  -moz-transition: margin-left 1s ease;
   /* Fx 5+ */
-  -o-animation: margin-left 1s 1;
+  -o-transition: margin-left 1s ease;
   /* Opera 12+ */
-  animation: margin-left 1s 1;
+  transition: margin-left 1s ease;
   /* IE 10+ */ }
 
 .partita-player ul li {
