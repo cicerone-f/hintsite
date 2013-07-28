@@ -93,16 +93,17 @@ define([
         $(document).on('touchend',$.proxy(this.endDrag,this));
         $(document).on('touchmove',$.proxy(this.duringDrag,this));
         //$('#controller-slide-hint').on('touchstart', this.startDrag, this);
-        var swiperight = Hammer($(this.el)).on("click", function(event) {
-          if(this.currentViewHint < this.countHints) {
-            this.currentViewHint++;
-            this.moveHints();
+        var self = this;
+        var swiperight = Hammer($(this.el)).on("swiperight", function(event) {
+          if(self.currentViewHint < self.countHints) {
+            self.currentViewHint++;
+            self.moveHints();
           }
         });
         var swipeleft = Hammer($(this.el)).on("swipeleft", function(event) {
-          if(this.currentViewHint > 0) {
-            this.currentViewHint--;
-            this.moveHints();
+          if(self.currentViewHint > 0) {
+            self.currentViewHint--;
+            self.moveHints();
           }
         });
         return this;
