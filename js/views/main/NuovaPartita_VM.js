@@ -97,6 +97,7 @@ define([
         },
 
         addPointsToUser: function () {
+          console.log("add");
           var user = new UserSearched();
           user.addPoints(1000);
         },

@@ -28,18 +28,11 @@ define([
       },
 
       getMeFromParse: function () {
-        var query = new Parse.Query(Parse.User);
-        query.equalTo("objectId", Parse.User.current().id);
         var self = this;
-        query.find({
+        this.fetch({
           success: function (results) {
-            if (results.length > 0) {
-              self.set(results[0].attributes);
-              self.set({id: results[0].id});
-              self.trigger("USERPERPROFILO");
-            } else {
-              console.log('no results');
-            }
+            self.trigger("USERPERPROFILO");
+
           },
           error: function (error) {
             console.log(error);
@@ -82,6 +75,8 @@ define([
               {}, 
               {
                 success: function (result) {
+                  console.log("pt aggiunti");
+                  self.addMastered();
                 },
                 error: function (e) {
                 }
@@ -92,7 +87,33 @@ define([
             console.log(error);
           }
         });
+      },
+
+      addMastered: function(){
+        var self = this;
+        self.id = Parse.User.current().id;
+        self.fetch({
+          success: function (results) {
+            self.increment("nMaster",1);
+            self.save(
+              {}, 
+              {
+                success: function (result) {
+                  console.log(result);
+                                    console.log("master aggiunti");
+                },
+                error: function (e) {
+                  console.log("error");
+                }
+              }
+            );
+          },
+          error: function (error) {
+            console.log(error);
+          }
+        });
       }
+
     });
 
     return UserSearched;

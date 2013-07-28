@@ -32,7 +32,8 @@ define([
       
       initialize: function () {
         this.model = new UserSearched();
-        this.model.getMeFromParse();
+        this.model.id = Parse.User.current().id;
+        this.model.getMeFromParse(Parse.User.current().id);
         this.model.bind("USERPERPROFILO",this.render, this);
       },
 
@@ -65,7 +66,7 @@ define([
       },
       
       uploadPicture: function (imageURI) {
-          var image_name = Parse.User.current() + new Date().getTime();
+          var image_name = Parse.User.current().id + new Date().getTime();
           var options = new FileUploadOptions();
           options.fileKey = "file";
           options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
@@ -90,13 +91,12 @@ define([
       
       render: function (eventName) {
         var header = new Header_VS({owner: "Profilo_VM", backViewModelId:0 });
+        var u = this.model.toJSON();
         $(this.el)
           .html(header.render().el)
-          .append(this.template({
-            name:this.model.attributes.username, 
-            pt:this.model.attributes.points,
-            image: this.model.attributes.image
-          }));
+          .append(
+            this.template( u )
+          );
         return this;
       }
 
