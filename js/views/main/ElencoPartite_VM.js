@@ -81,14 +81,15 @@ define([
 
         render: function (eventName) {
           $(this.el).empty();
-          var viewContent = new NewMatch_VS().render().el;
+          var viewContent = '';
           var header = new HeaderProfilo_VS();
           $(this.el).html(
             header.render().el)
           .append(this.template());
-
+          $(this.el).find('#blabla').html($(new NewMatch_VS().render().el));
           $(this.el).find('#container-incorso-match').html(
-            $(viewContent).append(
+            
+            $(
             new Match_VSL({collection:this.inCorsoMaster, matchType: 'inCorsoMaster' }).render().el)
             .append(
               new Match_VSL({collection:this.inCorsoPlayer, matchType: 'inCorsoPlayer'}).render().el)
