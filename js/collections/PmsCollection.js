@@ -148,7 +148,7 @@ define([
           where: queryInstallations,
           data: {
             title: "New Hintsite match!",
-            alert: "You've been invited to a new match."
+            alert: "You've been invited to a new match.3"
           },
         }, {
           success: function () { console.log("Push notification sent."); },
