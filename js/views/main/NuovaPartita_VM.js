@@ -134,9 +134,6 @@ define([
             
             console.log('lp (launch partita) called. About to call this.pmsCollection.launchPartita()');
             this.pmsCollection.launchPartita("NuovaPartita_VM", this.model.id);
-
-            console.log('About to call inviteUsersViaPush()...');
-            this.inviteUsersViaPush();
           }
           else {
             var ErrorView = new Error_VM({errorMsg: launchability});
@@ -179,40 +176,7 @@ define([
           return this;
         },
 
-        inviteUsersViaPush: function () {
-          console.log('inviteUsersViaPush() called.');
 
-          // this.model is the new match being created
-          var queryPms = new Parse.Query('Pms');
-          query.equalTo('matchId', this.model.id);
-          query.find({
-            success: function (pmss) {
-              var userIds = pmss.map(function (pms) {
-                return pms.attributes.userId;
-              });
-
-              console.log('Retrieved userIds: ' + userIds);
-
-              var queryInstallations = new Parse.Query(Parse.Installation);
-              query.containedIn('userId', userIds);
-
-              Parse.Push.send({
-                where: queryInstallations,
-                data: {
-                  title: "New Hintsite match!",
-                  alert: "You've been invited to a new match."
-                },
-              }, {
-                success: function () { console.log("Push notification sent."); },
-                error: function (error) { console.log("Error in sending push notification: " + error.message); }
-              });
-            },
-            error: function (error) {
-              console.error("Error inside inviteUsersViaPush(): " + error.message);
-            }
-          });
-
-        }
 
       });
     return NuovaPartita_VM;

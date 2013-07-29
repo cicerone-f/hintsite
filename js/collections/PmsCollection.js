@@ -90,12 +90,15 @@ define([
 
           },
           error: function (error) {
-            console.log(error);
+            console.error("Error: " + error.message);
           }
         });
+
+        console.log('About to call inviteUsersViaPush() from inside PmsCollection.js');
+        this.model.inviteUsersViaPush(matchId);
       },
 
-      getAllUsersPms: function (){
+      getAllUsersPms: function () {
         var query = new Parse.Query(Pms);
         query.equalTo("userId", Parse.User.current().id);
         query.notEqualTo("userState", 1 );
