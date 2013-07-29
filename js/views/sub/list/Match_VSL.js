@@ -36,12 +36,15 @@ define([
         render: function (eventName) {
           $(this.el).empty();
           var title = {title: this.options.matchType};
-          $(this.el).append(this.template(title));
+          var counter = 0;
+          $(this.el).html(this.template(title));
           _.each(this.collection.models, function (pms) {
             $(this.el).append(new Match_VSI({
               model: pms,
-              matchType: this.options.matchType
+              matchType: this.options.matchType,
+              backgroundEven: counter
             }).render().el);
+            counter++;
           }, this);
           return this;
         }

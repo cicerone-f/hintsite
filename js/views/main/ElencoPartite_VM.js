@@ -87,13 +87,10 @@ define([
             header.render().el)
           .append(this.template());
           $(this.el).find('#blabla').html($(new NewMatch_VS().render().el));
-          $(this.el).find('#container-incorso-match').html(
-            
-            $(
+          $(this.el).find('#container-incorso-match').append(
             new Match_VSL({collection:this.inCorsoMaster, matchType: 'inCorsoMaster' }).render().el)
             .append(
-              new Match_VSL({collection:this.inCorsoPlayer, matchType: 'inCorsoPlayer'}).render().el)
-          );
+              new Match_VSL({collection:this.inCorsoPlayer, matchType: 'inCorsoPlayer'}).render().el);
           $(this.el).find('#container-sospese-match').html($(
             new Match_VSL({collection:this.sospeseMaster, matchType: 'sospeseMaster' }).render().el)
             .append(

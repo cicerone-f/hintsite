@@ -31,6 +31,11 @@ define([
           this.model.bind("change", this.getMatchFromPms, this);
           this.model.bind("destroy", this.close, this);
           this.match.fetchFromP("Match_VSI");
+          if ((this.options.matchType == 'inCorsoMaster') || (this.options.matchType == 'sospeseMaster')) {
+            this.matchTypeIcon = 'master';
+          } else {
+            this.matchTypeIcon = 'user';
+          }
         },
 
         getMatchFromPms: function (){
@@ -38,13 +43,18 @@ define([
         },
 
         render: function (eventName) {
-          var timeFromNow = moment(this.model.createdAt).fromNow();
+          var timeFromNow = moment(this.model.updatedAt).fromNow();
           var match = this.match.toJSON();
           match.id = this.match.id;
           if ($.trim(match.name) == "" ) {
             match.name = "(untitled)";
           }
-          $(this.el).html(this.template({name: match.name, time: timeFromNow}));
+          $(this.el).html(this.template({name: match.name, time: timeFromNow, icon: this.matchTypeIcon}));
+          if (this.options.backgroundEven % 2) {
+            $(this.el).addClass('odd');
+          } else {
+            $(this.el).addClass('even');
+          }
           return this;
         },
 
