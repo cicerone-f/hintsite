@@ -103,6 +103,7 @@ define([
         },
 
         matchCanBeLaunched : function () {
+          // ma siamo pazzi? speriamo che Ivano non vede sto Niagara de if :)
           if ( $.trim(this.model.attributes.name) != "" ){
             if (this.pmsCollection.length >1 ){
               if (this.collection.isLaunchable()) {
@@ -123,15 +124,19 @@ define([
           }
         },
 
+        // launch partita
         lp: function () {
+          // this.model is the match
           var launchability = this.matchCanBeLaunched();
-          if ( launchability == "tuttoapposto"){
+          if (launchability == "tuttoapposto") {
             this.loading.render();
             var wallMsg = new WallMessage();
-            wallMsg.saveToP(wallMsg.messageTypes.MATCH_CREATED, this.model.id); 
+            wallMsg.saveToP(wallMsg.messageTypes.MATCH_CREATED, this.model.id);
+            
+            console.log('lp (launch partita) called. About to call this.pmsCollection.launchPartita()');
             this.pmsCollection.launchPartita("NuovaPartita_VM", this.model.id);
           }
-          else{
+          else {
             var ErrorView = new Error_VM({errorMsg: launchability});
             ErrorView.render();
           }
@@ -170,7 +175,9 @@ define([
             .append(hintlistedit.render().el)
             .append(launchfooter.render().el);
           return this;
-        }
+        },
+
+
 
       });
     return NuovaPartita_VM;

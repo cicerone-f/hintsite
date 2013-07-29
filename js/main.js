@@ -16,7 +16,8 @@ require.config({
     CDV: '../lib/facebook/cdv-plugin-fb-connect',
     FB: '../lib/facebook/facebook_js_sdk',
     moment: '../lib/moment/moment.min',
-    hammer: '../lib/hammer/jquery.hammer.min'
+    hammer: '../lib/hammer/jquery.hammer.min',
+    ChannelSubscription: '../channel-subscription/ChannelSubscription'
   },
   shim: {
     'underscore': {
@@ -72,22 +73,32 @@ require([
       Parse.history.length = 0;
       Parse.history.on('route', function () { ++this.length; });
 
-      FB.init({
-        appId: '639802702700436',
-        nativeInterface: CDV.FB,
-        useCachedDialogs: false
-      });
+      // FB.init({
+      //   appId: '639802702700436',
+      //   nativeInterface: CDV.FB,
+      //   useCachedDialogs: false
+      // });
       
-      FB.getLoginStatus(function () { alert('OK'); });
+      // FB.getLoginStatus(function () { alert('OK'); });
 
-      ChannelSubscription.subscribeTo('bar', {
-        success: function () {
-          alert('yay');
-        },
-        error: function () {
-          alert('buuu');
-        }
-      });
+
+      // var query = new Parse.Query(Parse.Installation);
+      // query.equalTo('userId', 'hbE8n4iwq4');
+
+      // Parse.Push.send({
+      //   where: query,
+      //   data: {
+      //     alert: 'bu'
+      //   }
+      // }, {
+      //   success: function () {
+      //     console.log('Funzionato!');
+      //   },
+      //   error: function (error) {
+      //     console.error('A manetta: ' + error.message);
+      //   }
+      // });
+      // console.log('notification sent from main.js');
 
     }
   });

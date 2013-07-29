@@ -200,9 +200,9 @@ define([
             console.log("error");
           }
         });
-      }
+      },
 
     });
-    return Pms;
 
+    return Pms;
   });

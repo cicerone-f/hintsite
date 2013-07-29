@@ -4,11 +4,13 @@
 define([
   "jquery",
   "Parse",
+  "underscore",
   "models/Pms"
 ],
   function (
     $,
     Parse,
+    _,
     Pms
   ) {
     var PmsCollection = Parse.Collection.extend({
@@ -60,6 +62,9 @@ define([
       },
 
       launchPartita: function (vm, matchId) {
+
+        console.log('launchPartita() called from inside PmsCollection.js');
+
         var query = new Parse.Query(Pms);
         query.equalTo("matchId", matchId);
         this.reset();
@@ -85,14 +90,19 @@ define([
               }
             );
 
+            console.log('About to call inviteUsersViaPush() from inside PmsCollection.js');
+            self.inviteUsersViaPush(results);
+
           },
           error: function (error) {
-            console.log(error);
+            console.error("Error: " + error.message);
           }
         });
+
+
       },
 
-      getAllUsersPms: function (){
+      getAllUsersPms: function () {
         var query = new Parse.Query(Pms);
         query.equalTo("userId", Parse.User.current().id);
         query.notEqualTo("userState", 1 );
@@ -105,6 +115,35 @@ define([
             console.log(error);
           }
         });
+      },
+
+      inviteUsersViaPush: function (pmss) {
+        console.log('inviteUsersViaPush() called.');
+        console.log('pmss: ' + pmss);
+
+        // this.models is an array of PMSs with the current matchId
+        // I only have to use those PMSs to retrieve the user IDs I'll need
+        // in order to send Push Notifications
+        var userIds = pmss.map(function (pms) {
+          return pms.attributes.userId;
+        });
+
+        console.log('userIds retrieved: ' + userIds);
+
+        var queryInstallations = new Parse.Query(Parse.Installation);
+        queryInstallations.containedIn('userId', userIds);
+
+        Parse.Push.send({
+          where: queryInstallations,
+          data: {
+            title: "New Hintsite match!",
+            alert: "You've been invited to a new match."
+          },
+        }, {
+          success: function () { console.log("Push notification sent."); },
+          error: function (error) { console.log("Error in sending push notification: " + error.message); }
+        });
+
       }
     });
 

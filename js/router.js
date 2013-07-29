@@ -283,7 +283,7 @@ define([
           Parse.history.navigate(this.mappaBack[view] +'/'+ param , { trigger : true, replace : true });
         }
         return false;  
-      } 
+      }, 
 
     });
 
