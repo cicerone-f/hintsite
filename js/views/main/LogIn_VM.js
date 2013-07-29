@@ -40,14 +40,16 @@ define([
           console.log(username + " " + password);
           Parse.User.logIn(username, password, {
             success: function (user) {
+              // When subscribing to a new channel, an Installation object is created
+              // (if there are none already). By subscribing now (for the first time for
+              // a new user), we ensure the Installation object has a proper userId attribute.
               ChannelSubscription.subscribeTo('logged-in', Parse.User.current().id, {
                 success: function () {
-                  console.log('Device subscribed to "logged-in" channel.');
-                },
+                  console.log('Device subscribed to "logged-in" channel.'); },
                 error: function (error) {
-                  console.error('Error no. ' + error.code + ": " + error.message);
-                }
+                  console.error('Error no. ' + error.code + ": " + error.message); },
               });
+
               Parse.history.navigate("mainMatchList", {trigger: true});
             },
             error: function (user, error) {

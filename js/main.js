@@ -73,22 +73,32 @@ require([
       Parse.history.length = 0;
       Parse.history.on('route', function () { ++this.length; });
 
-      FB.init({
-        appId: '639802702700436',
-        nativeInterface: CDV.FB,
-        useCachedDialogs: false
-      });
+      // FB.init({
+      //   appId: '639802702700436',
+      //   nativeInterface: CDV.FB,
+      //   useCachedDialogs: false
+      // });
       
-      FB.getLoginStatus(function () { alert('OK'); });
+      // FB.getLoginStatus(function () { alert('OK'); });
 
-      // ChannelSubscription.subscribeTo('bar', {
+
+      // var query = new Parse.Query(Parse.Installation);
+      // query.equalTo('userId', 'hbE8n4iwq4');
+
+      // Parse.Push.send({
+      //   where: query,
+      //   data: {
+      //     alert: 'bu'
+      //   }
+      // }, {
       //   success: function () {
-      //     alert('yay');
+      //     console.log('Funzionato!');
       //   },
-      //   error: function () {
-      //     alert('buuu');
+      //   error: function (error) {
+      //     console.error('A manetta: ' + error.message);
       //   }
       // });
+      // console.log('notification sent from main.js');
 
     }
   });

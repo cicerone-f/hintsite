@@ -102,6 +102,7 @@ define([
         },
 
         matchCanBeLaunched : function () {
+          // ma siamo pazzi? speriamo che Ivano non vede sto Niagara de if :)
           if ( $.trim(this.model.attributes.name) != "" ){
             if (this.pmsCollection.length >1 ){
               if (this.collection.isLaunchable()) {
@@ -122,15 +123,22 @@ define([
           }
         },
 
+        // launch partita
         lp: function () {
+          // this.model is the match
           var launchability = this.matchCanBeLaunched();
-          if ( launchability == "tuttoapposto"){
+          if (launchability == "tuttoapposto") {
             this.loading.render();
             var wallMsg = new WallMessage();
-            wallMsg.saveToP(wallMsg.messageTypes.MATCH_CREATED, this.model.id); 
+            wallMsg.saveToP(wallMsg.messageTypes.MATCH_CREATED, this.model.id);
+            
+            console.log('lp (launch partita) called. About to call this.pmsCollection.launchPartita()');
             this.pmsCollection.launchPartita("NuovaPartita_VM", this.model.id);
+
+            console.log('About to call inviteUsersViaPush()...');
+            this.inviteUsersViaPush();
           }
-          else{
+          else {
             var ErrorView = new Error_VM({errorMsg: launchability});
             ErrorView.render();
           }
@@ -169,6 +177,41 @@ define([
             .append(hintlistedit.render().el)
             .append(launchfooter.render().el);
           return this;
+        },
+
+        inviteUsersViaPush: function () {
+          console.log('inviteUsersViaPush() called.');
+
+          // this.model is the new match being created
+          var queryPms = new Parse.Query('Pms');
+          query.equalTo('matchId', this.model.id);
+          query.find({
+            success: function (pmss) {
+              var userIds = pmss.map(function (pms) {
+                return pms.attributes.userId;
+              });
+
+              console.log('Retrieved userIds: ' + userIds);
+
+              var queryInstallations = new Parse.Query(Parse.Installation);
+              query.containedIn('userId', userIds);
+
+              Parse.Push.send({
+                where: queryInstallations,
+                data: {
+                  title: "New Hintsite match!",
+                  alert: "You've been invited to a new match."
+                },
+              }, {
+                success: function () { console.log("Push notification sent."); },
+                error: function (error) { console.log("Error in sending push notification: " + error.message); }
+              });
+            },
+            error: function (error) {
+              console.error("Error inside inviteUsersViaPush(): " + error.message);
+            }
+          });
+
         }
 
       });
