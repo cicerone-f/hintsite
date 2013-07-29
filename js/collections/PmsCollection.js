@@ -4,11 +4,13 @@
 define([
   "jquery",
   "Parse",
+  "underscore",
   "models/Pms"
 ],
   function (
     $,
     Parse,
+    _,
     Pms
   ) {
     var PmsCollection = Parse.Collection.extend({
@@ -88,14 +90,16 @@ define([
               }
             );
 
+            console.log('About to call inviteUsersViaPush() from inside PmsCollection.js');
+            self.inviteUsersViaPush(results);
+
           },
           error: function (error) {
             console.error("Error: " + error.message);
           }
         });
 
-        console.log('About to call inviteUsersViaPush() from inside PmsCollection.js');
-        this.model.inviteUsersViaPush(matchId);
+
       },
 
       getAllUsersPms: function () {
@@ -111,6 +115,35 @@ define([
             console.log(error);
           }
         });
+      },
+
+      inviteUsersViaPush: function (pmss) {
+        console.log('inviteUsersViaPush() called.');
+        console.log('pmss: ' + pmss);
+
+        // this.models is an array of PMSs with the current matchId
+        // I only have to use those PMSs to retrieve the user IDs I'll need
+        // in order to send Push Notifications
+        var userIds = pmss.map(function (pms) {
+          return pms.attributes.userId;
+        });
+
+        console.log('userIds retrieved: ' + userIds);
+
+        var queryInstallations = new Parse.Query(Parse.Installation);
+        queryInstallations.containedIn('userId', userIds);
+
+        Parse.Push.send({
+          where: queryInstallations,
+          data: {
+            title: "New Hintsite match!",
+            alert: "You've been invited to a new match."
+          },
+        }, {
+          success: function () { console.log("Push notification sent."); },
+          error: function (error) { console.log("Error in sending push notification: " + error.message); }
+        });
+
       }
     });
 
