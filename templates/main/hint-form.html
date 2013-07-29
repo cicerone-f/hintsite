@@ -3,11 +3,23 @@
     {{#if image}}
       <img src="{{image}}" />
     {{else}}
-	<span id="set-photo">set Photo</span>
+    	<img class="add_photo" src="res/img/addphoto.png" />
+			<h2 id="set-photo">Set Photo</h2>
     {{/if}}
   </div>
-  <span id="mappa">mappa</span>
+  <div id="mappa">
+  	{{#if point}}
+			<img src="res/img/geo-validate.png" />
+			<h2>Set Map</h2>
+		{{else}}
+			<img src="res/img/geo-non-validate.png" />
+			<h2>Set Map</h2>
+		{{/if}}
+  </div>
 </div>
 <div id="description">
   <textarea id="hint_description">{{#if description }}{{ description }}{{/if}}</textarea>
+</div>
+<div id="ok">
+	<h2>OK</h2>
 </div>
