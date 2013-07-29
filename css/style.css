@@ -422,15 +422,27 @@ img {
 
 #selezione-giocatori-footer {
   width: 100%;
-  height: 10%; }
+  height: 10%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #F47B33; }
+
+#selezione-giocatori-footer span img {
+  height: 90%; }
 
 #selezione-giocatori-footer span {
-  width: 30%;
-  margin: 0 1%;
-  height: 100%;
-  border: 1px solid orange;
-  float: left;
+  width: 33%;
+  border-right: 1px solid #FAE8AC;
+  display: inline-block;
+  height: 60%;
+  position: relative;
+  top: 20%;
   text-align: center; }
+
+#selezione-giocatori-footer span:last-child {
+  border-right: none;
+  width: 31%; }
 
 #popup-container {
   background-color: rgba(0, 0, 0, 0.7);
@@ -438,7 +450,8 @@ img {
   top: 0;
   left: 0;
   height: 100%;
-  width: 100%; }
+  width: 100%;
+  z-index: 1000; }
 
 .yes-no {
   width: 50%;
@@ -766,6 +779,69 @@ img {
   height: 100%;
   vertical-align: top;
   text-align: center; }
+
+.elementlistaGiocatori {
+  position: relative; }
+
+.elementlistaGiocatori h2 {
+  position: absolute;
+  color: #fff;
+  bottom: 0;
+  left: 0;
+  margin-bottom: 0;
+  margin-left: 10px;
+  z-index: 3; }
+
+.elementlistaGiocatori img {
+  width: 100%;
+  height: 100%;
+  vertical-align: top; }
+
+.elementlistaGiocatori .remove-pms {
+  position: absolute;
+  top: 4%;
+  right: 4%;
+  color: #fff;
+  z-index: 3;
+  height: 20%;
+  width: 20%; }
+
+.elementlistaGiocatori .remove-pms img {
+  width: 100%;
+  height: 100%;
+  min-width: 40px;
+  min-height: 40px; }
+
+.pmsElement {
+  width: 50% !important;
+  float: left;
+  padding: 0 !important; }
+
+.blackGradient {
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 43%, rgba(0, 0, 0, 0.5) 89%, rgba(0, 0, 0, 0.5) 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(43%, rgba(0, 0, 0, 0)), color-stop(89%, rgba(0, 0, 0, 0.5)), color-stop(100%, rgba(0, 0, 0, 0.5)));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 43%, rgba(0, 0, 0, 0.5) 89%, rgba(0, 0, 0, 0.5) 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 43%, rgba(0, 0, 0, 0.5) 89%, rgba(0, 0, 0, 0.5) 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 43%, rgba(0, 0, 0, 0.5) 89%, rgba(0, 0, 0, 0.5) 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 43%, rgba(0, 0, 0, 0.5) 89%, rgba(0, 0, 0, 0.5) 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000',GradientType=0 );
+  /* IE6-9 */ }
+
+.pmsListEdit {
+  height: 80% !important;
+  overflow-y: scroll; }
 
 @-webkit-keyframes appear {
   from {

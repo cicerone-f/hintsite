@@ -27,6 +27,7 @@ define([
     var PmsEdit_VSL = Parse.View.extend({
       tagName: "ul",
       id: "list",
+      className: "pmsListEdit",
       template: Handlebars.compile(template),
       render: function (eventName) {
         $(this.el).empty();

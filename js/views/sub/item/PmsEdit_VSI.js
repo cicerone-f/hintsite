@@ -23,6 +23,7 @@ define([
     var PmsEdit_VSI = Parse.View.extend({
 
         tagName: "li",
+        className: "pmsElement",
         PmsUser: UserSearched,
         template: Handlebars.compile(template),
 
