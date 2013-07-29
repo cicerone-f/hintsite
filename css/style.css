@@ -233,7 +233,7 @@ img {
   height: 100%;
   float: left;
   width: 30%;
-  background-color: pink;
+  background-color: #F0AC3D;
   text-align: center; }
 
 #launchtime {
@@ -252,16 +252,19 @@ img {
 
 #addPlayers {
   height: 10%;
-  background-color: green;
+  background-color: #F47B33;
   color: white;
   text-align: center; }
 
 #launch {
+  margin: 0;
   height: 100%;
   float: left;
-  width: 100%;
-  background-color: orange;
-  text-align: center; }
+  width: 70%;
+  background-color: #F47B33;
+  color: #fff;
+  text-align: center;
+  line-height: 3.2em; }
 
 #set-point-btn {
   height: 10%;
@@ -686,6 +689,83 @@ img {
   width: 35%;
   padding: 5px 0;
   vertical-align: middle; }
+
+.formName {
+  height: 10%;
+  width: 99%; }
+
+#matchname {
+  width: 100%;
+  position: relative;
+  top: 10%;
+  padding: 0;
+  margin: 0;
+  height: 70%;
+  font-family: 'RockwellStdBold';
+  font-size: 2em;
+  line-height: 2.4em; }
+
+.hint-edit-list {
+  height: 60%; }
+
+.hint-edit-list li {
+  height: 25%;
+  padding: 0 !important;
+  border-bottom: 1px solid #DBDCDE; }
+
+#addPlayers img {
+  margin-right: 20px;
+  top: 25%;
+  position: relative;
+  height: 50%;
+  display: inline-block;
+  vertical-align: middle; }
+
+#addPlayers h2 {
+  position: relative;
+  top: 25%;
+  vertical-align: sub;
+  margin: 0;
+  height: 50%;
+  display: inline-block; }
+
+.incipit {
+  display: inline-block;
+  width: 65%;
+  height: 100%;
+  margin-left: 5%; }
+
+.incipit h2 {
+  margin-bottom: 0; }
+
+.incipit p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+
+.validate-geo {
+  display: inline-block;
+  width: 12%;
+  height: 100%;
+  vertical-align: top;
+  text-align: center; }
+
+.validate-geo img, .validate-desc img {
+  position: relative;
+  top: 35%;
+  height: 30%; }
+
+#setlaunchtime img {
+  position: relative;
+  top: 20%;
+  height: 60%; }
+
+.validate-desc {
+  display: inline-block;
+  width: 12%;
+  height: 100%;
+  vertical-align: top;
+  text-align: center; }
 
 @-webkit-keyframes appear {
   from {

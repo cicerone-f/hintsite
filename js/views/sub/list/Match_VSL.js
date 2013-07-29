@@ -35,7 +35,13 @@ define([
 
         render: function (eventName) {
           $(this.el).empty();
-          var title = {title: this.options.matchType};
+          if ((this.options.matchType == 'inCorsoMaster') || (this.options.matchType == 'sospeseMaster')  || (this.options.matchType == 'storicoMaster')) {
+            var title = {title: 'master'};
+          } else if ((this.options.matchType == 'inCorsoPlayer') || (this.options.matchType == 'sospesePlayer')  || (this.options.matchType == 'storicoPlayer')) {
+            var title = {title: 'player'};
+          } else {
+            var title = {title: 'pubbliche'};
+          }
           var counter = 0;
           $(this.el).html(this.template(title));
           _.each(this.collection.models, function (pms) {

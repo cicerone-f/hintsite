@@ -27,6 +27,7 @@ define([
     var HintEdit_VSL = Parse.View.extend({
       tagName: "ul",
       id: "list",
+      className: "hint-edit-list",
       template: Handlebars.compile(template),
       render: function (eventName) {
         $(this.el).empty();

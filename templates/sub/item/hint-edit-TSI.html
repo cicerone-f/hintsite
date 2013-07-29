@@ -1,6 +1,18 @@
-<h4>
-    Hint# {{ number }}
-</h4>
-<p>
-    {{ description }} 
-</p>
+<div class="incipit">
+	<h2>Hint #{{ number }}</h2>
+	<p>{{ description }}</p>
+</div>
+<div class="validate-geo">
+	{{#if point}}
+		<img src="res/img/geo-validate.png" />
+	{{else}}
+		<img src="res/img/geo-non-validate.png" />
+	{{/if}}
+</div>
+<div class="validate-desc">
+	{{#if description}}
+		<img src="res/img/desc-validate.png" />
+	{{else}}
+		<img src="res/img/desc-non-validate.png" />
+	{{/if}}
+</div>
