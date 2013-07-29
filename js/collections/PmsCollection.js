@@ -124,9 +124,20 @@ define([
         // this.models is an array of PMSs with the current matchId
         // I only have to use those PMSs to retrieve the user IDs I'll need
         // in order to send Push Notifications
-        var userIds = pmss.map(function (pms) {
-          return pms.attributes.userId;
-        });
+        //
+        // First I filter the array in order to slice out the master
+        // of the current match (which has a userState of 0), then I map
+        // an anonymous function 
+        // var userIds = pmss.filter(function (pms) {
+        //   return pms.attributes.userState != 0;
+        // }).map(function (pms) {
+        //   return pms.attributes.userId;
+        // });
+
+        var userIds = pmss.reduce(function (currPms, ids, el, arr) {
+          var master = currPms.attributes.userState == 0;
+          return master? ids : ids.concat(currPms);
+        })
 
         console.log('userIds retrieved: ' + userIds);
 
