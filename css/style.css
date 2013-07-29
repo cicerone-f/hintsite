@@ -793,8 +793,6 @@ img {
   z-index: 3; }
 
 .elementlistaGiocatori img {
-  width: 100%;
-  height: 100%;
   vertical-align: top; }
 
 .elementlistaGiocatori .remove-pms {
