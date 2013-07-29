@@ -60,6 +60,9 @@ define([
       },
 
       launchPartita: function (vm, matchId) {
+
+        console.log('launchPartita() called from inside PmsCollection.js');
+
         var query = new Parse.Query(Pms);
         query.equalTo("matchId", matchId);
         this.reset();
