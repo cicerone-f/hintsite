@@ -6,7 +6,7 @@ require.config({
     domReady: '../lib/require/domReady',
     jquery: '../lib/jquery/jquery-1.9.1.min',
     underscore: '../lib/underscore/underscore-min',
-    backbone: '../lib/backbone/backbone',
+    Backbone: '../lib/backbone/backbone',
     Parse: '../lib/parse/parse-1.2.3',
     text: '../lib/require/text-1.0.6',
     async: '../lib/require/async',
@@ -17,15 +17,19 @@ require.config({
     FB: '../lib/facebook/facebook_js_sdk',
     moment: '../lib/moment/moment.min',
     hammer: '../lib/hammer/jquery.hammer.min',
-    ChannelSubscription: '../channel-subscription/ChannelSubscription'
+    ChannelSubscription: '../channel-subscription/ChannelSubscription',
+    backstack: '../lib/backstack/backstack-min'
   },
   shim: {
     'underscore': {
       exports: '_'
     },
-    'backbone': {
+    'Backbone': {
       deps: ['jquery', 'underscore'],
       exports: 'Backbone'
+    },
+    'backstack' : {
+      deps:['Backbone', 'underscore', 'jquery'],
     },
     'Parse': {
       exports: 'Parse'
@@ -46,13 +50,12 @@ require.config({
 require([
   'domReady',
   'underscore',
-  'backbone',
+  'backstack',
   'Parse',
-  'router',
   'CDV',
   'FB'
 ],
-    function (domReady, _, Backbone, Parse, AppRouter, CDV, FB) {
+    function (domReady, _, backstack, Parse, CDV, FB) {
 
     domReady(function () {
       document.addEventListener("deviceready", run, false);
