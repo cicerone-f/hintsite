@@ -56,7 +56,7 @@ require([
   'FB'
 ],
     function (domReady, _,
-     //backstack, 
+     BackStack, 
      Parse, CDV, FB) {
 
     domReady(function () {
