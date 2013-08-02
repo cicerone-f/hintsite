@@ -18,7 +18,7 @@ require.config({
     moment: '../lib/moment/moment.min',
     hammer: '../lib/hammer/jquery.hammer.min',
     ChannelSubscription: '../channel-subscription/ChannelSubscription',
-    backstack: '../lib/backstack/backstack-min'
+    BackStack: '../lib/backstack/backstack-min'
   },
   shim: {
     'underscore': {
@@ -28,7 +28,7 @@ require.config({
       deps: ['jquery', 'underscore'],
       exports: 'Backbone'
     },
-    'backstack' : {
+    'BackStack' : {
       deps:['Backbone', 'underscore', 'jquery'],
     },
     'Parse': {
@@ -50,12 +50,14 @@ require.config({
 require([
   'domReady',
   'underscore',
-  'backstack',
+  'BackStack',
   'Parse',
   'CDV',
   'FB'
 ],
-    function (domReady, _, backstack, Parse, CDV, FB) {
+    function (domReady, _,
+     //backstack, 
+     Parse, CDV, FB) {
 
     domReady(function () {
       document.addEventListener("deviceready", run, false);
@@ -71,10 +73,6 @@ require([
         xfbml      : true  // parse XFBML
       });*/
 
-      new AppRouter();     // JSLint says "do not use 'new' for side effects"
-      Parse.history.start();
-      Parse.history.length = 0;
-      Parse.history.on('route', function () { ++this.length; });
 
       // FB.init({
       //   appId: '639802702700436',
