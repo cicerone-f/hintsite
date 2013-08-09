@@ -78,7 +78,7 @@ p {
   transition:         margin-left 1s ease; /* IE 10+ */
 }
 
-.partita-player ul li{
+.partita-player ul li {
   overflow: hidden;
   border: none !important;
   width: 25% !important;
@@ -121,25 +121,22 @@ p {
 }
 
 .header-profilo span {
-  width: 33.3%;
-}
+  width: percentage(1 / 3);
 
-.header-profilo span img {
-  height: 25%;
-}
+  img { height: 25% }
 
-.header-profilo span#profilo img {
-  left: 10%;
-  position: relative;
-  float: left;
-}
+  &#profilo img {
+    left: 10%;
+    position: relative;
+    float: left;
+  }
 
-.header-profilo span#opzioni img {
-  right: 10%;
-  position: relative;
-  float: right;
+  &#opzioni img {
+    left: 10%;
+    position: relative;
+    float: right;
+  }
 }
-
 
 #launch-footer {
   height: 10%;
@@ -193,8 +190,7 @@ p {
 
 #nome-lista{
   margin: 0px auto;
-  width: 100%;
-  height: 100%;
+  @include width-height(100%);
   background-color: #939597;
   text-transform: uppercase;
   color: #fff;
@@ -202,26 +198,24 @@ p {
   font-size: $body-font-size;
   text-align: left;  
   font-weight: bold;
+
+  p {
+    @include padding-ver(0.2em);
+    padding-left: 1em;
+    margin: 0;
+  }
 }
 
-#nome-lista p {
-  padding-top: 0.2em;
-  padding-bottom: 0.2em;
-  padding-left: 1em;
-  margin: 0;
-}
 
 #photomappa {
   width: 100%;
   height: 30%;
 }
 #map_canvas{
-  height: 100%;
-  width: 100%;
+  @include width-height(100%);
 }
 #map{
-  height: 100%;
-  width: 100%;
+  @include width-height(100%);
 }
 
 .locate-me-icon {
@@ -240,19 +234,21 @@ p {
   float:left;
   text-align: center; 
   position: relative;
-}
 
-#photo img {
-  float: left;
+  img { float: left }
+
+  .add_photo {
+    position: absolute;
+    width: 60%;
+    top: 25%;
+    left: 20%;
+  }
 }
 
 img {
   max-width: 100%;
 }
 
-#photo img {
-  max-width: 100%;
-}
 
 #mappa {
   position: relative;
@@ -262,32 +258,25 @@ img {
   width: 50%;
   float: left;
   text-align: center;
-}
-
-#mappa img {
-  left: 20%;
-  position: absolute;
-  width: 60%;
-  top: 20%;
-}
-
-#photo .add_photo {
-  left: 20%;
-  position: absolute;
-  width: 60%;
-  top: 25%;
+  
+  img {
+    left: 20%;
+    position: absolute;
+    width: 60%;
+    top: 20%;
+  }
 }
 
 #mappa h2, #photo h2 {
-  bottom: 0;
   position: absolute;
   width: 100%;
+  bottom: 0;
 }
 
 #ok {
   width: 100%;
-  float: left;
   height: 10%;
+  float: left;
   background-color: #F47B33;
   text-align: center;
   color: #fff;
@@ -304,11 +293,18 @@ img {
 
 #setlaunchtime {
   height: 100%;
-  float:left;
+  float: left;
   width: 30%;
   background-color: #F0AC3D;
   text-align: center; 
+
+  img {
+    position: relative;
+    top: 20%;
+    height: 60%;
+  }
 }
+
 #launchtime {
   height: 100%;
   float:left;
@@ -371,14 +367,14 @@ img {
   height: 96%;
   -webkit-border-radius: 1000px;
   position: relative;
+  
+  img {
+    left: 30%;
+    top: 25%;
+    position: absolute;
+    width: 40%;
+  }
 } 
-
-#inside-check-in-btn img {
-  left: 30%;
-  top: 25%;
-  position: absolute;
-  width: 40%;
-}
 
 #log-in {
   cursor: pointer;
@@ -412,20 +408,21 @@ img {
   float: left;
   background-color: #F47B33;
   padding: 0;
+  
+  img {
+    height: 60%;
+    top: 20%;
+    position: relative;
+    display: inline-block;
+    margin-right: 25px;
+  }
+
+  h1 {
+    display: inline-block;
+    color: #FAE8AC;
+  }
 }
 
-#NewMatchButton img {
-  height: 60%;
-  top: 20%;
-  position: relative;
-  display: inline-block;
-  margin-right: 25px;
-}
-
-#NewMatchButton h1 {
-  display: inline-block;
-  color: #FAE8AC;
-}
 
 #user-to-add{
   font-family: $body-font-family;
@@ -504,25 +501,24 @@ img {
   bottom: 0;
   left: 0;
   background: #F47B33;
-}
 
-#selezione-giocatori-footer span img {
-  height: 90%;
-}
+  span {
+    width: 33%;
+    border-right: 1px solid #FAE8AC;
+    display: inline-block;
+    height: 60%;
+    position: relative;
+    top: 20%;
+    text-align: center;
 
-#selezione-giocatori-footer span {
-  width: 33%;
-  border-right: 1px solid #FAE8AC;
-  display: inline-block;
-  height: 60%;
-  position: relative;
-  top: 20%;
-  text-align: center;
-}
+    img { height: 90% }
 
-#selezione-giocatori-footer span:last-child {
-  border-right: none;
-  width: 31%;
+    &:last-child {
+      border-right: none;
+      width: 31%;
+    }
+  }
+
 }
 
 #popup-container{
@@ -535,19 +531,14 @@ img {
   z-index: 1000;
 }
 
-.yes-no{
+.yes-no {
   width: 50%;
   height: 10%;
   text-align: center; 
   float: left;
-}
 
-.yes-no#yes {
-  background-color: green;
-}
-
-.yes-no#no {
-  background-color: red;
+  &#yes { background-color: green }
+  &#no { background-color: red }
 }
 
 .errorContainer {
@@ -599,13 +590,13 @@ img {
   height: 96%;
   -webkit-border-radius: 1000px;
   position: relative;
-} 
 
-#inside-go-to-wall img {
-  left: 22%;
-  top: 25%;
-  position: absolute;
-  width: 60%;
+  img {
+    left: 22%;
+    top: 25%;
+    position: absolute;
+    width: 60%;
+  }
 }
 
 #go-to-players {
@@ -628,14 +619,13 @@ img {
   height: 96%;
   -webkit-border-radius: 1000px;
   position: relative;
+  img {
+    left: 22%;
+    top: 20%;
+    position: absolute;
+    width: 60%;
+  }
 } 
-
-#inside-go-to-players img {
-  left: 22%;
-  top: 20%;
-  position: absolute;
-  width: 60%;
-}
 
 #map-container {
   height: 90%;
@@ -654,14 +644,15 @@ img {
   height: 5%;
   position: absolute;
   width: 50%;
+
+  span {
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    float: left;
+  }
 }
 
-#helpers span {
-  width: 50%;
-  height: 100%;
-  text-align: center;
-  float: left;
-}
 
 #generic-popup-container {
   position: absolute;
@@ -719,13 +710,12 @@ img {
   height: 40px;
   background: #F47B33;
   text-align: center;
-}
-
-#controller-slide-hint img {
-  top: 30%;
-  position: relative;
-  height: 35%;
-  width: auto;
+  img {
+    top: 30%;
+    position: relative;
+    height: 35%;
+    width: auto;
+  }
 }
 
 .padder {
@@ -739,15 +729,10 @@ img {
   font-size: 12px;
   height: 100%;
   overflow-y: scroll;
+
+  li { padding: 15px 0 8px !important }
 }
 
-.match-containers div {
-  
-}
-
-.match-containers li {
-  padding: 15px 0 8px 0 !important;
-}
 
 #container-dei-container {
   height: 100%;
@@ -779,6 +764,12 @@ img {
   border-right: 1px solid #939597;
   text-align: center;
   vertical-align: middle;
+
+  img {
+    width: 35%;
+    padding: 5px 0;
+    vertical-align: middle;
+  }
 }
 
 .match-name {
@@ -808,12 +799,6 @@ img {
   background: #DBDCDE !important;
 }
 
-.match-icon img {
-  width: 35%;
-  padding: 5px 0;
-  vertical-align: middle;
-}
-
 .formName {
   height: 10%;
   width: 99%;
@@ -821,11 +806,10 @@ img {
 
 #matchname {
   width: 100%;
+  height: 70%;
   position: relative;
   top: 10%;
-  padding: 0;
-  margin: 0;
-  height: 70%;
+  @include reset-around;
   font-family: 'RockwellStdBold';
   font-size: 2em;
   line-height: 2.4em;
@@ -833,12 +817,12 @@ img {
 
 .hint-edit-list {
   height: 60%;
-}
 
-.hint-edit-list li {
-  height: 25%;
-  padding: 0 !important;
-  border-bottom: 1px solid #DBDCDE;
+  li {
+    height: 25%;
+    padding: 0 !important;
+    border-bottom: 1px solid #DBDCDE;
+  }
 }
 
 #addPlayers img {
@@ -864,16 +848,14 @@ img {
   width: 65%;
   height: 100%;
   margin-left: 5%;
-}
 
-.incipit h2 {
-  margin-bottom: 0;
-}
+  h1, h2 { margin-bottom: 0 }
 
-.incipit p {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 }
 
 .validate-geo {
@@ -890,11 +872,6 @@ img {
   height: 30%;
 }
 
-#setlaunchtime img{
-  position: relative;
-  top: 20%;
-  height: 60%;
-}
 
 .validate-desc {
   display: inline-block;
@@ -906,35 +883,30 @@ img {
 
 .elementlistaGiocatori {
   position: relative;
-}
 
-.elementlistaGiocatori h2 {
-  position: absolute;
-  color: #fff;
-  bottom: 0;
-  left: 0;
-  margin-bottom: 0;
-  margin-left: 10px;
-  z-index: 3;
-}
+  h2 {
+    position: absolute;
+    color: #fff;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 0;
+    margin-left: 10px;
+    z-index: 3;
+  }
 
-.elementlistaGiocatori img {
-  vertical-align: top;
-}
+  img { vertical-align: top }
 
-.elementlistaGiocatori .remove-pms {
-  position: absolute;
-  top: 4%;
-  right: 4%;
-  color: #fff;
-  z-index: 3;
-  width: 20%;
-  min-width: 25px;
-}
-
-.elementlistaGiocatori .remove-pms img{
-  width: 100%;
-  height: 100%;
+  .remove-pms {
+    position: absolute;
+    top: 4%;
+    right: 4%;
+    color: #fff;
+    z-index: 3;
+    width: 20%;
+    min-width: 25px;
+    
+    img { @include width-height(100%) }
+  }
 }
 
 .pmsElement {
@@ -970,36 +942,7 @@ img {
   font-size: 2em;
 }
 
-@-webkit-keyframes appear {
-  from {
-    opacity:0;;
-  }
-  to { 
-    opacity:1;
-  }
+@include keyframes(appear) {
+  from { opacity: 0 }
+  to { opacity: 1 }
 }
-@-moz-keyframes appear {
-  from {
-    opacity:0;
-  }
-  to { 
-    opacity:1;
-  }
-}
-@-o-keyframes appear {
-  from {
-    opacity:0;
-  }
-  to { 
-    opacity:1;
-  }
-}
-@keyframes appear {
-  from {
-    opacity:0;
-  }
-  to { 
-    opacity:1;
-  }
-}
-

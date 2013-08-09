@@ -1,4 +1,36 @@
 @mixin reset-around () {
   margin: 0;
   padding: 0;
-} 
+}
+
+@mixin center() {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@mixin width-height($w, $h: none) {
+  @if $h == none {
+    width: $w; height: $w;
+  }
+  @else {
+    width: $w;
+    height: $h;
+  }
+}
+
+@mixin padding-ver($p) {
+  padding-top: $p;
+  padding-bottom: $p;
+}
+
+@mixin padding-hor($p) {
+  padding-left: $p;
+  padding-right: $p;
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} { @content; }
+  @-moz-keyframes    #{$name} { @content; }
+  @-o-keyframes      #{$name} { @content; }
+  @keyframes         #{$name} { @content; }
+}
