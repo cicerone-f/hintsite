@@ -157,6 +157,7 @@ define([
               setInterval(function(){$("#overlay-loading").fadeOut();},1000);
             }else{
               var message = "Wrong position for hint!";
+              setInterval(function(){$("#overlay-loading").fadeOut();},1000);
               $('body').append( 
                 new Popup_VM({
                   notificationText: message
