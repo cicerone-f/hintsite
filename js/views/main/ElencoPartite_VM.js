@@ -13,7 +13,9 @@ define([
   "views/sub/HeaderProfilo_VS",
   "collections/PmsCollection",
   "models/Pms",
-  "text!templates/main/elenco-partite.html"
+  "text!templates/main/elenco-partite.html",
+  'BackStack',
+  'views/main/Opzioni_VM',
 ],
     function ($,
       _,
@@ -26,7 +28,9 @@ define([
       HeaderProfilo_VS,
       PmsCollection,
       Pms,
-      template
+      template,
+      BackStack,
+      Opzioni_VM
     ) {
 
     var ElencoPartite_VM = Parse.View.extend({
@@ -38,16 +42,17 @@ define([
         template: Handlebars.compile(template),
 
         initialize: function () {
+          console.log("init");
           this.currentViewmatches = 0;
+
           this.userStates = (new Pms()).userStates;
           this.matchStates = (new Pms()).matchStates;
           this.collection = new PmsCollection();
           this.collection.getAllUsersPms();
-          this.collection.on("add", this.smistaCollection, this);
+          this.collection.on("addallpms", this.smistaCollection, this);
         },
 
         smistaCollection: function () {
-          // console.log(this.collection);
           this.inCorsoMaster = new PmsCollection();
           this.inCorsoPlayer = new PmsCollection();
           this.sospeseMaster = new PmsCollection();

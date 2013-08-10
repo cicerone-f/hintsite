@@ -13,8 +13,6 @@ require.config({
     handlebars: '../lib/handlebars/handlebars',
     templates: '../templates',
     leaflet: '../lib/leaflet/leaflet',
-    CDV: '../lib/facebook/cdv-plugin-fb-connect',
-    FB: '../lib/facebook/facebook_js_sdk',
     moment: '../lib/moment/moment.min',
     hammer: '../lib/hammer/jquery.hammer.min',
     ChannelSubscription: '../channel-subscription/ChannelSubscription',
@@ -52,12 +50,17 @@ require([
   'underscore',
   'BackStack',
   'Parse',
-  'CDV',
-  'FB'
+  'views/main/LogIn_VM',
+  'views/main/ElencoPartite_VM'
 ],
-    function (domReady, _,
-     BackStack, 
-     Parse, CDV, FB) {
+    function (
+      domReady, 
+      _,
+      BackStack, 
+      Parse, 
+      LogIn_VM,
+      ElencoPartite_VM
+    ) {
 
     domReady(function () {
       document.addEventListener("deviceready", run, false);
@@ -65,6 +68,19 @@ require([
 
     function run() {
       Parse.initialize('LkaGTOk7RGUaPXM0r9HQImwPAnmqUuhjF1QttcNE', 'uxXxR7sEt2unuSABRyjF8tnd52bNymwlDuchsIhh');
+
+      if (Parse.User.current()) {
+        var ElencoPartiteView = new ElencoPartite_VM();
+        stacknavigator = new BackStack.StackNavigator({el:'#miocontainer'});
+        var NoEffect = new BackStack.NoEffect();
+        stacknavigator.pushView(ElencoPartiteView,null,NoEffect);
+      } else {
+        var LogInView = new LogIn_VM();
+        stacknavigator = new BackStack.StackNavigator({el:'#miocontainer'});
+        var NoEffect = new BackStack.NoEffect();
+        stacknavigator.pushView(LogInView,null,NoEffect);
+      }
+
       /*Parse.FacebookUtils.init({
         appId      : '639802702700436', // Facebook App ID
         channelUrl : '//www.hintsiteapp.com/channel.html', // Channel File

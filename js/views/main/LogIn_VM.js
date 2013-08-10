@@ -7,11 +7,18 @@ define([
   "backbone",
   "Parse",
   "handlebars",
-  "text!templates/main/log-in.html"
+  "text!templates/main/log-in.html",
+  'BackStack',
+  "views/main/ElencoPartite_VM",
+  "views/LoadingView"
 ],
-    function ($, _, Backbone, Parse, Handlebars, template) {
+    function ($, _, Backbone, Parse, Handlebars, template, BackStack , ElencoPartite_VM, LoadingView) {
 
     var LogIn_VM = Parse.View.extend({
+
+        initialize: function (){
+          this.loading = new LoadingView();
+        },
 
         events: {
           "click #log-in-with-facebook": "logFB",
@@ -33,24 +40,19 @@ define([
             }
           });
         },
+
         log: function () {
+          var NoEffect = new BackStack.NoEffect();
+          stacknavigator.pushView(this.loading, NoEffect);
           var self = this;
           var username = this.$("#username").val();
           var password = this.$("#password").val();
           console.log(username + " " + password);
           Parse.User.logIn(username, password, {
             success: function (user) {
-              // When subscribing to a new channel, an Installation object is created
-              // (if there are none already). By subscribing now (for the first time for
-              // a new user), we ensure the Installation object has a proper userId attribute.
-              ChannelSubscription.subscribeTo('logged-in', Parse.User.current().id, {
-                success: function () {
-                  console.log('Device subscribed to "logged-in" channel.'); },
-                error: function (error) {
-                  console.error('Error no. ' + error.code + ": " + error.message); },
-              });
-
-              Parse.history.navigate("mainMatchList", {trigger: true});
+              stacknavigator.popView(NoEffect);
+              var page = new ElencoPartite_VM({});              
+              stacknavigator.pushView(page);
             },
             error: function (user, error) {
               console.error(error);

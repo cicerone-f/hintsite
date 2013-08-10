@@ -31,8 +31,13 @@ define([
         },
 
         logOut: function () {
+          //Parse.User.logOut();
+          var l = stacknavigator.viewsStack.length;
+          console.log(l);
+          for (var i = 1; i < l; i++) {
+            stacknavigator.popView();
+          };
           Parse.User.logOut();
-          Parse.history.navigate("", {trigger: true});
         },
 
         render: function (eventName) {         

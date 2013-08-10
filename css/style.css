@@ -679,7 +679,7 @@ img {
 
 #container-dei-container {
   height: 100%;
-  width: 400%;
+  width: 100%;
   float: left;
   font-size: 0;
   -webkit-transition: all 1s ease;

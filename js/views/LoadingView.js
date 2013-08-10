@@ -23,10 +23,12 @@ define([
         className: 'loading',
         template: Handlebars.compile(template),
         initialize: function () {
+          console.log("initloading");
         },
         render: function (eventName) {
           $(this.el).html(this.template);
           $('body').append($(this.el));
+          console.log("renderloading");
           return this;
         }
       });

@@ -7,14 +7,20 @@ define([
   "backbone",
   "Parse",
   "handlebars",
-  "text!templates/sub/header-profilo-TS.html"
+  'BackStack',  
+  "text!templates/sub/header-profilo-TS.html",
+  "views/main/Opzioni_VM",
+  "views/main/Profilo_VM"    
 ],
     function ($,
       _,
       Backbone,
       Parse,
       Handlebars,
-      template
+      BackStack,      
+      template,
+      Opzioni_VM,
+      Profilo_VM
     ) {
 
     var HeaderProfilo_VS = Parse.View.extend({
@@ -28,15 +34,18 @@ define([
         },
 
         goToProfilo : function () {
-          Parse.history.navigate("profilo" , {trigger: true});
+          var page = new Profilo_VM({});          
+          stacknavigator.pushView(page);          
         },
 
         goToOpzioni : function () {
-          Parse.history.navigate("opzioni" , {trigger: true});
+          var page = new Opzioni_VM({});
+          stacknavigator.pushView(page);             
         },
 
         initialize: function () {
         },
+        
         render: function () {
           $(this.el).html(
             this.template()
