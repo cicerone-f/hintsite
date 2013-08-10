@@ -110,6 +110,7 @@ define([
         query.find({
           success: function (results) {
             self.add(results);
+            self.trigger("addedallpmsforuser");
           },
           error: function (error) {
             console.log(error);

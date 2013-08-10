@@ -43,7 +43,7 @@ define([
           this.matchStates = (new Pms()).matchStates;
           this.collection = new PmsCollection();
           this.collection.getAllUsersPms();
-          this.collection.on("add", this.smistaCollection, this);
+          this.collection.on("addedallpmsforuser", this.smistaCollection, this);
         },
 
         smistaCollection: function () {
