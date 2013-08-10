@@ -10,7 +10,8 @@ define([
   "models/UserSearched",
   "collections/PmsCollection",
   "models/Pms",
-  "text!templates/main/search-add-from-search.html"
+  "text!templates/main/search-add-from-search.html",
+  "views/LoadingView",
 ],
   function (
     $,
@@ -21,7 +22,8 @@ define([
     UserSearched,
     PmsCollection,
     Pms,
-    template
+    template,
+    LoadingView
   ) {
     var AddFromSearch_VM = Parse.View.extend({
         id: 'popup-container',
@@ -35,6 +37,8 @@ define([
           this.model = new UserSearched();
           this.model.on("change", this.appendFoundUser, this);
           this.pms.on("AddFromSearch_VM_PMSLISTED", this.addToCollection, this);
+          this.loading = new LoadingView();
+          this.loading.render();
         },
         events: {
           "blur #nick": "searchNick",
@@ -43,6 +47,7 @@ define([
         },
 
         searchNick: function () {
+          $("#overlay-loading").fadeIn();
           this.model.getFromParse(this.$("#nick").val());
         },
 
@@ -63,6 +68,7 @@ define([
         },
 
         askToSavePms: function () {
+          $("#overlay-loading").fadeIn();
           this.pms.savePms(this.model.id,this.options.matchId);
         },
 

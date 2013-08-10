@@ -7,9 +7,10 @@ define([
   "backbone",
   "Parse",
   "handlebars",
-  "text!templates/main/log-in.html"
+  "text!templates/main/log-in.html",
+  "views/LoadingView",
 ],
-    function ($, _, Backbone, Parse, Handlebars, template) {
+    function ($, _, Backbone, Parse, Handlebars, template, LoadingView) {
 
     var LogIn_VM = Parse.View.extend({
 
@@ -18,7 +19,10 @@ define([
           "click #log-in": "log",
           "click #sign-up": "goTosignUp"
         },
-
+        initialize: function(){
+          this.loading = new LoadingView();
+          this.loading.render();
+        },
         logFB: function () {
           Parse.FacebookUtils.logIn(null, {
             success: function (user) {
@@ -34,6 +38,7 @@ define([
           });
         },
         log: function () {
+          $("#overlay-loading").fadeIn();
           var self = this;
           var username = this.$("#username").val();
           var password = this.$("#password").val();
@@ -49,11 +54,12 @@ define([
                 error: function (error) {
                   console.error('Error no. ' + error.code + ": " + error.message); },
               });
-
+              $("#overlay-loading").fadeOut();
               Parse.history.navigate("mainMatchList", {trigger: true});
             },
             error: function (user, error) {
               console.error(error);
+              $("#overlay-loading").fadeOut();
             }
           });
         },

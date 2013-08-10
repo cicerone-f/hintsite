@@ -20,6 +20,7 @@ define([
             } else {
               console.log('no results');
             }
+            $("#overlay-loading").fadeOut();
           },
           error: function (error) {
             console.log(error);

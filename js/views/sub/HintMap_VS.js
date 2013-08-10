@@ -64,14 +64,16 @@ define([
         this.loadingCount = 0;
         this.model = new Hint();
         this.loading = new LoadingView();
-        this.model.on('HintMap_VS_HINTFORPLACE', this.unrenderLoading, this);
+        this.loading.render();
+        $("#overlay-loading").fadeIn();
+        this.model.on('HintMap_VS_HINTFORPLACE', this.unrenderLoadingAvvio, this);
         this.matchId = this.options.matchId;
         this.pms = new Pms();
         this.pms.id = this.options.pms.id;
         if(this.pms.id)
           this.pms.fetchFromP();
         this.pms.on("hintPlusplussed", this.notify, this);
-        this.pms.on("gettedMyPms", this.unrenderLoading,this);
+        this.pms.on("gettedMyPms", this.unrenderLoadingAvvio,this);
         this.pms.on("HintMap_VS_UsedHelpDistance", this.getHintDistance, this);
         this.pms.on("HintMap_VS_UsedHelpDirection", this.getHintDirection, this);
         if (this.options.pms.attributes.myHint){
@@ -144,6 +146,7 @@ define([
       },
 
       checkIn: function () {
+        $("#overlay-loading").fadeIn();
         var self = this;
         navigator.geolocation.getCurrentPosition(
           // success
@@ -151,6 +154,7 @@ define([
             var point = new Parse.GeoPoint(currPosition.coords.latitude, currPosition.coords.longitude);
             if (point.kilometersTo(self.model.attributes.point) <= 0.5){
               self.pms.plusPlusMyHint(Parse.User.current().id, self.pms.attributes.matchId);
+              setInterval(function(){$("#overlay-loading").fadeOut();},1000);
             }else{
               var message = "Wrong position for hint!";
               $('body').append( 
@@ -245,10 +249,10 @@ define([
         user.addPoints(pt);
       },
 
-      unrenderLoading: function () {
+      unrenderLoadingAvvio: function () {
         this.loadingCount++;
         if (this.loadingCount==2)
-          this.loading.remove();
+          $("#overlay-loading").fadeOut();
       }
 
     });

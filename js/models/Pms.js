@@ -39,6 +39,7 @@ define([
           }
         });
       },
+      
       savePms: function (userId, matchId) {
         var self = this;
         var query = new Parse.Query(Pms);
@@ -56,6 +57,7 @@ define([
               }, {
                 success: function (result) {
                   self.trigger('AddFromSearch_VM_PMSLISTED');
+                  $("#overlay-loading").fadeOut();
                 },
                 error: function (e) {
 

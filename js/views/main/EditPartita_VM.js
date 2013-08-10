@@ -48,6 +48,8 @@ define([
           this.collection = new HintCollection();
           this.pmsCollection = new PmsCollection();
           this.loading = new LoadingView();
+          this.loading.render();
+          $("#overlay-loading").fadeIn();          
           this.model.on("EditPartita_VM_MATCHSYNC", this.sfh, this);
           this.collection.on("OKHINTSITE", this.fetchPmsCollection, this);
           this.model.on("EditPartita_VM_MATCHNAMEUPDATED", this.removeLoading, this);
@@ -56,7 +58,7 @@ define([
           this.model.on("EditPartita_VM_MATCHTIMENOW", this.navigateToElencoPartite, this);
           this.model.id = this.options.matchIdToGet;
           this.model.fetchFromP("EditPartita_VM");
-          this.pmsCollection.on("PMSPLAYERSFETCHED",this.render,this);          
+          this.pmsCollection.on("PMSPLAYERSFETCHED",this.fadeoutAndRender,this);          
         },
 
         events: {
@@ -84,7 +86,7 @@ define([
         },
 
         checkMatchDate: function () {
-          if (this.model.attributes.launchTime) {
+          if (this.model.attributes.launchTime) {     
             this.navigateToElencoPartite();
           } else {
             this.model.saveTimePartitaNow("EditPartita_VM");
@@ -120,7 +122,7 @@ define([
         lp: function () {
           var launchability = this.matchCanBeLaunched();
           if ( launchability == "tuttoapposto"){
-            this.loading.render();
+            $("#overlay-loading").fadeIn();
             var wallMsg = new WallMessage();
             wallMsg.saveToP(wallMsg.messageTypes.MATCH_CREATED, this.model.id); 
             this.pmsCollection.launchPartita("EditPartita_VM", this.model.id);
@@ -136,12 +138,17 @@ define([
         },
 
         snp: function () {
-          this.loading.render();
+          $("#overlay-loading").fadeIn();
           this.model.salvaNomePartita("EditPartita_VM",$("#matchname").val());
         },
 
         removeLoading: function () {
-          this.loading.remove();
+          $("#overlay-loading").fadeOut();
+        },
+
+        fadeoutAndRender: function () {
+          $("#overlay-loading").fadeOut();
+          this.render();
         },
 
         render: function (eventName) {

@@ -108,20 +108,17 @@ p {
   float: none; }
 
 .header-profilo span {
-  width: 33.3%; }
-
-.header-profilo span img {
-  height: 25%; }
-
-.header-profilo span#profilo img {
-  left: 10%;
-  position: relative;
-  float: left; }
-
-.header-profilo span#opzioni img {
-  right: 10%;
-  position: relative;
-  float: right; }
+  width: 33.33333%; }
+  .header-profilo span img {
+    height: 25%; }
+  .header-profilo span#profilo img {
+    left: 10%;
+    position: relative;
+    float: left; }
+  .header-profilo span#opzioni img {
+    left: 10%;
+    position: relative;
+    float: right; }
 
 #launch-footer {
   height: 10%;
@@ -179,24 +176,23 @@ p {
   font-size: 12px;
   text-align: left;
   font-weight: bold; }
-
-#nome-lista p {
-  padding-top: 0.2em;
-  padding-bottom: 0.2em;
-  padding-left: 1em;
-  margin: 0; }
+  #nome-lista p {
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    padding-left: 1em;
+    margin: 0; }
 
 #photomappa {
   width: 100%;
   height: 30%; }
 
 #map_canvas {
-  height: 100%;
-  width: 100%; }
+  width: 100%;
+  height: 100%; }
 
 #map {
-  height: 100%;
-  width: 100%; }
+  width: 100%;
+  height: 100%; }
 
 .locate-me-icon {
   width: 30px;
@@ -212,14 +208,15 @@ p {
   float: left;
   text-align: center;
   position: relative; }
-
-#photo img {
-  float: left; }
+  #photo img {
+    float: left; }
+  #photo .add_photo {
+    position: absolute;
+    width: 60%;
+    top: 25%;
+    left: 20%; }
 
 img {
-  max-width: 100%; }
-
-#photo img {
   max-width: 100%; }
 
 #mappa {
@@ -230,28 +227,21 @@ img {
   width: 50%;
   float: left;
   text-align: center; }
-
-#mappa img {
-  left: 20%;
-  position: absolute;
-  width: 60%;
-  top: 20%; }
-
-#photo .add_photo {
-  left: 20%;
-  position: absolute;
-  width: 60%;
-  top: 25%; }
+  #mappa img {
+    left: 20%;
+    position: absolute;
+    width: 60%;
+    top: 20%; }
 
 #mappa h2, #photo h2 {
-  bottom: 0;
   position: absolute;
-  width: 100%; }
+  width: 100%;
+  bottom: 0; }
 
 #ok {
   width: 100%;
-  float: left;
   height: 10%;
+  float: left;
   background-color: #F47B33;
   text-align: center;
   color: #fff;
@@ -270,6 +260,10 @@ img {
   width: 30%;
   background-color: #F0AC3D;
   text-align: center; }
+  #setlaunchtime img {
+    position: relative;
+    top: 20%;
+    height: 60%; }
 
 #launchtime {
   height: 100%;
@@ -326,12 +320,11 @@ img {
   height: 96%;
   -webkit-border-radius: 1000px;
   position: relative; }
-
-#inside-check-in-btn img {
-  left: 30%;
-  top: 25%;
-  position: absolute;
-  width: 40%; }
+  #inside-check-in-btn img {
+    left: 30%;
+    top: 25%;
+    position: absolute;
+    width: 40%; }
 
 #log-in {
   cursor: pointer;
@@ -362,17 +355,15 @@ img {
   float: left;
   background-color: #F47B33;
   padding: 0; }
-
-#NewMatchButton img {
-  height: 60%;
-  top: 20%;
-  position: relative;
-  display: inline-block;
-  margin-right: 25px; }
-
-#NewMatchButton h1 {
-  display: inline-block;
-  color: #FAE8AC; }
+  #NewMatchButton img {
+    height: 60%;
+    top: 20%;
+    position: relative;
+    display: inline-block;
+    margin-right: 25px; }
+  #NewMatchButton h1 {
+    display: inline-block;
+    color: #FAE8AC; }
 
 #user-to-add {
   font-family: "GothamLight";
@@ -393,35 +384,23 @@ img {
   position: relative;
   overflow-x: hidden; }
 
-.loading {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  position: absolute;
-  z-index: 9999;
-  -webkit-animation: appear 1s 1;
-  /* Safari 4+ */
-  -moz-animation: appear 1s 1;
-  /* Fx 5+ */
-  -o-animation: appear 1s 1;
-  /* Opera 12+ */
-  animation: appear 1s 1;
-  /* IE 10+ */
-  background: -moz-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%);
-  /* FF3.6+ */
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.65)));
-  /* Chrome,Safari4+ */
-  background: -webkit-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%);
-  /* Chrome10+,Safari5.1+ */
-  background: -o-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%);
-  /* Opera 12+ */
-  background: -ms-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%);
-  /* IE10+ */
-  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%);
-  /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#a6000000',GradientType=1 );
-  /* IE6-9 fallback on horizontal gradient */ }
+#overlay-loading { 
+  display:none; 
+  position:absolute; 
+  background:#555555; 
+  opacity : 0.6;
+  width   : 100% ;
+  height  : 100%;
+  z-index: 999;
+
+}
+#img-load { 
+  position:absolute;
+  height: 50px;
+  width: 50px;
+  top  : 50%;
+  left : 50%; 
+}
 
 .meno {
   height: 70px;
@@ -462,22 +441,19 @@ img {
   bottom: 0;
   left: 0;
   background: #F47B33; }
-
-#selezione-giocatori-footer span img {
-  height: 90%; }
-
-#selezione-giocatori-footer span {
-  width: 33%;
-  border-right: 1px solid #FAE8AC;
-  display: inline-block;
-  height: 60%;
-  position: relative;
-  top: 20%;
-  text-align: center; }
-
-#selezione-giocatori-footer span:last-child {
-  border-right: none;
-  width: 31%; }
+  #selezione-giocatori-footer span {
+    width: 33%;
+    border-right: 1px solid #FAE8AC;
+    display: inline-block;
+    height: 60%;
+    position: relative;
+    top: 20%;
+    text-align: center; }
+    #selezione-giocatori-footer span img {
+      height: 90%; }
+    #selezione-giocatori-footer span:last-child {
+      border-right: none;
+      width: 31%; }
 
 #popup-container {
   background-color: rgba(0, 0, 0, 0.7);
@@ -493,12 +469,10 @@ img {
   height: 10%;
   text-align: center;
   float: left; }
-
-.yes-no#yes {
-  background-color: green; }
-
-.yes-no#no {
-  background-color: red; }
+  .yes-no#yes {
+    background-color: green; }
+  .yes-no#no {
+    background-color: red; }
 
 .errorContainer {
   text-align: center;
@@ -542,12 +516,11 @@ img {
   height: 96%;
   -webkit-border-radius: 1000px;
   position: relative; }
-
-#inside-go-to-wall img {
-  left: 22%;
-  top: 25%;
-  position: absolute;
-  width: 60%; }
+  #inside-go-to-wall img {
+    left: 22%;
+    top: 25%;
+    position: absolute;
+    width: 60%; }
 
 #go-to-players {
   height: 40px;
@@ -567,12 +540,11 @@ img {
   height: 96%;
   -webkit-border-radius: 1000px;
   position: relative; }
-
-#inside-go-to-players img {
-  left: 22%;
-  top: 20%;
-  position: absolute;
-  width: 60%; }
+  #inside-go-to-players img {
+    left: 22%;
+    top: 20%;
+    position: absolute;
+    width: 60%; }
 
 #map-container {
   height: 90%; }
@@ -589,12 +561,11 @@ img {
   height: 5%;
   position: absolute;
   width: 50%; }
-
-#helpers span {
-  width: 50%;
-  height: 100%;
-  text-align: center;
-  float: left; }
+  #helpers span {
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    float: left; }
 
 #generic-popup-container {
   position: absolute;
@@ -656,12 +627,11 @@ img {
   height: 40px;
   background: #F47B33;
   text-align: center; }
-
-#controller-slide-hint img {
-  top: 30%;
-  position: relative;
-  height: 35%;
-  width: auto; }
+  #controller-slide-hint img {
+    top: 30%;
+    position: relative;
+    height: 35%;
+    width: auto; }
 
 .padder {
   padding: 10px 20px; }
@@ -673,13 +643,12 @@ img {
   font-size: 12px;
   height: 100%;
   overflow-y: scroll; }
-
-.match-containers li {
-  padding: 15px 0 8px 0 !important; }
+  .match-containers li {
+    padding: 15px 0 8px !important; }
 
 #container-dei-container {
   height: 100%;
-  width: 400%;
+  width: 100%;
   float: left;
   font-size: 0;
   -webkit-transition: all 1s ease;
@@ -708,6 +677,10 @@ img {
   border-right: 1px solid #939597;
   text-align: center;
   vertical-align: middle; }
+  .match-icon img {
+    width: 35%;
+    padding: 5px 0;
+    vertical-align: middle; }
 
 .match-name {
   margin: 0;
@@ -733,33 +706,27 @@ img {
 .even {
   background: #DBDCDE !important; }
 
-.match-icon img {
-  width: 35%;
-  padding: 5px 0;
-  vertical-align: middle; }
-
 .formName {
   height: 10%;
   width: 99%; }
 
 #matchname {
   width: 100%;
+  height: 70%;
   position: relative;
   top: 10%;
-  padding: 0;
   margin: 0;
-  height: 70%;
+  padding: 0;
   font-family: 'RockwellStdBold';
   font-size: 2em;
   line-height: 2.4em; }
 
 .hint-edit-list {
   height: 60%; }
-
-.hint-edit-list li {
-  height: 25%;
-  padding: 0 !important;
-  border-bottom: 1px solid #DBDCDE; }
+  .hint-edit-list li {
+    height: 25%;
+    padding: 0 !important;
+    border-bottom: 1px solid #DBDCDE; }
 
 #addPlayers img {
   margin-right: 20px;
@@ -782,14 +749,12 @@ img {
   width: 65%;
   height: 100%;
   margin-left: 5%; }
-
-.incipit h2 {
-  margin-bottom: 0; }
-
-.incipit p {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis; }
+  .incipit h1, .incipit h2 {
+    margin-bottom: 0; }
+  .incipit p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; }
 
 .validate-geo {
   display: inline-block;
@@ -803,11 +768,6 @@ img {
   top: 35%;
   height: 30%; }
 
-#setlaunchtime img {
-  position: relative;
-  top: 20%;
-  height: 60%; }
-
 .validate-desc {
   display: inline-block;
   width: 12%;
@@ -817,31 +777,27 @@ img {
 
 .elementlistaGiocatori {
   position: relative; }
-
-.elementlistaGiocatori h2 {
-  position: absolute;
-  color: #fff;
-  bottom: 0;
-  left: 0;
-  margin-bottom: 0;
-  margin-left: 10px;
-  z-index: 3; }
-
-.elementlistaGiocatori img {
-  vertical-align: top; }
-
-.elementlistaGiocatori .remove-pms {
-  position: absolute;
-  top: 4%;
-  right: 4%;
-  color: #fff;
-  z-index: 3;
-  width: 20%;
-  min-width: 25px; }
-
-.elementlistaGiocatori .remove-pms img {
-  width: 100%;
-  height: 100%; }
+  .elementlistaGiocatori h2 {
+    position: absolute;
+    color: #fff;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 0;
+    margin-left: 10px;
+    z-index: 3; }
+  .elementlistaGiocatori img {
+    vertical-align: top; }
+  .elementlistaGiocatori .remove-pms {
+    position: absolute;
+    top: 4%;
+    right: 4%;
+    color: #fff;
+    z-index: 3;
+    width: 20%;
+    min-width: 25px; }
+    .elementlistaGiocatori .remove-pms img {
+      width: 100%;
+      height: 100%; }
 
 .pmsElement {
   width: 50% !important;
