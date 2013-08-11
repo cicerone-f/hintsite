@@ -32,6 +32,21 @@ p { margin-top: 0 }
 
 img { max-width: 100% }
 
+#no-network-connection {
+  @include width-height(100%);
+  background: #565656;
+
+  text-align: center;
+
+  padding-top: 20%;
+  
+  img { width: 25% }
+  p { 
+    font-size: 3em;
+    margin-top: 15px;
+    color: #ccc;
+  }
+}
 
 ul#list {
   @include reset-around;
