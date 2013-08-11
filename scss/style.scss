@@ -1,42 +1,41 @@
 @charset "UTF-8";
 @import "variables";
-@import "mixins.scss";
+@import "mixins";
 
-/* STANDARD FOR MOBILE */
+@import "../css/fonts/fonts.css";
+
 
 * {
   /* make transparent link selection, adjust last value opacity 0 to 1.0 */
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
-html {
-  width: 100%;
-  height: 100%;
-}
+html { @include width-height(100%) }
 
 body {
-  /* prevent callout to copy image, etc when tap to hold */
-  -webkit-touch-callout: none;
-  /* prevent webkit from resizing text to fit */
-  -webkit-text-size-adjust: none;
-  /* prevent copy paste, to allow, change 'none' to 'text' */
-  -webkit-user-select: none;
+  -webkit-touch-callout: none;    // prevent callout to copy image, etc when tap to hold
+  -webkit-text-size-adjust: none; // prevent webkit from resizing text to fit */
+  -webkit-user-select: none;      // prevent copy paste, to allow, change 'none' to 'text'
 
   background-attachment: fixed;
 
   font-family: $body-font-family;
   font-size: $body-font-size;
 
-  height: 100%;
-  width: 100%;
-
+  @include width-height(100%);
   @include reset-around;
 }
 
+h1, h2, h3, h4, h5, h6 { font-family: 'RockwellStdRegular' }
+
+p { margin-top: 0 }
+
+img { max-width: 100% }
+
 
 ul#list {
-  list-style: none;
   @include reset-around;
+  list-style: none;
   float: left;
   width: 100%;
   li {
@@ -45,7 +44,6 @@ ul#list {
     display: inline-block;
     padding: 10px 0px 10px 10px;
     width: 100%;
-    // background-image: -webkit-linear-gradient(top, #ffffff, #ecf1f5);
 
     a {
       position: relative;
@@ -59,42 +57,34 @@ ul#list {
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'RockwellStdRegular';
-}
 
-p {
-  margin-top: 0;
-}
+
 
 .partita-player ul {
   width: 400% !important;
   height: 100%;
   z-index: 100;
   background: #DBDCDE;
-  -webkit-transition: margin-left 1s ease; /* Safari 4+ */
-  -moz-transition:    margin-left 1s ease; /* Fx 5+ */
-  -o-transition:      margin-left 1s ease; /* Opera 12+ */
-  transition:         margin-left 1s ease; /* IE 10+ */
-}
+  @include transition(margin-left, 1s, ease);
 
-.partita-player ul li {
-  overflow: hidden;
-  border: none !important;
-  width: 25% !important;
-  height: 100%;
-  padding: 0!important;
-  background: none !important;
-}
+  li {
+	  overflow: hidden;
+	  border: none !important;
+	  width: 25% !important;
+	  height: 100%;
+	  padding: 0!important;
+	  background: none !important;
 
-.partita-player ul li .half-width img {
-  width: 100% !important;
-  max-width: none !important;
-}
+	  .half-width img {
+		  width: 100% !important;
+		  max-width: none !important;
+	  }
 
-.partita-player ul li h2 {
-  color: #F47B33;
-  margin-bottom: 0;
+	  h2 {
+	  	color: #F47B33;
+	  	margin-bottom: 0;
+	  }
+  }
 }
 
 
@@ -114,11 +104,13 @@ p {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0ac3d', endColorstr='#f47b33',GradientType=0 ); /* IE6-9 */
 }
 
+
 #header span {
   display: table-cell;
   vertical-align: middle;
   float: none;
 }
+
 
 .header-profilo span {
   width: percentage(1 / 3);
@@ -138,66 +130,62 @@ p {
   }
 }
 
+
 #launch-footer {
   height: 10%;
   text-align: center; 
 }  
 
+
 #back {
-  background-position: 40% 35%;
   height: 100%;
   width: 30%;
   text-align: center;
   background-image: url(../res/img/back.png);
   background-repeat: no-repeat;
   background-size: 60% auto;
+  background-position: 40% 35%;
   color: #FAE8AC;
   font-size: 1.5em;
 }
 
+
 #title {
   width: 70%;
+  font: 2em/2em 'RockwellStdBold';
   text-align: center; 
-  font-size: 2em;
-  line-height: 2em;
   color: #FAE8AC;
-  font-family: 'RockwellStdBold';
   overflow: auto;
   text-overflow: ellipsis;
 }
 
+
 #hintsite {
-  text-align: center; 
-  font-size: 2em;
-  line-height: 2em;
+  text-align: center;
+  font: 2em/2em 'RockwellStdRegular';
   color: #FAE8AC;
-  font-family: 'RockwellStdRegular';
   overflow: auto;
   text-overflow: ellipsis;
 }
 
 #hint_description {
-  position: absolute;
-  left: 10%;
-  top: 10%;
-  margin: 0px auto;
-  width: 80%;
-  height: 80%;
-  font-family: $body-font-family;
-  font-size: 1.4em;
+  @include width-height(80%);
+  @include absolute-at($top: 10%, $left: 10%);
+  @include center();
+  @include margin-ver(0);
+  font: 1.4em $body-font-family;
   border: 2px solid orange;
 }
 
-#nome-lista{
-  margin: 0px auto;
+#nome-lista {
+	@include margin-ver(0);
+  @include center();
   @include width-height(100%);
   background-color: #939597;
   text-transform: uppercase;
   color: #fff;
-  font-family: $body-font-family;
-  font-size: $body-font-size;
+  font: bold $body-font-size $body-font-family;
   text-align: left;  
-  font-weight: bold;
 
   p {
     @include padding-ver(0.2em);
@@ -211,43 +199,35 @@ p {
   width: 100%;
   height: 30%;
 }
-#map_canvas{
-  @include width-height(100%);
-}
-#map{
-  @include width-height(100%);
-}
+
+
+#map, #map_canvas { @include width-height(100%) }
+
 
 .locate-me-icon {
-    // background-image: url("http://www.designdownloader.com/item/pngl/circle_15/circle_15-20110903141800-00024.png");
-    width: $map-locate-me-icon-size;
-    height: $map-locate-me-icon-size;
+    @include width-height(30px);
     display: block;
     padding: 3px;
 
-    &:hover { background-color: rgba(0, 0, 0, 0.1); }
+    &:hover { background-color: transparentize(black, 0.9) }
 }
+
 
 #photo {
   height: 100%;
   width: 50%;
-  float:left;
+  float: left;
   text-align: center; 
   position: relative;
 
   img { float: left }
 
   .add_photo {
-    position: absolute;
     width: 60%;
-    top: 25%;
-    left: 20%;
+    @include absolute-at($top: 25%, $left: 20%);
   }
 }
 
-img {
-  max-width: 100%;
-}
 
 
 #mappa {
@@ -260,10 +240,8 @@ img {
   text-align: center;
   
   img {
-    left: 20%;
-    position: absolute;
+  	@include absolute-at($top: 20%, $left: 20%);
     width: 60%;
-    top: 20%;
   }
 }
 
@@ -348,15 +326,11 @@ img {
 }  
 
 #check-in-btn {
-  $check-in-btn-radius: 100px;
-  height: $check-in-btn-radius;
-  width: $check-in-btn-radius;
-  position: absolute;
-  left: 50%;
-  bottom: 2%;
+  @include width-height(100px);
+  @include absolute-at($bottom: 2%, $left: 50%);
   margin-left: -62px;
   border: 8px solid rgba(244, 123, 51, 0.4);
-  -webkit-border-radius: 1000px;
+  border-radius: 1000px;
 }
 
 #inside-check-in-btn {
@@ -365,13 +339,11 @@ img {
   text-align: center; 
   width: 96%;
   height: 96%;
-  -webkit-border-radius: 1000px;
+  border-radius: 1000px;
   position: relative;
   
   img {
-    left: 30%;
-    top: 25%;
-    position: absolute;
+    @include absolute-at($top: 25%, $left: 30%);
     width: 40%;
   }
 } 
@@ -442,11 +414,8 @@ img {
 }
 
 .loading {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  position: absolute;
+  @include width-height(100%);
+  @include absolute-at($top: 0, $left: 0);
   z-index: 9999;
   -webkit-animation: appear 1s 1; /* Safari 4+ */
   -moz-animation:    appear 1s 1; /* Fx 5+ */
@@ -497,9 +466,7 @@ img {
 #selezione-giocatori-footer {
   width: 100%;
   height: 10%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  @include absolute-at($bottom: 0, $left: 0);
   background: #F47B33;
 
   span {
@@ -522,12 +489,9 @@ img {
 }
 
 #popup-container{
-  background-color: rgba(0, 0, 0, 0.7);
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
+  @include width-height(100%);
+  @include absolute-at($top: 0, $left: 0);
+  background-color: transparentize(black, 0.3); // 1.0 - 0.3 = 0.7 -> rgba(0,0,0,0.7)
   z-index: 1000;
 }
 
@@ -571,58 +535,44 @@ img {
 }
 
 #go-to-wall {
-  $check-in-btn-radius: 40px;
-  height: $check-in-btn-radius;
-  width: $check-in-btn-radius;
-  position: absolute;
-  left: 88%;
-  bottom: 4%;
+  @include width-height(40px);
+  @include absolute-at($bottom: 4%, $left: 88%);
   margin-left: -28px;
   border: 8px solid rgba(244, 123, 51, 0.4);
-  -webkit-border-radius: 1000px;
+  border-radius: 1000px;
 }
 
 #inside-go-to-wall {
   margin: 2%;
   background-color: #F47B33;
   text-align: center; 
-  width: 96%;
-  height: 96%;
-  -webkit-border-radius: 1000px;
+  @include width-height(96%);
+  border-radius: 1000px;
   position: relative;
 
   img {
-    left: 22%;
-    top: 25%;
-    position: absolute;
+    @include absolute-at($top: 25%, $left: 22%);
     width: 60%;
   }
 }
 
 #go-to-players {
-  $check-in-btn-radius: 40px;
-  height: $check-in-btn-radius;
-  width: $check-in-btn-radius;
-  position: absolute;
-  left: 12%;
-  bottom: 4%;
+  @include width-height(40px);
+  @include absolute-at($bottom: 4%, $left: 12%);
   margin-left: -28px;
   border: 8px solid rgba(244, 123, 51, 0.4);
-  -webkit-border-radius: 1000px;
+  border-radius: 1000px;
 }
 
 #inside-go-to-players {
   margin: 2%;
   background-color: #F47B33;
   text-align: center; 
-  width: 96%;
-  height: 96%;
-  -webkit-border-radius: 1000px;
+  @include width-height(96%);
+  border-radius: 1000px;
   position: relative;
   img {
-    left: 22%;
-    top: 20%;
-    position: absolute;
+    @include absolute-at($top: 20%, $left: 22%);
     width: 60%;
   }
 } 
@@ -638,12 +588,10 @@ img {
 }
 
 #helpers {
-  background: #fff;
-  left: 25%;
-  top: 15%;
-  height: 5%;
-  position: absolute;
   width: 50%;
+  height: 5%;
+  @include absolute-at($top: 15%, $left: 25%);
+  background: $white;
 
   span {
     width: 50%;
@@ -655,59 +603,48 @@ img {
 
 
 #generic-popup-container {
-  position: absolute;
-  top: 15%;
-  left: 15%;
-  width: 70%;
-  height: 70%;
+  @include width-height(70%);
+  @include absolute-at($top: 15%, $left: 15%);
   background: #fff;
   z-index: 1000;
   border: 3px solid #000;
 }
 
 #arrow-popup-container {
-  position: absolute;
-  top: 40%;
-  left: 0;
+  @include absolute-at($top: 40%, $left: 0);
   width: 100%;
   height: 60%;
   z-index: 1000;
 }
 
 #arrow {
-  margin: 0px auto;
-  width: 0; 
-  height: 0; 
+  @include margin-ver(0);
+  @include center();
+  @include width-height(0);
+
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
   border-bottom: 150px solid black;
-  -webkit-transition: all 3s ease; /* Safari 4+ */
-  -moz-transition:    all 3s ease; /* Fx 5+ */
-  -o-transition:      all 3s ease; /* Opera 12+ */
-  transition:         all 3s ease; /* IE 10+ */
+
+  @include transition(all, 3s, ease);
 }
 
 #container-hint-in-partita {
+  width: 100%;
+  height: 30%;
+  @include absolute-at($top: 10%, $left: 0);
+
   overflow-x: hidden;
   overflow-y: hidden;
   z-index: 100;
-  left: 0;
-  top: 10%;
-  width: 100%;
-  height: 30%;
-  position: absolute;
-  -webkit-transition: all 1s ease; /* Safari 4+ */
-  -moz-transition:    all 1s ease; /* Fx 5+ */
-  -o-transition:      all 1s ease; /* Opera 12+ */
-  transition:         all 1s ease; /* IE 10+ */
+  @include transition(all, 1s, ease);
 }
 
 #controller-slide-hint {
-  position: absolute;
-  left: 0;
-  bottom: 0;
   width: 100%;
   height: 40px;
+  @include absolute-at($bottom: 0, $left: 0);
+
   background: #F47B33;
   text-align: center;
   img {
@@ -739,17 +676,15 @@ img {
   width: 400%;
   float: left;
   font-size: 0;
-  -webkit-transition: all 1s ease; /* Safari 4+ */
-  -moz-transition:    all 1s ease; /* Fx 5+ */
-  -o-transition:      all 1s ease; /* Opera 12+ */
-  transition:         all 1s ease; /* IE 10+ */
+  @include transition(all, 1s, ease);
 }
 
 #container-del-container-dei-container {
   width: 100%;
+  height: 90%;
+
   overflow-x: hidden;
   overflow-y: hidden;
-  height: 90%;
 }
 
 .match-row {
@@ -779,7 +714,7 @@ img {
   color: #939597;
   width: 60%;
   display: inline-block;
-  white-space:nowrap; 
+  white-space: nowrap; 
   overflow: hidden;
   text-overflow: ellipsis;
   vertical-align: sub;
@@ -810,9 +745,7 @@ img {
   position: relative;
   top: 10%;
   @include reset-around;
-  font-family: 'RockwellStdBold';
-  font-size: 2em;
-  line-height: 2.4em;
+  font: 2em/2.4em 'RockwellStdBold';  // size/line-height family
 }
 
 .hint-edit-list {
@@ -885,10 +818,8 @@ img {
   position: relative;
 
   h2 {
-    position: absolute;
+    @include absolute-at($bottom: 0, $left: 0);
     color: #fff;
-    bottom: 0;
-    left: 0;
     margin-bottom: 0;
     margin-left: 10px;
     z-index: 3;
@@ -897,9 +828,7 @@ img {
   img { vertical-align: top }
 
   .remove-pms {
-    position: absolute;
-    top: 4%;
-    right: 4%;
+    @include absolute-at($top: 4%, $right: 4%);
     color: #fff;
     z-index: 3;
     width: 20%;
@@ -917,11 +846,8 @@ img {
 
 .blackGradient {
   z-index: 2;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  position: absolute;
+  @include width-height(100%);
+  @include absolute-at($top: 0, $left: 0);
   background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0) 43%, rgba(0,0,0,0.5) 89%, rgba(0,0,0,0.5) 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(43%,rgba(0,0,0,0)), color-stop(89%,rgba(0,0,0,0.5)), color-stop(100%,rgba(0,0,0,0.5))); /* Chrome,Safari4+ */
   background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 43%,rgba(0,0,0,0.5) 89%,rgba(0,0,0,0.5) 100%); /* Chrome10+,Safari5.1+ */
@@ -929,7 +855,6 @@ img {
   background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 43%,rgba(0,0,0,0.5) 89%,rgba(0,0,0,0.5) 100%); /* IE10+ */
   background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 43%,rgba(0,0,0,0.5) 89%,rgba(0,0,0,0.5) 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#80000000',GradientType=0 ); /* IE6-9 */
-
 }
 
 .pmsListEdit {

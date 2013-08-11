@@ -1,4 +1,4 @@
-/* STANDARD FOR MOBILE */
+@import url(../css/fonts/fonts.css);
 * {
   /* make transparent link selection, adjust last value opacity 0 to 1.0 */
   -webkit-tap-highlight-color: transparent; }
@@ -8,24 +8,30 @@ html {
   height: 100%; }
 
 body {
-  /* prevent callout to copy image, etc when tap to hold */
   -webkit-touch-callout: none;
-  /* prevent webkit from resizing text to fit */
   -webkit-text-size-adjust: none;
-  /* prevent copy paste, to allow, change 'none' to 'text' */
   -webkit-user-select: none;
   background-attachment: fixed;
   font-family: "GothamLight";
   font-size: 12px;
-  height: 100%;
   width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0; }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: "RockwellStdRegular"; }
+
+p {
+  margin-top: 0; }
+
+img {
+  max-width: 100%; }
+
 ul#list {
-  list-style: none;
   margin: 0;
   padding: 0;
+  list-style: none;
   float: left;
   width: 100%; }
   ul#list li {
@@ -43,41 +49,29 @@ ul#list {
       font-weight: bold;
       overflow: hidden; }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'RockwellStdRegular'; }
-
-p {
-  margin-top: 0; }
-
 .partita-player ul {
   width: 400% !important;
   height: 100%;
   z-index: 100;
   background: #DBDCDE;
   -webkit-transition: margin-left 1s ease;
-  /* Safari 4+ */
   -moz-transition: margin-left 1s ease;
-  /* Fx 5+ */
+  -ms-transition: margin-left 1s ease;
   -o-transition: margin-left 1s ease;
-  /* Opera 12+ */
-  transition: margin-left 1s ease;
-  /* IE 10+ */ }
-
-.partita-player ul li {
-  overflow: hidden;
-  border: none !important;
-  width: 25% !important;
-  height: 100%;
-  padding: 0 !important;
-  background: none !important; }
-
-.partita-player ul li .half-width img {
-  width: 100% !important;
-  max-width: none !important; }
-
-.partita-player ul li h2 {
-  color: #F47B33;
-  margin-bottom: 0; }
+  transition: margin-left 1s ease; }
+  .partita-player ul li {
+    overflow: hidden;
+    border: none !important;
+    width: 25% !important;
+    height: 100%;
+    padding: 0 !important;
+    background: none !important; }
+    .partita-player ul li .half-width img {
+      width: 100% !important;
+      max-width: none !important; }
+    .partita-player ul li h2 {
+      color: #F47B33;
+      margin-bottom: 0; }
 
 #header {
   width: 100%;
@@ -125,57 +119,56 @@ p {
   text-align: center; }
 
 #back {
-  background-position: 40% 35%;
   height: 100%;
   width: 30%;
   text-align: center;
   background-image: url(../res/img/back.png);
   background-repeat: no-repeat;
   background-size: 60% auto;
+  background-position: 40% 35%;
   color: #FAE8AC;
   font-size: 1.5em; }
 
 #title {
   width: 70%;
+  font: 2em/2em 'RockwellStdBold';
   text-align: center;
-  font-size: 2em;
-  line-height: 2em;
   color: #FAE8AC;
-  font-family: 'RockwellStdBold';
   overflow: auto;
   text-overflow: ellipsis; }
 
 #hintsite {
   text-align: center;
-  font-size: 2em;
-  line-height: 2em;
+  font: 2em/2em 'RockwellStdRegular';
   color: #FAE8AC;
-  font-family: 'RockwellStdRegular';
   overflow: auto;
   text-overflow: ellipsis; }
 
 #hint_description {
-  position: absolute;
-  left: 10%;
-  top: 10%;
-  margin: 0px auto;
   width: 80%;
   height: 80%;
-  font-family: "GothamLight";
-  font-size: 1.4em;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  font: 1.4em "GothamLight";
   border: 2px solid orange; }
 
 #nome-lista {
-  margin: 0px auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
   width: 100%;
   height: 100%;
   background-color: #939597;
   text-transform: uppercase;
   color: #fff;
-  font-family: "GothamLight";
-  font-size: 12px;
-  text-align: left;
-  font-weight: bold; }
+  font: bold 12px "GothamLight";
+  text-align: left; }
   #nome-lista p {
     padding-top: 0.2em;
     padding-bottom: 0.2em;
@@ -186,11 +179,7 @@ p {
   width: 100%;
   height: 30%; }
 
-#map_canvas {
-  width: 100%;
-  height: 100%; }
-
-#map {
+#map, #map_canvas {
   width: 100%;
   height: 100%; }
 
@@ -211,13 +200,10 @@ p {
   #photo img {
     float: left; }
   #photo .add_photo {
-    position: absolute;
     width: 60%;
+    position: absolute;
     top: 25%;
     left: 20%; }
-
-img {
-  max-width: 100%; }
 
 #mappa {
   position: relative;
@@ -228,10 +214,10 @@ img {
   float: left;
   text-align: center; }
   #mappa img {
-    left: 20%;
     position: absolute;
-    width: 60%;
-    top: 20%; }
+    top: 20%;
+    left: 20%;
+    width: 60%; }
 
 #mappa h2, #photo h2 {
   position: absolute;
@@ -303,14 +289,14 @@ img {
   text-align: center; }
 
 #check-in-btn {
-  height: 100px;
   width: 100px;
+  height: 100px;
   position: absolute;
-  left: 50%;
   bottom: 2%;
+  left: 50%;
   margin-left: -62px;
   border: 8px solid rgba(244, 123, 51, 0.4);
-  -webkit-border-radius: 1000px; }
+  border-radius: 1000px; }
 
 #inside-check-in-btn {
   margin: 2%;
@@ -318,12 +304,12 @@ img {
   text-align: center;
   width: 96%;
   height: 96%;
-  -webkit-border-radius: 1000px;
+  border-radius: 1000px;
   position: relative; }
   #inside-check-in-btn img {
-    left: 30%;
-    top: 25%;
     position: absolute;
+    top: 25%;
+    left: 30%;
     width: 40%; }
 
 #log-in {
@@ -387,9 +373,9 @@ img {
 .loading {
   width: 100%;
   height: 100%;
+  position: absolute;
   top: 0;
   left: 0;
-  position: absolute;
   z-index: 9999;
   -webkit-animation: appear 1s 1;
   /* Safari 4+ */
@@ -468,12 +454,12 @@ img {
       width: 31%; }
 
 #popup-container {
-  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: 1000; }
 
 .yes-no {
@@ -511,14 +497,14 @@ img {
   background-color: purple; }
 
 #go-to-wall {
-  height: 40px;
   width: 40px;
+  height: 40px;
   position: absolute;
-  left: 88%;
   bottom: 4%;
+  left: 88%;
   margin-left: -28px;
   border: 8px solid rgba(244, 123, 51, 0.4);
-  -webkit-border-radius: 1000px; }
+  border-radius: 1000px; }
 
 #inside-go-to-wall {
   margin: 2%;
@@ -526,23 +512,23 @@ img {
   text-align: center;
   width: 96%;
   height: 96%;
-  -webkit-border-radius: 1000px;
+  border-radius: 1000px;
   position: relative; }
   #inside-go-to-wall img {
-    left: 22%;
-    top: 25%;
     position: absolute;
+    top: 25%;
+    left: 22%;
     width: 60%; }
 
 #go-to-players {
-  height: 40px;
   width: 40px;
+  height: 40px;
   position: absolute;
-  left: 12%;
   bottom: 4%;
+  left: 12%;
   margin-left: -28px;
   border: 8px solid rgba(244, 123, 51, 0.4);
-  -webkit-border-radius: 1000px; }
+  border-radius: 1000px; }
 
 #inside-go-to-players {
   margin: 2%;
@@ -550,12 +536,12 @@ img {
   text-align: center;
   width: 96%;
   height: 96%;
-  -webkit-border-radius: 1000px;
+  border-radius: 1000px;
   position: relative; }
   #inside-go-to-players img {
-    left: 22%;
-    top: 20%;
     position: absolute;
+    top: 20%;
+    left: 22%;
     width: 60%; }
 
 #map-container {
@@ -567,12 +553,12 @@ img {
   float: left; }
 
 #helpers {
-  background: #fff;
-  left: 25%;
-  top: 15%;
+  width: 50%;
   height: 5%;
   position: absolute;
-  width: 50%; }
+  top: 15%;
+  left: 25%;
+  background: white; }
   #helpers span {
     width: 50%;
     height: 100%;
@@ -580,11 +566,11 @@ img {
     float: left; }
 
 #generic-popup-container {
+  width: 70%;
+  height: 70%;
   position: absolute;
   top: 15%;
   left: 15%;
-  width: 70%;
-  height: 70%;
   background: #fff;
   z-index: 1000;
   border: 3px solid #000; }
@@ -598,45 +584,42 @@ img {
   z-index: 1000; }
 
 #arrow {
-  margin: 0px auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
   width: 0;
   height: 0;
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
   border-bottom: 150px solid black;
   -webkit-transition: all 3s ease;
-  /* Safari 4+ */
   -moz-transition: all 3s ease;
-  /* Fx 5+ */
+  -ms-transition: all 3s ease;
   -o-transition: all 3s ease;
-  /* Opera 12+ */
-  transition: all 3s ease;
-  /* IE 10+ */ }
+  transition: all 3s ease; }
 
 #container-hint-in-partita {
-  overflow-x: hidden;
-  overflow-y: hidden;
-  z-index: 100;
-  left: 0;
-  top: 10%;
   width: 100%;
   height: 30%;
   position: absolute;
+  top: 10%;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  z-index: 100;
   -webkit-transition: all 1s ease;
-  /* Safari 4+ */
   -moz-transition: all 1s ease;
-  /* Fx 5+ */
+  -ms-transition: all 1s ease;
   -o-transition: all 1s ease;
-  /* Opera 12+ */
-  transition: all 1s ease;
-  /* IE 10+ */ }
+  transition: all 1s ease; }
 
 #controller-slide-hint {
-  position: absolute;
-  left: 0;
-  bottom: 0;
   width: 100%;
   height: 40px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
   background: #F47B33;
   text-align: center; }
   #controller-slide-hint img {
@@ -664,19 +647,16 @@ img {
   float: left;
   font-size: 0;
   -webkit-transition: all 1s ease;
-  /* Safari 4+ */
   -moz-transition: all 1s ease;
-  /* Fx 5+ */
+  -ms-transition: all 1s ease;
   -o-transition: all 1s ease;
-  /* Opera 12+ */
-  transition: all 1s ease;
-  /* IE 10+ */ }
+  transition: all 1s ease; }
 
 #container-del-container-dei-container {
   width: 100%;
+  height: 90%;
   overflow-x: hidden;
-  overflow-y: hidden;
-  height: 90%; }
+  overflow-y: hidden; }
 
 .match-row {
   width: 100%;
@@ -729,9 +709,7 @@ img {
   top: 10%;
   margin: 0;
   padding: 0;
-  font-family: 'RockwellStdBold';
-  font-size: 2em;
-  line-height: 2.4em; }
+  font: 2em/2.4em 'RockwellStdBold'; }
 
 .hint-edit-list {
   height: 60%; }
@@ -791,9 +769,9 @@ img {
   position: relative; }
   .elementlistaGiocatori h2 {
     position: absolute;
-    color: #fff;
     bottom: 0;
     left: 0;
+    color: #fff;
     margin-bottom: 0;
     margin-left: 10px;
     z-index: 3; }
@@ -820,9 +798,9 @@ img {
   z-index: 2;
   width: 100%;
   height: 100%;
+  position: absolute;
   top: 0;
   left: 0;
-  position: absolute;
   background: -moz-linear-gradient(top, transparent 0%, transparent 43%, rgba(0, 0, 0, 0.5) 89%, rgba(0, 0, 0, 0.5) 100%);
   /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, transparent), color-stop(43%, transparent), color-stop(89%, rgba(0, 0, 0, 0.5)), color-stop(100%, rgba(0, 0, 0, 0.5)));
