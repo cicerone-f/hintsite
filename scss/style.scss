@@ -156,12 +156,18 @@ ul#list {
   height: 100%;
   width: 30%;
   text-align: center;
-  background-image: url(../res/img/back.png);
-  background-repeat: no-repeat;
-  background-size: 60% auto;
-  background-position: 40% 35%;
+  // background-image: url(../res/img/back.png);
+  // background-repeat: no-repeat;
+  // background-size: 60% auto;
+  // background-position: 40% 35%;
   color: #FAE8AC;
   font-size: 1.5em;
+
+  box-shadow: 0 0 2px transparentize(black, 0.5), inset 0 2px 2px transparentize(white, 0.5);
+  &:active {
+    background: transparentize(black, 0.85);
+    box-shadow: inset 0 4px 5px transparentize(black, 0.4);
+  }
 }
 
 
@@ -688,10 +694,10 @@ ul#list {
 
 #container-dei-container {
   height: 100%;
-  width: 100%;
+  width: 400%;
   float: left;
   font-size: 0;
-  @include transition(all, 1s, ease);
+  @include transition(all, 0.1s, linear);
 }
 
 #container-del-container-dei-container {
@@ -892,8 +898,11 @@ ul#list {
 }
 
 #img-load {
+  $img-size: 120px;
   @include absolute-at($top: 50%, $left: 50%);
-  @include width-height(50px);
+  @include width-height($img-size);
+  margin-left: - $img-size / 2;
+  margin-top: - $img-size / 2;
   -webkit-animation: spin 0.7s infinite;
 }
 
