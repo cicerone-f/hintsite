@@ -355,13 +355,14 @@ img {
   float: left;
   background-color: #F47B33;
   padding: 0; }
-  #NewMatchButton img {
+
+#NewMatchButton img {
     height: 60%;
     top: 20%;
     position: relative;
     display: inline-block;
     margin-right: 25px; }
-  #NewMatchButton h1 {
+#NewMatchButton h1 {
     display: inline-block;
     color: #FAE8AC; }
 

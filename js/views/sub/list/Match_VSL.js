@@ -31,6 +31,7 @@ define([
         template: Handlebars.compile(template),
         initialize: function () {
           this.collection.bind("add", this.render, this);
+
         },
 
         render: function (eventName) {
@@ -52,6 +53,9 @@ define([
             }).render().el);
             counter++;
           }, this);
+          if(this.options.matchType == 'publicMatch'){
+            $("#overlay-loading").fadeOut();
+          }
           return this;
         }
       });

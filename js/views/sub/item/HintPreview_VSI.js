@@ -7,7 +7,8 @@ define([
   "backbone",
   "Parse",
   "handlebars",
-  "text!templates/sub/item/hint-preview-TSI.html"
+  "text!templates/sub/item/hint-preview-TSI.html",
+  "views/LoadingView",
 ],
     function (
     $,
@@ -15,7 +16,8 @@ define([
     Backbone,
     Parse,
     Handlebars,
-    template
+    template,
+    LoadingView
   ) {
 
     var HintPreview_VSI = Parse.View.extend({
@@ -31,6 +33,8 @@ define([
         initialize: function () {
           this.model.bind("change", this.render, this);
           this.model.bind("destroy", this.close, this);
+          this.loading = new LoadingView();
+          this.loading.render();
         },
 
         render: function (eventName) {
@@ -41,6 +45,7 @@ define([
         },
 
         goToDetails: function () {
+          $("#overlay-loading").fadeIn();
           Parse.history.navigate("hints/" + this.model.id, {trigger: true});
         }
       });

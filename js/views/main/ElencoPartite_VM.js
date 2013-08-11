@@ -13,7 +13,8 @@ define([
   "views/sub/HeaderProfilo_VS",
   "collections/PmsCollection",
   "models/Pms",
-  "text!templates/main/elenco-partite.html"
+  "text!templates/main/elenco-partite.html",
+  "views/LoadingView",
 ],
     function ($,
       _,
@@ -26,7 +27,8 @@ define([
       HeaderProfilo_VS,
       PmsCollection,
       Pms,
-      template
+      template,
+      LoadingView
     ) {
 
     var ElencoPartite_VM = Parse.View.extend({
@@ -38,12 +40,23 @@ define([
         template: Handlebars.compile(template),
 
         initialize: function () {
+          this.loading = new LoadingView();
+          this.loading.render();      
           this.currentViewmatches = 0;
           this.userStates = (new Pms()).userStates;
           this.matchStates = (new Pms()).matchStates;
           this.collection = new PmsCollection();
           this.collection.getAllUsersPms();
           this.collection.on("addedallpmsforuser", this.smistaCollection, this);
+        },
+
+        render: function () {
+          $(this.el).empty();
+          var viewContent = '';
+          var header = new HeaderProfilo_VS();
+          $(this.el).html(
+            header.render().el);
+          $("#overlay-loading").fadeIn();  
         },
 
         smistaCollection: function () {
@@ -71,7 +84,7 @@ define([
               else if (a.matchState == this.matchStates.ENDED && a.userState == this.userStates.MASTER)
               this.storicoMaster.add(this.collection.models[i]);
           }
-          this.render();
+          this.renderVero();
         },
 
         moveViewMatches: function () {
@@ -79,7 +92,7 @@ define([
           $('#container-dei-container').css({'margin-left': tempPerc+'%'});
         },
 
-        render: function (eventName) {
+        renderVero: function (eventName) {
           $(this.el).empty();
           var viewContent = '';
           var header = new HeaderProfilo_VS();
@@ -103,6 +116,8 @@ define([
           );
           $(this.el).find('#container-pubblico-match').html(
               new Match_VSL({collection:this.pubbliche, matchType: 'publicMatch'}).render().el);
+          
+
           var self = this;
           var swiperight = Hammer($('#container-del-container-dei-container')).on("swipeleft", function(event) {
             event.preventDefault();
