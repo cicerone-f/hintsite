@@ -29,7 +29,8 @@ define([
   "views/main/WallFull_VM",
   "views/main/SignUp_VM",
   "views/main/HintFound_VM",
-  "views/main/MatchEnd_VM"  
+  "views/main/MatchEnd_VM",
+  "views/NoNetworkConnectionView"
 ],
     function ($,
       _,
@@ -57,13 +58,14 @@ define([
       WallFull_VM,
       SignUp_VM,
       HintFound_VM,
-      MatchEnd_VM
+      MatchEnd_VM,
+      NoNetworkConnectionView
     ) {
 
     var AppRouter = Parse.Router.extend({
 
       routes: {
-        "": "userControl",
+        "": "checkForNetwork",
         "mainMatchList": "mainMatchList",
         "matches/:id": "matchDetails",
         "matchesMaster/:id": "matchDetailsMaster",
@@ -82,6 +84,15 @@ define([
         "signup": "signup",
         "hintFound/:id": "hintFound",
         "matchEnd/:id": "matchend"
+      },
+
+      checkForNetwork: function () {
+        console.log('checkForNetwork() called');
+        var state = navigator.connection.type;
+        if (state == Connection.UNKNOWN || state == Connection.NONE)
+          this.changePage(new NoNetworkConnectionView({}));
+        else
+          this.userControl();
       },
 
       userControl: function () {

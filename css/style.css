@@ -28,6 +28,19 @@ p {
 img {
   max-width: 100%; }
 
+#no-network-connection {
+  width: 100%;
+  height: 100%;
+  background: #565656;
+  text-align: center;
+  padding-top: 20%; }
+  #no-network-connection img {
+    width: 25%; }
+  #no-network-connection p {
+    font-size: 3em;
+    margin-top: 15px;
+    color: #ccc; }
+
 ul#list {
   margin: 0;
   padding: 0;
