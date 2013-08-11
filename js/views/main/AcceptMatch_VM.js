@@ -11,7 +11,8 @@ define([
   "models/WallMessage",
   "models/UserSearched",
   "views/sub/list/HintPreview_VSL",
-  "text!templates/main/accept-match.html"
+  "text!templates/main/accept-match.html",
+  "views/LoadingView",
 ],
   function (
     $,
@@ -23,7 +24,8 @@ define([
     WallMessage,
     UserSearched,
     HintPreview_VSL,
-    template
+    template,
+    LoadingView
   ) {
     var AcceptMatch_VM = Parse.View.extend({
         id: 'popup-container',
@@ -37,6 +39,8 @@ define([
         initialize: function () {
           this.Pms = this.options.Pms;
           this.wallMsg = new WallMessage();
+          this.loading = new LoadingView();
+          this.loading.render();
         },
 
         render: function (eventName) {
@@ -51,17 +55,18 @@ define([
 
 
         matchAccepted: function (eventName) {
+          $("#overlay-loading").fadeIn();
           var self = this;
-
           self.Pms.save({userState: self.Pms.userStates.INGAME}, {
             success: function () {
               //aggiungo i punti all'utente
               var user = new UserSearched();
               user.addPoints(100);
-              
+              $("#overlay-loading").fadeOut();
               self.remove();
             },
             error: function (error){
+              $("#overlay-loading").fadeOut();
               console.log(error);
             }
           });
@@ -78,13 +83,16 @@ define([
         },
 
         goBack: function () {
+          $("#overlay-loading").fadeIn();          
           var self = this;
           this.Pms.destroy({
             success: function () {
+              $("#overlay-loading").fadeOut();
               Parse.history.navigate('back/'+self.options.owner+"/"+self.options.backViewModelId, { trigger : true, replace : true });
             },
             error: function (error){
               console.log(error);
+              $("#overlay-loading").fadeOut();
             }
           });
         }

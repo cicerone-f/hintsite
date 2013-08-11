@@ -36,6 +36,7 @@ define([
           "click #mappa": "navigateToSetHintPosition",
           "click #photo": "getPicture",
           "blur #hint_description": "saveHintDescription",
+          "click #ok": "cameBack"
         },
         navigateToSetHintPosition : function () {
           Parse.history.navigate('sethintposition/' + this.model.id, { trigger : true });
@@ -91,6 +92,10 @@ define([
 
           var ft = new FileTransfer();
           ft.upload(imageURI, encodeURI("http://www.hintsiteapp.com/s/s.php"), win, fail, options, true);
+        },
+
+        cameBack: function () {
+          $('#back').click();
         },
 
         render: function (eventName) {

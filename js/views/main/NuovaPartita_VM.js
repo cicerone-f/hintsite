@@ -53,6 +53,7 @@ define([
           this.pmsCollection = new PmsCollection();
           this.collection = new HintCollection();
           this.loading = new LoadingView();
+          this.loading.render();
           this.pms.on("NuovaPartita_VM_PMSMASTERCREATED", this.cfh, this);
           this.model.on("NuovaPartita_VM_MATCHCREATED", this.saveMasterDopoCreaPartita, this);
           this.model.on("NuovaPartita_VM_MATCHNAMEUPDATED", this.removeLoading, this);
@@ -129,7 +130,7 @@ define([
           // this.model is the match
           var launchability = this.matchCanBeLaunched();
           if (launchability == "tuttoapposto") {
-            this.loading.render();
+            $("#overlay-loading").fadeIn();
             var wallMsg = new WallMessage();
             wallMsg.saveToP(wallMsg.messageTypes.MATCH_CREATED, this.model.id);
             
@@ -156,12 +157,12 @@ define([
         },
 
         snp: function () {
-          this.loading.render();
+          $("#overlay-loading").fadeIn();
           this.model.salvaNomePartita("NuovaPartita_VM", $("#matchname").val());
         },
 
         removeLoading: function () {
-          this.loading.remove();
+          $("#overlay-loading").fadeOut();
         },
 
         render: function (eventName) {
