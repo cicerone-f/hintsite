@@ -110,7 +110,7 @@ ul#list {
     position: relative;
     float: left; }
   .header-profilo span#opzioni img {
-    left: 10%;
+    right: 10%;
     position: relative;
     float: right; }
 
