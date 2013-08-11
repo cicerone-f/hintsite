@@ -2,7 +2,7 @@
 @import "variables";
 @import "mixins";
 
-@import "../css/fonts/fonts.css";
+@import "../res/fonts/fonts.css";
 
 
 * {
@@ -673,7 +673,7 @@ ul#list {
 
 #container-dei-container {
   height: 100%;
-  width: 400%;
+  width: 100%;
   float: left;
   font-size: 0;
   @include transition(all, 1s, ease);
@@ -867,7 +867,27 @@ ul#list {
   font-size: 2em;
 }
 
+#overlay-loading { 
+  display: none; 
+  position: absolute; 
+  background: #555555; 
+  opacity: 0.6;
+  @include width-height(100%);
+  z-index: 1010;
+}
+
+#img-load {
+  @include absolute-at($top: 50%, $left: 50%);
+  @include width-height(50px);
+  -webkit-animation: spin 0.7s infinite;
+}
+
 @include keyframes(appear) {
   from { opacity: 0 }
   to { opacity: 1 }
+}
+
+@include keyframes(spin) {
+  0% { -webkit-transform: rotate(0deg) }
+  100% { -webkit-transform: rotate(360deg) }
 }
