@@ -28,7 +28,6 @@ define([
       template: Handlebars.compile(template),
 
       render: function (eventName) {
-        $("#overlay-loading").fadeOut();
         var header = new Header_VS({owner: "HintFull_VM",backViewModelId:this.model.attributes.matchId});
         $(this.el).html(header.render().el).append(this.template(this.model.toJSON()))
         .append( new Wall_VSL({matchId: this.model.attributes.matchId, owner: 'HintFull_VM', hintNumber: this.model.attributes.number}).render().el );

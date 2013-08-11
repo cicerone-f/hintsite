@@ -37,8 +37,6 @@ define([
           this.model = new UserSearched();
           this.model.on("change", this.appendFoundUser, this);
           this.pms.on("AddFromSearch_VM_PMSLISTED", this.addToCollection, this);
-          this.loading = new LoadingView();
-          this.loading.render();
         },
         events: {
           "blur #nick": "searchNick",

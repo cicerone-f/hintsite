@@ -54,37 +54,46 @@ define([
 
       },
       menoday: function () {
-        this.model.attributes.launchTime -= 24 * 60 * 60 * 1000;
-        this.render();
+        if( (this.model.attributes.launchTime - (24 * 60 * 60 * 1000) ) > new Date().getTime()){
+          this.model.attributes.launchTime -= 24 * 60 * 60 * 1000;
+          this.renderVero();
+        }
       },
       piuday: function () {
         this.model.attributes.launchTime += 24 * 60 * 60 * 1000;
-        this.render();
+        this.renderVero();
       },
       menotime: function () {
+      if( (this.model.attributes.launchTime - ( 60 * 60 * 1000) ) > new Date().getTime()){        
         this.model.attributes.launchTime -= 60 * 60 * 1000;
-        this.render();
+        this.renderVero();
+        }
       },
       piutime: function () {
         this.model.attributes.launchTime += 60 * 60 * 1000;
-        this.render();
+        this.renderVero();
       },
       setthistime: function () {
-        this.loading.render();
+        $("#overlay-loading").fadeIn(); 
         this.model.salvaTimePartita(this.model.attributes.launchTime, "SetLaunchTime_VM");
       },
       setFlag: function () {
         if (!this.model.attributes.launchTime) {
           this.model.attributes.launchTime = new Date().getTime();
         }
-        this.render();
+        this.renderVero();
       },
       backToPreviousView: function () {
-        this.loading.remove();
         Parse.history.navigate('back/SetLaunchTime_VM/'+this.model.id, { trigger : true, replace : true });
       },
-
       render: function (eventName) {
+        var header = new Header_VS({owner: "SetLaunchTime_VM",backViewModelId:this.model.id});
+        $(this.el).html(
+          header.render().el);
+        return this;
+      },
+
+      renderVero: function (eventName) {
         var header = new Header_VS({owner: "SetLaunchTime_VM",backViewModelId:this.model.id});
         var launchDate = new Date(this.model.attributes.launchTime);
         var numGiorno = launchDate.getDate();
@@ -95,12 +104,11 @@ define([
         var giornomeseanno = numGiorno + "/" + numMese + "/" + numAnno + " " + weekday[launchDate.getDay()];
         var oramin = hour + ":" + min;
         var seconds = launchDate.getSeconds();
+        console.log(this.model.attributes.launchTime);
         $(this.el).html(
-          header.render().el
-          ).append(this.template({day: giornomeseanno, time: oramin}));
+          header.render().el).append(this.template({day: giornomeseanno, time: oramin}));
+        $("#overlay-loading").fadeOut();         
         return this;
-
-
       }
     });
 

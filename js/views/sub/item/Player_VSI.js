@@ -44,6 +44,7 @@ define([
 
         render: function (eventName) {
           $(this.el).html(this.template(this.player.toJSON()));
+          $("#overlay-loading").fadeOut();
           return this;
         },
 

@@ -57,10 +57,9 @@ define([
 
       initialize: function () {
         this.model = new Hint();
-        this.loading = new LoadingView();
         this.flagEvent = false;
         this.model.id = this.options.hintIdToGet;
-        this.model.on('HintForm_VM_HINTSYNC', this.setFlagEventListener, this);
+        this.model.on('HintForm_VM_HINTSYNC', this.renderVero, this);
 
         /* this event is triggerent when a GeoPoint is saved to Parse */
         this.model.on('SetHintPosition_VM_POINTUPDATED', this.setGeoPointCallback, this);
@@ -70,17 +69,25 @@ define([
       render: function (eventName) {
         var header = new Header_VS({owner: "SetHintPosition_VM" , backViewModelId:this.model.id  });
         //var title = "Select Point for Hint #" + this.model.attributes.number;
-        $(this.el).html(header.render().el).append(this.template());
+        $(this.el).html(header.render().el);
 
-        if (this.flagEvent) {
-          this.renderMap();
-        }
         return this;
       },
 
+
+      renderVero: function (eventName) {
+        var header = new Header_VS({owner: "SetHintPosition_VM" , backViewModelId:this.model.id  });
+        //var title = "Select Point for Hint #" + this.model.attributes.number;
+        $(this.el).html(header.render().el).append(this.template());
+        this.renderMap();
+        return this;
+      },
+      
+
+
       renderMap: function () {
         var self = this;
-        var t = setTimeout(function () {
+
           var position = self.model.attributes.point;
 
           /* creates the map object */
@@ -145,8 +152,8 @@ define([
               {enableHighAccuracy: true, timeout: 20000}
             );
           }
+          setTimeout(function(){$("#overlay-loading").fadeOut();},1000);
 
-        }, 1000);
       },
 
       panToCurrentPosition: function () {
@@ -198,7 +205,6 @@ define([
       },
 
       setGeoPoint: function () {
-        this.loading.render();
         var currentCenter = this.map.getCenter();
 
         /* uploading current center to Parse */
@@ -207,11 +213,8 @@ define([
         this.model.updateGeoPoint(parseCurrentCenter);
 
         this.setMarkerFromPoint(parseCurrentCenter);
-      },
-
-      setFlagEventListener: function () {
-        this.flagEvent = true;
-        this.render();
+        setTimeout(function(){$("#overlay-loading").fadeIn()},500);
+        setTimeout(function(){$("#back").click()},2000);
       },
 
       setMarkerFromPoint: function (point) {
@@ -232,7 +235,7 @@ define([
       },
 
       setGeoPointCallback: function () {
-        this.loading.remove();
+        //this.loading.remove();
       }
 
     });

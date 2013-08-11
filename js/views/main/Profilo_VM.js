@@ -34,7 +34,7 @@ define([
         this.model = new UserSearched();
         this.model.id = Parse.User.current().id;
         this.model.getMeFromParse(Parse.User.current().id);
-        this.model.bind("USERPERPROFILO",this.render, this);
+        this.model.bind("USERPERPROFILO",this.renderVero, this);
       },
 
       events: {
@@ -89,7 +89,7 @@ define([
           ft.upload(imageURI, encodeURI("http://www.hintsiteapp.com/s/s.php"), win, fail, options, true);
       },
       
-      render: function (eventName) {
+      renderVero: function (eventName) {
         var header = new Header_VS({owner: "Profilo_VM", backViewModelId:0 });
         var u = this.model.toJSON();
         $(this.el)
@@ -97,6 +97,14 @@ define([
           .append(
             this.template( u )
           );
+        $("#overlay-loading").fadeOut();
+        return this;
+      },
+
+      render: function (eventName) {
+        var header = new Header_VS({owner: "Profilo_VM", backViewModelId:0 });
+        $(this.el)
+          .html(header.render().el);
         return this;
       }
 

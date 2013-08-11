@@ -47,13 +47,10 @@ define([
         pmsCollection: PmsCollection,
         collection: HintCollection,
         initialize: function () {
-          // git shots
           this.model = new Match();
           this.pms = new Pms();
           this.pmsCollection = new PmsCollection();
           this.collection = new HintCollection();
-          this.loading = new LoadingView();
-          this.loading.render();
           this.pms.on("NuovaPartita_VM_PMSMASTERCREATED", this.cfh, this);
           this.model.on("NuovaPartita_VM_MATCHCREATED", this.saveMasterDopoCreaPartita, this);
           this.model.on("NuovaPartita_VM_MATCHNAMEUPDATED", this.removeLoading, this);
@@ -61,7 +58,7 @@ define([
           this.pmsCollection.on("pointscanbeadded",this.addPointsToUser, this);
           this.model.on("EditPartita_VM_MATCHTIMENOW", this.navigateToElencoPartite, this);
           this.collection.on("NuovaPartita_VM_COLLECTIONCOMPLETED", this.fetchPmsCollection, this);
-          this.pmsCollection.on("PMSPLAYERSFETCHED",this.render,this);
+          this.pmsCollection.on("PMSPLAYERSFETCHED",this.renderVero,this);
           this.model.saveDraftToP();
         },
 
@@ -165,7 +162,7 @@ define([
           $("#overlay-loading").fadeOut();
         },
 
-        render: function (eventName) {
+        renderVero: function (eventName) {
           var header = new Header_VS({owner: "NuovaPartita_VM", backViewModelId: 0});
           var launchfooter = new LaunchFooter_VS();
           var hintlistedit = new HintEdit_VSL({collection: this.collection});
@@ -174,6 +171,16 @@ define([
             .html(header.render().el)
             .append(this.template(match))
             .append(hintlistedit.render().el)
+            .append(launchfooter.render().el);
+            this.removeLoading();
+          return this;
+        },
+
+        render: function (eventName) {
+          var header = new Header_VS({owner: "NuovaPartita_VM", backViewModelId: 0});
+          var launchfooter = new LaunchFooter_VS();
+          $(this.el)
+            .html(header.render().el)
             .append(launchfooter.render().el);
           return this;
         },

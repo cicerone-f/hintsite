@@ -49,6 +49,7 @@ define([
             success: function (results) {
               self.Pms = results[0];
               self.render();
+              $("#overlay-loading").fadeOut();
             },
             error: function (error){
               console.log(error);
@@ -64,6 +65,7 @@ define([
         },
 
         renderListing: function (eventName) {
+          $("#overlay-loading").fadeIn();
           var lg = new ListingGiocatori_VM({matchId: this.model.id});
           $(this.el).append(lg.render().el);
           return this;
@@ -76,6 +78,7 @@ define([
           return this;
         },
         go: function () {
+          $("#overlay-loading").fadeIn();          
           Parse.history.navigate("hints/" + this.hint.id, {trigger: true});
         },
 

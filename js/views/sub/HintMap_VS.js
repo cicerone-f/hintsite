@@ -11,7 +11,6 @@ define([
   "models/Pms",
   "models/UserSearched",
   "views/sub/Header_VS",
-  "views/LoadingView",
   "views/main/Popup_VM",
   "views/main/Arrow_VM",
   "views/main/ListingGiocatori_VM",  
@@ -28,7 +27,6 @@ define([
     Pms,
     UserSearched,
     Header_VS,
-    LoadingView,
     Popup_VM,
     Arrow_VM,
     ListingGiocatori_VM,
@@ -63,9 +61,6 @@ define([
       initialize: function () {
         this.loadingCount = 0;
         this.model = new Hint();
-        this.loading = new LoadingView();
-        this.loading.render();
-        $("#overlay-loading").fadeIn();
         this.model.on('HintMap_VS_HINTFORPLACE', this.unrenderLoadingAvvio, this);
         this.matchId = this.options.matchId;
         this.pms = new Pms();
@@ -78,7 +73,7 @@ define([
         this.pms.on("HintMap_VS_UsedHelpDirection", this.getHintDirection, this);
         if (this.options.pms.attributes.myHint){
           this.model.getWithNumberAndMatch(this.options.pms.attributes.myHint, this.matchId);
-          this.loading.render();
+                      $("#overlay-loading").fadeIn();
         }  
       },
 
@@ -86,7 +81,6 @@ define([
 
       render: function (eventName) {
         $(this.el).html(this.template());
-        this.renderMap();
         return this;
       },
       
@@ -95,10 +89,12 @@ define([
       },
       
       goToWall: function () {
+        $("#overlay-loading").fadeIn();
         Parse.history.navigate("wallFull/"+this.matchId , {trigger: true});
       },
 
       renderListing: function (eventName) {
+        $("#overlay-loading").fadeIn();
         var lg = new ListingGiocatori_VM({matchId: this.matchId});
         $(this.el).append(lg.render().el);
         return this;
@@ -106,7 +102,6 @@ define([
 
       renderMap: function () {
         var self = this;
-        var t = setInterval(function () {
           var position = self.model.attributes.point;
 
           /* creates the map object */
@@ -128,7 +123,6 @@ define([
             // options
             {enableHighAccuracy: true, timeout: 20000}
           );
-        }, 5000);
       },
 
       panToCurrentPosition: function () {
@@ -252,8 +246,10 @@ define([
 
       unrenderLoadingAvvio: function () {
         this.loadingCount++;
-        if (this.loadingCount==2)
+        if (this.loadingCount==2){
+          this.renderMap();
           $("#overlay-loading").fadeOut();
+        }
       }
 
     });

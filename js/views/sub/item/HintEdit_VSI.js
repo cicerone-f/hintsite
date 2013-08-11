@@ -41,6 +41,7 @@ define([
         },
 
         goToEdit: function () {
+          $("#overlay-loading").fadeIn();
           Parse.history.navigate("hintsedit/" + this.model.id, {trigger: true});
         }
       });

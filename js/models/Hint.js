@@ -37,6 +37,7 @@ define([
             self.trigger('HintForm_VM_HINTSYNC');
           },
           error: function () {
+            console.log("no id??");
           }
         });
       },

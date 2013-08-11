@@ -28,7 +28,7 @@ define([
         initialize: function () {
           this.model = new Hint();
           this.model.id = this.options.hintIdToGet;
-          this.model.on('HintForm_VM_HINTSYNC', this.render, this);
+          this.model.on('HintForm_VM_HINTSYNC', this.renderCancellaLoading, this);
           this.model.on('HintForm_VM_IMAGEUPDATED', this.render, this);
           this.model.fetchFromP();
         },
@@ -39,6 +39,7 @@ define([
           "click #ok": "cameBack"
         },
         navigateToSetHintPosition : function () {
+          $("#overlay-loading").fadeIn();
           Parse.history.navigate('sethintposition/' + this.model.id, { trigger : true });
         },
 
@@ -106,6 +107,19 @@ define([
           $(this.el)
             .html(header.render().el)
             .append(this.template(hint));
+          return this;
+        },
+
+        renderCancellaLoading: function (eventName) {
+          
+          var header = new Header_VS({owner: "HintForm_VM", backViewModelId:this.model.attributes.matchId });
+          var hint = this.model.toJSON();
+
+          //var title = "Hint #"+ this.model.attributes.number;
+          $(this.el)
+            .html(header.render().el)
+            .append(this.template(hint));
+          $("#overlay-loading").fadeOut();
           return this;
         }
 

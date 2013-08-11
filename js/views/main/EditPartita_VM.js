@@ -47,9 +47,6 @@ define([
           this.model = new Match();
           this.collection = new HintCollection();
           this.pmsCollection = new PmsCollection();
-          this.loading = new LoadingView();
-          this.loading.render();
-          $("#overlay-loading").fadeIn();          
           this.model.on("EditPartita_VM_MATCHSYNC", this.sfh, this);
           this.collection.on("OKHINTSITE", this.fetchPmsCollection, this);
           this.model.on("EditPartita_VM_MATCHNAMEUPDATED", this.removeLoading, this);
@@ -78,10 +75,12 @@ define([
         },
 
         navigateToSetLaunchTime : function () {
+          $("#overlay-loading").fadeIn();          
           Parse.history.navigate('setLaunchTime/' + this.model.id, { trigger : true });
         },
 
         navigateToSelezioneGiocatori : function () {
+          $("#overlay-loading").fadeIn();           
           Parse.history.navigate('selezioneGiocatori/' + this.model.id, { trigger : true });
         },
 

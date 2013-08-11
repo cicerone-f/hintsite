@@ -29,7 +29,6 @@ define([
       id: "container",
       template: Handlebars.compile(template),
       initialize: function () {
-        this.render();
       },
 
       events: {

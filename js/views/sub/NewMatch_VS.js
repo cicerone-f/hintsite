@@ -27,6 +27,7 @@ define([
         initialize: function () {
         },
         goToCreaPartita: function () {
+          $("#overlay-loading").fadeIn();
           Parse.history.navigate("newMatch", {trigger: true});
         },
         render: function (eventName) {

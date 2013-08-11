@@ -60,12 +60,16 @@ define([
 
         goToDetails: function () {
           if (this.options.matchType == 'inCorsoMaster') {
+            $("#overlay-loading").fadeIn();
             Parse.history.navigate("matchesMaster/" + this.model.attributes.matchId, {trigger: true});
           } else if (this.options.matchType == 'sospeseMaster') {
+            $("#overlay-loading").fadeIn();            
             Parse.history.navigate("editMatch/" + this.model.attributes.matchId, {trigger: true});
           } else if (this.options.matchType == 'inCorsoPlayer') {
+            $("#overlay-loading").fadeIn();
             Parse.history.navigate("matches/" + this.model.attributes.matchId, {trigger: true});
           } else if (this.options.matchType == 'sospesePlayer') {
+            $("#overlay-loading").fadeIn();
             Parse.history.navigate("matches/" + this.model.attributes.matchId + "/" + this.options.matchType, {trigger: true});
           }
           

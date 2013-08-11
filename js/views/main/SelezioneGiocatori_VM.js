@@ -34,11 +34,11 @@ define([
       collection: PmsCollection,
       initialize: function () {
         this.collection = new PmsCollection();
-        this.collection.on("add", this.render, this);
-        this.collection.on("remove", this.render, this);
+        this.collection.on("add", this.renderVero, this);
+        this.collection.on("remove", this.renderVero, this);
+        this.collection.on("noresultsinpmscollection",this.renderVero,this);
         this.collection.getFromParse(this.options.matchIdToGet);
       },
-
       events: {
         "click #fromSearch": "renderAddFromSearch"
       },
@@ -50,8 +50,7 @@ define([
         return this;
       },
 
-
-      render: function () {
+      renderVero: function () {
         var header = new Header_VS({owner: "SelezioneGiocatori_VM", backViewModelId: this.options.matchIdToGet});
         var SelezioneGiocatoriFooter = new SelezioneGiocatoriFooter_VS();
         var pmslistedit = new PmsEdit_VSL({collection: this.collection});
@@ -59,6 +58,14 @@ define([
             .html(header.render().el)
             .append(pmslistedit.render().el)
             .append(SelezioneGiocatoriFooter.render().el);
+        $("#overlay-loading").fadeOut(); 
+      },
+
+      render: function () {
+        var header = new Header_VS({owner: "SelezioneGiocatori_VM", backViewModelId: this.options.matchIdToGet});
+        $(this.el)
+            .html(header.render().el);
+                    console.log("renderNONvero");
       }
     });
     return SelezioneGiocatori_VM;

@@ -28,6 +28,7 @@ define([
         },
 
         goToProfilo : function () {
+          $("#overlay-loading").fadeIn();
           Parse.history.navigate("profilo" , {trigger: true});
         },
 

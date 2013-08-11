@@ -22,7 +22,11 @@ define([
         var self = this;
         query.find({
           success: function (results) {
-            self.add(results);
+            if(results.length > 0){
+              self.add(results);
+            }else{
+              self.trigger("noresultsinpmscollection")
+            }
           },
           error: function (error) {
             console.log(error);
