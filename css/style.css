@@ -108,23 +108,27 @@ ul#list {
   /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0ac3d', endColorstr='#f47b33',GradientType=0 );
   /* IE6-9 */ }
-
-#header span {
-  display: table-cell;
-  vertical-align: middle;
-  float: none; }
+  #header span {
+    display: table-cell;
+    vertical-align: middle;
+    float: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
 
 .header-profilo span {
   width: 33.33333%; }
+  .header-profilo span:not(#hintsite) {
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.6), inset 0 2px 2px rgba(255, 255, 255, 0.5); }
+    .header-profilo span:not(#hintsite):active {
+      background: rgba(0, 0, 0, 0.15);
+      box-shadow: inset 0 3px 4px rgba(0, 0, 0, 0.6); }
   .header-profilo span img {
-    height: 25%; }
+    height: 25%;
+    position: relative; }
   .header-profilo span#profilo img {
     left: 10%;
-    position: relative;
     float: left; }
   .header-profilo span#opzioni img {
     right: 10%;
-    position: relative;
     float: right; }
 
 #launch-footer {
