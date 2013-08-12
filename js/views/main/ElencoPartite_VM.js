@@ -87,8 +87,9 @@ define([
         },
 
         moveViewMatches: function () {
-          var tempPerc = -(this.currentViewmatches*100);
-          $('#container-dei-container').css({'margin-left': tempPerc+'%'});
+          var tempPerc = (- this.currentViewmatches * 25) + '%';
+          // $('#container-dei-container').css({'margin-left': tempPerc});
+          $('#container-dei-container').css('-webkit-transform', 'translate3d(' + tempPerc + ', 0, 0)');
         },
 
         renderVero: function (eventName) {
@@ -116,15 +117,15 @@ define([
               new Match_VSL({collection:this.pubbliche, matchType: 'publicMatch'}).render().el);
           
 
-          var self = this;
-          Hammer($('#container-del-container-dei-container')).on("swipeleft", function(event) {
+          var self = this, $container = $('#container-dei-container');
+          Hammer($('#container-del-container-dei-container')).on("swipeleft", function (event) {
             event.preventDefault();
             if (self.currentViewmatches < 3) {
               self.currentViewmatches++;
               self.moveViewMatches();
             }
           });
-          Hammer($('#container-del-container-dei-container')).on("swiperight", function(event) {
+          Hammer($('#container-del-container-dei-container')).on("swiperight", function (event) {
             event.preventDefault();
             if (self.currentViewmatches > 0) {
               self.currentViewmatches--;

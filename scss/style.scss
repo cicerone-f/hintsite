@@ -711,7 +711,7 @@ ul#list {
   width: 400%;
   float: left;
   font-size: 0;
-  @include transition(all, 0.1s, linear);
+  @include transition(all, 0.2s, ease-out);
 }
 
 #container-del-container-dei-container {

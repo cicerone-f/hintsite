@@ -995,9 +995,9 @@ ul#list li a {
   width: 400%;
   float: left;
   font-size: 0;
-  -webkit-transition: all 0.1s linear;
-  -ms-transition: all 0.1s linear;
-  transition: all 0.1s linear;
+  -webkit-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 
 /* line 717, ../scss/style.scss */
