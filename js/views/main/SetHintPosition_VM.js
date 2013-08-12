@@ -88,7 +88,7 @@ define([
       renderMap: function () {
         var self = this;
 
-          var position = self.model.attributes.point;
+          // var position = self.model.attributes.point;
 
           /* creates the map object */
           self.map = L.map(self.$('#map')[0]);

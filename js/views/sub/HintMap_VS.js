@@ -93,7 +93,7 @@ define([
 
       renderMap: function () {
         var self = this;
-          var position = self.model.attributes.point;
+          // var position = self.model.attributes.point;
 
           /* creates the map object */
           if (!self.map){
@@ -103,7 +103,6 @@ define([
               maxZoom: 15
             }).addTo(self.map);
           }
-          var modelPoint = self.model.attributes.point;
           navigator.geolocation.getCurrentPosition(
             // success
             function (currPosition) {
@@ -205,12 +204,12 @@ define([
       },
 
       getHintDirection: function () {
-        var self = this;
+        // var self = this;
         navigator.geolocation.getCurrentPosition(
           // success
           function (currPosition) {            
-            var point = new Parse.GeoPoint(currPosition.coords.latitude, currPosition.coords.longitude);
-            var angle = Math.atan( ( currPosition.coords.longitude - self.model.attributes.point.longitude ) / ( currPosition.coords.latitude - self.model.attributes.point.latitude )) * (180 / Math.PI);
+            // var point = new Parse.GeoPoint(currPosition.coords.latitude, currPosition.coords.longitude);
+            // var angle = Math.atan( ( currPosition.coords.longitude - self.model.attributes.point.longitude ) / ( currPosition.coords.latitude - self.model.attributes.point.latitude )) * (180 / Math.PI);
             var distance = angle.toFixed(0);
             $('body').append( 
               new Arrow_VM({

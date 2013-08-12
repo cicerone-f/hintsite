@@ -1,14 +1,20 @@
 @import url(../res/fonts/fonts.css);
 
+/* line 8, ../scss/style.scss */
+
 * {
   /* make transparent link selection, adjust last value opacity 0 to 1.0 */
   -webkit-tap-highlight-color: transparent;
 }
 
+/* line 13, ../scss/style.scss */
+
 html {
   width: 100%;
   height: 100%;
 }
+
+/* line 15, ../scss/style.scss */
 
 body {
   -webkit-touch-callout: none;
@@ -25,6 +31,8 @@ body {
   padding: 0;
 }
 
+/* line 31, ../scss/style.scss */
+
 h1,
 h2,
 h3,
@@ -34,13 +42,19 @@ h6 {
   font-family: "RockwellStdRegular";
 }
 
+/* line 33, ../scss/style.scss */
+
 p {
   margin-top: 0;
 }
 
+/* line 35, ../scss/style.scss */
+
 img {
   max-width: 100%;
 }
+
+/* line 37, ../scss/style.scss */
 
 #no-network-connection {
   width: 100%;
@@ -50,15 +64,21 @@ img {
   padding-top: 20%;
 }
 
+/* line 45, ../scss/style.scss */
+
 #no-network-connection img {
   width: 25%;
 }
+
+/* line 46, ../scss/style.scss */
 
 #no-network-connection p {
   font-size: 3em;
   margin-top: 15px;
   color: #ccc;
 }
+
+/* line 53, ../scss/style.scss */
 
 ul#list {
   margin: 0;
@@ -68,6 +88,8 @@ ul#list {
   width: 100%;
 }
 
+/* line 58, ../scss/style.scss */
+
 ul#list li {
   background: white;
   float: left;
@@ -75,6 +97,8 @@ ul#list li {
   padding: 10px 0px 10px 10px;
   width: 100%;
 }
+
+/* line 65, ../scss/style.scss */
 
 ul#list li a {
   position: relative;
@@ -86,6 +110,8 @@ ul#list li a {
   overflow: hidden;
 }
 
+/* line 80, ../scss/style.scss */
+
 .partita-player ul {
   width: 400% !important;
   height: 100%;
@@ -96,6 +122,8 @@ ul#list li a {
   transition: margin-left 1s ease;
 }
 
+/* line 87, ../scss/style.scss */
+
 .partita-player ul li {
   overflow: hidden;
   border: none !important;
@@ -105,15 +133,21 @@ ul#list li a {
   background: none !important;
 }
 
+/* line 95, ../scss/style.scss */
+
 .partita-player ul li .half-width img {
   width: 100% !important;
   max-width: none !important;
 }
 
+/* line 100, ../scss/style.scss */
+
 .partita-player ul li h2 {
   color: #F47B33;
   margin-bottom: 0;
 }
+
+/* line 108, ../scss/style.scss */
 
 #header {
   width: 100%;
@@ -137,6 +171,8 @@ ul#list li a {
   /* IE6-9 */
 }
 
+/* line 123, ../scss/style.scss */
+
 #header span {
   display: table-cell;
   vertical-align: middle;
@@ -144,38 +180,54 @@ ul#list li a {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+/* line 132, ../scss/style.scss */
+
 .header-profilo span {
   width: 33.33333%;
 }
 
+/* line 136, ../scss/style.scss */
+
 .header-profilo span:not(#hintsite) {
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.6), inset 0 2px 2px rgba(255, 255, 255, 0.5);
 }
+
+/* line 140, ../scss/style.scss */
 
 .header-profilo span:not(#hintsite):active {
   background: rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 3px 4px rgba(0, 0, 0, 0.6);
 }
 
+/* line 146, ../scss/style.scss */
+
 .header-profilo span img {
   height: 25%;
   position: relative;
 }
+
+/* line 151, ../scss/style.scss */
 
 .header-profilo span#profilo img {
   left: 10%;
   float: left;
 }
 
+/* line 156, ../scss/style.scss */
+
 .header-profilo span#opzioni img {
   right: 10%;
   float: right;
 }
 
+/* line 163, ../scss/style.scss */
+
 #launch-footer {
   height: 10%;
   text-align: center;
 }
+
+/* line 169, ../scss/style.scss */
 
 #back {
   height: 100%;
@@ -186,10 +238,14 @@ ul#list li a {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.5), inset 0 2px 2px rgba(255, 255, 255, 0.5);
 }
 
+/* line 181, ../scss/style.scss */
+
 #back:active {
   background: rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 4px 5px rgba(0, 0, 0, 0.6);
 }
+
+/* line 188, ../scss/style.scss */
 
 #title {
   width: 70%;
@@ -200,6 +256,8 @@ ul#list li a {
   text-overflow: ellipsis;
 }
 
+/* line 198, ../scss/style.scss */
+
 #hintsite {
   text-align: center;
   font: 2em/2em 'RockwellStdRegular';
@@ -207,6 +265,8 @@ ul#list li a {
   overflow: auto;
   text-overflow: ellipsis;
 }
+
+/* line 206, ../scss/style.scss */
 
 #hint_description {
   width: 80%;
@@ -222,6 +282,8 @@ ul#list li a {
   border: 2px solid orange;
 }
 
+/* line 215, ../scss/style.scss */
+
 #nome-lista {
   margin-top: 0;
   margin-bottom: 0;
@@ -236,6 +298,8 @@ ul#list li a {
   text-align: left;
 }
 
+/* line 225, ../scss/style.scss */
+
 #nome-lista p {
   padding-top: 0.2em;
   padding-bottom: 0.2em;
@@ -243,16 +307,22 @@ ul#list li a {
   margin: 0;
 }
 
+/* line 233, ../scss/style.scss */
+
 #photomappa {
   width: 100%;
   height: 30%;
 }
+
+/* line 239, ../scss/style.scss */
 
 #map,
 #map_canvas {
   width: 100%;
   height: 100%;
 }
+
+/* line 242, ../scss/style.scss */
 
 .locate-me-icon {
   width: 30px;
@@ -261,9 +331,13 @@ ul#list li a {
   padding: 3px;
 }
 
+/* line 247, ../scss/style.scss */
+
 .locate-me-icon:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
+
+/* line 251, ../scss/style.scss */
 
 #photo {
   height: 100%;
@@ -273,9 +347,13 @@ ul#list li a {
   position: relative;
 }
 
+/* line 258, ../scss/style.scss */
+
 #photo img {
   float: left;
 }
+
+/* line 260, ../scss/style.scss */
 
 #photo .add_photo {
   width: 60%;
@@ -283,6 +361,8 @@ ul#list li a {
   top: 25%;
   left: 20%;
 }
+
+/* line 268, ../scss/style.scss */
 
 #mappa {
   position: relative;
@@ -294,6 +374,8 @@ ul#list li a {
   text-align: center;
 }
 
+/* line 277, ../scss/style.scss */
+
 #mappa img {
   position: absolute;
   top: 20%;
@@ -301,12 +383,16 @@ ul#list li a {
   width: 60%;
 }
 
+/* line 283, ../scss/style.scss */
+
 #mappa h2,
 #photo h2 {
   position: absolute;
   width: 100%;
   bottom: 0;
 }
+
+/* line 289, ../scss/style.scss */
 
 #ok {
   width: 100%;
@@ -318,6 +404,8 @@ ul#list li a {
   line-height: 4em;
 }
 
+/* line 299, ../scss/style.scss */
+
 #description {
   position: relative;
   float: left;
@@ -325,6 +413,8 @@ ul#list li a {
   width: 100%;
   text-align: center;
 }
+
+/* line 307, ../scss/style.scss */
 
 #setlaunchtime {
   height: 100%;
@@ -334,11 +424,15 @@ ul#list li a {
   text-align: center;
 }
 
+/* line 314, ../scss/style.scss */
+
 #setlaunchtime img {
   position: relative;
   top: 20%;
   height: 60%;
 }
+
+/* line 321, ../scss/style.scss */
 
 #launchtime {
   height: 100%;
@@ -348,6 +442,8 @@ ul#list li a {
   text-align: center;
 }
 
+/* line 328, ../scss/style.scss */
+
 #setthistime {
   height: 10%;
   float: left;
@@ -356,12 +452,16 @@ ul#list li a {
   text-align: center;
 }
 
+/* line 336, ../scss/style.scss */
+
 #addPlayers {
   height: 10%;
   background-color: #F47B33;
   color: white;
   text-align: center;
 }
+
+/* line 344, ../scss/style.scss */
 
 #launch {
   margin: 0;
@@ -374,6 +474,8 @@ ul#list li a {
   line-height: 3.2em;
 }
 
+/* line 355, ../scss/style.scss */
+
 #set-point-btn {
   height: 10%;
   float: left;
@@ -381,6 +483,8 @@ ul#list li a {
   background-color: orange;
   text-align: center;
 }
+
+/* line 363, ../scss/style.scss */
 
 #check-in-btn {
   width: 100px;
@@ -393,6 +497,8 @@ ul#list li a {
   border-radius: 1000px;
 }
 
+/* line 371, ../scss/style.scss */
+
 #inside-check-in-btn {
   margin: 2%;
   background-color: #F47B33;
@@ -403,12 +509,16 @@ ul#list li a {
   position: relative;
 }
 
+/* line 380, ../scss/style.scss */
+
 #inside-check-in-btn img {
   position: absolute;
   top: 25%;
   left: 30%;
   width: 40%;
 }
+
+/* line 386, ../scss/style.scss */
 
 #log-in {
   cursor: pointer;
@@ -418,6 +528,8 @@ ul#list li a {
   text-align: center;
 }
 
+/* line 394, ../scss/style.scss */
+
 #close-popup {
   cursor: pointer;
   background-color: green;
@@ -426,6 +538,8 @@ ul#list li a {
   text-align: center;
 }
 
+/* line 402, ../scss/style.scss */
+
 #log-in-with-facebook {
   cursor: pointer;
   background-color: blue;
@@ -433,6 +547,8 @@ ul#list li a {
   color: white;
   text-align: center;
 }
+
+/* line 410, ../scss/style.scss */
 
 #NewMatchButton {
   font-family: "GothamLight";
@@ -444,6 +560,8 @@ ul#list li a {
   padding: 0;
 }
 
+/* line 419, ../scss/style.scss */
+
 #NewMatchButton img {
   height: 60%;
   top: 20%;
@@ -452,10 +570,14 @@ ul#list li a {
   margin-right: 25px;
 }
 
+/* line 427, ../scss/style.scss */
+
 #NewMatchButton h1 {
   display: inline-block;
   color: #FAE8AC;
 }
+
+/* line 434, ../scss/style.scss */
 
 #user-to-add {
   font-family: "GothamLight";
@@ -463,6 +585,8 @@ ul#list li a {
   background-color: #ee7427;
   padding: 1.5em;
 }
+
+/* line 441, ../scss/style.scss */
 
 #container {
   -webkit-animation: appear 1s 1;
@@ -475,6 +599,8 @@ ul#list li a {
   position: relative;
   overflow-x: hidden;
 }
+
+/* line 451, ../scss/style.scss */
 
 .loading {
   width: 100%;
@@ -504,6 +630,8 @@ ul#list li a {
   /* IE6-9 fallback on horizontal gradient */
 }
 
+/* line 468, ../scss/style.scss */
+
 .meno {
   height: 70px;
   float: left;
@@ -511,6 +639,8 @@ ul#list li a {
   background-color: powderblue;
   text-align: center;
 }
+
+/* line 475, ../scss/style.scss */
 
 .piu {
   height: 70px;
@@ -520,6 +650,8 @@ ul#list li a {
   text-align: center;
 }
 
+/* line 482, ../scss/style.scss */
+
 .settedElement {
   height: 70px;
   float: left;
@@ -527,6 +659,8 @@ ul#list li a {
   background-color: yellow;
   text-align: center;
 }
+
+/* line 489, ../scss/style.scss */
 
 #day {
   height: 70px;
@@ -536,10 +670,14 @@ ul#list li a {
   text-align: center;
 }
 
+/* line 496, ../scss/style.scss */
+
 .setter {
   border-bottom: 1px solid #222222;
   height: 70px;
 }
+
+/* line 501, ../scss/style.scss */
 
 #selezione-giocatori-footer {
   width: 100%;
@@ -549,6 +687,8 @@ ul#list li a {
   left: 0;
   background: #F47B33;
 }
+
+/* line 507, ../scss/style.scss */
 
 #selezione-giocatori-footer span {
   width: 33%;
@@ -560,14 +700,20 @@ ul#list li a {
   text-align: center;
 }
 
+/* line 516, ../scss/style.scss */
+
 #selezione-giocatori-footer span img {
   height: 90%;
 }
+
+/* line 518, ../scss/style.scss */
 
 #selezione-giocatori-footer span:last-child {
   border-right: none;
   width: 31%;
 }
+
+/* line 526, ../scss/style.scss */
 
 #popup-container {
   width: 100%;
@@ -579,6 +725,8 @@ ul#list li a {
   z-index: 1000;
 }
 
+/* line 533, ../scss/style.scss */
+
 .yes-no {
   width: 50%;
   height: 10%;
@@ -586,28 +734,40 @@ ul#list li a {
   float: left;
 }
 
+/* line 539, ../scss/style.scss */
+
 .yes-no#yes {
   background-color: green;
 }
 
+/* line 540, ../scss/style.scss */
+
 .yes-no#no {
   background-color: red;
 }
+
+/* line 543, ../scss/style.scss */
 
 .errorContainer {
   text-align: center;
   color: #fff;
 }
 
+/* line 548, ../scss/style.scss */
+
 .userName {
   font-size: 110%;
   color: red;
 }
 
+/* line 553, ../scss/style.scss */
+
 .containerPulsantiMaster {
   float: left;
   width: 100%;
 }
+
+/* line 558, ../scss/style.scss */
 
 #listing-giocatori {
   height: 50px;
@@ -616,12 +776,16 @@ ul#list li a {
   background-color: red;
 }
 
+/* line 565, ../scss/style.scss */
+
 #hint-full {
   height: 50px;
   width: 50px;
   float: left;
   background-color: purple;
 }
+
+/* line 572, ../scss/style.scss */
 
 #go-to-wall {
   width: 40px;
@@ -634,6 +798,8 @@ ul#list li a {
   border-radius: 1000px;
 }
 
+/* line 580, ../scss/style.scss */
+
 #inside-go-to-wall {
   margin: 2%;
   background-color: #F47B33;
@@ -644,12 +810,16 @@ ul#list li a {
   position: relative;
 }
 
+/* line 588, ../scss/style.scss */
+
 #inside-go-to-wall img {
   position: absolute;
   top: 25%;
   left: 22%;
   width: 60%;
 }
+
+/* line 594, ../scss/style.scss */
 
 #go-to-players {
   width: 40px;
@@ -662,6 +832,8 @@ ul#list li a {
   border-radius: 1000px;
 }
 
+/* line 602, ../scss/style.scss */
+
 #inside-go-to-players {
   margin: 2%;
   background-color: #F47B33;
@@ -672,6 +844,8 @@ ul#list li a {
   position: relative;
 }
 
+/* line 609, ../scss/style.scss */
+
 #inside-go-to-players img {
   position: absolute;
   top: 20%;
@@ -679,15 +853,21 @@ ul#list li a {
   width: 60%;
 }
 
+/* line 615, ../scss/style.scss */
+
 #map-container {
   height: 90%;
 }
+
+/* line 619, ../scss/style.scss */
 
 .half-width {
   height: 100%;
   width: 50%;
   float: left;
 }
+
+/* line 625, ../scss/style.scss */
 
 #helpers {
   width: 50%;
@@ -698,12 +878,16 @@ ul#list li a {
   background: white;
 }
 
+/* line 631, ../scss/style.scss */
+
 #helpers span {
   width: 50%;
   height: 100%;
   text-align: center;
   float: left;
 }
+
+/* line 640, ../scss/style.scss */
 
 #generic-popup-container {
   width: 70%;
@@ -716,6 +900,8 @@ ul#list li a {
   border: 3px solid #000;
 }
 
+/* line 648, ../scss/style.scss */
+
 #arrow-popup-container {
   position: absolute;
   top: 40%;
@@ -724,6 +910,8 @@ ul#list li a {
   height: 60%;
   z-index: 1000;
 }
+
+/* line 655, ../scss/style.scss */
 
 #arrow {
   margin-top: 0;
@@ -740,6 +928,8 @@ ul#list li a {
   transition: all 3s ease;
 }
 
+/* line 667, ../scss/style.scss */
+
 #container-hint-in-partita {
   width: 100%;
   height: 30%;
@@ -754,6 +944,8 @@ ul#list li a {
   transition: all 1s ease;
 }
 
+/* line 678, ../scss/style.scss */
+
 #controller-slide-hint {
   width: 100%;
   height: 40px;
@@ -764,6 +956,8 @@ ul#list li a {
   text-align: center;
 }
 
+/* line 685, ../scss/style.scss */
+
 #controller-slide-hint img {
   top: 30%;
   position: relative;
@@ -771,9 +965,13 @@ ul#list li a {
   width: auto;
 }
 
+/* line 693, ../scss/style.scss */
+
 .padder {
   padding: 10px 20px;
 }
+
+/* line 697, ../scss/style.scss */
 
 .match-containers {
   width: 25%;
@@ -784,9 +982,13 @@ ul#list li a {
   overflow-y: scroll;
 }
 
+/* line 705, ../scss/style.scss */
+
 .match-containers li {
   padding: 15px 0 8px !important;
 }
+
+/* line 709, ../scss/style.scss */
 
 #container-dei-container {
   height: 100%;
@@ -798,6 +1000,8 @@ ul#list li a {
   transition: all 0.1s linear;
 }
 
+/* line 717, ../scss/style.scss */
+
 #container-del-container-dei-container {
   width: 100%;
   height: 90%;
@@ -805,10 +1009,14 @@ ul#list li a {
   overflow-y: hidden;
 }
 
+/* line 725, ../scss/style.scss */
+
 .match-row {
   width: 100%;
   float: left;
 }
+
+/* line 730, ../scss/style.scss */
 
 .match-icon {
   width: 15%;
@@ -819,11 +1027,15 @@ ul#list li a {
   vertical-align: middle;
 }
 
+/* line 738, ../scss/style.scss */
+
 .match-icon img {
   width: 35%;
   padding: 5px 0;
   vertical-align: middle;
 }
+
+/* line 745, ../scss/style.scss */
 
 .match-name {
   margin: 0;
@@ -838,6 +1050,8 @@ ul#list li a {
   vertical-align: sub;
 }
 
+/* line 758, ../scss/style.scss */
+
 .match-time {
   width: 17%;
   display: inline-block;
@@ -848,14 +1062,20 @@ ul#list li a {
   vertical-align: middle;
 }
 
+/* line 768, ../scss/style.scss */
+
 .even {
   background: #DBDCDE !important;
 }
+
+/* line 772, ../scss/style.scss */
 
 .formName {
   height: 10%;
   width: 99%;
 }
+
+/* line 777, ../scss/style.scss */
 
 #matchname {
   width: 100%;
@@ -867,15 +1087,21 @@ ul#list li a {
   font: 2em/2.4em 'RockwellStdBold';
 }
 
+/* line 786, ../scss/style.scss */
+
 .hint-edit-list {
   height: 60%;
 }
+
+/* line 789, ../scss/style.scss */
 
 .hint-edit-list li {
   height: 25%;
   padding: 0 !important;
   border-bottom: 1px solid #DBDCDE;
 }
+
+/* line 796, ../scss/style.scss */
 
 #addPlayers img {
   margin-right: 20px;
@@ -886,6 +1112,8 @@ ul#list li a {
   vertical-align: middle;
 }
 
+/* line 805, ../scss/style.scss */
+
 #addPlayers h2 {
   position: relative;
   top: 25%;
@@ -895,6 +1123,8 @@ ul#list li a {
   display: inline-block;
 }
 
+/* line 814, ../scss/style.scss */
+
 .incipit {
   display: inline-block;
   width: 65%;
@@ -902,16 +1132,22 @@ ul#list li a {
   margin-left: 5%;
 }
 
+/* line 820, ../scss/style.scss */
+
 .incipit h1,
 .incipit h2 {
   margin-bottom: 0;
 }
+
+/* line 822, ../scss/style.scss */
 
 .incipit p {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+/* line 829, ../scss/style.scss */
 
 .validate-geo {
   display: inline-block;
@@ -921,12 +1157,16 @@ ul#list li a {
   text-align: center;
 }
 
+/* line 837, ../scss/style.scss */
+
 .validate-geo img,
 .validate-desc img {
   position: relative;
   top: 35%;
   height: 30%;
 }
+
+/* line 844, ../scss/style.scss */
 
 .validate-desc {
   display: inline-block;
@@ -936,9 +1176,13 @@ ul#list li a {
   text-align: center;
 }
 
+/* line 852, ../scss/style.scss */
+
 .elementlistaGiocatori {
   position: relative;
 }
+
+/* line 855, ../scss/style.scss */
 
 .elementlistaGiocatori h2 {
   position: absolute;
@@ -950,9 +1194,13 @@ ul#list li a {
   z-index: 3;
 }
 
+/* line 863, ../scss/style.scss */
+
 .elementlistaGiocatori img {
   vertical-align: top;
 }
+
+/* line 865, ../scss/style.scss */
 
 .elementlistaGiocatori .remove-pms {
   position: absolute;
@@ -964,16 +1212,22 @@ ul#list li a {
   min-width: 25px;
 }
 
+/* line 872, ../scss/style.scss */
+
 .elementlistaGiocatori .remove-pms img {
   width: 100%;
   height: 100%;
 }
+
+/* line 876, ../scss/style.scss */
 
 .pmsElement {
   width: 50% !important;
   float: left;
   padding: 0 !important;
 }
+
+/* line 882, ../scss/style.scss */
 
 .blackGradient {
   z-index: 2;
@@ -996,15 +1250,21 @@ ul#list li a {
   /* IE6-9 */
 }
 
+/* line 895, ../scss/style.scss */
+
 .pmsListEdit {
   height: 80% !important;
   overflow-y: scroll;
 }
 
+/* line 900, ../scss/style.scss */
+
 #log-out {
   height: 10%;
   font-size: 2em;
 }
+
+/* line 905, ../scss/style.scss */
 
 #overlay-loading {
   display: none;
@@ -1015,6 +1275,8 @@ ul#list li a {
   height: 100%;
   z-index: 1010;
 }
+
+/* line 914, ../scss/style.scss */
 
 #img-load {
   position: absolute;
@@ -1028,40 +1290,48 @@ ul#list li a {
 }
 
 @-webkit-keyframes appear {
+  /* line 924, ../scss/style.scss */
   from {
     opacity: 0;
   }
 
+  /* line 925, ../scss/style.scss */
   to {
     opacity: 1;
   }
 }
 
 @keyframes appear {
+  /* line 924, ../scss/style.scss */
   from {
     opacity: 0;
   }
 
+  /* line 925, ../scss/style.scss */
   to {
     opacity: 1;
   }
 }
 
 @-webkit-keyframes spin {
+  /* line 929, ../scss/style.scss */
   0% {
     -webkit-transform: rotate(0deg);
   }
 
+  /* line 930, ../scss/style.scss */
   100% {
     -webkit-transform: rotate(360deg);
   }
 }
 
 @keyframes spin {
+  /* line 929, ../scss/style.scss */
   0% {
     -webkit-transform: rotate(0deg);
   }
 
+  /* line 930, ../scss/style.scss */
   100% {
     -webkit-transform: rotate(360deg);
   }
