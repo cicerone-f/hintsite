@@ -46,7 +46,7 @@ define([
           var timeFromNow = moment(this.model.updatedAt).fromNow();
           var match = this.match.toJSON();
           match.id = this.match.id;
-          if ($.trim(match.name) == "" ) {
+          if ($.trim(match.name) === '') {
             match.name = "(untitled)";
           }
           $(this.el).html(this.template({name: match.name, time: timeFromNow, icon: this.matchTypeIcon}));

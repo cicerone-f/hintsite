@@ -22,7 +22,7 @@ define([
         var self = this;
         query.find({
           success: function (results) {
-            if (self.length != 0){
+            if (self.length !== 0){
               self.reset();
             }
             self.add(results);
@@ -39,11 +39,12 @@ define([
       createFourHints: function (matchId) {
         for (var i = 1; i < 5; i++) {
           this.add(new Hint( { matchId:matchId , number:i } ));
-        };
+        }
+
         var self = this;
         this.model.saveAll(this.models,
           {
-            success: function (){
+            success: function () {
               self.trigger('NuovaPartita_VM_COLLECTIONCOMPLETED', this);
             },
             error: function(error){
@@ -52,10 +53,10 @@ define([
           }
         );
       },
-      isLaunchable : function (){
+      isLaunchable: function (){
         var launchable = true;
-        _.each(this.models, function (myHint){
-          if (!(myHint.attributes.point && ($.trim(myHint.attributes.description) != ""))){
+        _.each(this.models, function (myHint) {
+          if (!(myHint.attributes.point && ($.trim(myHint.attributes.description) !== ''))){
             launchable = false;
           }
         } );
@@ -63,7 +64,7 @@ define([
       },
       isInRange : function (){
         var rangeOk = true;
-        var self = this
+        var self = this;
         _.each(self.models, function (myHint1){
           _.each(self.models, function (myHint2){
             if (myHint1.attributes.point.kilometersTo(myHint2.attributes.point) > 5){

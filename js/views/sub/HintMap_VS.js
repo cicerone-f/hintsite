@@ -34,15 +34,6 @@ define([
     template
   ) {
 
-
-    var ks = {
-      VIEWFINDER_EXT_RADIUS: 50,
-      VIEWFINDER_INT_RADIUS: 4,
-      PIN_WIDTH: 60,
-      PIN_HEIGHT: 47
-    };
-
-
     var HintMap_VS = Parse.View.extend({
       tagName: 'div',
       id: "map-container",

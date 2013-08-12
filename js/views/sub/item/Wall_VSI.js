@@ -35,7 +35,7 @@ define([
         },
 
         writeTheWallMessage: function() {
-          if (this.model.attributes.messageType == 0) {
+          if (this.model.attributes.messageType === 0) {
             return " ha trovato l'hint N."+this.model.attributes.hintNumber;
           } else if (this.model.attributes.messageType == 1) {
             return " si e' aggiunto alla partita.";

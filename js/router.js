@@ -157,7 +157,7 @@ define([
       hintDetails: function (id) {
         var self = this;
         var query = new Parse.Query(Hint);
-        var hint = query.get(id, {
+        query.get(id, {
           success: function (result) {
             self.changePage(new HintFull_VM({
               model: result
@@ -173,7 +173,7 @@ define([
         
         var self = this;
         var query = new Parse.Query(Match);
-        var match = query.get(id, {
+        query.get(id, {
           success: function (result) {
             if(result.attributes.user.id == Parse.User.current().id)
             {     
@@ -196,7 +196,7 @@ define([
         
         var self = this;
         var query = new Parse.Query(Match);
-        var match = query.get(id, {
+        query.get(id, {
           success: function (result) {
             self.changePage(new PartitaMaster_VM({
               model: result
@@ -212,7 +212,7 @@ define([
         
         var self = this;
         var query = new Parse.Query(Match);
-        var match = query.get(id, {
+        query.get(id, {
           success: function (result) {
             self.changePage(new PartitaPlayer_VM({
               model: result,
@@ -288,16 +288,14 @@ define([
         if(this.currentView) {
           this.currentView.remove();
         }
-        if(param==0){
+        if(param === 0){
           Parse.history.navigate(this.mappaBack[view] , { trigger : true, replace : true });          
         }else{
           Parse.history.navigate(this.mappaBack[view] +'/'+ param , { trigger : true, replace : true });
         }
         return false;  
-      }, 
-
+      }
     });
 
     return AppRouter;
-
   });

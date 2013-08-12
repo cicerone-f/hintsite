@@ -36,7 +36,7 @@ define([
       },
 
       sendMessage: function () {
-        if ($.trim($("#textMessage").val()) != "") {
+        if ($.trim($("#textMessage").val()) !== '') {
           var wallMsg = new WallMessage();
           wallMsg.on('savedTextMsg', this.render, this);
           wallMsg.saveTextToP(wallMsg.messageTypes.TEXT_MESSAGE, this.options.matchId, $("#textMessage").val());

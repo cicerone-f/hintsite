@@ -39,7 +39,6 @@ define([
         },
         log: function () {
           $("#overlay-loading").fadeIn();
-          var self = this;
           var username = this.$("#username").val();
           var password = this.$("#password").val();
           console.log(username + " " + password);

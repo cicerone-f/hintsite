@@ -52,7 +52,6 @@ define([
 
         render: function () {
           $(this.el).empty();
-          var viewContent = '';
           var header = new HeaderProfilo_VS();
           $(this.el).html(
             header.render().el);
@@ -94,7 +93,6 @@ define([
 
         renderVero: function (eventName) {
           $(this.el).empty();
-          var viewContent = '';
           var header = new HeaderProfilo_VS();
           $(this.el).html(
             header.render().el)
@@ -119,16 +117,16 @@ define([
           
 
           var self = this;
-          var swiperight = Hammer($('#container-del-container-dei-container')).on("swipeleft", function(event) {
+          Hammer($('#container-del-container-dei-container')).on("swipeleft", function(event) {
             event.preventDefault();
-            if(self.currentViewmatches < 3) {
+            if (self.currentViewmatches < 3) {
               self.currentViewmatches++;
               self.moveViewMatches();
             }
           });
-          var swipeleft = Hammer($('#container-del-container-dei-container')).on("swiperight", function(event) {
+          Hammer($('#container-del-container-dei-container')).on("swiperight", function(event) {
             event.preventDefault();
-            if(self.currentViewmatches > 0) {
+            if (self.currentViewmatches > 0) {
               self.currentViewmatches--;
               self.moveViewMatches();
             }

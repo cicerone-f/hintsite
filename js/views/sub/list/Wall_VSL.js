@@ -41,7 +41,7 @@ define([
 
         render: function (eventName) {
           $(this.el).empty();
-          if (this.options.owner == 'HintFull_VM' && (this.collection.length == 0)) {
+          if (this.options.owner == 'HintFull_VM' && (this.collection.length === 0)) {
             
             var tempWallMsg = new WallMessage({messageType: 4});
             $(this.el).append(new Wall_VSI({

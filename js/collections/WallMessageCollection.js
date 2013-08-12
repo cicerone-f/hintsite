@@ -17,7 +17,7 @@ define([
         var self = this;
         // retrieve match-related WallMessages
         var query = new Parse.Query(WallMessage);
-        query.equalTo('matchId', matchId)
+        query.equalTo('matchId', matchId);
         query.descending("createdAt");
         // perform query
         query.find({

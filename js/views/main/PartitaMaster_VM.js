@@ -39,7 +39,7 @@ define([
         template: Handlebars.compile(template),
         initialize: function () {
           this.hint = new Hint();
-          this.hint.on("HintMap_VS_HINTFORPLACE",this.go,this)
+          this.hint.on("HintMap_VS_HINTFORPLACE",this.go,this);
           this.Pms = new Pms();
           var query = new Parse.Query(Pms);
           query.equalTo("matchId", this.model.id);

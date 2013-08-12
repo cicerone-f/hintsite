@@ -25,7 +25,7 @@ define([
             if(results.length > 0){
               self.add(results);
             }else{
-              self.trigger("noresultsinpmscollection")
+              self.trigger("noresultsinpmscollection");
             }
           },
           error: function (error) {
@@ -134,7 +134,7 @@ define([
         // of the current match (which has a userState of 0), then I map
         // an anonymous function 
         var userIds = pmss.filter(function (pms) {
-          return pms.attributes.userState != 0;
+          return pms.attributes.userState !== 0;
         }).map(function (pms) {
           return pms.attributes.userId;
         });

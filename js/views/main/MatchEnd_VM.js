@@ -35,7 +35,6 @@ define([
         },
 
         initialize: function () {
-          var matchId = this.options.matchId;
           this.model = new Pms();
           this.model.getMyPmsForMatch(this.options.matchId);
           this.model.on("gettedMyPmsForMatch",this.foo,this);
@@ -58,20 +57,21 @@ define([
         },
 
         render: function () {
-          if (this.model.attributes.ordine){
-            var messageFound = 'Match Completed! Well done! you are the '+this.model.attributes.ordine;
+          var messageFound;
+          if (this.model.attributes.ordine) {
+            messageFound = 'Match Completed! Well done! you are the ' + this.model.attributes.ordine;
             $(this.el).html(this.template({message: messageFound,next:'yes'}));
             this.addPointsForEndMatch();
           }
-          else{
-            var messageFound = 'Match Completed! Well done!';
+          else {
+            messageFound = 'Match Completed! Well done!';
             $(this.el).html(this.template({message: messageFound}));
           }
           return this;
         },
 
         backToHome: function () {
-          Parse.history.navigate("", {trigger: true});
+          Parse.history.navigate('', {trigger: true});
         },
 
         unrender: function() {

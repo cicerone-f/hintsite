@@ -1,0 +1,23 @@
+{
+  "name": "www",
+  "version": "0.0.0",
+  "description": "Hintsite is a mobile app... We're not allowed to say any more.",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cicer1/hintsite.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/cicer1/hintsite/issues"
+  },
+  "devDependencies": {
+    "grunt": "~0.4",
+    "grunt-autoprefixer": "~0",
+    "grunt-contrib-jshint": "~0.4"
+  } 
+}

@@ -72,8 +72,8 @@ define([
       },
 
       render: function (eventName) {
+        var swiperight, swipeleft;
         $(this.el).html(this.template());
-        var temp;
         _.each(this.collection.models, function (hint) {
           $(this.el).find('#list').append(new HintPreview_VSI({
             model: hint
@@ -81,17 +81,18 @@ define([
         }, this);
         this.countHints = $(this.el).find('#list li').length;
         this.moveHints();
-        var swiperight = Hammer($(this.el).find('#list')).off("swiperight");
-        var swipeleft = Hammer($(this.el).find('#list')).off("swipeleft");
+        swiperight = Hammer($(this.el).find('#list')).off("swiperight");
+        swipeleft = Hammer($(this.el).find('#list')).off("swipeleft");
+
         var self = this;
-        var swiperight = Hammer($(this.el).find('#list')).on("swipeleft", function(event) {
+        swiperight = Hammer($(this.el).find('#list')).on("swipeleft", function(event) {
           event.preventDefault();
           if(self.currentViewHint < self.countHints - 1) {
             self.currentViewHint++;
             self.moveHints();
           }
         });
-        var swipeleft = Hammer($(this.el).find('#list')).on("swiperight", function(event) {
+        swipeleft = Hammer($(this.el).find('#list')).on("swiperight", function(event) {
           event.preventDefault();
           if(self.currentViewHint > 0) {
             self.currentViewHint--;

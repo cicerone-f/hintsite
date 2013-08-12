@@ -98,7 +98,7 @@ define([
         },
 
         matchCanBeLaunched : function () {
-          if ( $.trim(this.model.attributes.name) != "" ){
+          if ($.trim(this.model.attributes.name) !== '') {
             if (this.pmsCollection.length >1 ){
               if (this.collection.isLaunchable()) {
                 if (this.collection.isInRange()){

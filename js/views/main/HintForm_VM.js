@@ -78,7 +78,7 @@ define([
           options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
           options.mimeType = "image/jpeg";
 
-          var params = new Object();
+          var params = {};
           params.image_name = image_name;
           options.params = params;
           options.chunkedMode = false;

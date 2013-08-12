@@ -48,7 +48,7 @@ define([
           point: geoPoint,
         }, {
           success: function (result) {
-            self.trigger('SetHintPosition_VM_POINTUPDATED')
+            self.trigger('SetHintPosition_VM_POINTUPDATED');
           },
           error: function (e) {
           }
@@ -61,7 +61,7 @@ define([
           description: description,
         }, {
           success: function (result) {
-            self.trigger('HintForm_VM_DESCUPDATED')
+            self.trigger('HintForm_VM_DESCUPDATED');
           },
           error: function (e) {
           }
@@ -74,7 +74,7 @@ define([
           image: fileURL,
         }, {
           success: function (result) {
-            self.trigger('HintForm_VM_IMAGEUPDATED')
+            self.trigger('HintForm_VM_IMAGEUPDATED');
           },
           error: function (e) {
           }

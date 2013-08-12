@@ -24,16 +24,16 @@ define([
         initialize: function () {
           var self = this;
           this.angle = this.options.angle;
-          setTimeout(function() {
+          setTimeout(function () {
             self.rotateArrow();
           }, 1000);
-          setTimeout(function() {
+          setTimeout(function () {
             self.unrender();
           }, 7000);
         },
 
         rotateArrow: function () {
-          var animAngle = 1080 + parseInt(this.angle);
+          var animAngle = 1080 + parseInt(this.angle, 10);
           var tempRotation = 'rotate('+ animAngle +'deg)';
           $('#arrow').css({'-webkit-transform': tempRotation});
         },

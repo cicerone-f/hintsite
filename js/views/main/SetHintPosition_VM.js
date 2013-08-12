@@ -175,7 +175,6 @@ define([
 
       createViewfinder: function () {
         /* creates the center of the viewfinder and adds it to the map */
-        var viewfinderCenterRadius;
         this.viewfinderCenter = L.circleMarker(this.map.getCenter(), {
           stroke: false,
           fill: true,
@@ -213,8 +212,8 @@ define([
         this.model.updateGeoPoint(parseCurrentCenter);
 
         this.setMarkerFromPoint(parseCurrentCenter);
-        setTimeout(function(){$("#overlay-loading").fadeIn()},500);
-        setTimeout(function(){$("#back").click()},2000);
+        setTimeout(function() { $("#overlay-loading").fadeIn(); }, 500);
+        setTimeout(function() { $("#back").click(); }, 2000);
       },
 
       setMarkerFromPoint: function (point) {

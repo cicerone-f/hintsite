@@ -192,7 +192,7 @@ define([
                   self.trigger('hintPlusplussed');
                 },
                 error: function (e) {
-                  console.log("non salva")
+                  console.log("non salva");
                 }
         }
 

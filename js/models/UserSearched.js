@@ -59,7 +59,7 @@ define([
           image: fileURL,
         }, {
           success: function (result) {
-            self.trigger('Profilo_VM_IMAGEUPDATED')
+            self.trigger('Profilo_VM_IMAGEUPDATED');
           },
           error: function (e) {
           }

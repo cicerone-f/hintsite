@@ -103,7 +103,6 @@ define([
         var min = launchDate.getMinutes();
         var giornomeseanno = numGiorno + "/" + numMese + "/" + numAnno + " " + weekday[launchDate.getDay()];
         var oramin = hour + ":" + min;
-        var seconds = launchDate.getSeconds();
         console.log(this.model.attributes.launchTime);
         $(this.el).html(
           header.render().el).append(this.template({day: giornomeseanno, time: oramin}));

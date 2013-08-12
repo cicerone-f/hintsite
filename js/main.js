@@ -1,5 +1,4 @@
 /*jslint undef: true*/
-/*global define*/
 
 require.config({
   paths: {

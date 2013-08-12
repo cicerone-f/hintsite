@@ -35,13 +35,14 @@ define([
         },
 
         render: function (eventName) {
+          var title;
           $(this.el).empty();
           if ((this.options.matchType == 'inCorsoMaster') || (this.options.matchType == 'sospeseMaster')  || (this.options.matchType == 'storicoMaster')) {
-            var title = {title: 'master'};
+            title = {title: 'master'};
           } else if ((this.options.matchType == 'inCorsoPlayer') || (this.options.matchType == 'sospesePlayer')  || (this.options.matchType == 'storicoPlayer')) {
-            var title = {title: 'player'};
+            title = {title: 'player'};
           } else {
-            var title = {title: 'pubbliche'};
+            title = {title: 'pubbliche'};
           }
           var counter = 0;
           $(this.el).html(this.template(title));
