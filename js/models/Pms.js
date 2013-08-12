@@ -47,6 +47,7 @@ define([
         query.equalTo("userId", userId);
         query.find({
           success: function (results) {
+            console.log('dwreljglirauehgilauerhgfiulareghlriuaehgiluahgil');
             if (results.length === 0) {
               self.save({
                 userId: userId,
@@ -194,9 +195,7 @@ define([
                 error: function (e) {
                   console.log("non salva");
                 }
-        }
-
-                );  
+              });  
           },
           error: function (e) {
             console.log("error");

@@ -285,10 +285,12 @@ define([
       },
 
       backToPrevious: function (view,param) {
+        console.log('backToPrevious() called')
         if(this.currentView) {
           this.currentView.remove();
         }
-        if(param === 0){
+        console.log('param: ' + param + ', type: ' + typeof param);
+        if(param == 0){
           Parse.history.navigate(this.mappaBack[view] , { trigger : true, replace : true });          
         }else{
           Parse.history.navigate(this.mappaBack[view] +'/'+ param , { trigger : true, replace : true });

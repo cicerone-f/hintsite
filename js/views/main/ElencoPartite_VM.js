@@ -117,7 +117,7 @@ define([
               new Match_VSL({collection:this.pubbliche, matchType: 'publicMatch'}).render().el);
           
 
-          var self = this, $container = $('#container-dei-container');
+          var self = this;
           Hammer($('#container-del-container-dei-container')).on("swipeleft", function (event) {
             event.preventDefault();
             if (self.currentViewmatches < 3) {
