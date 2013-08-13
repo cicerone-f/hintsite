@@ -269,7 +269,7 @@ define([
       },
 
       mappaBack: {
-        "SetLaunchTime_VM": "editMatch",     //  + /id
+        "SetLaunchTime_VM": "editMatch",      //  + /id
         "ElencoPartite_VM": "",
         "NuovaPartita_VM": "",
         "EditPartita_VM": "",        
@@ -277,23 +277,23 @@ define([
         "PartitaMaster_VM": "",
         "Opzioni_VM": "",      
         "Profilo_VM":"",  
-        "HintForm_VM": "editMatch",          //  + /id
-        "SetHintPosition_VM": "hintsedit",   //  + /id
-        "HintFull_VM": "matches",            //  + /id
+        "HintForm_VM": "editMatch",           //  + /id
+        "SetHintPosition_VM": "hintsedit",    //  + /id
+        "HintFull_VM": "matches",             //  + /id
         "SelezioneGiocatori_VM": "editMatch", //  + /id
-        "WallFull_VM": "matches"        //  + /id
+        "WallFull_VM": "matches"              //  + /id
       },
 
-      backToPrevious: function (view,param) {
-        console.log('backToPrevious() called')
-        if(this.currentView) {
+      backToPrevious: function (view, param) {
+        // NOTE: param is a string containing a number
+        if (this.currentView) {
           this.currentView.remove();
         }
-        console.log('param: ' + param + ', type: ' + typeof param);
-        if(param == 0){
-          Parse.history.navigate(this.mappaBack[view] , { trigger : true, replace : true });          
-        }else{
-          Parse.history.navigate(this.mappaBack[view] +'/'+ param , { trigger : true, replace : true });
+
+        if (parseInt(param, 10) === 0) {
+          Parse.history.navigate(this.mappaBack[view], {trigger: true, replace: true});          
+        } else {
+          Parse.history.navigate(this.mappaBack[view] + '/' + param, {trigger: true, replace: true});
         }
         return false;  
       }
