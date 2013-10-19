@@ -791,6 +791,8 @@ $smh: 30px;
   height: $smh;
   width: 100%;
   line-height: $smh;
+  z-index: 1000;
+  background-color: white;
 
   span {
     display: block;

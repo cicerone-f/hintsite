@@ -119,16 +119,18 @@ define([
           var self = this;
 
           var mmm = {
-            // first: self.names[0],
-            // last: self.names[self.names.length - 1],
+            first: self.names[0],
+            last: self.names[self.names.length - 1],
 
-            fill: function (first, last) {
+            fill: function () {
               this.before = self.names[self.names.length - 1];
               this.current = self.names[0];
               this.after = self.names[1];
 
-              if (first) this.before = '';
-              if (last) this.after = '';
+              // If the element before is the last element, don't display it since
+              // you can't go back. Same for the first.
+              if (this.before == this.last) this.before = '';
+              if (this.after == this.first) this.after = '';
             },
             shift: function (dir) {
               if (dir === 'l') {
@@ -141,7 +143,7 @@ define([
             }
           }
 
-          mmm.fill(true, false);
+          mmm.fill();
 
           function smistaLoSmistador() {
             $('#smistador > span').each(function (){
@@ -157,10 +159,7 @@ define([
             if (self.currentViewmatches < 3) {
               self.currentViewmatches++;
               self.moveViewMatches();
-              if (self.currentViewmatches == 3)
-                mmm.shift('l').fill(false, true);
-              else
-                mmm.shift('l').fill(false, false);
+              mmm.shift('l').fill();
 
               smistaLoSmistador();
             }
@@ -170,10 +169,7 @@ define([
             if (self.currentViewmatches > 0) {
               self.currentViewmatches--;
               self.moveViewMatches();
-              if (self.currentViewmatches == 0)
-                mmm.shift('r').fill(true, false);
-              else
-                mmm.shift('r').fill(false, false);
+              mmm.shift('r').fill();
 
               smistaLoSmistador();
             }
