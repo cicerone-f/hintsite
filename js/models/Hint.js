@@ -25,7 +25,7 @@ define([
             self.trigger('HintMap_VS_HINTFORPLACE');
           },
           error: function (error) {
-            console.log(error);
+            console.error(error);
           }
         });
       },

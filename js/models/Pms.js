@@ -69,7 +69,7 @@ define([
             }
           },
           error: function (error) {
-            console.log(error);
+            console.error(error);
           }
         });
       },
@@ -85,7 +85,7 @@ define([
             self.fetchFromP();
           },
           error: function (error) {
-            console.log(error);
+            console.error(error);
           }
         });
       },
@@ -138,7 +138,7 @@ define([
             );
           },
           error: function (error) {
-            console.log(error);
+            console.error(error);
           }
         });
 

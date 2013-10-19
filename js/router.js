@@ -87,7 +87,6 @@ define([
       },
 
       checkForNetwork: function () {
-        console.log('checkForNetwork() called');
         var state = navigator.connection.type;
         if (state == Connection.UNKNOWN || state == Connection.NONE)
           this.changePage(new NoNetworkConnectionView({}));
@@ -164,7 +163,7 @@ define([
             }));
           },
           error: function (error) {
-            console.log(error);
+            console.error(error);
           }
         });
       },
@@ -187,7 +186,7 @@ define([
             }     
           },
           error: function (error) {
-            console.log(error);
+            console.error(error);
           }
         });
       },
@@ -203,7 +202,7 @@ define([
             }));    
           },
           error: function (error) {
-            console.log(error);
+            console.error(error);
           }
         });
       },
@@ -220,7 +219,7 @@ define([
             }));     
           },
           error: function (error) {
-            console.log(error);
+            console.error(error);
           }
         });
       },
