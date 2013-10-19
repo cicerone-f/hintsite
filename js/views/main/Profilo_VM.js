@@ -92,12 +92,18 @@ define([
       renderVero: function (eventName) {
         var header = new Header_VS({owner: "Profilo_VM", backViewModelId:0 });
         var u = this.model.toJSON();
+        console.log(u);
         $(this.el)
           .html(header.render().el)
           .append(
             this.template( u )
           );
         $("#overlay-loading").fadeOut();
+        $(function() {
+          var div = $('#name-with-container');
+          var width = div.width();
+          div.css('height', width);
+        });
         return this;
       },
 
