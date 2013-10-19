@@ -119,13 +119,15 @@ define([
           var self = this;
 
           var mmm = {
-            first: self.names[0],
-            last: self.names[self.names.length - 1],
+            first: self.names[0],                     // In corso
+            last: self.names[self.names.length - 1],  // Pubbliche
+
+            names: self.names.map(function(el) { return el; }),
 
             fill: function () {
-              this.before = self.names[self.names.length - 1];
-              this.current = self.names[0];
-              this.after = self.names[1];
+              this.before = this.names[this.names.length - 1];
+              this.current = this.names[0];
+              this.after = this.names[1];
 
               // If the element before is the last element, don't display it since
               // you can't go back. Same for the first.
@@ -134,19 +136,18 @@ define([
             },
             shift: function (dir) {
               if (dir === 'l') {
-                self.names.push(self.names.shift());
+                this.names.push(this.names.shift());
               } else if (dir === 'r') {
-                self.names.unshift(self.names.pop());
+                this.names.unshift(this.names.pop());
               }
-
               return this;
             }
-          }
+          };
 
-          mmm.fill();
-
-          function smistaLoSmistador() {
-            $('#smistador > span').each(function (){
+          function smistaLoSmistador(dir) {
+            if (dir) mmm.shift(dir);
+            mmm.fill();
+            $('#smistador > span').each(function () {
               name = $(this).attr('id');
               $(this).text(mmm[name]);
             });
@@ -159,9 +160,8 @@ define([
             if (self.currentViewmatches < 3) {
               self.currentViewmatches++;
               self.moveViewMatches();
-              mmm.shift('l').fill();
 
-              smistaLoSmistador();
+              smistaLoSmistador('l');
             }
           });
           Hammer($('#container-del-container-dei-container')).on("swiperight", function (event) {
@@ -169,10 +169,10 @@ define([
             if (self.currentViewmatches > 0) {
               self.currentViewmatches--;
               self.moveViewMatches();
-              mmm.shift('r').fill();
 
-              smistaLoSmistador();
+              smistaLoSmistador('r');
             }
+
           });
           return this;
         }

@@ -400,10 +400,15 @@ ul#list {
 
 #close-popup {
   cursor: pointer;
-  background-color: green;
+  background-color: #292929;
   padding: 1.5em;
   color: $white;
   text-align: center;
+  font-size: 1.5em;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 #sign-up {
@@ -459,7 +464,26 @@ ul#list {
   font-family: $body-font-family;
   text-align: center;
   background-color: #ee7427;
-  padding: 1.5em;
+  color: white;
+  font-size: 3em;
+
+  span {
+    display: block;
+    float: left;
+    width: 75%;
+    background-color: orange;
+    height: 120px;
+    line-height: 120px;
+
+    &:active {
+      background-color: #a64300;
+    }
+  }
+  img {
+    width: 25%;
+    display: block;
+    float: left;
+  }
 }
 
 #container {
@@ -703,6 +727,7 @@ $hhh: 90px;
 }
 
 
+$br: 10px;
 #generic-popup-container {
   width: 70%;
   height: 40%;
@@ -710,7 +735,6 @@ $hhh: 90px;
   background: #fff;
   z-index: 1000;
 
-  $br: 10px;
   border-radius: $br;
   border: 2px solid #999;
 
@@ -720,9 +744,30 @@ $hhh: 90px;
     padding: 20px;
     color: #555;
   }
+}
 
+#close {
+  height: 20%;
+  background-color: #F47B33;
+  color: white;
+  text-align: center;
+  font-size: 1.5em;
+  padding-top: 20px;
+
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%;
+
+  border-radius: 0 0 $br $br;
+
+  &:active {
+    background-color: darken(#F47B33, 10);
+  }
+}
+
+.errorContainer {
   #close {
-    height: 20%;
+    height: 8%;
     background-color: #F47B33;
     color: white;
     text-align: center;
@@ -1163,4 +1208,9 @@ z-index: 1010;
   height:30%;
   margin-top:10%;
   -webkit-transition: height 0.7s;
+}
+
+#nick {
+  width: 100%;
+  height: 60px;
 }
