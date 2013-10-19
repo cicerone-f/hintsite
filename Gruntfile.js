@@ -75,7 +75,6 @@ module.exports = function (grunt) {
     sass: {
       compile: {
         options: {
-          sourcemap: true,
           lineNumbers: true,
         },
         files: {
