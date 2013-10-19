@@ -1076,13 +1076,44 @@ ul#list li a {
   overflow-y: scroll;
 }
 
-/* line 785, ../scss/style.scss */
+/* line 786, ../scss/style.scss */
 
 .match-containers li {
   padding: 15px 0 8px !important;
 }
 
-/* line 789, ../scss/style.scss */
+/* line 790, ../scss/style.scss */
+
+#smistador {
+  height: 30px;
+  width: 100%;
+  line-height: 30px;
+}
+
+/* line 795, ../scss/style.scss */
+
+#smistador span {
+  display: block;
+  float: left;
+  text-align: center;
+  padding: 8px 0;
+}
+
+/* line 801, ../scss/style.scss */
+
+#smistador span.side {
+  width: 30%;
+  font-size: 1.3em;
+}
+
+/* line 805, ../scss/style.scss */
+
+#smistador span#current {
+  width: 40%;
+  font-size: 2em;
+}
+
+/* line 811, ../scss/style.scss */
 
 #container-dei-container {
   height: 100%;
@@ -1094,7 +1125,7 @@ ul#list li a {
   transition: all 0.2s ease-out;
 }
 
-/* line 797, ../scss/style.scss */
+/* line 819, ../scss/style.scss */
 
 #container-del-container-dei-container {
   width: 100%;
@@ -1103,14 +1134,14 @@ ul#list li a {
   overflow-y: hidden;
 }
 
-/* line 805, ../scss/style.scss */
+/* line 827, ../scss/style.scss */
 
 .match-row {
   width: 100%;
   float: left;
 }
 
-/* line 810, ../scss/style.scss */
+/* line 832, ../scss/style.scss */
 
 .match-icon {
   width: 15%;
@@ -1121,7 +1152,7 @@ ul#list li a {
   vertical-align: middle;
 }
 
-/* line 818, ../scss/style.scss */
+/* line 840, ../scss/style.scss */
 
 .match-icon img {
   width: 35%;
@@ -1129,7 +1160,7 @@ ul#list li a {
   vertical-align: middle;
 }
 
-/* line 825, ../scss/style.scss */
+/* line 847, ../scss/style.scss */
 
 .match-name {
   margin: 0;
@@ -1144,7 +1175,7 @@ ul#list li a {
   vertical-align: sub;
 }
 
-/* line 838, ../scss/style.scss */
+/* line 860, ../scss/style.scss */
 
 .match-time {
   width: 17%;
@@ -1156,32 +1187,32 @@ ul#list li a {
   vertical-align: middle;
 }
 
-/* line 848, ../scss/style.scss */
+/* line 870, ../scss/style.scss */
 
 .even {
   background: #DBDCDE !important;
 }
 
-/* line 850, ../scss/style.scss */
+/* line 872, ../scss/style.scss */
 
 .even:active {
   background: #a6a8ad !important;
 }
 
-/* line 853, ../scss/style.scss */
+/* line 875, ../scss/style.scss */
 
 .odd:active {
   background: rgba(0, 0, 0, 0.3) !important;
 }
 
-/* line 857, ../scss/style.scss */
+/* line 879, ../scss/style.scss */
 
 .formName {
   height: 10%;
   width: 99%;
 }
 
-/* line 862, ../scss/style.scss */
+/* line 884, ../scss/style.scss */
 
 #matchname {
   width: 100%;
@@ -1194,13 +1225,13 @@ ul#list li a {
   font: 2em/2.4em 'RockwellStdBold';
 }
 
-/* line 872, ../scss/style.scss */
+/* line 894, ../scss/style.scss */
 
 .hint-edit-list {
   height: 60%;
 }
 
-/* line 875, ../scss/style.scss */
+/* line 897, ../scss/style.scss */
 
 .hint-edit-list li {
   height: 25%;
@@ -1208,7 +1239,7 @@ ul#list li a {
   border-bottom: 1px solid #DBDCDE;
 }
 
-/* line 882, ../scss/style.scss */
+/* line 904, ../scss/style.scss */
 
 #addPlayers img {
   margin-right: 20px;
@@ -1219,7 +1250,7 @@ ul#list li a {
   vertical-align: middle;
 }
 
-/* line 891, ../scss/style.scss */
+/* line 913, ../scss/style.scss */
 
 #addPlayers h2 {
   position: relative;
@@ -1230,7 +1261,7 @@ ul#list li a {
   display: inline-block;
 }
 
-/* line 900, ../scss/style.scss */
+/* line 922, ../scss/style.scss */
 
 .incipit {
   display: inline-block;
@@ -1239,14 +1270,14 @@ ul#list li a {
   margin-left: 5%;
 }
 
-/* line 906, ../scss/style.scss */
+/* line 928, ../scss/style.scss */
 
 .incipit h1,
 .incipit h2 {
   margin-bottom: 0;
 }
 
-/* line 908, ../scss/style.scss */
+/* line 930, ../scss/style.scss */
 
 .incipit p {
   overflow: hidden;
@@ -1254,7 +1285,7 @@ ul#list li a {
   text-overflow: ellipsis;
 }
 
-/* line 915, ../scss/style.scss */
+/* line 937, ../scss/style.scss */
 
 .validate-geo {
   display: inline-block;
@@ -1264,7 +1295,7 @@ ul#list li a {
   text-align: center;
 }
 
-/* line 923, ../scss/style.scss */
+/* line 945, ../scss/style.scss */
 
 .validate-geo img,
 .validate-desc img {
@@ -1273,7 +1304,7 @@ ul#list li a {
   height: 30%;
 }
 
-/* line 930, ../scss/style.scss */
+/* line 952, ../scss/style.scss */
 
 .validate-desc {
   display: inline-block;
@@ -1283,13 +1314,13 @@ ul#list li a {
   text-align: center;
 }
 
-/* line 938, ../scss/style.scss */
+/* line 960, ../scss/style.scss */
 
 .elementlistaGiocatori {
   position: relative;
 }
 
-/* line 941, ../scss/style.scss */
+/* line 963, ../scss/style.scss */
 
 .elementlistaGiocatori h2 {
   position: absolute;
@@ -1301,13 +1332,13 @@ ul#list li a {
   z-index: 3;
 }
 
-/* line 949, ../scss/style.scss */
+/* line 971, ../scss/style.scss */
 
 .elementlistaGiocatori img {
   vertical-align: top;
 }
 
-/* line 951, ../scss/style.scss */
+/* line 973, ../scss/style.scss */
 
 .elementlistaGiocatori .remove-pms {
   position: absolute;
@@ -1319,14 +1350,14 @@ ul#list li a {
   min-width: 25px;
 }
 
-/* line 958, ../scss/style.scss */
+/* line 980, ../scss/style.scss */
 
 .elementlistaGiocatori .remove-pms img {
   width: 100%;
   height: 100%;
 }
 
-/* line 962, ../scss/style.scss */
+/* line 984, ../scss/style.scss */
 
 .pmsElement {
   width: 50% !important;
@@ -1334,7 +1365,7 @@ ul#list li a {
   padding: 0 !important;
 }
 
-/* line 968, ../scss/style.scss */
+/* line 990, ../scss/style.scss */
 
 .blackGradient {
   z-index: 2;
@@ -1357,14 +1388,14 @@ ul#list li a {
   /* IE6-9 */
 }
 
-/* line 981, ../scss/style.scss */
+/* line 1003, ../scss/style.scss */
 
 .pmsListEdit {
   height: 80% !important;
   overflow-y: scroll;
 }
 
-/* line 986, ../scss/style.scss */
+/* line 1008, ../scss/style.scss */
 
 #log-out {
   height: 3em;
@@ -1383,7 +1414,7 @@ ul#list li a {
   /* W3C */
 }
 
-/* line 1001, ../scss/style.scss */
+/* line 1023, ../scss/style.scss */
 
 #log-out:active {
   box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.5);
@@ -1395,7 +1426,7 @@ ul#list li a {
   /* W3C */
 }
 
-/* line 1008, ../scss/style.scss */
+/* line 1030, ../scss/style.scss */
 
 #overlay-loading {
   display: none;
@@ -1407,7 +1438,7 @@ ul#list li a {
   z-index: 1010;
 }
 
-/* line 1017, ../scss/style.scss */
+/* line 1039, ../scss/style.scss */
 
 #img-load {
   position: absolute;
@@ -1420,7 +1451,7 @@ ul#list li a {
   -webkit-animation: spin 0.7s infinite;
 }
 
-/* line 1027, ../scss/style.scss */
+/* line 1049, ../scss/style.scss */
 
 #wall-form {
   position: absolute;
@@ -1430,7 +1461,7 @@ ul#list li a {
   height: 40px;
 }
 
-/* line 1037, ../scss/style.scss */
+/* line 1059, ../scss/style.scss */
 
 #wall-form #textMessage {
   width: 76%;
@@ -1440,7 +1471,7 @@ ul#list li a {
   font-size: 1.4em;
 }
 
-/* line 1044, ../scss/style.scss */
+/* line 1066, ../scss/style.scss */
 
 #wall-form span#inviaMessage {
   width: 24%;
@@ -1455,55 +1486,55 @@ ul#list li a {
   color: white;
 }
 
-/* line 1056, ../scss/style.scss */
+/* line 1078, ../scss/style.scss */
 
 #wall-form span#inviaMessage:active {
   background-color: #e85e0c;
 }
 
 @-webkit-keyframes appear {
-  /* line 1063, ../scss/style.scss */
+  /* line 1085, ../scss/style.scss */
   from {
     opacity: 0;
   }
 
-  /* line 1064, ../scss/style.scss */
+  /* line 1086, ../scss/style.scss */
   to {
     opacity: 1;
   }
 }
 
 @keyframes appear {
-  /* line 1063, ../scss/style.scss */
+  /* line 1085, ../scss/style.scss */
   from {
     opacity: 0;
   }
 
-  /* line 1064, ../scss/style.scss */
+  /* line 1086, ../scss/style.scss */
   to {
     opacity: 1;
   }
 }
 
 @-webkit-keyframes spin {
-  /* line 1068, ../scss/style.scss */
+  /* line 1090, ../scss/style.scss */
   0% {
     -webkit-transform: rotate(0deg);
   }
 
-  /* line 1069, ../scss/style.scss */
+  /* line 1091, ../scss/style.scss */
   100% {
     -webkit-transform: rotate(360deg);
   }
 }
 
 @keyframes spin {
-  /* line 1068, ../scss/style.scss */
+  /* line 1090, ../scss/style.scss */
   0% {
     -webkit-transform: rotate(0deg);
   }
 
-  /* line 1069, ../scss/style.scss */
+  /* line 1091, ../scss/style.scss */
   100% {
     -webkit-transform: rotate(360deg);
   }

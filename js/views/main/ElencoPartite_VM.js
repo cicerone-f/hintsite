@@ -39,6 +39,8 @@ define([
 
         template: Handlebars.compile(template),
 
+        names: ["In corso", "Sospese", "Storico", "Pubbliche"],
+
         initialize: function () {
           this.loading = new LoadingView();
           this.loading.render();      
@@ -59,7 +61,6 @@ define([
         },
 
         smistaCollection: function () {
-          // console.log(this.collection);
           this.inCorsoMaster = new PmsCollection();
           this.inCorsoPlayer = new PmsCollection();
           this.sospeseMaster = new PmsCollection();
@@ -88,7 +89,6 @@ define([
 
         moveViewMatches: function () {
           var tempPerc = (- this.currentViewmatches * 25) + '%';
-          // $('#container-dei-container').css({'margin-left': tempPerc});
           $('#container-dei-container').css('-webkit-transform', 'translate3d(' + tempPerc + ', 0, 0)');
         },
 
@@ -115,14 +115,54 @@ define([
           );
           $(this.el).find('#container-pubblico-match').html(
               new Match_VSL({collection:this.pubbliche, matchType: 'publicMatch'}).render().el);
-          
 
           var self = this;
+
+          var mmm = {
+            // first: self.names[0],
+            // last: self.names[self.names.length - 1],
+
+            fill: function (first, last) {
+              this.before = self.names[self.names.length - 1];
+              this.current = self.names[0];
+              this.after = self.names[1];
+
+              if (first) this.before = '';
+              if (last) this.after = '';
+            },
+            shift: function (dir) {
+              if (dir === 'l') {
+                self.names.push(self.names.shift());
+              } else if (dir === 'r') {
+                self.names.unshift(self.names.pop());
+              }
+
+              return this;
+            }
+          }
+
+          mmm.fill(true, false);
+
+          function smistaLoSmistador() {
+            $('#smistador > span').each(function (){
+              name = $(this).attr('id');
+              $(this).text(mmm[name]);
+            });
+          }
+
+          smistaLoSmistador();
+
           Hammer($('#container-del-container-dei-container')).on("swipeleft", function (event) {
             event.preventDefault();
             if (self.currentViewmatches < 3) {
               self.currentViewmatches++;
               self.moveViewMatches();
+              if (self.currentViewmatches == 3)
+                mmm.shift('l').fill(false, true);
+              else
+                mmm.shift('l').fill(false, false);
+
+              smistaLoSmistador();
             }
           });
           Hammer($('#container-del-container-dei-container')).on("swiperight", function (event) {
@@ -130,6 +170,12 @@ define([
             if (self.currentViewmatches > 0) {
               self.currentViewmatches--;
               self.moveViewMatches();
+              if (self.currentViewmatches == 0)
+                mmm.shift('r').fill(true, false);
+              else
+                mmm.shift('r').fill(false, false);
+
+              smistaLoSmistador();
             }
           });
           return this;
@@ -139,6 +185,3 @@ define([
     return ElencoPartite_VM;
 
   });
-
-
-//append(new Match_VSL().render().el)

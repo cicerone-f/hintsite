@@ -781,10 +781,32 @@ $hhh: 90px;
   font-size: 12px;
   height: 100%;
   overflow-y: scroll;
+  // margin-top: 25px;
 
   li { padding: 15px 0 8px !important }
 }
 
+$smh: 30px;
+#smistador {
+  height: $smh;
+  width: 100%;
+  line-height: $smh;
+
+  span {
+    display: block;
+    float: left;
+    text-align: center;
+    padding: 8px 0;
+  }
+  span.side {
+    width: 30%;
+    font-size: 1.3em;
+  }
+  span#current {
+    width: 40%;
+    font-size: 2em;
+  }
+}
 
 #container-dei-container {
   height: 100%;
