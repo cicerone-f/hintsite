@@ -67,7 +67,7 @@ define([
             },
             error: function (error){
               $("#overlay-loading").fadeOut();
-              console.log(error);
+              console.error(error);
             }
           });
 
@@ -91,7 +91,7 @@ define([
               Parse.history.navigate('back/'+self.options.owner+"/"+self.options.backViewModelId, { trigger : true, replace : true });
             },
             error: function (error){
-              console.log(error);
+              console.error(error);
               $("#overlay-loading").fadeOut();
             }
           });

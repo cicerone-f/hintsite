@@ -5,16 +5,18 @@
 * {
   /* make transparent link selection, adjust last value opacity 0 to 1.0 */
   -webkit-tap-highlight-color: transparent;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-/* line 13, ../scss/style.scss */
+/* line 14, ../scss/style.scss */
 
 html {
   width: 100%;
   height: 100%;
 }
 
-/* line 15, ../scss/style.scss */
+/* line 16, ../scss/style.scss */
 
 body {
   -webkit-touch-callout: none;
@@ -31,7 +33,7 @@ body {
   padding: 0;
 }
 
-/* line 31, ../scss/style.scss */
+/* line 32, ../scss/style.scss */
 
 h1,
 h2,
@@ -42,19 +44,19 @@ h6 {
   font-family: "RockwellStdRegular";
 }
 
-/* line 33, ../scss/style.scss */
+/* line 34, ../scss/style.scss */
 
 p {
   margin-top: 0;
 }
 
-/* line 35, ../scss/style.scss */
+/* line 36, ../scss/style.scss */
 
 img {
   max-width: 100%;
 }
 
-/* line 37, ../scss/style.scss */
+/* line 38, ../scss/style.scss */
 
 #no-network-connection {
   width: 100%;
@@ -64,13 +66,13 @@ img {
   padding-top: 20%;
 }
 
-/* line 45, ../scss/style.scss */
+/* line 46, ../scss/style.scss */
 
 #no-network-connection img {
   width: 25%;
 }
 
-/* line 46, ../scss/style.scss */
+/* line 47, ../scss/style.scss */
 
 #no-network-connection p {
   font-size: 3em;
@@ -78,7 +80,7 @@ img {
   color: #ccc;
 }
 
-/* line 53, ../scss/style.scss */
+/* line 54, ../scss/style.scss */
 
 ul#list {
   margin: 0;
@@ -88,7 +90,7 @@ ul#list {
   width: 100%;
 }
 
-/* line 58, ../scss/style.scss */
+/* line 59, ../scss/style.scss */
 
 ul#list li {
   background: white;
@@ -98,7 +100,7 @@ ul#list li {
   width: 100%;
 }
 
-/* line 65, ../scss/style.scss */
+/* line 66, ../scss/style.scss */
 
 ul#list li a {
   position: relative;
@@ -110,7 +112,7 @@ ul#list li a {
   overflow: hidden;
 }
 
-/* line 80, ../scss/style.scss */
+/* line 81, ../scss/style.scss */
 
 .partita-player ul {
   width: 400% !important;
@@ -122,7 +124,7 @@ ul#list li a {
   transition: margin-left 1s ease;
 }
 
-/* line 87, ../scss/style.scss */
+/* line 88, ../scss/style.scss */
 
 .partita-player ul li {
   overflow: hidden;
@@ -133,21 +135,21 @@ ul#list li a {
   background: none !important;
 }
 
-/* line 95, ../scss/style.scss */
+/* line 96, ../scss/style.scss */
 
 .partita-player ul li .half-width img {
   width: 100% !important;
   max-width: none !important;
 }
 
-/* line 100, ../scss/style.scss */
+/* line 101, ../scss/style.scss */
 
 .partita-player ul li h2 {
   color: #F47B33;
   margin-bottom: 0;
 }
 
-/* line 109, ../scss/style.scss */
+/* line 110, ../scss/style.scss */
 
 #header {
   width: 100%;
@@ -171,7 +173,7 @@ ul#list li a {
   /* IE6-9 */
 }
 
-/* line 124, ../scss/style.scss */
+/* line 125, ../scss/style.scss */
 
 #header span {
   display: table-cell;
@@ -180,54 +182,54 @@ ul#list li a {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-/* line 133, ../scss/style.scss */
+/* line 134, ../scss/style.scss */
 
 .header-profilo span {
   width: 33.33333%;
 }
 
-/* line 137, ../scss/style.scss */
+/* line 138, ../scss/style.scss */
 
 .header-profilo span:not(#hintsite) {
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.6), inset 0 2px 2px rgba(255, 255, 255, 0.5);
 }
 
-/* line 141, ../scss/style.scss */
+/* line 142, ../scss/style.scss */
 
 .header-profilo span:not(#hintsite):active {
   background: rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 3px 4px rgba(0, 0, 0, 0.6);
 }
 
-/* line 147, ../scss/style.scss */
+/* line 148, ../scss/style.scss */
 
 .header-profilo span img {
   height: 25%;
   position: relative;
 }
 
-/* line 152, ../scss/style.scss */
+/* line 153, ../scss/style.scss */
 
 .header-profilo span#profilo img {
   left: 10%;
   float: left;
 }
 
-/* line 157, ../scss/style.scss */
+/* line 158, ../scss/style.scss */
 
 .header-profilo span#opzioni img {
   right: 10%;
   float: right;
 }
 
-/* line 164, ../scss/style.scss */
+/* line 165, ../scss/style.scss */
 
 #launch-footer {
   height: 10%;
   text-align: center;
 }
 
-/* line 170, ../scss/style.scss */
+/* line 171, ../scss/style.scss */
 
 #back {
   height: 100%;
@@ -238,14 +240,14 @@ ul#list li a {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.5), inset 0 2px 2px rgba(255, 255, 255, 0.5);
 }
 
-/* line 182, ../scss/style.scss */
+/* line 183, ../scss/style.scss */
 
 #back:active {
   background: rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 4px 5px rgba(0, 0, 0, 0.6);
 }
 
-/* line 189, ../scss/style.scss */
+/* line 190, ../scss/style.scss */
 
 #title {
   width: 70%;
@@ -256,7 +258,7 @@ ul#list li a {
   text-overflow: ellipsis;
 }
 
-/* line 199, ../scss/style.scss */
+/* line 200, ../scss/style.scss */
 
 #hintsite {
   text-align: center;
@@ -266,7 +268,7 @@ ul#list li a {
   text-overflow: ellipsis;
 }
 
-/* line 207, ../scss/style.scss */
+/* line 208, ../scss/style.scss */
 
 #hint_description {
   width: 80%;
@@ -282,7 +284,7 @@ ul#list li a {
   border: 2px solid orange;
 }
 
-/* line 216, ../scss/style.scss */
+/* line 217, ../scss/style.scss */
 
 #nome-lista {
   margin-top: 0;
@@ -298,7 +300,7 @@ ul#list li a {
   text-align: left;
 }
 
-/* line 226, ../scss/style.scss */
+/* line 227, ../scss/style.scss */
 
 #nome-lista p {
   padding-top: 0.2em;
@@ -307,14 +309,14 @@ ul#list li a {
   margin: 0;
 }
 
-/* line 234, ../scss/style.scss */
+/* line 235, ../scss/style.scss */
 
 #photomappa {
   width: 100%;
   height: 30%;
 }
 
-/* line 240, ../scss/style.scss */
+/* line 241, ../scss/style.scss */
 
 #map,
 #map_canvas {
@@ -322,7 +324,7 @@ ul#list li a {
   height: 100%;
 }
 
-/* line 243, ../scss/style.scss */
+/* line 244, ../scss/style.scss */
 
 .locate-me-icon {
   width: 30px;
@@ -331,13 +333,13 @@ ul#list li a {
   padding: 3px;
 }
 
-/* line 248, ../scss/style.scss */
+/* line 249, ../scss/style.scss */
 
 .locate-me-icon:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 252, ../scss/style.scss */
+/* line 253, ../scss/style.scss */
 
 #photo {
   height: 100%;
@@ -347,13 +349,13 @@ ul#list li a {
   position: relative;
 }
 
-/* line 259, ../scss/style.scss */
+/* line 260, ../scss/style.scss */
 
 #photo img {
   float: left;
 }
 
-/* line 261, ../scss/style.scss */
+/* line 262, ../scss/style.scss */
 
 #photo .add_photo {
   width: 60%;
@@ -362,7 +364,7 @@ ul#list li a {
   left: 20%;
 }
 
-/* line 269, ../scss/style.scss */
+/* line 270, ../scss/style.scss */
 
 #mappa {
   position: relative;
@@ -374,7 +376,7 @@ ul#list li a {
   text-align: center;
 }
 
-/* line 278, ../scss/style.scss */
+/* line 279, ../scss/style.scss */
 
 #mappa img {
   position: absolute;
@@ -383,7 +385,7 @@ ul#list li a {
   width: 60%;
 }
 
-/* line 284, ../scss/style.scss */
+/* line 285, ../scss/style.scss */
 
 #mappa h2,
 #photo h2 {
@@ -392,7 +394,7 @@ ul#list li a {
   bottom: 0;
 }
 
-/* line 290, ../scss/style.scss */
+/* line 291, ../scss/style.scss */
 
 #ok {
   width: 100%;
@@ -404,7 +406,7 @@ ul#list li a {
   line-height: 4em;
 }
 
-/* line 300, ../scss/style.scss */
+/* line 301, ../scss/style.scss */
 
 #description {
   position: relative;
@@ -414,7 +416,7 @@ ul#list li a {
   text-align: center;
 }
 
-/* line 308, ../scss/style.scss */
+/* line 309, ../scss/style.scss */
 
 #setlaunchtime {
   height: 100%;
@@ -424,7 +426,7 @@ ul#list li a {
   text-align: center;
 }
 
-/* line 315, ../scss/style.scss */
+/* line 316, ../scss/style.scss */
 
 #setlaunchtime img {
   position: relative;
@@ -432,7 +434,7 @@ ul#list li a {
   height: 60%;
 }
 
-/* line 322, ../scss/style.scss */
+/* line 323, ../scss/style.scss */
 
 #launchtime {
   height: 100%;
@@ -442,17 +444,7 @@ ul#list li a {
   text-align: center;
 }
 
-/* line 329, ../scss/style.scss */
-
-#setthistime {
-  height: 10%;
-  float: left;
-  width: 100%;
-  background-color: lavender;
-  text-align: center;
-}
-
-/* line 337, ../scss/style.scss */
+/* line 332, ../scss/style.scss */
 
 #addPlayers {
   height: 10%;
@@ -461,7 +453,7 @@ ul#list li a {
   text-align: center;
 }
 
-/* line 345, ../scss/style.scss */
+/* line 340, ../scss/style.scss */
 
 #launch {
   margin: 0;
@@ -474,7 +466,7 @@ ul#list li a {
   line-height: 3.2em;
 }
 
-/* line 356, ../scss/style.scss */
+/* line 351, ../scss/style.scss */
 
 #set-point-btn {
   height: 10%;
@@ -484,7 +476,7 @@ ul#list li a {
   text-align: center;
 }
 
-/* line 364, ../scss/style.scss */
+/* line 359, ../scss/style.scss */
 
 #check-in-btn {
   width: 100px;
@@ -497,7 +489,7 @@ ul#list li a {
   border-radius: 1000px;
 }
 
-/* line 372, ../scss/style.scss */
+/* line 367, ../scss/style.scss */
 
 #inside-check-in-btn {
   margin: 2%;
@@ -509,7 +501,7 @@ ul#list li a {
   position: relative;
 }
 
-/* line 381, ../scss/style.scss */
+/* line 376, ../scss/style.scss */
 
 #inside-check-in-btn img {
   position: absolute;
@@ -518,7 +510,7 @@ ul#list li a {
   width: 40%;
 }
 
-/* line 387, ../scss/style.scss */
+/* line 382, ../scss/style.scss */
 
 #log-in {
   cursor: pointer;
@@ -528,7 +520,7 @@ ul#list li a {
   text-align: center;
 }
 
-/* line 395, ../scss/style.scss */
+/* line 390, ../scss/style.scss */
 
 #close-popup {
   cursor: pointer;
@@ -538,7 +530,7 @@ ul#list li a {
   text-align: center;
 }
 
-/* line 403, ../scss/style.scss */
+/* line 398, ../scss/style.scss */
 
 #log-in-with-facebook {
   cursor: pointer;
@@ -548,7 +540,7 @@ ul#list li a {
   text-align: center;
 }
 
-/* line 411, ../scss/style.scss */
+/* line 406, ../scss/style.scss */
 
 #NewMatchButton {
   font-family: "GothamLight";
@@ -572,7 +564,7 @@ ul#list li a {
   box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.5);
 }
 
-/* line 427, ../scss/style.scss */
+/* line 422, ../scss/style.scss */
 
 #NewMatchButton img {
   height: 60%;
@@ -582,21 +574,21 @@ ul#list li a {
   margin-right: 25px;
 }
 
-/* line 435, ../scss/style.scss */
+/* line 430, ../scss/style.scss */
 
 #NewMatchButton h1 {
   display: inline-block;
   color: #FAE8AC;
 }
 
-/* line 440, ../scss/style.scss */
+/* line 435, ../scss/style.scss */
 
 #NewMatchButton:active {
   background: #BB6836;
   box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
-/* line 447, ../scss/style.scss */
+/* line 442, ../scss/style.scss */
 
 #user-to-add {
   font-family: "GothamLight";
@@ -605,7 +597,7 @@ ul#list li a {
   padding: 1.5em;
 }
 
-/* line 454, ../scss/style.scss */
+/* line 449, ../scss/style.scss */
 
 #container {
   -webkit-animation: appear 1s 1;
@@ -619,7 +611,7 @@ ul#list li a {
   overflow-x: hidden;
 }
 
-/* line 464, ../scss/style.scss */
+/* line 459, ../scss/style.scss */
 
 .loading {
   width: 100%;
@@ -649,54 +641,97 @@ ul#list li a {
   /* IE6-9 fallback on horizontal gradient */
 }
 
-/* line 481, ../scss/style.scss */
+/* line 478, ../scss/style.scss */
 
-.meno {
-  height: 70px;
+.settedElement {
+  height: 90px;
   float: left;
-  width: 30%;
-  background-color: powderblue;
+  width: 40%;
+  background-color: #cdcdcd;
   text-align: center;
+  color: #555;
+  line-height: 90px;
 }
 
-/* line 488, ../scss/style.scss */
+/* line 487, ../scss/style.scss */
 
-.piu {
-  height: 70px;
+#day {
+  height: 90px;
   float: left;
-  width: 30%;
-  background-color: powderblue;
+  width: 40%;
+  background-color: yellow;
   text-align: center;
 }
 
 /* line 495, ../scss/style.scss */
 
-.settedElement {
-  height: 70px;
-  float: left;
-  width: 40%;
-  background-color: yellow;
-  text-align: center;
-}
-
-/* line 502, ../scss/style.scss */
-
-#day {
-  height: 70px;
-  float: left;
-  width: 40%;
-  background-color: yellow;
-  text-align: center;
-}
-
-/* line 509, ../scss/style.scss */
-
 .setter {
-  border-bottom: 1px solid #222222;
-  height: 70px;
+  border-bottom: 1px solid #222;
+  height: 90px;
+  font-size: 2em;
+  margin-bottom: 3px;
 }
 
-/* line 514, ../scss/style.scss */
+/* line 501, ../scss/style.scss */
+
+#setthistime {
+  height: 100px;
+  line-height: 100px;
+  float: left;
+  width: 100%;
+  text-align: center;
+  font-size: 4em;
+  color: white;
+  background-color: #F47B33;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding-top: 5px;
+}
+
+/* line 515, ../scss/style.scss */
+
+#setthistime:active {
+  background-color: #e85e0c;
+}
+
+/* line 520, ../scss/style.scss */
+
+.meno {
+  height: 90px;
+  float: left;
+  width: 30%;
+  background-color: #eee;
+  text-align: center;
+  line-height: 90px;
+  color: #555;
+}
+
+/* line 528, ../scss/style.scss */
+
+.meno:active {
+  background-color: #d4d4d4;
+}
+
+/* line 532, ../scss/style.scss */
+
+.piu {
+  height: 90px;
+  float: left;
+  width: 30%;
+  background-color: #eee;
+  text-align: center;
+  color: #555;
+  line-height: 90px;
+}
+
+/* line 540, ../scss/style.scss */
+
+.piu:active {
+  background-color: #d4d4d4;
+}
+
+/* line 545, ../scss/style.scss */
 
 #selezione-giocatori-footer {
   width: 100%;
@@ -707,7 +742,7 @@ ul#list li a {
   background: #F47B33;
 }
 
-/* line 520, ../scss/style.scss */
+/* line 551, ../scss/style.scss */
 
 #selezione-giocatori-footer span {
   width: 33%;
@@ -719,20 +754,20 @@ ul#list li a {
   text-align: center;
 }
 
-/* line 529, ../scss/style.scss */
+/* line 560, ../scss/style.scss */
 
 #selezione-giocatori-footer span img {
   height: 90%;
 }
 
-/* line 531, ../scss/style.scss */
+/* line 562, ../scss/style.scss */
 
 #selezione-giocatori-footer span:last-child {
   border-right: none;
   width: 31%;
 }
 
-/* line 539, ../scss/style.scss */
+/* line 570, ../scss/style.scss */
 
 #popup-container {
   width: 100%;
@@ -744,7 +779,7 @@ ul#list li a {
   z-index: 1000;
 }
 
-/* line 546, ../scss/style.scss */
+/* line 577, ../scss/style.scss */
 
 .yes-no {
   width: 50%;
@@ -753,40 +788,40 @@ ul#list li a {
   float: left;
 }
 
-/* line 552, ../scss/style.scss */
+/* line 583, ../scss/style.scss */
 
 .yes-no#yes {
   background-color: green;
 }
 
-/* line 553, ../scss/style.scss */
+/* line 584, ../scss/style.scss */
 
 .yes-no#no {
   background-color: red;
 }
 
-/* line 556, ../scss/style.scss */
+/* line 587, ../scss/style.scss */
 
 .errorContainer {
   text-align: center;
   color: #fff;
 }
 
-/* line 561, ../scss/style.scss */
+/* line 592, ../scss/style.scss */
 
 .userName {
   font-size: 110%;
   color: red;
 }
 
-/* line 566, ../scss/style.scss */
+/* line 597, ../scss/style.scss */
 
 .containerPulsantiMaster {
   float: left;
   width: 100%;
 }
 
-/* line 571, ../scss/style.scss */
+/* line 602, ../scss/style.scss */
 
 #listing-giocatori {
   height: 50px;
@@ -795,7 +830,7 @@ ul#list li a {
   background-color: red;
 }
 
-/* line 578, ../scss/style.scss */
+/* line 609, ../scss/style.scss */
 
 #hint-full {
   height: 50px;
@@ -804,7 +839,7 @@ ul#list li a {
   background-color: purple;
 }
 
-/* line 585, ../scss/style.scss */
+/* line 616, ../scss/style.scss */
 
 #go-to-wall {
   width: 40px;
@@ -817,7 +852,7 @@ ul#list li a {
   border-radius: 1000px;
 }
 
-/* line 593, ../scss/style.scss */
+/* line 624, ../scss/style.scss */
 
 #inside-go-to-wall {
   margin: 2%;
@@ -829,7 +864,7 @@ ul#list li a {
   position: relative;
 }
 
-/* line 601, ../scss/style.scss */
+/* line 632, ../scss/style.scss */
 
 #inside-go-to-wall img {
   position: absolute;
@@ -838,7 +873,7 @@ ul#list li a {
   width: 60%;
 }
 
-/* line 607, ../scss/style.scss */
+/* line 638, ../scss/style.scss */
 
 #go-to-players {
   width: 40px;
@@ -851,7 +886,7 @@ ul#list li a {
   border-radius: 1000px;
 }
 
-/* line 615, ../scss/style.scss */
+/* line 646, ../scss/style.scss */
 
 #inside-go-to-players {
   margin: 2%;
@@ -863,7 +898,7 @@ ul#list li a {
   position: relative;
 }
 
-/* line 622, ../scss/style.scss */
+/* line 653, ../scss/style.scss */
 
 #inside-go-to-players img {
   position: absolute;
@@ -872,13 +907,13 @@ ul#list li a {
   width: 60%;
 }
 
-/* line 628, ../scss/style.scss */
+/* line 659, ../scss/style.scss */
 
 #map-container {
   height: 90%;
 }
 
-/* line 632, ../scss/style.scss */
+/* line 663, ../scss/style.scss */
 
 .half-width {
   height: 100%;
@@ -886,40 +921,80 @@ ul#list li a {
   float: left;
 }
 
-/* line 638, ../scss/style.scss */
+/* line 669, ../scss/style.scss */
 
 #helpers {
   width: 50%;
-  height: 5%;
+  font-size: 1.5em;
   position: absolute;
   top: 15%;
   left: 25%;
-  background: white;
 }
 
-/* line 644, ../scss/style.scss */
+/* line 674, ../scss/style.scss */
 
 #helpers span {
   width: 50%;
   height: 100%;
   text-align: center;
   float: left;
+  padding: 10px 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #bbb;
 }
 
-/* line 653, ../scss/style.scss */
+/* line 683, ../scss/style.scss */
+
+#helpers span:active {
+  background-color: rgba(200, 200, 200, 0.8);
+}
+
+/* line 690, ../scss/style.scss */
 
 #generic-popup-container {
   width: 70%;
-  height: 70%;
+  height: 40%;
   position: absolute;
   top: 15%;
   left: 15%;
   background: #fff;
   z-index: 1000;
-  border: 3px solid #000;
+  border-radius: 10px;
+  border: 2px solid #999;
 }
 
-/* line 661, ../scss/style.scss */
+/* line 701, ../scss/style.scss */
+
+#generic-popup-container h4 {
+  text-align: center;
+  font-size: 3em;
+  padding: 20px;
+  color: #555;
+}
+
+/* line 708, ../scss/style.scss */
+
+#generic-popup-container #close {
+  height: 20%;
+  background-color: #F47B33;
+  color: white;
+  text-align: center;
+  font-size: 1.5em;
+  padding-top: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 0 0 10px 10px;
+}
+
+/* line 722, ../scss/style.scss */
+
+#generic-popup-container #close:active {
+  background-color: #e85e0c;
+}
+
+/* line 728, ../scss/style.scss */
 
 #arrow-popup-container {
   position: absolute;
@@ -930,7 +1005,7 @@ ul#list li a {
   z-index: 1000;
 }
 
-/* line 668, ../scss/style.scss */
+/* line 735, ../scss/style.scss */
 
 #arrow {
   margin-top: 0;
@@ -947,7 +1022,7 @@ ul#list li a {
   transition: all 3s ease;
 }
 
-/* line 680, ../scss/style.scss */
+/* line 747, ../scss/style.scss */
 
 #container-hint-in-partita {
   width: 100%;
@@ -963,7 +1038,7 @@ ul#list li a {
   transition: all 1s ease;
 }
 
-/* line 691, ../scss/style.scss */
+/* line 758, ../scss/style.scss */
 
 #controller-slide-hint {
   width: 100%;
@@ -975,7 +1050,7 @@ ul#list li a {
   text-align: center;
 }
 
-/* line 698, ../scss/style.scss */
+/* line 765, ../scss/style.scss */
 
 #controller-slide-hint img {
   top: 30%;
@@ -984,13 +1059,13 @@ ul#list li a {
   width: auto;
 }
 
-/* line 706, ../scss/style.scss */
+/* line 773, ../scss/style.scss */
 
 .padder {
   padding: 10px 20px;
 }
 
-/* line 710, ../scss/style.scss */
+/* line 777, ../scss/style.scss */
 
 .match-containers {
   width: 25%;
@@ -1001,13 +1076,13 @@ ul#list li a {
   overflow-y: scroll;
 }
 
-/* line 718, ../scss/style.scss */
+/* line 785, ../scss/style.scss */
 
 .match-containers li {
   padding: 15px 0 8px !important;
 }
 
-/* line 722, ../scss/style.scss */
+/* line 789, ../scss/style.scss */
 
 #container-dei-container {
   height: 100%;
@@ -1019,7 +1094,7 @@ ul#list li a {
   transition: all 0.2s ease-out;
 }
 
-/* line 730, ../scss/style.scss */
+/* line 797, ../scss/style.scss */
 
 #container-del-container-dei-container {
   width: 100%;
@@ -1028,14 +1103,14 @@ ul#list li a {
   overflow-y: hidden;
 }
 
-/* line 738, ../scss/style.scss */
+/* line 805, ../scss/style.scss */
 
 .match-row {
   width: 100%;
   float: left;
 }
 
-/* line 743, ../scss/style.scss */
+/* line 810, ../scss/style.scss */
 
 .match-icon {
   width: 15%;
@@ -1046,7 +1121,7 @@ ul#list li a {
   vertical-align: middle;
 }
 
-/* line 751, ../scss/style.scss */
+/* line 818, ../scss/style.scss */
 
 .match-icon img {
   width: 35%;
@@ -1054,7 +1129,7 @@ ul#list li a {
   vertical-align: middle;
 }
 
-/* line 758, ../scss/style.scss */
+/* line 825, ../scss/style.scss */
 
 .match-name {
   margin: 0;
@@ -1069,7 +1144,7 @@ ul#list li a {
   vertical-align: sub;
 }
 
-/* line 771, ../scss/style.scss */
+/* line 838, ../scss/style.scss */
 
 .match-time {
   width: 17%;
@@ -1081,32 +1156,32 @@ ul#list li a {
   vertical-align: middle;
 }
 
-/* line 781, ../scss/style.scss */
+/* line 848, ../scss/style.scss */
 
 .even {
   background: #DBDCDE !important;
 }
 
-/* line 783, ../scss/style.scss */
+/* line 850, ../scss/style.scss */
 
 .even:active {
   background: #a6a8ad !important;
 }
 
-/* line 786, ../scss/style.scss */
+/* line 853, ../scss/style.scss */
 
 .odd:active {
   background: rgba(0, 0, 0, 0.3) !important;
 }
 
-/* line 790, ../scss/style.scss */
+/* line 857, ../scss/style.scss */
 
 .formName {
   height: 10%;
   width: 99%;
 }
 
-/* line 795, ../scss/style.scss */
+/* line 862, ../scss/style.scss */
 
 #matchname {
   width: 100%;
@@ -1119,13 +1194,13 @@ ul#list li a {
   font: 2em/2.4em 'RockwellStdBold';
 }
 
-/* line 805, ../scss/style.scss */
+/* line 872, ../scss/style.scss */
 
 .hint-edit-list {
   height: 60%;
 }
 
-/* line 808, ../scss/style.scss */
+/* line 875, ../scss/style.scss */
 
 .hint-edit-list li {
   height: 25%;
@@ -1133,7 +1208,7 @@ ul#list li a {
   border-bottom: 1px solid #DBDCDE;
 }
 
-/* line 815, ../scss/style.scss */
+/* line 882, ../scss/style.scss */
 
 #addPlayers img {
   margin-right: 20px;
@@ -1144,7 +1219,7 @@ ul#list li a {
   vertical-align: middle;
 }
 
-/* line 824, ../scss/style.scss */
+/* line 891, ../scss/style.scss */
 
 #addPlayers h2 {
   position: relative;
@@ -1155,7 +1230,7 @@ ul#list li a {
   display: inline-block;
 }
 
-/* line 833, ../scss/style.scss */
+/* line 900, ../scss/style.scss */
 
 .incipit {
   display: inline-block;
@@ -1164,14 +1239,14 @@ ul#list li a {
   margin-left: 5%;
 }
 
-/* line 839, ../scss/style.scss */
+/* line 906, ../scss/style.scss */
 
 .incipit h1,
 .incipit h2 {
   margin-bottom: 0;
 }
 
-/* line 841, ../scss/style.scss */
+/* line 908, ../scss/style.scss */
 
 .incipit p {
   overflow: hidden;
@@ -1179,7 +1254,7 @@ ul#list li a {
   text-overflow: ellipsis;
 }
 
-/* line 848, ../scss/style.scss */
+/* line 915, ../scss/style.scss */
 
 .validate-geo {
   display: inline-block;
@@ -1189,7 +1264,7 @@ ul#list li a {
   text-align: center;
 }
 
-/* line 856, ../scss/style.scss */
+/* line 923, ../scss/style.scss */
 
 .validate-geo img,
 .validate-desc img {
@@ -1198,7 +1273,7 @@ ul#list li a {
   height: 30%;
 }
 
-/* line 863, ../scss/style.scss */
+/* line 930, ../scss/style.scss */
 
 .validate-desc {
   display: inline-block;
@@ -1208,13 +1283,13 @@ ul#list li a {
   text-align: center;
 }
 
-/* line 871, ../scss/style.scss */
+/* line 938, ../scss/style.scss */
 
 .elementlistaGiocatori {
   position: relative;
 }
 
-/* line 874, ../scss/style.scss */
+/* line 941, ../scss/style.scss */
 
 .elementlistaGiocatori h2 {
   position: absolute;
@@ -1226,13 +1301,13 @@ ul#list li a {
   z-index: 3;
 }
 
-/* line 882, ../scss/style.scss */
+/* line 949, ../scss/style.scss */
 
 .elementlistaGiocatori img {
   vertical-align: top;
 }
 
-/* line 884, ../scss/style.scss */
+/* line 951, ../scss/style.scss */
 
 .elementlistaGiocatori .remove-pms {
   position: absolute;
@@ -1244,14 +1319,14 @@ ul#list li a {
   min-width: 25px;
 }
 
-/* line 891, ../scss/style.scss */
+/* line 958, ../scss/style.scss */
 
 .elementlistaGiocatori .remove-pms img {
   width: 100%;
   height: 100%;
 }
 
-/* line 895, ../scss/style.scss */
+/* line 962, ../scss/style.scss */
 
 .pmsElement {
   width: 50% !important;
@@ -1259,7 +1334,7 @@ ul#list li a {
   padding: 0 !important;
 }
 
-/* line 901, ../scss/style.scss */
+/* line 968, ../scss/style.scss */
 
 .blackGradient {
   z-index: 2;
@@ -1282,14 +1357,14 @@ ul#list li a {
   /* IE6-9 */
 }
 
-/* line 914, ../scss/style.scss */
+/* line 981, ../scss/style.scss */
 
 .pmsListEdit {
   height: 80% !important;
   overflow-y: scroll;
 }
 
-/* line 919, ../scss/style.scss */
+/* line 986, ../scss/style.scss */
 
 #log-out {
   height: 3em;
@@ -1308,7 +1383,7 @@ ul#list li a {
   /* W3C */
 }
 
-/* line 934, ../scss/style.scss */
+/* line 1001, ../scss/style.scss */
 
 #log-out:active {
   box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.5);
@@ -1320,7 +1395,7 @@ ul#list li a {
   /* W3C */
 }
 
-/* line 941, ../scss/style.scss */
+/* line 1008, ../scss/style.scss */
 
 #overlay-loading {
   display: none;
@@ -1332,7 +1407,7 @@ ul#list li a {
   z-index: 1010;
 }
 
-/* line 950, ../scss/style.scss */
+/* line 1017, ../scss/style.scss */
 
 #img-load {
   position: absolute;
@@ -1345,52 +1420,73 @@ ul#list li a {
   -webkit-animation: spin 0.7s infinite;
 }
 
+/* line 1027, ../scss/style.scss */
+
+#wall-form {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+/* line 1033, ../scss/style.scss */
+
+#wall-form #textMessage {
+  width: 85%;
+}
+
+/* line 1036, ../scss/style.scss */
+
+#wall-form #inviaMessage {
+  width: 15%;
+  font-size: 1.2em;
+  background-color: #ddd;
+}
+
 @-webkit-keyframes appear {
-  /* line 960, ../scss/style.scss */
+  /* line 1044, ../scss/style.scss */
   from {
     opacity: 0;
   }
 
-  /* line 961, ../scss/style.scss */
+  /* line 1045, ../scss/style.scss */
   to {
     opacity: 1;
   }
 }
 
 @keyframes appear {
-  /* line 960, ../scss/style.scss */
+  /* line 1044, ../scss/style.scss */
   from {
     opacity: 0;
   }
 
-  /* line 961, ../scss/style.scss */
+  /* line 1045, ../scss/style.scss */
   to {
     opacity: 1;
   }
 }
 
 @-webkit-keyframes spin {
-  /* line 965, ../scss/style.scss */
+  /* line 1049, ../scss/style.scss */
   0% {
     -webkit-transform: rotate(0deg);
   }
 
-  /* line 966, ../scss/style.scss */
+  /* line 1050, ../scss/style.scss */
   100% {
     -webkit-transform: rotate(360deg);
   }
 }
 
 @keyframes spin {
-  /* line 965, ../scss/style.scss */
+  /* line 1049, ../scss/style.scss */
   0% {
     -webkit-transform: rotate(0deg);
   }
 
-  /* line 966, ../scss/style.scss */
+  /* line 1050, ../scss/style.scss */
   100% {
     -webkit-transform: rotate(360deg);
   }
 }
-
-/*@ sourceMappingURL=style.css.map */

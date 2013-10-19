@@ -21,7 +21,7 @@ define([
             self.add(results);
           },
           error: function (error) {
-            console.log(error);
+            console.error(error);
           }
         });
       }

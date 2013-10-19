@@ -37,10 +37,8 @@ define([
           return this;
         },
 
-
         unrender: function (eventName){
           this.remove();
-          console.log("try to unrender");
         }
 
       });

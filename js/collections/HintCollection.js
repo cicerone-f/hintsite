@@ -29,7 +29,7 @@ define([
             self.trigger("OKHINTSITE");
           },
           error: function (error) {
-            console.log(error);
+            console.error(error);
           }
         });
       },
@@ -48,7 +48,7 @@ define([
               self.trigger('NuovaPartita_VM_COLLECTIONCOMPLETED', this);
             },
             error: function(error){
-              console.log(error);
+              console.error(error);
             }
           }
         );

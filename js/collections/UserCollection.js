@@ -24,7 +24,7 @@ define([
             self.trigger("UTENTIDAPARSE");
           },
           error: function (error) {
-            console.log(error);
+            console.error(error);
           }
         });
       }

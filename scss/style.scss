@@ -8,6 +8,7 @@
 * {
   /* make transparent link selection, adjust last value opacity 0 to 1.0 */
   -webkit-tap-highlight-color: rgba(0,0,0,0);
+  box-sizing: border-box;
 }
 
 html { @include width-height(100%) }
@@ -326,13 +327,7 @@ ul#list {
   background-color: red;
   text-align: center; 
 }
-#setthistime {
-  height: 10%;
-  float:left;
-  width: 100%;
-  background-color: lavender;
-  text-align: center; 
-}
+
 
 #addPlayers{
   height: 10%;
@@ -478,37 +473,73 @@ ul#list {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
-.meno {
-  height: 70px;
-  float:left;
-  width: 30%;
-  background-color: PowderBlue ;
-  text-align: center; 
-}
-.piu {
-  height: 70px;
-  float:left;
-  width: 30%;
-  background-color: PowderBlue ;
-  text-align: center; 
-}
+
+$hhh: 90px;
 .settedElement {
-  height: 70px;
+  height: $hhh;
   float:left;
   width: 40%;
-  background-color: yellow;
-  text-align: center; 
+  background-color: #cdcdcd;
+  text-align: center;
+  color: #555;
+  line-height: $hhh;
 }
 #day {
-  height: 70px;
+  height: $hhh;
   float:left;
   width: 40%;
   background-color: yellow;
   text-align: center; 
 }
+
 .setter {
-  border-bottom: 1px solid #222222;
-  height: 70px;
+  border-bottom: 1px solid #222;
+  height: $hhh;
+  font-size: 2em;
+  margin-bottom: 3px;
+}
+#setthistime {
+  height: 100px;
+  line-height: 100px;
+  float:left;
+  width: 100%;
+  text-align: center;
+  font-size: 4em;
+  color: white;
+  background-color: #F47B33;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding-top: 5px;
+
+  &:active {
+    background-color: darken(#F47B33, 10);
+  }
+}
+
+.meno {
+  height: $hhh;
+  float:left;
+  width: 30%;
+  background-color: #eee;
+  text-align: center;
+  line-height: $hhh;
+  color: #555;
+  &:active {
+    background-color: darken(#eee, 10);
+  }
+}
+.piu {
+  height: $hhh;
+  float:left;
+  width: 30%;
+  background-color: #eee;
+  text-align: center; 
+  color: #555;
+  line-height: $hhh;
+  &:active {
+    background-color: darken(#eee, 10);
+  }
 }
 
 #selezione-giocatori-footer {
@@ -637,25 +668,61 @@ ul#list {
 
 #helpers {
   width: 50%;
-  height: 5%;
+  font-size: 1.5em;
   @include absolute-at($top: 15%, $left: 25%);
-  background: $white;
 
   span {
     width: 50%;
     height: 100%;
     text-align: center;
     float: left;
+    padding: 10px 0;
+    background-color: rgba(255,255,255,0.8);
+    border: 1px solid #bbb;
+
+    &:active {
+      background-color: rgba(200,200,200,0.8)
+    }
   }
 }
 
 
 #generic-popup-container {
-  @include width-height(70%);
+  width: 70%;
+  height: 40%;
   @include absolute-at($top: 15%, $left: 15%);
   background: #fff;
   z-index: 1000;
-  border: 3px solid #000;
+
+  $br: 10px;
+  border-radius: $br;
+  border: 2px solid #999;
+
+  h4 {
+    text-align: center;
+    font-size: 3em;
+    padding: 20px;
+    color: #555;
+  }
+
+  #close {
+    height: 20%;
+    background-color: #F47B33;
+    color: white;
+    text-align: center;
+    font-size: 1.5em;
+    padding-top: 20px;
+
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%;
+
+    border-radius: 0 0 $br $br;
+
+    &:active {
+      background-color: darken(#F47B33, 10);
+    }
+  }
 }
 
 #arrow-popup-container {
@@ -954,6 +1021,23 @@ ul#list {
   margin-left: - $img-size / 2;
   margin-top: - $img-size / 2;
   -webkit-animation: spin 0.7s infinite;
+}
+
+// Text field for sending messages on the wall
+#wall-form {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  #textMessage {
+    width: 85%;
+  }
+  #inviaMessage {
+    width: 15%;
+    font-size: 1.2em;
+    background-color: #ddd;
+  }
 }
 
 @include keyframes(appear) {

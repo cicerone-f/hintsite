@@ -26,7 +26,6 @@ define([
         },
         goBack: function () {
           $("#overlay-loading").fadeIn();
-          console.log('ci siamo faje');
           Parse.history.navigate('back/'+this.options.owner+"/"+this.options.backViewModelId, { trigger : true, replace : true });
         },
         initialize: function () {

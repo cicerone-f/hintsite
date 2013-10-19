@@ -66,7 +66,7 @@ define([
             console.log(imageURI);
           };
           var cameraError = function (error) {
-            console.log(error);
+            console.error(error);
           };
           navigator.camera.getPicture(cameraSuccess, cameraError, options);
         },
