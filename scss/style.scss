@@ -1025,18 +1025,37 @@ $hhh: 90px;
 
 // Text field for sending messages on the wall
 #wall-form {
+  $tmh: 76%;
+  $h: 40px;
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
+  height: $h;
+
 
   #textMessage {
-    width: 85%;
+    width: $tmh;
+    float: left;
+    height: 100%;
+    resize: none;
+    font-size: 1.4em;
   }
-  #inviaMessage {
-    width: 15%;
-    font-size: 1.2em;
-    background-color: #ddd;
+  span#inviaMessage {
+    width: 100% - $tmh;
+    height: 100%;
+    font-size: 1.6em;
+    background-color: #F47B33;
+    display: block;
+    float: left;
+    text-align: center;
+    line-height: $h;
+    font-family: 'RockwellStdRegular';
+    color: white;
+
+    &:active {
+      background-color: darken(#F47B33, 10);
+    }
   }
 }
 

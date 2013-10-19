@@ -1427,65 +1427,83 @@ ul#list li a {
   bottom: 0;
   left: 0;
   width: 100%;
+  height: 40px;
 }
 
-/* line 1033, ../scss/style.scss */
+/* line 1037, ../scss/style.scss */
 
 #wall-form #textMessage {
-  width: 85%;
+  width: 76%;
+  float: left;
+  height: 100%;
+  resize: none;
+  font-size: 1.4em;
 }
 
-/* line 1036, ../scss/style.scss */
+/* line 1044, ../scss/style.scss */
 
-#wall-form #inviaMessage {
-  width: 15%;
-  font-size: 1.2em;
-  background-color: #ddd;
+#wall-form span#inviaMessage {
+  width: 24%;
+  height: 100%;
+  font-size: 1.6em;
+  background-color: #F47B33;
+  display: block;
+  float: left;
+  text-align: center;
+  line-height: 40px;
+  font-family: 'RockwellStdRegular';
+  color: white;
+}
+
+/* line 1056, ../scss/style.scss */
+
+#wall-form span#inviaMessage:active {
+  background-color: #e85e0c;
 }
 
 @-webkit-keyframes appear {
-  /* line 1044, ../scss/style.scss */
+  /* line 1063, ../scss/style.scss */
   from {
     opacity: 0;
   }
 
-  /* line 1045, ../scss/style.scss */
+  /* line 1064, ../scss/style.scss */
   to {
     opacity: 1;
   }
 }
 
 @keyframes appear {
-  /* line 1044, ../scss/style.scss */
+  /* line 1063, ../scss/style.scss */
   from {
     opacity: 0;
   }
 
-  /* line 1045, ../scss/style.scss */
+  /* line 1064, ../scss/style.scss */
   to {
     opacity: 1;
   }
 }
 
 @-webkit-keyframes spin {
-  /* line 1049, ../scss/style.scss */
+  /* line 1068, ../scss/style.scss */
   0% {
     -webkit-transform: rotate(0deg);
   }
 
-  /* line 1050, ../scss/style.scss */
+  /* line 1069, ../scss/style.scss */
   100% {
     -webkit-transform: rotate(360deg);
   }
 }
 
 @keyframes spin {
-  /* line 1049, ../scss/style.scss */
+  /* line 1068, ../scss/style.scss */
   0% {
     -webkit-transform: rotate(0deg);
   }
 
-  /* line 1050, ../scss/style.scss */
+  /* line 1069, ../scss/style.scss */
   100% {
     -webkit-transform: rotate(360deg);
   }
