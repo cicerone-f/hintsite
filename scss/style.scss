@@ -76,6 +76,11 @@ ul#list {
   }
 }
 
+ul.wallList {
+  height: 80%;
+  overflow-y: auto;
+}
+
 
 
 
@@ -369,9 +374,9 @@ ul#list {
 }  
 
 #check-in-btn {
-  @include width-height(100px);
+  @include width-height(140px);
   @include absolute-at($bottom: 2%, $left: 50%);
-  margin-left: -62px;
+  margin-left: -70px;
   border: 8px solid rgba(244, 123, 51, 0.4);
   border-radius: 1000px;
 }
@@ -654,9 +659,9 @@ $hhh: 90px;
 }
 
 #go-to-wall {
-  @include width-height(40px);
+  @include width-height(80px);
   @include absolute-at($bottom: 4%, $left: 88%);
-  margin-left: -28px;
+  margin-left: -53px;
   border: 8px solid rgba(244, 123, 51, 0.4);
   border-radius: 1000px;
 }
@@ -676,7 +681,7 @@ $hhh: 90px;
 }
 
 #go-to-players {
-  @include width-height(40px);
+  @include width-height(80px);
   @include absolute-at($bottom: 4%, $left: 12%);
   margin-left: -28px;
   border: 8px solid rgba(244, 123, 51, 0.4);
@@ -709,7 +714,7 @@ $hhh: 90px;
 #helpers {
   width: 50%;
   font-size: 1.5em;
-  @include absolute-at($top: 15%, $left: 25%);
+  @include absolute-at($top: 25%, $left: 25%);
 
   span {
     width: 50%;
@@ -718,7 +723,7 @@ $hhh: 90px;
     float: left;
     padding: 10px 0;
     background-color: rgba(255,255,255,0.8);
-    border: 1px solid #bbb;
+    border: 1px solid #999;
 
     &:active {
       background-color: rgba(200,200,200,0.8)
@@ -1038,7 +1043,8 @@ $smh: 30px;
     @include absolute-at($top: 4%, $right: 4%);
     color: #fff;
     z-index: 3;
-    width: 20%;
+    width: 48px;
+    height: 48px;
     min-width: 25px;
     
     img { @include width-height(100%) }
@@ -1103,7 +1109,7 @@ z-index: 1010;
 // Text field for sending messages on the wall
 #wall-form {
   $tmh: 76%;
-  $h: 40px;
+  $h: 10%;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -1112,11 +1118,13 @@ z-index: 1010;
 
 
   #textMessage {
+    font-family: "GothamLight";
     width: $tmh;
     float: left;
     height: 100%;
     resize: none;
-    font-size: 1.4em;
+    font-size: 1.6em;
+    padding: 15px;
   }
   span#inviaMessage {
     width: 100% - $tmh;
@@ -1126,7 +1134,7 @@ z-index: 1010;
     display: block;
     float: left;
     text-align: center;
-    line-height: $h;
+    line-height: 90px;
     font-family: 'RockwellStdRegular';
     color: white;
 
