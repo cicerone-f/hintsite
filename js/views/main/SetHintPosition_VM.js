@@ -224,7 +224,7 @@ define([
         var pinIcon = new L.Icon({
           iconUrl: 'res/img/pin-with-shadow.png',            // absolute URL
           iconSize: new L.Point(ks.PIN_WIDTH, ks.PIN_HEIGHT), // in px
-          iconAnchor: new L.Point(20, 10),                    // in px, offset from the center of the icon
+          iconAnchor: new L.Point(29, 26),                    // in px, offset from the center of the icon
         });
 
         /* creates the pin and adds it to the map */
