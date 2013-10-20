@@ -22,10 +22,11 @@ define([
     Header_VS
   ) {
     var Opzioni_VM = Parse.View.extend({
-      id: 'container',
+        id: 'container',
         template: Handlebars.compile(template),
         initialize: function () {
         },
+        
         events: {
           "click #log-out": "logOut"
         },
