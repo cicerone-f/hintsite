@@ -1,18 +1,30 @@
-<div id="top-cont">
-	<div id="photoprofilo">
-	    {{#if image}}
-	      <img src="{{image}}" />
-	    {{else}}
-		<span id="set-photo">set Photo</span>
-	    {{/if}}
-	</div>
-	<div id="name-with-container">
-		<div class="dxprofilo" id="name">name {{username}}</div>
-		<div class="dxprofilo" id="played-with">played with: {{playedWith}}</div>
-	</div>
-</div>
-<div id="robasotto">
-	<div class="sottoprofiloel" id="pt">Points: {{points}}</div>
-	<div class="sottoprofiloel" id="achi">achievements 10%</div>
-	<div class="sottoprofiloel" id="p-master">da master: {{nMaster}}</div>
-</div>
+<div id="profilo">
+
+	<div id="profilo-top">
+
+		<div id="profilo-photo">
+		    {{#if image}}
+		      <img src="{{image}}" />
+		    {{else}}
+			<span id="set-photo">set Photo</span>
+		    {{/if}}
+		</div>
+
+		<div id="profilo-infos">
+			<div id="profilo-nome">{{username}}</div>
+			<div id="profilo-playedwith">
+				Played with
+				<span>{{playedWith}}</span>
+			</div>
+		</div> <!-- end #profilo-infos -->
+
+	</div> <!-- end #profilo-top -->
+
+
+	<div id="profilo-bottom">
+		<div id="points"><div>{{points}}</div><div>Points</div></div>
+		<div id="achievements"><div>73%</div><div>Achiev.</div></div>
+		<div id="partite-master"><div>{{nMaster}}</div><div>Mastered matches</div></div>
+	</div> <!-- end #profilo-bottom -->
+
+</div> <!-- end #profilo -->

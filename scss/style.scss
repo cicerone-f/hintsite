@@ -1234,3 +1234,74 @@ z-index: 1010;
   width: 100%;
   height: 60px;
 }
+
+#profilo {
+  height: 90%;
+
+  #profilo-top {
+    height: 40%;
+
+    #profilo-photo, #profilo-infos {
+      display: inline-block;
+      height: 100%;
+
+      img { height: 100%; }
+    }
+
+    #profilo-infos {
+      vertical-align: top;
+      padding-left: 10px;
+      padding-top: 30px;
+      overflow: no-wrap;
+      text-overflow: ellipsis;
+      text-align: center;
+
+      & > div {
+        height: 50%;
+        @include center;
+      }
+
+      #profilo-nome {
+        font-size: 5em;
+        color: orange;
+      }
+
+      #profilo-playedwith {
+        font-size: 1.5em;
+      }
+    }
+  } // end #profilo-top
+
+  #profilo-bottom {
+    height: 60%;
+    width: 100%;
+    color: #888;
+    // text-align: center;
+
+    & > div {
+      height: 33.33333333%;
+      width: 100%;
+      font-size: 1.5em;
+      // padding-left: 30px;
+      // padding-top: 20px;
+      border-top: 1px solid #999;
+      border-bottom: 1px solid #999;
+      position: relative;
+
+      div:first-child {
+        color: orange;
+        padding: 0 20px;
+        font-size: 6em;
+      }
+
+      div:last-child {
+        position: absolute;
+        top: 5%;
+        right: 5%;
+      }
+    }
+
+  }
+
+
+} // end #profilo
