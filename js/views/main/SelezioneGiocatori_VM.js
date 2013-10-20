@@ -13,7 +13,8 @@ define([
   "views/sub/SelezioneGiocatoriFooter_VS",
   "views/sub/list/PmsEdit_VSL",
   "views/LoadingView",
-  "views/main/AddFromSearch_VM"
+  "views/main/AddFromSearch_VM",
+  "views/main/Popup_VM"
 ],
   function (
     $,
@@ -27,7 +28,8 @@ define([
     SelezioneGiocatoriFooter_VS,
     PmsEdit_VSL,
     LoadingView,
-    AddFromSearch_VM
+    AddFromSearch_VM,
+    Popup_VM
   ) {
     var SelezioneGiocatori_VM = Parse.View.extend({
       id: 'container',
@@ -40,7 +42,9 @@ define([
         this.collection.getFromParse(this.options.matchIdToGet);
       },
       events: {
-        "click #fromSearch": "renderAddFromSearch"
+        "click #fromSearch": "renderAddFromSearch",
+        "click #fromH": "renderPremiumFeature",
+        "click #fromFB": "renderPremiumFeature",
       },
 
 
@@ -48,6 +52,14 @@ define([
         var afs = new AddFromSearch_VM({collection: this.collection, matchId: this.options.matchIdToGet});
         $(this.el).append(afs.render().el);
         return this;
+      },
+
+      renderPremiumFeature: function () {
+        $('body').append( 
+          new Popup_VM({
+            notificationText: 'Please buy Premium Version to use this feature.'
+          }).render().el
+        );
       },
 
       renderVero: function () {

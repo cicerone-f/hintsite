@@ -24,7 +24,7 @@ define([
     ) {
 
     var Wall_VSL = Parse.View.extend({
-
+        className: "wallList",
         tagName: "ul",
         id: "list",
         collection: WallMessageCollection,
