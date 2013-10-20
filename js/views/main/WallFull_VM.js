@@ -37,17 +37,23 @@ define([
 
       sendMessage: function () {
         if ($.trim($("#textMessage").val()) !== '') {
+          $("#overlay-loading").fadeIn();
           var wallMsg = new WallMessage();
-          wallMsg.on('savedTextMsg', this.render, this);
+          wallMsg.on('savedTextMsg', this.recCallback, this);
           wallMsg.saveTextToP(wallMsg.messageTypes.TEXT_MESSAGE, this.options.matchId, $("#textMessage").val());
         }
+      },
+
+      recCallback: function () {
+        $("#overlay-loading").fadeOut();
+        this.render();
       },
 
       render: function (eventName) {
         var header = new Header_VS({owner: "WallFull_VM", backViewModelId: this.options.matchId});
         $(this.el).html(header.render().el)
-        .append(new Wall_VSL({matchId: this.options.matchId}).render().el)
-        .append(this.template());
+        .append(this.template())
+        .append(new Wall_VSL({matchId: this.options.matchId}).render().el);
         return this;
       }
     });
