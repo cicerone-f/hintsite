@@ -45,6 +45,7 @@ define([
         },
 
         removePms: function () {
+          $("#overlay-loading").fadeIn();
           this.model.destroy({wait: true});
         },
 
