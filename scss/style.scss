@@ -245,6 +245,7 @@ ul.wallList {
     @include padding-ver(0.2em);
     padding-left: 1em;
     margin: 0;
+    font-size: 1.4em;
   }
 }
 
@@ -880,7 +881,7 @@ $br: 10px;
   overflow-y: scroll;
   // margin-top: 25px;
 
-  li { padding: 15px 0 8px !important }
+  li { padding: 25px 0 25px 0 !important }
 }
 
 $smh: 30px;
@@ -939,7 +940,7 @@ $smh: 30px;
 
   img {
     width: 35%;
-    padding: 5px 0;
+    padding: 20px 0;
     vertical-align: middle;
   }
 }
@@ -947,14 +948,15 @@ $smh: 30px;
 .match-name {
   margin: 0;
   font-family: 'RockwellStdRegular';
-  font-size: 2em;
+  line-height: 2.3em;
+  font-size: 2.3em;
   color: #939597;
   width: 60%;
   display: inline-block;
   white-space: nowrap; 
   overflow: hidden;
   text-overflow: ellipsis;
-  vertical-align: sub;
+  vertical-align: middle;
 }
 
 .match-time {
