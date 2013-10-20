@@ -1,5 +1,3 @@
-
-
 module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-open');
@@ -75,7 +73,6 @@ module.exports = function (grunt) {
     sass: {
       compile: {
         options: {
-          sourcemap: true,
           lineNumbers: true,
         },
         files: {

@@ -1,12 +1,18 @@
-<div id="photoprofilo">
-    {{#if image}}
-      <img src="{{image}}" />
-    {{else}}
-	<span id="set-photo">set Photo</span>
-    {{/if}}
+<div id="top-cont">
+	<div id="photoprofilo">
+	    {{#if image}}
+	      <img src="{{image}}" />
+	    {{else}}
+		<span id="set-photo">set Photo</span>
+	    {{/if}}
+	</div>
+	<div id="name-with-container">
+		<div class="dxprofilo" id="name">name {{username}}</div>
+		<div class="dxprofilo" id="played-with">played with: {{playedWith}}</div>
+	</div>
 </div>
-<div id="name">name {{username}}</div>
-<div id="played-with">played with: {{playedWith}}</div>
-<div id="pt">{{pt}}</div>
-<div id="achi"></div>
-<div id="p-master">da master: {{nMaster}}</div>
+<div id="robasotto">
+	<div class="sottoprofiloel" id="pt">Points: {{points}}</div>
+	<div class="sottoprofiloel" id="achi">achievements 10%</div>
+	<div class="sottoprofiloel" id="p-master">da master: {{nMaster}}</div>
+</div>

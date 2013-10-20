@@ -29,7 +29,7 @@ define([
             }
           },
           error: function (error) {
-            console.log(error);
+            console.error(error);
           }
         });
       },
@@ -45,7 +45,7 @@ define([
             self.trigger("PMSDAPARSE");//???
           },
           error: function (error) {
-            console.log(error);
+            console.error(error);
           }
         });
       },
@@ -60,7 +60,7 @@ define([
             self.trigger("PMSPLAYERSFETCHED");
           },
           error: function (error) {
-            console.log(error);
+            console.error(error);
           }
         });
       },
@@ -89,7 +89,7 @@ define([
                   self.trigger("pointscanbeadded",this);
                 },
                 error: function(error){
-                  console.log(error);
+                  console.error(error);
                 }
               }
             );
@@ -117,7 +117,7 @@ define([
             self.trigger("addedallpmsforuser");
           },
           error: function (error) {
-            console.log(error);
+            console.error(error);
           }
         });
       },

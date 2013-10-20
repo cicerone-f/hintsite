@@ -64,7 +64,6 @@ require([
       // the first router function which will be called will check again for 
       // network connection and handle
       var state = navigator.connection.type;
-      console.log('Connection type is: ' + state);
       if (state == Connection.UNKNOWN || state == Connection.NONE) {
         new AppRouter();
         Parse.history.start();
@@ -72,15 +71,8 @@ require([
       }
 
       Parse.initialize('LkaGTOk7RGUaPXM0r9HQImwPAnmqUuhjF1QttcNE', 'uxXxR7sEt2unuSABRyjF8tnd52bNymwlDuchsIhh');
-      // Parse.FacebookUtils.init({
-      //   appId      : '639802702700436', // Facebook App ID
-      //   channelUrl : '//www.hintsiteapp.com/channel.html', // Channel File
-      //   status     : true, // check login status
-      //   cookie     : true, // enable cookies to allow Parse to access the session
-      //   xfbml      : true  // parse XFBML
-      // });
 
-      new AppRouter();     // JSLint says "do not use 'new' for side effects"
+      new AppRouter();
       Parse.history.start();
       Parse.history.length = 0;
       Parse.history.on('route', function () { ++this.length; });

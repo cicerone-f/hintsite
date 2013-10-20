@@ -8,6 +8,7 @@
 * {
   /* make transparent link selection, adjust last value opacity 0 to 1.0 */
   -webkit-tap-highlight-color: rgba(0,0,0,0);
+  box-sizing: border-box;
 }
 
 html { @include width-height(100%) }
@@ -26,6 +27,7 @@ body {
 
   @include width-height(100%);
   @include reset-around;
+  min-height:100%;
 }
 
 h1, h2, h3, h4, h5, h6 { font-family: 'RockwellStdRegular' }
@@ -204,6 +206,17 @@ ul#list {
   text-overflow: ellipsis;
 }
 
+#centopercento{
+  height: 100%;
+  font: 3em/2em 'RockwellStdBold';
+  text-align: center; 
+  color: #555;
+  overflow: auto;
+  text-overflow: ellipsis;
+  background-color: #ffa353;
+
+}
+
 #hint_description {
   @include width-height(80%);
   @include absolute-at($top: 10%, $left: 10%);
@@ -326,13 +339,7 @@ ul#list {
   background-color: red;
   text-align: center; 
 }
-#setthistime {
-  height: 10%;
-  float:left;
-  width: 100%;
-  background-color: lavender;
-  text-align: center; 
-}
+
 
 #addPlayers{
   height: 10%;
@@ -387,25 +394,34 @@ ul#list {
 #log-in {
   cursor: pointer;
   background-color: green;
-  padding: 1.5em;
-  color: $white;
   text-align: center;
+  height:7%;
 }
 
 #close-popup {
   cursor: pointer;
-  background-color: green;
+  background-color: #292929;
   padding: 1.5em;
   color: $white;
   text-align: center;
+  font-size: 1.5em;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
-#log-in-with-facebook {
+#sign-up {
+
   cursor: pointer;
   background-color: blue;
-  padding: 1.5em;
-  color: white;
   text-align: center;
+  height:7%;
+}
+
+#lform {
+  text-align: center;
+  height:80%;
 }
 
 #NewMatchButton {
@@ -448,7 +464,26 @@ ul#list {
   font-family: $body-font-family;
   text-align: center;
   background-color: #ee7427;
-  padding: 1.5em;
+  color: white;
+  font-size: 3em;
+
+  span {
+    display: block;
+    float: left;
+    width: 75%;
+    background-color: orange;
+    height: 120px;
+    line-height: 120px;
+
+    &:active {
+      background-color: #a64300;
+    }
+  }
+  img {
+    width: 25%;
+    display: block;
+    float: left;
+  }
 }
 
 #container {
@@ -478,37 +513,73 @@ ul#list {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
-.meno {
-  height: 70px;
-  float:left;
-  width: 30%;
-  background-color: PowderBlue ;
-  text-align: center; 
-}
-.piu {
-  height: 70px;
-  float:left;
-  width: 30%;
-  background-color: PowderBlue ;
-  text-align: center; 
-}
+
+$hhh: 90px;
 .settedElement {
-  height: 70px;
+  height: $hhh;
   float:left;
   width: 40%;
-  background-color: yellow;
-  text-align: center; 
+  background-color: #cdcdcd;
+  text-align: center;
+  color: #555;
+  line-height: $hhh;
 }
 #day {
-  height: 70px;
+  height: $hhh;
   float:left;
   width: 40%;
   background-color: yellow;
   text-align: center; 
 }
+
 .setter {
-  border-bottom: 1px solid #222222;
-  height: 70px;
+  border-bottom: 1px solid #222;
+  height: $hhh;
+  font-size: 2em;
+  margin-bottom: 3px;
+}
+#setthistime {
+  height: 100px;
+  line-height: 100px;
+  float:left;
+  width: 100%;
+  text-align: center;
+  font-size: 4em;
+  color: white;
+  background-color: #F47B33;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding-top: 5px;
+
+  &:active {
+    background-color: darken(#F47B33, 10);
+  }
+}
+
+.meno {
+  height: $hhh;
+  float:left;
+  width: 30%;
+  background-color: #eee;
+  text-align: center;
+  line-height: $hhh;
+  color: #555;
+  &:active {
+    background-color: darken(#eee, 10);
+  }
+}
+.piu {
+  height: $hhh;
+  float:left;
+  width: 30%;
+  background-color: #eee;
+  text-align: center; 
+  color: #555;
+  line-height: $hhh;
+  &:active {
+    background-color: darken(#eee, 10);
+  }
 }
 
 #selezione-giocatori-footer {
@@ -637,25 +708,82 @@ ul#list {
 
 #helpers {
   width: 50%;
-  height: 5%;
+  font-size: 1.5em;
   @include absolute-at($top: 15%, $left: 25%);
-  background: $white;
 
   span {
     width: 50%;
     height: 100%;
     text-align: center;
     float: left;
+    padding: 10px 0;
+    background-color: rgba(255,255,255,0.8);
+    border: 1px solid #bbb;
+
+    &:active {
+      background-color: rgba(200,200,200,0.8)
+    }
   }
 }
 
 
+$br: 10px;
 #generic-popup-container {
-  @include width-height(70%);
+  width: 70%;
+  height: 40%;
   @include absolute-at($top: 15%, $left: 15%);
   background: #fff;
   z-index: 1000;
-  border: 3px solid #000;
+
+  border-radius: $br;
+  border: 2px solid #999;
+
+  h4 {
+    text-align: center;
+    font-size: 3em;
+    padding: 20px;
+    color: #555;
+  }
+}
+
+#close {
+  height: 20%;
+  background-color: #F47B33;
+  color: white;
+  text-align: center;
+  font-size: 1.5em;
+  padding-top: 20px;
+
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%;
+
+  border-radius: 0 0 $br $br;
+
+  &:active {
+    background-color: darken(#F47B33, 10);
+  }
+}
+
+.errorContainer {
+  #close {
+    height: 8%;
+    background-color: #F47B33;
+    color: white;
+    text-align: center;
+    font-size: 1.5em;
+    padding-top: 20px;
+
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%;
+
+    border-radius: 0 0 $br $br;
+
+    &:active {
+      background-color: darken(#F47B33, 10);
+    }
+  }
 }
 
 #arrow-popup-container {
@@ -714,10 +842,34 @@ ul#list {
   font-size: 12px;
   height: 100%;
   overflow-y: scroll;
+  // margin-top: 25px;
 
   li { padding: 15px 0 8px !important }
 }
 
+$smh: 30px;
+#smistador {
+  height: $smh;
+  width: 100%;
+  line-height: $smh;
+  z-index: 1000;
+  background-color: white;
+
+  span {
+    display: block;
+    float: left;
+    text-align: center;
+    padding: 8px 0;
+  }
+  span.side {
+    width: 30%;
+    font-size: 1.3em;
+  }
+  span#current {
+    width: 40%;
+    font-size: 2em;
+  }
+}
 
 #container-dei-container {
   height: 100%;
@@ -917,43 +1069,70 @@ ul#list {
 }
 
 #log-out {
-  height: 3em;
-  font-size: 2em;
-  line-height: 3em;
-  color: white;
-  border-radius: 4px;
-  margin-top: 20%;
-  box-shadow: 0 2px 1px rgba(0,0,0,.5), inset 0 2px 2px rgba(255,255,255,0.5);
-  text-align: center;
-
-
-  width: 40%;
-  @include center;
-  background: linear-gradient(to bottom, #f0ac3d 0%,#f47b33 100%); /* W3C */
-
-  &:active {
-    box-shadow: inset 0 2px 2px rgba(0,0,0,.5);
-    transform: translateY(2px);
-    background: linear-gradient(to bottom, #f0ac3d 0%,#f47b33 100%), rgba(0,0,0,.5); /* W3C */
-  }
+margin-top: 4%;
+width: 90%;
+margin: 5%;
 }
 
 #overlay-loading { 
   display: none; 
-  position: absolute; 
-  background: #555555; 
-  opacity: 0.6;
-  @include width-height(100%);
-  z-index: 1010;
+position: absolute;
+background: rgba(85, 85 , 85 ,0.5);
+width: 100%;
+height: 100%;
+z-index: 1010;
 }
-
+@-webkit-keyframes rotate {
+    from{
+        -webkit-transform: rotate(0deg);
+    }
+    to{
+        -webkit-transform: rotate(360deg);
+    }
+}
 #img-load {
   $img-size: 120px;
   @include absolute-at($top: 50%, $left: 50%);
   @include width-height($img-size);
   margin-left: - $img-size / 2;
   margin-top: - $img-size / 2;
-  -webkit-animation: spin 0.7s infinite;
+  -webkit-animation: rotate 2s linear infinite;
+}
+
+// Text field for sending messages on the wall
+#wall-form {
+  $tmh: 76%;
+  $h: 40px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: $h;
+
+
+  #textMessage {
+    width: $tmh;
+    float: left;
+    height: 100%;
+    resize: none;
+    font-size: 1.4em;
+  }
+  span#inviaMessage {
+    width: 100% - $tmh;
+    height: 100%;
+    font-size: 1.6em;
+    background-color: #F47B33;
+    display: block;
+    float: left;
+    text-align: center;
+    line-height: $h;
+    font-family: 'RockwellStdRegular';
+    color: white;
+
+    &:active {
+      background-color: darken(#F47B33, 10);
+    }
+  }
 }
 
 @include keyframes(appear) {
@@ -964,4 +1143,74 @@ ul#list {
 @include keyframes(spin) {
   0% { -webkit-transform: rotate(0deg) }
   100% { -webkit-transform: rotate(360deg) }
+}
+
+.log-button {
+  -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+  box-shadow:inset 0px 1px 0px 0px #ffffff;
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f9f9f9), color-stop(1, #e9e9e9) );
+  background:-moz-linear-gradient( center top, #f9f9f9 5%, #e9e9e9 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#e9e9e9');
+  background-color:#f9f9f9;
+  -webkit-border-top-left-radius:0px;
+  -moz-border-radius-topleft:0px;
+  border-top-left-radius:0px;
+  -webkit-border-top-right-radius:0px;
+  -moz-border-radius-topright:0px;
+  border-top-right-radius:0px;
+  -webkit-border-bottom-right-radius:0px;
+  -moz-border-radius-bottomright:0px;
+  border-bottom-right-radius:0px;
+  -webkit-border-bottom-left-radius:0px;
+  -moz-border-radius-bottomleft:0px;
+  border-bottom-left-radius:0px;
+  text-indent:0;
+  border:1px solid #dcdcdc;
+  display:inline-block;
+  color:#555;
+  font-family:Trebuchet MS;
+  font-size:22px;
+  font-weight:bold;
+  font-style:italic;
+  line-height:50px;
+  text-decoration:none;
+  text-align:center;
+  text-shadow:1px 1px 0px #ffffff;
+  width: 90%;
+    cursor: pointer;
+  background-color: green;
+  text-align: center;
+  height:7%;
+}
+.log-button:hover {
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e9e9e9), color-stop(1, #f9f9f9) );
+  background:-moz-linear-gradient( center top, #e9e9e9 5%, #f9f9f9 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e9e9e9', endColorstr='#f9f9f9');
+  background-color:#e9e9e9;
+}.log-button:active {
+  position:relative;
+  top:1px;
+}
+
+
+.input-text{
+  height: 100%;
+  width: 80%;
+  font-size:24px;
+  font-weight:bold;
+  font-style:italic;
+  text-align: center;
+  line-height: 40px;
+}
+
+#img-logo-l{
+  height:30%;
+  margin-top:10%;
+  -webkit-transition: height 0.7s;
+}
+
+#nick {
+  width: 100%;
+  height: 60px;
 }

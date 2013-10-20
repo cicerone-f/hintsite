@@ -39,6 +39,8 @@ define([
 
         template: Handlebars.compile(template),
 
+        names: ["In corso", "Sospese", "Storico", "Pubbliche"],
+
         initialize: function () {
           this.loading = new LoadingView();
           this.loading.render();      
@@ -59,7 +61,6 @@ define([
         },
 
         smistaCollection: function () {
-          // console.log(this.collection);
           this.inCorsoMaster = new PmsCollection();
           this.inCorsoPlayer = new PmsCollection();
           this.sospeseMaster = new PmsCollection();
@@ -88,7 +89,6 @@ define([
 
         moveViewMatches: function () {
           var tempPerc = (- this.currentViewmatches * 25) + '%';
-          // $('#container-dei-container').css({'margin-left': tempPerc});
           $('#container-dei-container').css('-webkit-transform', 'translate3d(' + tempPerc + ', 0, 0)');
         },
 
@@ -115,14 +115,53 @@ define([
           );
           $(this.el).find('#container-pubblico-match').html(
               new Match_VSL({collection:this.pubbliche, matchType: 'publicMatch'}).render().el);
-          
 
           var self = this;
+
+          var mmm = {
+            first: self.names[0],                     // In corso
+            last: self.names[self.names.length - 1],  // Pubbliche
+
+            names: self.names.map(function(el) { return el; }),
+
+            fill: function () {
+              this.before = this.names[this.names.length - 1];
+              this.current = this.names[0];
+              this.after = this.names[1];
+
+              // If the element before is the last element, don't display it since
+              // you can't go back. Same for the first.
+              if (this.before == this.last) this.before = '';
+              if (this.after == this.first) this.after = '';
+            },
+            shift: function (dir) {
+              if (dir === 'l') {
+                this.names.push(this.names.shift());
+              } else if (dir === 'r') {
+                this.names.unshift(this.names.pop());
+              }
+              return this;
+            }
+          };
+
+          function smistaLoSmistador(dir) {
+            if (dir) mmm.shift(dir);
+            mmm.fill();
+            $('#smistador > span').each(function () {
+              name = $(this).attr('id');
+              $(this).text(mmm[name]);
+            });
+          }
+
+          smistaLoSmistador();
+
           Hammer($('#container-del-container-dei-container')).on("swipeleft", function (event) {
             event.preventDefault();
             if (self.currentViewmatches < 3) {
               self.currentViewmatches++;
               self.moveViewMatches();
+
+              smistaLoSmistador('l');
             }
           });
           Hammer($('#container-del-container-dei-container')).on("swiperight", function (event) {
@@ -130,7 +169,10 @@ define([
             if (self.currentViewmatches > 0) {
               self.currentViewmatches--;
               self.moveViewMatches();
+
+              smistaLoSmistador('r');
             }
+
           });
           return this;
         }
@@ -139,6 +181,3 @@ define([
     return ElencoPartite_VM;
 
   });
-
-
-//append(new Match_VSL().render().el)
