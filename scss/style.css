@@ -592,18 +592,7 @@ ul#list {
   width: 50%;
   float: left; }
 
-#helpers {
-  width: 50%;
-  height: 5%;
-  position: absolute;
-  top: 15%;
-  left: 25%;
-  background: white; }
-  #helpers span {
-    width: 50%;
-    height: 100%;
-    text-align: center;
-    float: left; }
+
 
 #generic-popup-container {
   width: 70%;

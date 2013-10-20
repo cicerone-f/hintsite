@@ -374,9 +374,9 @@ ul.wallList {
 }  
 
 #check-in-btn {
-  @include width-height(100px);
+  @include width-height(140px);
   @include absolute-at($bottom: 2%, $left: 50%);
-  margin-left: -62px;
+  margin-left: -70px;
   border: 8px solid rgba(244, 123, 51, 0.4);
   border-radius: 1000px;
 }
@@ -659,9 +659,9 @@ $hhh: 90px;
 }
 
 #go-to-wall {
-  @include width-height(40px);
+  @include width-height(80px);
   @include absolute-at($bottom: 4%, $left: 88%);
-  margin-left: -28px;
+  margin-left: -53px;
   border: 8px solid rgba(244, 123, 51, 0.4);
   border-radius: 1000px;
 }
@@ -681,7 +681,7 @@ $hhh: 90px;
 }
 
 #go-to-players {
-  @include width-height(40px);
+  @include width-height(80px);
   @include absolute-at($bottom: 4%, $left: 12%);
   margin-left: -28px;
   border: 8px solid rgba(244, 123, 51, 0.4);
@@ -714,7 +714,7 @@ $hhh: 90px;
 #helpers {
   width: 50%;
   font-size: 1.5em;
-  @include absolute-at($top: 15%, $left: 25%);
+  @include absolute-at($top: 25%, $left: 25%);
 
   span {
     width: 50%;
@@ -723,7 +723,7 @@ $hhh: 90px;
     float: left;
     padding: 10px 0;
     background-color: rgba(255,255,255,0.8);
-    border: 1px solid #bbb;
+    border: 1px solid #999;
 
     &:active {
       background-color: rgba(200,200,200,0.8)
