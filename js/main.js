@@ -76,13 +76,5 @@ require([
       Parse.history.start();
       Parse.history.length = 0;
       Parse.history.on('route', function () { ++this.length; });
-
-      // FB.init({
-      //   appId: '639802702700436',
-      //   nativeInterface: CDV.FB,
-      //   useCachedDialogs: false
-      // });
-      
-      // FB.getLoginStatus(function () { alert('OK'); });
     }
   });

@@ -1,39 +1,47 @@
+// Resets margin and padding
 @mixin reset-around () {
   margin: 0;
   padding: 0;
 }
 
+// Sets horizontal margin to auto
 @mixin center() {
   margin-left: auto;
   margin-right: auto;
 }
 
+// Sets both width and height, to the same value if only one parameter is provided
 @mixin width-height($w, $h: $w) {
   // @include width-height(10px) will set both height and width to 10px 
   width: $w;
   height: $h;
 }
 
+// Sets vertical padding to the same value
 @mixin padding-ver($p) {
   padding-top: $p;
   padding-bottom: $p;
 }
 
+// Sets horizontal padding to the same value
 @mixin padding-hor($p) {
   padding-left: $p;
   padding-right: $p;
 }
 
+// Sets vertical margins to the same value
 @mixin margin-ver($m) {
   margin-top: $m;
   margin-bottom: $m;
 }
 
+// Sets horizontal margins to the same value
 @mixin margin-hor($m) {
   margin-left: $m;
   margin-right: $m;
 }
 
+// Sets an element position to "absolute" at the given coordinates
 @mixin absolute-at($top: none, $right: none, $bottom: none, $left: none) {
   position: absolute;
   @if $top != none { top: $top; }
@@ -42,6 +50,7 @@
   @if $left != none { left: $left; }
 }
 
+// Sets the keyframe for every browser
 @mixin keyframes($name) {
   @-webkit-keyframes #{$name} { @content; }
   @-moz-keyframes    #{$name} { @content; }
@@ -49,6 +58,7 @@
   @keyframes         #{$name} { @content; }
 }
 
+// Transitions for every browser
 @mixin transition($property, $time, $method: ease) {
   -webkit-transition: $property $time $method;
   -moz-transition:    $property $time $method;
